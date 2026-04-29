@@ -31,12 +31,12 @@ jobs:
         run: pnpm build
 
       - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.5
         with:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT || 22 }}
-          local_path: './dist/*'
+          local_path: './dist'
           remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
           sftp_only: true
