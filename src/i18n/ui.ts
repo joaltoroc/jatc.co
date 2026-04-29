@@ -50,6 +50,7 @@ export const ui = {
 
     // Footer
     'footer.rights': 'Todos los derechos reservados.',
+    'scroll.top': 'Volver arriba',
 
     // SEO
     'seo.description': 'Portafolio de John Alexander Toro Cortés. Tech Lead, Senior Full Stack Engineer y Especialista en Ciberseguridad con experiencia en arquitecturas Cloud, DevSecOps y desarrollo web.',
@@ -95,6 +96,7 @@ export const ui = {
 
     // Footer
     'footer.rights': 'All rights reserved.',
+    'scroll.top': 'Back to top',
 
     // SEO
     'seo.description': 'Portfolio of John Alexander Toro Cortés. Tech Lead, Senior Full Stack Engineer and Cybersecurity Specialist with experience in Cloud architectures, DevSecOps and web development.',
