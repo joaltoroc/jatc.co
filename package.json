@@ -17,11 +17,11 @@
     "astro": "6.1.10"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.8",
+    "@astrojs/check": "0.9.9",
     "@astrojs/sitemap": "3.7.2",
     "astro-robots-txt": "1.0.0",
     "husky": "9.1.7",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vite-plugin-compression": "0.5.1"
   }
 }

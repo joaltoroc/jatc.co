@@ -30,7 +30,22 @@ export default defineConfig({
   image: {
     service: passthroughImageService()
   },
+  build: {
+    format: 'file'
+  },
   vite: {
-    plugins: [compression()]
+    build: {
+      cssMinify: 'lightningcss'
+    },
+    plugins: [
+      compression({
+        algorithm: 'gzip',
+        ext: '.gz',
+      }),
+      compression({
+        algorithm: 'brotliCompress',
+        ext: '.br',
+      })
+    ]
   }
 });
