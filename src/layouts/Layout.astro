@@ -12,7 +12,16 @@ const isDev = import.meta.env.DEV;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta http-equiv="Content-Security-Policy" content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org https://cdn.jsdelivr.net https://auth.sidebase.io; script-src 'self' ${isDev ? "'unsafe-inline'" : ""}; connect-src 'self';`} />
+		<meta http-equiv="Content-Security-Policy" content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org https://cdn.jsdelivr.net https://auth.sidebase.io https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;`} />
+		
+		<!-- Google Tag Manager -->
+		<script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-KL3ZRHZ');</script>
+		<!-- End Google Tag Manager -->
+
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -34,17 +43,27 @@ const isDev = import.meta.env.DEV;
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="JATC - John Alexander Toro Cortés" />
+		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CO'} />
 		<meta property="og:url" content={`https://jatc.co${Astro.url.pathname}`} />
 		<meta property="og:title" content={t('layout.title')} />
 		<meta property="og:description" content={t('seo.description')} />
-		<meta property="og:image" content="https://jatc.co/Jatc.webp" />
+		<meta property="og:image" content="https://jatc.co/jatc.webp" />
+		<meta property="og:image:secure_url" content="https://jatc.co/jatc.webp" />
+		<meta property="og:image:type" content="image/webp" />
+		<meta property="og:image:width" content="400" />
+		<meta property="og:image:height" content="400" />
+		<meta property="og:image:alt" content="John Alexander Toro Cortés - Tech Lead & Senior Full Stack Engineer" />
 
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content={`https://jatc.co${Astro.url.pathname}`} />
-		<meta property="twitter:title" content={t('layout.title')} />
-		<meta property="twitter:description" content={t('seo.description')} />
-		<meta property="twitter:image" content="https://jatc.co/Jatc.webp" />
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@joaltoroc" />
+		<meta name="twitter:creator" content="@joaltoroc" />
+		<meta name="twitter:url" content={`https://jatc.co${Astro.url.pathname}`} />
+		<meta name="twitter:title" content={t('layout.title')} />
+		<meta name="twitter:description" content={t('seo.description')} />
+		<meta name="twitter:image" content="https://jatc.co/jatc.webp" />
+		<meta name="twitter:image:alt" content="John Alexander Toro Cortés - Tech Lead & Senior Full Stack Engineer" />
 		
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,6 +74,10 @@ const isDev = import.meta.env.DEV;
 		<link rel="stylesheet" href="/src/styles/global.css" />
 	</head>
 	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KL3ZRHZ"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
 		<slot />
 	</body>
 </html>
