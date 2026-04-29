@@ -35,7 +35,7 @@ jobs:
         with:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
-          passowrd: ${{ secrets.SFTP_PASSWORD }}
+          password: ${{ secrets.SFTP_PASSWORD }}
           port: ${{ secrets.SFTP_PORT || 22 }}
           local_path: './dist/*'
           remote_path: ${{ secrets.SFTP_REMOTE_PATH }}
