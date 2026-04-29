@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const isDev = import.meta.env.DEV;
 ---
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@ const t = useTranslations(lang);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org https://cdn.jsdelivr.net https://auth.sidebase.io; script-src 'self' 'unsafe-inline'; connect-src 'self';" />
+		<meta http-equiv="Content-Security-Policy" content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org https://cdn.jsdelivr.net https://auth.sidebase.io; script-src 'self' ${isDev ? "'unsafe-inline'" : ""}; connect-src 'self';`} />
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

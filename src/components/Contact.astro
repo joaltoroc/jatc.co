@@ -21,11 +21,11 @@ const t = useTranslations(lang);
         </p>
         
         <div class="contact-methods">
-          <a href="mailto:hello@jatc.co" class="method-item">
+          <a href="#" class="method-item email-link" data-email="am9hbHRvcm9jQGphdGMuY28=">
             <div class="icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
-            <span>joaltoroc@jatc.co</span>
+            <span class="email-text">Contactar por Email</span>
           </a>
           
           <a href="https://linkedin.com/in/joaltoroc" target="_blank" rel="noopener noreferrer" class="method-item">
@@ -131,3 +131,32 @@ const t = useTranslations(lang);
     }
   }
 </style>
+
+<script>
+  // Obfuscate email to prevent spam bots from scraping it
+  document.addEventListener('DOMContentLoaded', () => {
+    const emailLinks = document.querySelectorAll('.email-link');
+    
+    emailLinks.forEach(link => {
+      // Decode the base64 email only on hover or click
+      const decodeEmail = () => {
+        if (!link.hasAttribute('href') || link.getAttribute('href') === '#') {
+          const encoded = link.getAttribute('data-email');
+          if (encoded) {
+            const decoded = atob(encoded);
+            link.setAttribute('href', `mailto:${decoded}`);
+            
+            // Optionally update the text content if you want to show the email
+            const textSpan = link.querySelector('.email-text');
+            if (textSpan && textSpan.textContent === 'Contactar por Email') {
+              textSpan.textContent = decoded;
+            }
+          }
+        }
+      };
+
+      link.addEventListener('mouseenter', decodeEmail);
+      link.addEventListener('click', decodeEmail);
+    });
+  });
+</script>
