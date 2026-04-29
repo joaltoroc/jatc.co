@@ -1,0 +1,126 @@
+---
+// About Component
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { experienceYears } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="about" class="about-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{t('about.title')}</h2>
+      <div class="section-line"></div>
+    </div>
+    
+    <div class="about-content">
+      <div class="about-card glass">
+        <h3 class="card-title">{t('about.profileTitle')}</h3>
+        <p set:html={t('about.p1')}></p>
+        <p style="margin-top: 1rem;" set:html={t('about.p2')}></p>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card glass">
+          <span class="stat-number text-gradient">+{experienceYears}</span>
+          <span class="stat-label" set:html={t('about.years')}></span>
+        </div>
+        <div class="stat-card glass">
+          <span class="stat-number text-gradient">+20</span>
+          <span class="stat-label" set:html={t('about.projects')}></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 2rem;
+  }
+
+  .about-card {
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+  }
+  
+  strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    padding: 2rem;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform var(--transition-fast);
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 992px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

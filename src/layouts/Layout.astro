@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://cdn.simpleicons.org https://cdn.jsdelivr.net https://auth.sidebase.io; script-src 'self' 'unsafe-inline'; connect-src 'self';" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{t('layout.title')}</title>
+
+		<!-- Basic SEO -->
+		<meta name="description" content={t('seo.description')} />
+		<meta name="keywords" content={t('seo.keywords')} />
+		<meta name="author" content="John Alexander Toro Cortés" />
+		<link rel="canonical" href={`https://jatc.co${Astro.url.pathname}`} />
+
+		<!-- Hreflang for Internationalization -->
+		<link rel="alternate" hreflang="es" href="https://jatc.co/" />
+		<link rel="alternate" hreflang="en" href="https://jatc.co/en/" />
+		<link rel="alternate" hreflang="x-default" href="https://jatc.co/" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={`https://jatc.co${Astro.url.pathname}`} />
+		<meta property="og:title" content={t('layout.title')} />
+		<meta property="og:description" content={t('seo.description')} />
+		<meta property="og:image" content="https://jatc.co/Jatc.webp" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={`https://jatc.co${Astro.url.pathname}`} />
+		<meta property="twitter:title" content={t('layout.title')} />
+		<meta property="twitter:description" content={t('seo.description')} />
+		<meta property="twitter:image" content="https://jatc.co/Jatc.webp" />
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		
+		<!-- Global CSS -->
+		<link rel="stylesheet" href="/src/styles/global.css" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

@@ -1,0 +1,123 @@
+---
+// Header Component
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isEn = lang === 'en';
+---
+
+<header class="header glass">
+  <div class="container header-content">
+    <div class="logo">
+      <a href={isEn ? "/en/" : "/"}>JATC</a>
+    </div>
+    
+    <nav class="desktop-nav">
+      <ul>
+        <li><a href="#about">{t('nav.about')}</a></li>
+        <li><a href="#experience">{t('nav.experience')}</a></li>
+        <li><a href="#education">{t('nav.education')}</a></li>
+        <li><a href="#courses">{t('nav.courses')}</a></li>
+        <li><a href="#skills">{t('nav.skills')}</a></li>
+        <li><a href="#contact">{t('nav.contact')}</a></li>
+      </ul>
+    </nav>
+    
+    <div class="actions">
+      <div class="lang-selector">
+        <a href="/" class={!isEn ? "active-lang" : ""}>ES</a> | <a href="/en/" class={isEn ? "active-lang" : ""}>EN</a>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+  }
+
+  .logo a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .desktop-nav ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .desktop-nav a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .desktop-nav a:hover {
+    color: var(--text-primary);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .lang-selector {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  
+  .lang-selector a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .lang-selector a:hover {
+    color: var(--text-primary);
+  }
+  
+  .lang-selector a.active-lang {
+    color: var(--text-primary);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    color: var(--text-primary);
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+    
+    .mobile-menu-btn {
+      display: block;
+    }
+  }
+</style>

@@ -1,0 +1,379 @@
+---
+// Experience Component
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const isEn = lang === 'en';
+
+const experiencesEs = [
+  {
+    company: "Abogada Alexandra",
+    role: "Senior Software Engineer - Tech Lead",
+    period: "Marzo 2024 - Presente",
+    description: "Liderazgo del equipo encargado de crear aplicaciones transversales para fácil integración y control de seguridad.",
+    technologies: ["NuxtJS", "NestJS", "Azure", "Azure DevOps", "Tailwind CSS", "Sidebase Auth", "OWASP"]
+  },
+  {
+    company: "Zulu Tech",
+    role: "Tech Lead",
+    period: "Septiembre 2022 - Diciembre 2023",
+    description: "Liderazgo en la creación de una plataforma B2C para ahorro en dólares digitales (USDC) vía Web3 y Polygon. Además, dirección en el desarrollo de una plataforma B2B para transferencias rápidas y transparentes.",
+    technologies: ["React", "Next.js", "React Native", "Node.js", "Golang", "BigQuery", "Terraform"]
+  },
+  {
+    company: "Mercadolibre",
+    role: "Sr Software Engineer",
+    period: "Octubre 2020 - Septiembre 2022",
+    description: "Trabajo en los sistemas de validación KYC (Know Your Customer) para nuevos países. Mejora de la validación manual reduciendo errores y desarrollo de una aplicación para parametrización de mensajes de rechazo.",
+    technologies: ["Golang", "React", "Fury"]
+  },
+  {
+    company: "Indra Company S.A.S",
+    role: "Senior Consultant",
+    period: "Septiembre 2019 - Septiembre 2020",
+    description: "Desarrollo de una aplicación para calcular el consumo de pozos petroleros para Ecopetrol, logrando una optimización del 60% en ahorros. Liderazgo técnico de un equipo de 4 personas.",
+    technologies: ["C#", "React", "Azure", "SQL"]
+  },
+  {
+    company: "Fuse Mobile S.A.S",
+    role: "Senior Back End Developer",
+    period: "Mayo 2017 - Agosto 2019",
+    description: "Desarrollo de proyectos como 'Alert Zone' (monitoreo de emergencias en Australia), aplicación de cotizaciones para Hunter Douglas, y 'Easy Payslip' (app de nómina galardonada para PyMEs).",
+    technologies: ["Node.js", "React Native", "SQL", "AWS", "Elasticsearch"]
+  },
+  {
+    company: "Intergrupo",
+    role: "Lider Desarrollo .Net",
+    period: "Septiembre 2011 - Abril 2017",
+    description: "Liderazgo técnico para proyectos con Protección S.A. y Suramericana, gestionando despliegues a producción y control de código fuente.",
+    technologies: ["C#", "ASP.NET", "SQL Server", "Oracle", "TFS"]
+  },
+  {
+    company: "Inmel S.A.",
+    role: "Platform Administrator - Developer .Net",
+    period: "Mayo 2010 - Septiembre 2011",
+    description: "Administración de la plataforma de help desk (System Center Service Manager) y desarrollo de herramientas de integración.",
+    technologies: ["C#", "SQL Server", "Crystal Reports"]
+  },
+  {
+    company: "GroupM Colombia",
+    role: "Developer VB.Net",
+    period: "Noviembre 2009 - Mayo 2010",
+    description: "Desarrollo de aplicaciones publicitarias para TV, Radio y Prensa para agencias como Mindshare y Mediacom.",
+    technologies: ["VB.NET", "SQL Server"]
+  },
+  {
+    company: "Asesorías En Sistemas GOD Ltda",
+    role: "NET Developer",
+    period: "Octubre 2008 - Noviembre 2009",
+    description: "Desarrollo de aplicaciones internas para control de inventarios para Almacén Éxito.",
+    technologies: ["C#", "SQL Server"]
+  },
+  {
+    company: "Savia Grupo Tecnológico",
+    role: "PHP Web Developer",
+    period: "Abril 2008 - Octubre 2008",
+    description: "Desarrollo de portales web corporativos para clientes importantes como ISA, Transelca e Isagen.",
+    technologies: ["PHP", "MySQL"]
+  }
+];
+
+const experiencesEn = [
+  {
+    company: "Abogada Alexandra",
+    role: "Senior Software Engineer - Tech Lead",
+    period: "March 2024 - Present",
+    description: "Led the team responsible for creating cross-cutting applications for easy integration and security control.",
+    technologies: ["NuxtJS", "NestJS", "Azure", "Azure DevOps", "Tailwind CSS", "Sidebase Auth", "OWASP"]
+  },
+  {
+    company: "Zulu Tech",
+    role: "Tech Lead",
+    period: "September 2022 - December 2023",
+    description: "Led the creation of a B2C platform for savings in digital dollars (USDC) via Web3 and Polygon. Also directed the development of a B2B platform for fast and transparent transfers.",
+    technologies: ["React", "Next.js", "React Native", "Node.js", "Golang", "BigQuery", "Terraform"]
+  },
+  {
+    company: "Mercadolibre",
+    role: "Sr Software Engineer",
+    period: "October 2020 - September 2022",
+    description: "Worked on KYC (Know Your Customer) validation systems for new countries. Improved manual validation reducing errors and developed an application for parameterizing rejection messages.",
+    technologies: ["Golang", "React", "Fury"]
+  },
+  {
+    company: "Indra Company S.A.S",
+    role: "Senior Consultant",
+    period: "September 2019 - September 2020",
+    description: "Developed an application to calculate oil well consumption for Ecopetrol, achieving a 60% optimization in savings. Technical lead for a 4-person team.",
+    technologies: ["C#", "React", "Azure", "SQL"]
+  },
+  {
+    company: "Fuse Mobile S.A.S",
+    role: "Senior Back End Developer",
+    period: "May 2017 - August 2019",
+    description: "Developed projects such as 'Alert Zone' (emergency monitoring in Australia), quoting application for Hunter Douglas, and 'Easy Payslip' (award-winning payroll app for SMEs).",
+    technologies: ["Node.js", "React Native", "SQL", "AWS", "Elasticsearch"]
+  },
+  {
+    company: "Intergrupo",
+    role: "Lider Desarrollo .Net",
+    period: "September 2011 - April 2017",
+    description: "Technical lead for projects with Protección S.A. and Suramericana, managing production deployments and source code control.",
+    technologies: ["C#", "ASP.NET", "SQL Server", "Oracle", "TFS"]
+  },
+  {
+    company: "Inmel S.A.",
+    role: "Platform Administrator - Developer .Net",
+    period: "May 2010 - September 2011",
+    description: "Administration of the help desk platform (System Center Service Manager) and development of integration tools.",
+    technologies: ["C#", "SQL Server", "Crystal Reports"]
+  },
+  {
+    company: "GroupM Colombia",
+    role: "Developer VB.Net",
+    period: "November 2009 - May 2010",
+    description: "Developed advertising applications for TV, Radio, and Press for agencies like Mindshare and Mediacom.",
+    technologies: ["VB.NET", "SQL Server"]
+  },
+  {
+    company: "Asesorías En Sistemas GOD Ltda",
+    role: "NET Developer",
+    period: "October 2008 - November 2009",
+    description: "Developed internal inventory control applications for Almacén Éxito.",
+    technologies: ["C#", "SQL Server"]
+  },
+  {
+    company: "Savia Grupo Tecnológico",
+    role: "PHP Web Developer",
+    period: "April 2008 - October 2008",
+    description: "Developed corporate web portals for major clients such as ISA, Transelca, and Isagen.",
+    technologies: ["PHP", "MySQL"]
+  }
+];
+
+const experiences = isEn ? experiencesEn : experiencesEs;
+
+const techIcons = {
+  "React": "https://cdn.simpleicons.org/react/3b82f6",
+  "Next.js": "https://cdn.simpleicons.org/nextdotjs/3b82f6",
+  "React Native": "https://cdn.simpleicons.org/react/3b82f6",
+  "Node.js": "https://cdn.simpleicons.org/nodedotjs/3b82f6",
+  "Golang": "https://cdn.simpleicons.org/go/3b82f6",
+  "BigQuery": "https://cdn.simpleicons.org/googlebigquery/3b82f6",
+  "Terraform": "https://cdn.simpleicons.org/terraform/3b82f6",
+  "C#": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
+  "Azure": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+  "SQL": "https://cdn.simpleicons.org/sqlite/3b82f6",
+  "SQL Server": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
+  "Oracle": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg",
+  "AWS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+  "Elasticsearch": "https://cdn.simpleicons.org/elasticsearch/3b82f6",
+  "PHP": "https://cdn.simpleicons.org/php/3b82f6",
+  "MySQL": "https://cdn.simpleicons.org/mysql/3b82f6",
+  "VB.NET": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg",
+  "ASP.NET": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg",
+  "TFS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+  "Azure DevOps": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
+  "Fury": "/fury-logo.png",
+  "Crystal Reports": "https://cdn.simpleicons.org/sap/3b82f6",
+  "NuxtJS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg",
+  "NestJS": "https://cdn.simpleicons.org/nestjs/3b82f6",
+  "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss/3b82f6",
+  "Sidebase Auth": "https://auth.sidebase.io/lock.png",
+  "OWASP": "https://cdn.simpleicons.org/owasp/3b82f6"
+};
+---
+
+<section id="experience" class="experience-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{t('experience.title')}</h2>
+      <div class="section-line"></div>
+    </div>
+    
+    <div class="timeline">
+      {experiences.map((exp) => (
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass">
+            <div class="timeline-header">
+              <h3 class="role">{exp.role}</h3>
+              <span class="period">{exp.period}</span>
+            </div>
+            <h4 class="company text-gradient">{exp.company}</h4>
+            <p class="description">{exp.description}</p>
+            {exp.technologies && (
+              <div class="tech-stack">
+                {exp.technologies.map(tech => (
+                  <span class="tech-tag">
+                    {techIcons[tech] && (
+                      <img src={techIcons[tech]} alt={`${tech} icon`} width="14" height="14" class="tech-icon" />
+                    )}
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+  }
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    top: 0;
+    left: 14px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-primary);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    z-index: 1;
+  }
+
+  .timeline-content {
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: transform var(--transition-normal);
+  }
+
+  .timeline-content:hover {
+    transform: translateX(5px);
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .role {
+    font-size: 1.3rem;
+    color: #fff;
+  }
+
+  .period {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: rgba(255,255,255,0.05);
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+  }
+
+  .company {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+
+  .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px;
+    background: rgba(59, 130, 246, 0.08);
+    color: #fff;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    transition: all var(--transition-fast);
+  }
+
+  .tech-tag:hover {
+    background: rgba(59, 130, 246, 0.15);
+    border-color: rgba(59, 130, 246, 0.6);
+    transform: translateY(-2px);
+  }
+
+  .tech-icon {
+    display: block;
+    width: 14px;
+    height: 14px;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .timeline::before {
+      left: 10px;
+    }
+    
+    .timeline-dot {
+      left: 4px;
+    }
+    
+    .timeline-item {
+      padding-left: 40px;
+    }
+    
+    .timeline-content {
+      padding: 1.5rem;
+    }
+  }
+</style>
