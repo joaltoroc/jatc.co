@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import ScrollToTop from '../components/ScrollToTop.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -11,6 +12,20 @@ const t = useTranslations(lang);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				return 'light';
+			})();
+		
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 		<meta http-equiv="Content-Security-Policy" content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;`} />
 		
 		<!-- Google Tag Manager -->
@@ -87,7 +102,7 @@ const t = useTranslations(lang);
 		<!-- Critical CSS -->
 		<style is:inline>
 			.hero-section { min-height: 100vh; display: flex; align-items: center; padding-top: 70px; }
-			.hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; font-weight: 700; color: #fff; }
+			.hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; font-weight: 700; color: var(--text-primary); }
 			@media (max-width: 992px) { .hero-title { font-size: 2.5rem; } }
 		</style>
 
@@ -98,5 +113,6 @@ const t = useTranslations(lang);
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
 		<slot />
+		<ScrollToTop />
 	</body>
 </html>

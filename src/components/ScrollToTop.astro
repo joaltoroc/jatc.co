@@ -1,0 +1,79 @@
+---
+// ScrollToTop Component
+---
+
+<button id="scroll-to-top" class="scroll-to-top" aria-label="Volver arriba">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<style>
+  .scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  .scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .scroll-to-top:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+</style>
+
+<script>
+  function initScrollToTop() {
+    const scrollBtn = document.getElementById("scroll-to-top");
+    
+    if (scrollBtn) {
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollBtn.classList.add("visible");
+        } else {
+          scrollBtn.classList.remove("visible");
+        }
+      });
+
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    }
+  }
+
+  // Initialize on load
+  initScrollToTop();
+
+  // Re-initialize after view transitions (if any)
+  document.addEventListener('astro:after-swap', initScrollToTop);
+</script>

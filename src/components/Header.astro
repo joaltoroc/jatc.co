@@ -1,6 +1,7 @@
 ---
 // Header Component
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import ThemeToggle from './ThemeToggle.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -25,6 +26,7 @@ const isEn = lang === 'en';
     </nav>
     
     <div class="actions">
+      <ThemeToggle />
       <div class="lang-selector">
         <a href="/" class={!isEn ? "active-lang" : ""} data-astro-prefetch>ES</a> | <a href="/en/" class={isEn ? "active-lang" : ""} data-astro-prefetch>EN</a>
       </div>
@@ -46,7 +48,7 @@ const isEn = lang === 'en';
     left: 0;
     width: 100%;
     z-index: 100;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-light);
   }
 
   .header-content {

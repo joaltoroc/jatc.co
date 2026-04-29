@@ -92,7 +92,7 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
   .section-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, var(--border-light), transparent);
   }
 
   .skills-grid {
@@ -114,10 +114,10 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
 
   .category-title {
     font-size: 1.25rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid var(--border-light);
   }
 
   .skills-tags {
@@ -127,8 +127,8 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
   }
 
   .skill-tag {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface-light);
+    border: 1px solid var(--border-light);
     color: var(--text-secondary);
     padding: 0.5rem 1rem;
     border-radius: 8px;

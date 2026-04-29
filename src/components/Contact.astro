@@ -63,7 +63,7 @@ const t = useTranslations(lang);
   .section-line {
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+    background: linear-gradient(90deg, var(--border-light), transparent);
   }
 
   .contact-content {
@@ -79,7 +79,7 @@ const t = useTranslations(lang);
 
   .info-title {
     font-size: 2rem;
-    color: #fff;
+    color: var(--text-primary);
     margin-bottom: 1rem;
   }
 
@@ -114,7 +114,7 @@ const t = useTranslations(lang);
     align-items: center;
     width: 48px;
     height: 48px;
-    background: rgba(255,255,255,0.05);
+    background: var(--surface-light);
     border-radius: 12px;
     color: var(--accent-primary);
     transition: all var(--transition-fast);
@@ -122,7 +122,7 @@ const t = useTranslations(lang);
 
   .method-item:hover .icon {
     background: var(--accent-primary);
-    color: #fff;
+    color: var(--text-primary);
   }
 
   @media (max-width: 992px) {
