@@ -4,45 +4,56 @@ Este documento describe la estructura y configuración del portafolio web person
 
 ## 🛠 Stack Tecnológico
 - **Framework:** [Astro](https://astro.build/) (v6.1.10)
-- **Estilos:** CSS nativo (`src/styles/global.css`)
-- **Tipografías:** Google Fonts (Inter)
+- **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas.
+- **Tipografías:** Google Fonts (Inter) con carga optimizada.
 - **Gestor de Paquetes:** `pnpm`
-- **Lenguaje Principal:** JavaScript / HTML semántico / Astro
+- **Lenguaje Principal:** TypeScript / HTML semántico / Astro
+- **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=22.12.0`
 
 ## 📁 Estructura del Proyecto
 
-El proyecto se basa en una arquitectura "One-Page" (Single Page) componetizada:
+El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 
 ```text
 /
-├── public/                # Recursos estáticos (imágenes, iconos, etc.)
+├── public/                # Recursos estáticos (imágenes, iconos, favicon, etc.)
 ├── src/                   # Código fuente
-│   ├── components/        # Componentes modulares que conforman las secciones de la página:
-│   │   ├── Header.astro   # Navegación principal
-│   │   ├── Hero.astro     # Sección de inicio/presentación
-│   │   ├── About.astro    # Sobre mí
-│   │   ├── Experience.astro # Experiencia laboral
-│   │   ├── Education.astro # Educación formal
-│   │   ├── Courses.astro  # Cursos y certificaciones
-│   │   ├── Skills.astro   # Habilidades técnicas y blandas
-│   │   ├── Contact.astro  # Información de contacto
-│   │   └── Footer.astro   # Pie de página
-│   ├── layouts/           # Plantillas base (Layout.astro con la estructura HTML general)
-│   ├── pages/             # Rutas (index.astro ensambla todos los componentes)
-│   └── styles/            # Reglas globales de CSS
-├── astro.config.mjs       # Configuración del framework
-└── package.json           # Dependencias y metadatos
+│   ├── components/        # Componentes modulares de la UI:
+│   │   ├── Header.astro     # Navegación principal e idioma
+│   │   ├── ThemeToggle.astro # Selector de tema Light/Dark
+│   │   ├── Hero.astro       # Sección de inicio (LCP optimizado)
+│   │   ├── About.astro      # Perfil profesional
+│   │   ├── Experience.astro # Trayectoria laboral bilingüe
+│   │   ├── Education.astro  # Formación académica
+│   │   ├── Courses.astro    # Certificaciones y cursos
+│   │   ├── Skills.astro     # Stack tecnológico y habilidades
+│   │   ├── Contact.astro    # Formulario e información de contacto
+│   │   ├── ScrollToTop.astro # Botón flotante de navegación
+│   │   └── Footer.astro     # Pie de página
+│   ├── i18n/              # Configuración y diccionarios de idiomas (ui.ts, utils.ts)
+│   ├── layouts/           # Plantilla base (Layout.astro con SEO y Meta avanzados)
+│   ├── pages/             # Rutas (index.astro para ES, /en/index.astro para EN)
+│   └── styles/            # Reglas globales de CSS y variables de tema
+├── astro.config.mjs       # Configuración del framework (format: 'directory')
+└── package.json           # Dependencias y scripts
 ```
 
-## 💡 Estado Actual
-El proyecto ha evolucionado de una plantilla básica a un portafolio funcional y completo.
-- Se ha eliminado la página de bienvenida por defecto (`Welcome.astro`).
-- Todas las secciones del currículum y experiencia están implementadas en componentes independientes dentro de `src/components/`.
-- El diseño utiliza CSS puro sin dependencias de frameworks externos como Tailwind, aprovechando variables CSS para mantener un sistema de diseño consistente.
+## 💡 Estado Actual y Características
+El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experiencia de usuario:
+- **Tema Dual:** Soporte para modo Claro (por defecto) y Oscuro, con persistencia en `localStorage` y prevención de parpadeo (flash) mediante script crítico en el `<head>`.
+- **Bilingüe:** Soporte completo para Español e Inglés mediante un sistema i18n ligero.
+- **Performance:** 
+  - Formato de build `directory` para URLs limpias.
+  - Compresión Gzip y Brotli activa en el build de Vite.
+  - Pre-carga (preload) optimizada de imágenes LCP (.webp).
+  - Uso de `lightningcss` para minificación eficiente.
+- **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.
+- **Accesibilidad:** Uso de HTML semántico y etiquetas ARIA en componentes interactivos.
 
 ## 📜 Scripts Disponibles
 
-- `pnpm dev`: Inicia el servidor de desarrollo local (normalmente en `http://localhost:4321`).
+- `pnpm dev`: Inicia el servidor de desarrollo local.
 - `pnpm build`: Compila la aplicación para producción en la carpeta `./dist/`.
-- `pnpm preview`: Previsualiza la versión compilada localmente antes de desplegar.
+- `pnpm preview`: Previsualiza la versión compilada localmente.
+- `pnpm check`: Valida la integridad de los archivos Astro y tipos de TypeScript.
