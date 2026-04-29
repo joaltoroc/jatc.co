@@ -175,13 +175,13 @@ const techIcons: Record<string, string> = {
   "ASP.NET": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg",
   "TFS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
   "Azure DevOps": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original.svg",
-  "Fury": "/fury-logo.png",
   "Crystal Reports": "https://cdn.simpleicons.org/sap/3b82f6",
   "NuxtJS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original.svg",
   "NestJS": "https://cdn.simpleicons.org/nestjs/3b82f6",
   "Tailwind CSS": "https://cdn.simpleicons.org/tailwindcss/3b82f6",
-  "Sidebase Auth": "https://auth.sidebase.io/lock.png",
-  "OWASP": "https://cdn.simpleicons.org/owasp/3b82f6"
+  "OWASP": "https://cdn.simpleicons.org/owasp/3b82f6",
+  "Fury": "/fury-logo.png",
+  "Sidebase Auth": "/sidebase.png"
 };
 ---
 
@@ -201,7 +201,7 @@ const techIcons: Record<string, string> = {
               <h3 class="role">{exp.role}</h3>
               <span class="period">{exp.period}</span>
             </div>
-            <h4 class="company text-gradient">{exp.company}</h4>
+            <h4 class="text-gradient company">{exp.company}</h4>
             <p class="description">{exp.description}</p>
             {exp.technologies && (
               <div class="tech-stack">
