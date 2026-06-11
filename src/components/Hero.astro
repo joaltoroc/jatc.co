@@ -21,7 +21,7 @@ const t = useTranslations(lang);
       
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">{t('hero.contact')}</a>
-        <a href="/cv.pdf" class="btn-secondary" download>{t('hero.cv')}</a>
+        <button onclick="window.print()" class="btn-secondary">{t('hero.cv')}</button>
       </div>
     </div>
     
