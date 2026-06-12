@@ -31,7 +31,7 @@ export const ui = {
     // About
     'about.title': 'Sobre Mí',
     'about.profileTitle': 'Perfil Profesional',
-    'about.p1': `<strong>Tech Lead y Senior Full Stack Engineer</strong> con más de ${experienceYears} años de experiencia diseñando y construyendo productos de software escalables, seguros y de alto impacto. Especializado en ecosistemas modernos (<strong>TypeScript, React, Node.js, Golang, C#/.NET</strong>) y desarrollo de arquitecturas cloud (<strong>Azure, AWS</strong>).`,
+    'about.p1': `<strong>Team Lead y Senior Full Stack Engineer</strong> con más de ${experienceYears} años de experiencia diseñando y construyendo productos de software escalables, seguros y de alto impacto. Especializado en ecosistemas modernos (<strong>TypeScript, React, Node.js, Golang, C#/.NET</strong>) y desarrollo de arquitecturas cloud (<strong>Azure, AWS</strong>).`,
     'about.p2':
       'He liderado equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Además, mi sólida base como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting) desde el diseño hasta el despliegue continuo.',
     'about.years': 'Años de <br/>Experiencia',
@@ -62,6 +62,9 @@ export const ui = {
       'Portafolio de John Alexander Toro Cortés. Tech Lead, Senior Full Stack Engineer y Especialista en Ciberseguridad con experiencia en arquitecturas Cloud, DevSecOps y desarrollo web.',
     'seo.keywords':
       'Tech Lead, Full Stack Engineer, Ciberseguridad, DevSecOps, Arquitectura Cloud, React, Node.js, Golang, AWS, Azure',
+
+    // Actions
+    'action.copyLink': 'Copiar link',
   },
   en: {
     // Header
@@ -111,8 +114,11 @@ export const ui = {
 
     // SEO
     'seo.description':
-      'Portfolio of John Alexander Toro Cortés. Tech Lead, Senior Full Stack Engineer and Cybersecurity Specialist with experience in Cloud architectures, DevSecOps and web development.',
+      'Portfolio of John Alexander Toro Cortés. Team Lead, Senior Full Stack Engineer and Cybersecurity Specialist with experience in Cloud architectures, DevSecOps and web development.',
     'seo.keywords':
-      'Tech Lead, Full Stack Engineer, Cybersecurity, DevSecOps, Cloud Architecture, React, Node.js, Golang, AWS, Azure',
+      'Team Lead, Tech Lead, Full Stack Engineer, Cybersecurity, DevSecOps, Cloud Architecture, React, Node.js, Golang, AWS, Azure',
+
+    // Actions
+    'action.copyLink': 'Copy link to this section',
   },
 } as const;
