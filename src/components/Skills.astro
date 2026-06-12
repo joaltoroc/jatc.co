@@ -5,10 +5,10 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const skillCategoriesEs = [
+const skillCategories = [
   {
     title: "Front-End & Mobile",
-    skills: ["React", "React Native", "Next.js", "NuxtJS", "Vue.js", "Astro", "TypeScript", "Tailwind CSS"]
+    skills: ["React", "React Native", "Next.js", "NuxtJS", "Vue.js", "Astro", "TypeScript", "Tailwind CSS", "Xamarin"]
   },
   {
     title: "Back-End",
@@ -16,7 +16,7 @@ const skillCategoriesEs = [
   },
   {
     title: "Bases de Datos & Data",
-    skills: ["SQL Server", "MongoDB", "MySQL", "Oracle", "Elasticsearch", "BigQuery"]
+    skills: ["SQL Server", "MongoDB", "MySQL", "Oracle", "Elasticsearch", "BigQuery", "Firebase", "Couchbase"]
   },
   {
     title: "Cloud & DevOps",
@@ -27,31 +27,6 @@ const skillCategoriesEs = [
     skills: ["OWASP", "Pentesting", "Clean Architecture", "Scrum"]
   }
 ];
-
-const skillCategoriesEn = [
-  {
-    title: "Front-End & Mobile",
-    skills: ["React", "React Native", "Next.js", "NuxtJS", "Vue.js", "Astro", "TypeScript", "Tailwind CSS"]
-  },
-  {
-    title: "Back-End",
-    skills: ["Node.js", "NestJS", "Golang", "C# / .NET", "PHP"]
-  },
-  {
-    title: "Databases & Data",
-    skills: ["SQL Server", "MongoDB", "MySQL", "Oracle", "Elasticsearch", "BigQuery"]
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: ["Azure", "AWS", "Docker", "Terraform", "Azure DevOps"]
-  },
-  {
-    title: "Security & Methodologies",
-    skills: ["OWASP", "Pentesting", "Clean Architecture", "Scrum"]
-  }
-];
-
-const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
 ---
 
 <section id="skills" class="skills-section">
