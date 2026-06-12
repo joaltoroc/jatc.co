@@ -20,7 +20,7 @@ export const ui = {
     'nav.contact': 'Contacto',
 
     // Hero
-    'hero.badge': '🚀 Tech Lead & Senior Full Stack Engineer',
+    'hero.badge': '🚀 Team Lead & Senior Full Stack Engineer',
     'hero.greeting': 'Hola, soy',
     'hero.building': 'Construyendo plataformas',
     'hero.secure': 'escalables y seguras.',
@@ -73,7 +73,7 @@ export const ui = {
     'nav.contact': 'Contact',
 
     // Hero
-    'hero.badge': '🚀 Tech Lead & Senior Full Stack Engineer',
+    'hero.badge': '🚀 Team Lead & Senior Full Stack Engineer',
     'hero.greeting': "Hi, I'm",
     'hero.building': 'Building scalable',
     'hero.secure': 'and secure platforms.',
