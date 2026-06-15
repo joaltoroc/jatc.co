@@ -14,15 +14,16 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "astro": "6.4.6"
+    "astro": "6.4.7"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.9",
     "@astrojs/sitemap": "3.7.3",
     "astro-robots-txt": "1.0.0",
     "husky": "9.1.7",
-    "lightningcss": "^1.32.0",
+    "lightningcss": "1.32.0",
     "typescript": "6.0.3",
     "vite-plugin-compression": "0.5.1"
-  }
+  },
+  "packageManager": "pnpm@11.7.0+sha512.19cc852c120c7125760f2443ee6be0ca5b40f9f50598de1a09a1f177503e010e57c23c77646e01e761de59bf874fb22a3398c33ab9691fc13eb946b6f0f4d620"
 }
