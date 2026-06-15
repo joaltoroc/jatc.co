@@ -1,56 +1,113 @@
 ---
-import '../styles/global.css';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
-import ScrollToTop from '../components/ScrollToTop.astro';
+import "../styles/global.css";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import ScrollToTop from "../components/ScrollToTop.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<script is:inline>
 			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
 				}
-				return 'light';
+				return "light";
 			})();
-		
-			if (theme === 'dark') {
-				document.documentElement.classList.add('dark');
+
+			if (theme === "dark") {
+				document.documentElement.classList.add("dark");
 			} else {
-				document.documentElement.classList.remove('dark');
+				document.documentElement.classList.remove("dark");
 			}
 		</script>
-		<meta http-equiv="Content-Security-Policy" content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;`} />
-		
+		<meta
+			http-equiv="Content-Security-Policy"
+			content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com;`}
+		/>
+
 		<!-- Google Tag Manager -->
 		<script is:inline>
-			window.addEventListener('load', () => {
-				(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-				j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-				'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-				})(window,document,'script','dataLayer','GTM-KL3ZRHZ');
+			function loadGTM() {
+				if (window.gtmLoaded) return;
+				window.gtmLoaded = true;
+				(function (w, d, s, l, i) {
+					w[l] = w[l] || [];
+					w[l].push({
+						"gtm.start": new Date().getTime(),
+						event: "gtm.js",
+					});
+					var f = d.getElementsByTagName(s)[0],
+						j = d.createElement(s),
+						dl = l != "dataLayer" ? "&l=" + l : "";
+					j.async = true;
+					j.src =
+						"https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+					f.parentNode.insertBefore(j, f);
+				})(window, document, "script", "dataLayer", "GTM-KL3ZRHZ");
+			}
+
+			// Load GTM on first interaction or after a 3.5s delay
+			let gtmTimeout = setTimeout(loadGTM, 3500);
+			const interactionEvents = [
+				"click",
+				"mousedown",
+				"keydown",
+				"touchstart",
+				"scroll",
+			];
+			interactionEvents.forEach((event) => {
+				window.addEventListener(
+					event,
+					() => {
+						clearTimeout(gtmTimeout);
+						loadGTM();
+					},
+					{ once: true, passive: true },
+				);
 			});
 		</script>
 		<!-- End Google Tag Manager -->
 
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/favicon-16x16.png"
+		/>
 		<link rel="manifest" href="/site.webmanifest" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{t('layout.title')}</title>
+		<title>{t("layout.title")}</title>
 
 		<!-- Basic SEO -->
-		<meta name="description" content="John Alexander Toro Cortés - Tech Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Tech Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps." />
-		<meta name="keywords" content="John Alexander Toro Cortés, JATC, Tech Lead, Senior Full Stack Engineer, Cybersecurity, Ciberseguridad, DevSecOps, Cloud Architecture, Arquitectura Cloud, TypeScript, React, Node.js, Golang, C#, .NET, Azure, AWS, GCP, Terraform, Clean Architecture, OWASP, Pentesting, Fintech, Web3" />
+		<meta
+			name="description"
+			content="John Alexander Toro Cortés - Team Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Team Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps."
+		/>
+		<meta
+			name="keywords"
+			content="John Alexander Toro Cortés, JATC, Team Lead, Senior Full Stack Engineer, Cybersecurity, Ciberseguridad, DevSecOps, Cloud Architecture, Arquitectura Cloud, TypeScript, React, Node.js, Golang, C#, .NET, Azure, AWS, GCP, Terraform, Clean Architecture, OWASP, Pentesting, Fintech, Web3"
+		/>
 		<meta name="author" content="John Alexander Toro Cortés" />
 		<link rel="canonical" href={`https://jatc.co${Astro.url.pathname}`} />
 
@@ -61,87 +118,150 @@ const t = useTranslations(lang);
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="JATC - John Alexander Toro Cortés" />
-		<meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CO'} />
-		<meta property="og:url" content={`https://jatc.co${Astro.url.pathname}`} />
-		<meta property="og:title" content={t('layout.title')} />
-		<meta property="og:description" content="John Alexander Toro Cortés - Tech Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Tech Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps." />
+		<meta
+			property="og:site_name"
+			content="JATC - John Alexander Toro Cortés"
+		/>
+		<meta
+			property="og:locale"
+			content={lang === "en" ? "en_US" : "es_CO"}
+		/>
+		<meta
+			property="og:url"
+			content={`https://jatc.co${Astro.url.pathname}`}
+		/>
+		<meta property="og:title" content={t("layout.title")} />
+		<meta
+			property="og:description"
+			content="John Alexander Toro Cortés - Team Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Team Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps."
+		/>
 		<meta property="og:image" content="https://jatc.co/jatc.png" />
-		<meta property="og:image:secure_url" content="https://jatc.co/jatc.png" />
+		<meta
+			property="og:image:secure_url"
+			content="https://jatc.co/jatc.png"
+		/>
 		<meta property="og:image:type" content="image/webp" />
 		<meta property="og:image:width" content="400" />
 		<meta property="og:image:height" content="400" />
-		<meta property="og:image:alt" content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer" />
+		<meta
+			property="og:image:alt"
+			content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer"
+		/>
 
 		<!-- Twitter / X -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@joaltoroc" />
 		<meta name="twitter:creator" content="@joaltoroc" />
-		<meta name="twitter:url" content={`https://jatc.co${Astro.url.pathname}`} />
-		<meta name="twitter:title" content={t('layout.title')} />
-		<meta name="twitter:description" content="John Alexander Toro Cortés - Tech Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Tech Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps." />
+		<meta
+			name="twitter:url"
+			content={`https://jatc.co${Astro.url.pathname}`}
+		/>
+		<meta name="twitter:title" content={t("layout.title")} />
+		<meta
+			name="twitter:description"
+			content="John Alexander Toro Cortés - Team Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Team Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps."
+		/>
 		<meta name="twitter:image" content="https://jatc.co/jatc.png" />
-		<meta name="twitter:image:alt" content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer" />
-		
-		<!-- Icon CDNs -->
-		<link rel="preconnect" href="https://cdn.simpleicons.org">
-		<link rel="preconnect" href="https://cdn.jsdelivr.net">
+		<meta
+			name="twitter:image:alt"
+			content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer"
+		/>
 
 		<!-- Google Fonts -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.setAttribute('media', 'all')">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+			rel="stylesheet"
+			media="print"
+			onload="this.setAttribute('media', 'all')"
+		/>
 		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+			<link
+				href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+				rel="stylesheet"
+			/>
 		</noscript>
 
 		<!-- Preload LCP Image -->
-		<link rel="preload" href="/jatc.webp" as="image" type="image/webp" fetchpriority="high">
+		<link
+			rel="preload"
+			href="/jatc.webp"
+			as="image"
+			type="image/webp"
+			fetchpriority="high"
+		/>
 
 		<!-- Critical CSS -->
 		<style is:inline>
-			.hero-section { min-height: 100vh; display: flex; align-items: center; padding-top: 70px; }
-			.hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -1px; font-weight: 700; color: var(--text-primary); }
-			@media (max-width: 992px) { .hero-title { font-size: 2.5rem; } }
+			.hero-section {
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				padding-top: 70px;
+			}
+			.hero-title {
+				font-size: 3.5rem;
+				line-height: 1.1;
+				margin-bottom: 1.5rem;
+				letter-spacing: -1px;
+				font-weight: 700;
+				color: var(--text-primary);
+			}
+			@media (max-width: 992px) {
+				.hero-title {
+					font-size: 2.5rem;
+				}
+			}
 		</style>
-
 	</head>
 	<body>
 		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KL3ZRHZ"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<noscript
+			><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-KL3ZRHZ"
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe></noscript
+		>
 		<!-- End Google Tag Manager (noscript) -->
 		<slot />
 		<ScrollToTop />
-		<script is:inline define:vars={{ copyLinkText: t('action.copyLink') }}>
+		<script is:inline define:vars={{ copyLinkText: t("action.copyLink") }}>
 			// Force light theme for printing
-			window.addEventListener('beforeprint', () => {
-				if (document.documentElement.classList.contains('dark')) {
-					document.documentElement.setAttribute('data-was-dark', 'true');
-					document.documentElement.classList.remove('dark');
+			window.addEventListener("beforeprint", () => {
+				if (document.documentElement.classList.contains("dark")) {
+					document.documentElement.setAttribute(
+						"data-was-dark",
+						"true",
+					);
+					document.documentElement.classList.remove("dark");
 				}
 			});
-			window.addEventListener('afterprint', () => {
-				if (document.documentElement.getAttribute('data-was-dark') === 'true') {
-					document.documentElement.classList.add('dark');
-					document.documentElement.removeAttribute('data-was-dark');
+			window.addEventListener("afterprint", () => {
+				if (
+					document.documentElement.getAttribute("data-was-dark") ===
+					"true"
+				) {
+					document.documentElement.classList.add("dark");
+					document.documentElement.removeAttribute("data-was-dark");
 				}
 			});
 
 			// Update URL hash on scroll based on visible section
-			document.addEventListener('DOMContentLoaded', () => {
-				const sections = document.querySelectorAll('section[id]');
-				
+			document.addEventListener("DOMContentLoaded", () => {
+				const sections = document.querySelectorAll("section[id]");
+
 				const observerOptions = {
 					root: null,
-					rootMargin: '-30% 0px -50% 0px', 
-					threshold: 0
+					rootMargin: "-30% 0px -50% 0px",
+					threshold: 0,
 				};
 
 				const observer = new IntersectionObserver((entries) => {
-					entries.forEach(entry => {
+					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
-							const id = entry.target.getAttribute('id');
+							const id = entry.target.getAttribute("id");
 							if (id) {
 								history.replaceState(null, null, `#${id}`);
 							}
@@ -149,26 +269,33 @@ const t = useTranslations(lang);
 					});
 				}, observerOptions);
 
-				sections.forEach(section => {
+				sections.forEach((section) => {
 					observer.observe(section);
 
 					// Add copy link icon to section titles
-					const title = section.querySelector('.section-title');
+					const title = section.querySelector(".section-title");
 					if (title) {
-						const linkBtn = document.createElement('button');
-						linkBtn.className = 'copy-section-link';
-						linkBtn.setAttribute('aria-label', copyLinkText);
-						linkBtn.setAttribute('title', copyLinkText);
-						linkBtn.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
-						
-						linkBtn.addEventListener('click', (e) => {
+						const linkBtn = document.createElement("button");
+						linkBtn.className = "copy-section-link";
+						linkBtn.setAttribute("aria-label", copyLinkText);
+						linkBtn.setAttribute("title", copyLinkText);
+						linkBtn.innerHTML =
+							'<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
+
+						linkBtn.addEventListener("click", (e) => {
 							e.preventDefault();
 							const url = new URL(window.location.href);
 							url.hash = section.id;
-							navigator.clipboard.writeText(url.toString()).then(() => {
-								linkBtn.classList.add('copied');
-								setTimeout(() => linkBtn.classList.remove('copied'), 2000);
-							});
+							navigator.clipboard
+								.writeText(url.toString())
+								.then(() => {
+									linkBtn.classList.add("copied");
+									setTimeout(
+										() =>
+											linkBtn.classList.remove("copied"),
+										2000,
+									);
+								});
 						});
 
 						title.appendChild(linkBtn);

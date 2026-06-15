@@ -31,7 +31,8 @@ export default defineConfig({
     service: passthroughImageService()
   },
   build: {
-    format: 'directory'
+    format: 'directory',
+    inlineStylesheets: 'always'
   },
   vite: {
     build: {
