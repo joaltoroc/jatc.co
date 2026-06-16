@@ -3,11 +3,11 @@
 Este documento describe la estructura y configuración del portafolio web personal de John Alexander Toro Cortés.
 
 ## 🛠 Stack Tecnológico
-- **Framework:** [Astro](https://astro.build/) (v6.1.10)
-- **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas.
+- **Framework:** [Astro](https://astro.build/) (v6.4.7)
+- **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas, procesado con **LightningCSS**.
 - **Tipografías:** Google Fonts (Inter) con carga optimizada.
-- **Gestor de Paquetes:** `pnpm`
-- **Lenguaje Principal:** TypeScript / HTML semántico / Astro
+- **Gestor de Paquetes:** `pnpm` (v11.7.0)
+- **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=22.12.0`
 
@@ -17,6 +17,10 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 
 ```text
 /
+├── .github/
+│   └── workflows/
+│       └── sftp-deploy.yml    # Pipeline de despliegue continuo mediante SFTP
+├── .husky/                    # Automatización de Git Hooks (pre-commit y pre-push)
 ├── public/                # Recursos estáticos (imágenes, iconos, favicon, etc.)
 ├── src/                   # Código fuente
 │   ├── components/        # Componentes modulares de la UI:
@@ -33,7 +37,7 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   │   └── Footer.astro     # Pie de página
 │   ├── i18n/              # Configuración y diccionarios de idiomas (ui.ts, utils.ts)
 │   ├── layouts/           # Plantilla base (Layout.astro con SEO y Meta avanzados)
-│   ├── pages/             # Rutas (index.astro para ES, /en/index.astro para EN)
+│   ├── pages/             # Rutas (index.astro, 404.astro y carpeta en/)
 │   └── styles/            # Reglas globales de CSS y variables de tema
 ├── astro.config.mjs       # Configuración del framework (format: 'directory')
 └── package.json           # Dependencias y scripts
@@ -49,6 +53,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Pre-carga (preload) optimizada de imágenes LCP (.webp).
   - Uso de `lightningcss` para minificación eficiente.
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.
+- **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.
 - **Accesibilidad:** Uso de HTML semántico y etiquetas ARIA en componentes interactivos.
 
 ## 📜 Scripts Disponibles
