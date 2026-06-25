@@ -65,6 +65,7 @@ export const ui = {
 
     // Actions
     'action.copyLink': 'Copiar link',
+    'themeToggle.label': 'Cambiar tema',
   },
   en: {
     // Header
@@ -120,5 +121,6 @@ export const ui = {
 
     // Actions
     'action.copyLink': 'Copy link to this section',
+    'themeToggle.label': 'Toggle theme',
   },
 } as const;

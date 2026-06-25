@@ -21,16 +21,19 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 ## ✨ Características Principales
 
 ### 🌍 Internacionalización (i18n) Bilingüe
+
 - Enrutamiento basado en directorios limpio (Español en `/` e Inglés en `/en/`).
 - Sistema de traducciones ligero basado en diccionarios estáticos (`src/i18n/`).
 - Metadatos bilingües integrales con etiquetas `hreflang` y `x-default` para indexación internacional precisa en motores de búsqueda.
 
 ### 🌓 Gestión del Tema (Light/Dark Mode)
+
 - Soporte para modo claro y modo oscuro con guardado automático en `localStorage`.
 - **Prevención de parpadeo (Flash of Unstyled Content):** Se ejecuta un script crítico síncrono inline directamente en el `<head>` antes de renderizar la página para aplicar la clase `.dark` de inmediato.
 - Soporte de impresión optimizado: fuerza de forma temporal el tema claro al imprimir documentos físicos (`beforeprint` y `afterprint`).
 
 ### 🚀 Rendimiento de Vanguardia (Performance SEO)
+
 - **Compresión nativa:** Generación de recursos pre-comprimidos en formatos **Gzip (.gz)** y **Brotli (.br)** mediante `vite-plugin-compression` para una carga instantánea.
 - **Carga de fuentes diferida:** Las fuentes de Google Fonts (Inter) se pre-conectan y se cargan mediante un fallback asíncrono optimizado (`media="print" onload="..."`).
 - **Optimización LCP (Largest Contentful Paint):** La imagen principal (`/jatc.webp`) se pre-carga de forma prioritaria mediante tags `<link rel="preload" fetchpriority="high">`.
@@ -38,11 +41,13 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 - **Carga diferida de Analytics:** Google Tag Manager se carga únicamente tras la primera interacción del usuario (click, scroll, keydown) o después de 3.5 segundos de inactividad, evitando bloquear el hilo principal.
 
 ### 🛡️ Seguridad Avanzada (DevSecOps)
+
 - **Content Security Policy (CSP):** Directiva estricta configurada mediante metaetiquetas en el Layout base para restringir la ejecución de scripts no autorizados, previniendo ataques XSS.
 - **Protección contra Cosechadores de Datos (AI Agents):** Configuración explícita en `robots.txt` que restringe el acceso de más de 20 agentes y scrapers de Inteligencia Artificial (como `GPTBot`, `ClaudeBot`, `CCBot`, `Google-Extended`, etc.) para proteger los datos y derechos de autor del portafolio.
 - Sanitización de enlaces y APIs seguras.
 
 ### 📱 Experiencia de Usuario & Accesibilidad (UX/UI)
+
 - Interfaz 100% responsiva bajo metodología "mobile-first".
 - **Enlaces rápidos de sección:** Generación automática de botones interactivos para copiar el enlace de anclaje directo de cada sección con retroalimentación visual al usuario.
 - Navegación mejorada con botón flotante "Scroll to Top" e indicadores de sección activa en la barra de direcciones en tiempo real (mediante `IntersectionObserver`).
@@ -89,30 +94,39 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 Este proyecto utiliza `pnpm` como gestor de dependencias. Asegúrate de tener instalado Node.js `>=22.12.0`.
 
 ### Instalación de dependencias
+
 ```bash
 pnpm install
 ```
 
 ### Iniciar servidor de desarrollo
+
 Inicia el servidor local con recarga rápida (HMR) en [http://localhost:4321](http://localhost:4321):
+
 ```bash
 pnpm dev
 ```
 
 ### Compilar para producción
+
 Compila el proyecto y genera los archivos estáticos listos para producción en la carpeta `./dist/`:
+
 ```bash
 pnpm build
 ```
 
 ### Previsualizar el sitio compilado
+
 Inicia un servidor local para inspeccionar la versión final compilada antes de desplegar:
+
 ```bash
 pnpm preview
 ```
 
 ### Verificación de sintaxis y tipos
+
 Valida la consistencia de tipos de TypeScript y sintaxis de Astro en toda la base de código:
+
 ```bash
 pnpm check
 ```
@@ -122,15 +136,20 @@ pnpm check
 ## 🤖 Automatización y DevOps
 
 ### Git Hooks (Husky)
+
 Para mantener un estándar de calidad y prevenir fallos en producción, el proyecto tiene hooks automáticos:
+
 - **Pre-commit:** Ejecuta `pnpm check` para asegurar que no haya errores de sintaxis o de tipos antes de confirmar cambios.
 - **Pre-push:** Ejecuta `pnpm build` para validar que el proyecto compila correctamente antes de subirlo al repositorio remoto.
 
 ### CI/CD (GitHub Actions)
+
 Al hacer push a la rama `main`, se activa el workflow `.github/workflows/sftp-deploy.yml` que:
+
 1. Descarga el código e instala Node.js / `pnpm`.
 2. Ejecuta el proceso de build (`pnpm build`).
 3. Transfiere de manera segura el contenido del directorio `./dist/` a la ruta remota del servidor web usando SFTP.
 
 ---
+
 Desarrollado con ❤️ por [John Toro](https://jatc.co)

@@ -3,10 +3,11 @@
 Este documento describe la estructura y configuración del portafolio web personal de John Alexander Toro Cortés.
 
 ## 🛠 Stack Tecnológico
-- **Framework:** [Astro](https://astro.build/) (v6.4.7)
+
+- **Framework:** [Astro](https://astro.build/) (v7.0.3)
 - **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas, procesado con **LightningCSS**.
 - **Tipografías:** Google Fonts (Inter) con carga optimizada.
-- **Gestor de Paquetes:** `pnpm` (v11.7.0)
+- **Gestor de Paquetes:** `pnpm` (v11.9.0)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=22.12.0`
@@ -44,10 +45,12 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 ```
 
 ## 💡 Estado Actual y Características
+
 El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experiencia de usuario:
+
 - **Tema Dual:** Soporte para modo Claro (por defecto) y Oscuro, con persistencia en `localStorage` y prevención de parpadeo (flash) mediante script crítico en el `<head>`.
 - **Bilingüe:** Soporte completo para Español e Inglés mediante un sistema i18n ligero.
-- **Performance:** 
+- **Performance:**
   - Formato de build `directory` para URLs limpias.
   - Compresión Gzip y Brotli activa en el build de Vite.
   - Pre-carga (preload) optimizada de imágenes LCP (.webp).

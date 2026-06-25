@@ -11,9 +11,9 @@ const isEn = lang === 'en';
 <header class="header glass">
   <div class="container header-content">
     <div class="logo">
-      <a href={isEn ? "/en/" : "/"} data-astro-prefetch>JATC</a>
+      <a href={isEn ? '/en/' : '/'} data-astro-prefetch>JATC</a>
     </div>
-    
+
     <nav class="desktop-nav">
       <ul>
         <li><a href="#about">{t('nav.about')}</a></li>
@@ -24,20 +24,71 @@ const isEn = lang === 'en';
         <li><a href="#contact">{t('nav.contact')}</a></li>
       </ul>
     </nav>
-    
+
     <div class="actions">
       <ThemeToggle />
       <div class="lang-selector">
-        <a href="/" class={!isEn ? "active-lang" : ""} data-astro-prefetch>ES</a> | <a href="/en/" class={isEn ? "active-lang" : ""} data-astro-prefetch>EN</a>
+        <a href="/" class={!isEn ? 'active-lang' : ''} data-astro-prefetch>ES</a
+        > | <a href="/en/" class={isEn ? 'active-lang' : ''} data-astro-prefetch
+          >EN</a
+        >
       </div>
-      <button class="mobile-menu-btn" aria-label="Menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+        <svg
+          class="hamburger-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
         </svg>
+        <svg
+          class="close-icon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="display: none;"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
       </button>
     </div>
+  </div>
+
+  <!-- Mobile Menu Drawer -->
+  <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="#about" class="mobile-nav-link">{t('nav.about')}</a></li>
+        <li>
+          <a href="#experience" class="mobile-nav-link">{t('nav.experience')}</a
+          >
+        </li>
+        <li>
+          <a href="#education" class="mobile-nav-link">{t('nav.education')}</a>
+        </li>
+        <li>
+          <a href="#courses" class="mobile-nav-link">{t('nav.courses')}</a>
+        </li>
+        <li><a href="#skills" class="mobile-nav-link">{t('nav.skills')}</a></li>
+        <li>
+          <a href="#contact" class="mobile-nav-link">{t('nav.contact')}</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -93,7 +144,7 @@ const isEn = lang === 'en';
     font-weight: 600;
     color: var(--text-secondary);
   }
-  
+
   .lang-selector a {
     color: var(--text-secondary);
     text-decoration: none;
@@ -103,7 +154,7 @@ const isEn = lang === 'en';
   .lang-selector a:hover {
     color: var(--text-primary);
   }
-  
+
   .lang-selector a.active-lang {
     color: var(--text-primary);
     font-weight: 700;
@@ -113,15 +164,118 @@ const isEn = lang === 'en';
   .mobile-menu-btn {
     display: none;
     color: var(--text-primary);
+    position: relative;
+    z-index: 102;
+  }
+
+  .mobile-menu-btn.is-active .hamburger-icon {
+    display: none !important;
+  }
+
+  .mobile-menu-btn.is-active .close-icon {
+    display: block !important;
+  }
+
+  /* Mobile Menu Drawer */
+  .mobile-menu-drawer {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .mobile-menu-drawer.is-active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .mobile-nav a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    transition:
+      color var(--transition-fast),
+      transform var(--transition-fast);
+    display: inline-block;
+  }
+
+  .mobile-nav a:hover {
+    color: var(--text-primary);
+    transform: scale(1.05);
   }
 
   @media (max-width: 768px) {
     .desktop-nav {
       display: none;
     }
-    
+
     .mobile-menu-btn {
       display: block;
     }
   }
 </style>
+
+<script>
+  function initMobileMenu() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const drawer = document.getElementById('mobile-menu-drawer');
+    const links = document.querySelectorAll('.mobile-nav-link');
+
+    if (!btn || !drawer) return;
+
+    const toggleMenu = () => {
+      const isOpen = btn.classList.toggle('is-active');
+      drawer.classList.toggle('is-active', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    const closeMenu = () => {
+      btn.classList.remove('is-active');
+      drawer.classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    btn.addEventListener('click', toggleMenu);
+
+    links.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on resize if switching to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Initialize
+  initMobileMenu();
+
+  // Re-initialize after view transitions
+  document.addEventListener('astro:after-swap', initMobileMenu);
+</script>

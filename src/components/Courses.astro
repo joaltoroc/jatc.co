@@ -6,51 +6,275 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const coursesListEs = [
-  { title: "Desarrollo de Apps con React Native", source: "Platzi", date: "Mayo 2024", diploma: "/diplomas/Platzi-Diploma-React-Native.jpg" },
-  { title: "Docker Profesional", source: "Edutin Academy", date: "Abril 2024", diploma: "/diplomas/Edutin-Academy-Docker-Profesional.webp" },
-  { title: "Curso de Frameworks y Librerías de JavaScript", source: "Platzi", date: "Marzo 2024", diploma: "/diplomas/Platzi-Diploma-Frameworks-Javascript.webp" },
-  { title: "Curso de Vue.js: Introducción y Fundamentos", source: "Platzi", date: "Marzo 2024", diploma: "/diplomas/Platzi-Diploma-Vuejs-Introduccion-y-Fundamentos.webp" },
-  { title: "Curso de Closures y Scope en JavaScript", source: "Platzi", date: "Marzo 2024", diploma: "/diplomas/Platzi-Diploma-Javascript-Closures-Scope.jpg" },
-  { title: "Curso de Arquitecturas Limpias para Desarrollo de Software", source: "Platzi", date: "Febrero 2024", diploma: "/diplomas/Platzi-Diploma-Arquitecturas-Limpias.jpg" },
-  { title: "Diplomado en Pentest", source: "Edutin Academy", date: "Enero 2024", diploma: "/diplomas/Edutin-Academy-Diplomado-en-Pentest.jpg" },
-  { title: "Curso Práctico de React Native: Formularios, Almacenamiento y Deploy", source: "Platzi", date: "Julio 2023", diploma: "/diplomas/Platzi-React-Native-Formularios-Almacenamiento-y-Deploy.jpg" },
-  { title: "Curso Práctico de React Native: Manejo de Listas y Consumo de APIs", source: "Platzi", date: "Marzo 2023", diploma: "/diplomas/Platzi-Diploma-del-Curso-Practico-de-React-Native-Manejo-de-Listas-y-Consumo-de-APIs.jpg" },
-  { title: "Curso de Introducción a React Native", source: "Platzi", date: "Marzo 2023", diploma: "/diplomas/Platzi-Introduccion-a-React-Native.jpg" },
-  { title: "Curso de Creación de Librerías UI para React", source: "Platzi", date: "Febrero 2023", diploma: "/diplomas/Platzi-Diploma-Creacion-Librerias-UI.jpg" },
-  { title: "Curso de Asincronismo con JavaScript", source: "Platzi", date: "Enero 2023", diploma: "/diplomas/Platzi-Diploma-Asincronismo-JS.jpg" },
-  { title: "Curso Básico de JavaScript", source: "Platzi", date: "Diciembre 2022", diploma: "/diplomas/Platzi-Diploma-Basico-Javascript.jpg" },
-  { title: "React JS, Golang y MongoDB Creando Red Social como Twitter", source: "Udemy", date: "Junio 2022", diploma: "/diplomas/Udemy-React-JS-Golang-y-MongoDB-Creando-Red-Social-como-Twitter.jpg" },
-  { title: "Curso Completo de Docker de cero a experto", source: "Udemy", date: "Mayo 2022", diploma: "/diplomas/Udemy-Curso-Completo-de-Docker-de-cero-a-experto.jpg" },
-  { title: "React, Redux, Typescript, Firebase: Fullstack Serverless", source: "Udemy", date: "Agosto 2021", diploma: "/diplomas/Udemy-React-Redux-Typescript-Firebase-Fullstack-Serverless.jpg" },
-  { title: "Aprende a programar con Go (Golang)", source: "Udemy", date: "Julio 2021", diploma: "/diplomas/Udemy-Aprende-a-programar-con-GO-Golang.jpg" },
-  { title: "Scrum Foundation Professional Certificate (SFPC)", source: "CertiProf", date: "Marzo 2020", diploma: "/diplomas/Certificado-Scrum-Foundation-Professional.jpg" },
-  { title: "ReactJS y redux: experto en frontend en español", source: "Udemy", date: "Marzo 2020", diploma: "/diplomas/Udemy-Reactjs-y-redux-experto-en-frontend-en-espanol.jpg" },
-  { title: "Certificado Big Data", source: "Politécnico Grancolombiano", date: "Diciembre 2018", diploma: "/diplomas/Poli-Certificado-Internacional-en-Big-Data.jpg" },
-  { title: "Introducción a Xamarin", source: "Campus MVP", date: "Junio 2017", diploma: "/diplomas/CAMPUSMVP-Introduccion_a_Xamarin_John_Alexander_Toro_Cortes.jpg" }
+  {
+    title: 'Desarrollo de Apps con React Native',
+    source: 'Platzi',
+    date: 'Mayo 2024',
+    diploma: '/diplomas/Platzi-Diploma-React-Native.jpg',
+  },
+  {
+    title: 'Docker Profesional',
+    source: 'Edutin Academy',
+    date: 'Abril 2024',
+    diploma: '/diplomas/Edutin-Academy-Docker-Profesional.webp',
+  },
+  {
+    title: 'Curso de Frameworks y Librerías de JavaScript',
+    source: 'Platzi',
+    date: 'Marzo 2024',
+    diploma: '/diplomas/Platzi-Diploma-Frameworks-Javascript.webp',
+  },
+  {
+    title: 'Curso de Vue.js: Introducción y Fundamentos',
+    source: 'Platzi',
+    date: 'Marzo 2024',
+    diploma: '/diplomas/Platzi-Diploma-Vuejs-Introduccion-y-Fundamentos.webp',
+  },
+  {
+    title: 'Curso de Closures y Scope en JavaScript',
+    source: 'Platzi',
+    date: 'Marzo 2024',
+    diploma: '/diplomas/Platzi-Diploma-Javascript-Closures-Scope.jpg',
+  },
+  {
+    title: 'Curso de Arquitecturas Limpias para Desarrollo de Software',
+    source: 'Platzi',
+    date: 'Febrero 2024',
+    diploma: '/diplomas/Platzi-Diploma-Arquitecturas-Limpias.jpg',
+  },
+  {
+    title: 'Diplomado en Pentest',
+    source: 'Edutin Academy',
+    date: 'Enero 2024',
+    diploma: '/diplomas/Edutin-Academy-Diplomado-en-Pentest.jpg',
+  },
+  {
+    title:
+      'Curso Práctico de React Native: Formularios, Almacenamiento y Deploy',
+    source: 'Platzi',
+    date: 'Julio 2023',
+    diploma:
+      '/diplomas/Platzi-React-Native-Formularios-Almacenamiento-y-Deploy.jpg',
+  },
+  {
+    title: 'Curso Práctico de React Native: Manejo de Listas y Consumo de APIs',
+    source: 'Platzi',
+    date: 'Marzo 2023',
+    diploma:
+      '/diplomas/Platzi-Diploma-del-Curso-Practico-de-React-Native-Manejo-de-Listas-y-Consumo-de-APIs.jpg',
+  },
+  {
+    title: 'Curso de Introducción a React Native',
+    source: 'Platzi',
+    date: 'Marzo 2023',
+    diploma: '/diplomas/Platzi-Introduccion-a-React-Native.jpg',
+  },
+  {
+    title: 'Curso de Creación de Librerías UI para React',
+    source: 'Platzi',
+    date: 'Febrero 2023',
+    diploma: '/diplomas/Platzi-Diploma-Creacion-Librerias-UI.jpg',
+  },
+  {
+    title: 'Curso de Asincronismo con JavaScript',
+    source: 'Platzi',
+    date: 'Enero 2023',
+    diploma: '/diplomas/Platzi-Diploma-Asincronismo-JS.jpg',
+  },
+  {
+    title: 'Curso Básico de JavaScript',
+    source: 'Platzi',
+    date: 'Diciembre 2022',
+    diploma: '/diplomas/Platzi-Diploma-Basico-Javascript.jpg',
+  },
+  {
+    title: 'React JS, Golang y MongoDB Creando Red Social como Twitter',
+    source: 'Udemy',
+    date: 'Junio 2022',
+    diploma:
+      '/diplomas/Udemy-React-JS-Golang-y-MongoDB-Creando-Red-Social-como-Twitter.jpg',
+  },
+  {
+    title: 'Curso Completo de Docker de cero a experto',
+    source: 'Udemy',
+    date: 'Mayo 2022',
+    diploma: '/diplomas/Udemy-Curso-Completo-de-Docker-de-cero-a-experto.jpg',
+  },
+  {
+    title: 'React, Redux, Typescript, Firebase: Fullstack Serverless',
+    source: 'Udemy',
+    date: 'Agosto 2021',
+    diploma:
+      '/diplomas/Udemy-React-Redux-Typescript-Firebase-Fullstack-Serverless.jpg',
+  },
+  {
+    title: 'Aprende a programar con Go (Golang)',
+    source: 'Udemy',
+    date: 'Julio 2021',
+    diploma: '/diplomas/Udemy-Aprende-a-programar-con-GO-Golang.jpg',
+  },
+  {
+    title: 'Scrum Foundation Professional Certificate (SFPC)',
+    source: 'CertiProf',
+    date: 'Marzo 2020',
+    diploma: '/diplomas/Certificado-Scrum-Foundation-Professional.jpg',
+  },
+  {
+    title: 'ReactJS y redux: experto en frontend en español',
+    source: 'Udemy',
+    date: 'Marzo 2020',
+    diploma:
+      '/diplomas/Udemy-Reactjs-y-redux-experto-en-frontend-en-espanol.jpg',
+  },
+  {
+    title: 'Certificado Big Data',
+    source: 'Politécnico Grancolombiano',
+    date: 'Diciembre 2018',
+    diploma: '/diplomas/Poli-Certificado-Internacional-en-Big-Data.jpg',
+  },
+  {
+    title: 'Introducción a Xamarin',
+    source: 'Campus MVP',
+    date: 'Junio 2017',
+    diploma:
+      '/diplomas/CAMPUSMVP-Introduccion_a_Xamarin_John_Alexander_Toro_Cortes.jpg',
+  },
 ];
 
 const coursesListEn = [
-  { title: "App Development with React Native", source: "Platzi", date: "May 2024", diploma: "/diplomas/Platzi-Diploma-React-Native.jpg" },
-  { title: "Professional Docker", source: "Edutin Academy", date: "April 2024", diploma: "/diplomas/Edutin-Academy-Docker-Profesional.webp" },
-  { title: "JavaScript Frameworks and Libraries Course", source: "Platzi", date: "March 2024", diploma: "/diplomas/Platzi-Diploma-Frameworks-Javascript.webp" },
-  { title: "Vue.js Course: Introduction and Fundamentals", source: "Platzi", date: "March 2024", diploma: "/diplomas/Platzi-Diploma-Vuejs-Introduccion-y-Fundamentos.webp" },
-  { title: "JavaScript Closures and Scope Course", source: "Platzi", date: "March 2024", diploma: "/diplomas/Platzi-Diploma-Javascript-Closures-Scope.jpg" },
-  { title: "Clean Architectures for Software Development", source: "Platzi", date: "February 2024", diploma: "/diplomas/Platzi-Diploma-Arquitecturas-Limpias.jpg" },
-  { title: "Pentest Diploma", source: "Edutin Academy", date: "January 2024", diploma: "/diplomas/Edutin-Academy-Diplomado-en-Pentest.jpg" },
-  { title: "Practical React Native: Forms, Storage and Deploy", source: "Platzi", date: "July 2023", diploma: "/diplomas/Platzi-React-Native-Formularios-Almacenamiento-y-Deploy.jpg" },
-  { title: "Practical React Native: List Management and API Consumption", source: "Platzi", date: "March 2023", diploma: "/diplomas/Platzi-Diploma-del-Curso-Practico-de-React-Native-Manejo-de-Listas-y-Consumo-de-APIs.jpg" },
-  { title: "Introduction to React Native Course", source: "Platzi", date: "March 2023", diploma: "/diplomas/Platzi-Introduccion-a-React-Native.jpg" },
-  { title: "Creating UI Libraries for React Course", source: "Platzi", date: "February 2023", diploma: "/diplomas/Platzi-Diploma-Creacion-Librerias-UI.jpg" },
-  { title: "JavaScript Asynchronism Course", source: "Platzi", date: "January 2023", diploma: "/diplomas/Platzi-Diploma-Asincronismo-JS.jpg" },
-  { title: "Basic JavaScript Course", source: "Platzi", date: "December 2022", diploma: "/diplomas/Platzi-Diploma-Basico-Javascript.jpg" },
-  { title: "React JS, Golang and MongoDB Creating a Social Network like Twitter", source: "Udemy", date: "June 2022", diploma: "/diplomas/Udemy-React-JS-Golang-y-MongoDB-Creando-Red-Social-como-Twitter.jpg" },
-  { title: "Complete Docker Course from Zero to Expert", source: "Udemy", date: "May 2022", diploma: "/diplomas/Udemy-Curso-Completo-de-Docker-de-cero-a-experto.jpg" },
-  { title: "React, Redux, Typescript, Firebase: Fullstack Serverless", source: "Udemy", date: "August 2021", diploma: "/diplomas/Udemy-React-Redux-Typescript-Firebase-Fullstack-Serverless.jpg" },
-  { title: "Learn to program with Go (Golang)", source: "Udemy", date: "July 2021", diploma: "/diplomas/Udemy-Aprende-a-programar-con-GO-Golang.jpg" },
-  { title: "Scrum Foundation Professional Certificate (SFPC)", source: "CertiProf", date: "March 2020", diploma: "/diplomas/Certificado-Scrum-Foundation-Professional.jpg" },
-  { title: "ReactJS and redux: frontend expert in Spanish", source: "Udemy", date: "March 2020", diploma: "/diplomas/Udemy-Reactjs-y-redux-experto-en-frontend-en-espanol.jpg" },
-  { title: "Big Data Certificate", source: "Politécnico Grancolombiano", date: "December 2018", diploma: "/diplomas/Poli-Certificado-Internacional-en-Big-Data.jpg" },
-  { title: "Introduction to Xamarin", source: "Campus MVP", date: "June 2017", diploma: "/diplomas/CAMPUSMVP-Introduccion_a_Xamarin_John_Alexander_Toro_Cortes.jpg" }
+  {
+    title: 'App Development with React Native',
+    source: 'Platzi',
+    date: 'May 2024',
+    diploma: '/diplomas/Platzi-Diploma-React-Native.jpg',
+  },
+  {
+    title: 'Professional Docker',
+    source: 'Edutin Academy',
+    date: 'April 2024',
+    diploma: '/diplomas/Edutin-Academy-Docker-Profesional.webp',
+  },
+  {
+    title: 'JavaScript Frameworks and Libraries Course',
+    source: 'Platzi',
+    date: 'March 2024',
+    diploma: '/diplomas/Platzi-Diploma-Frameworks-Javascript.webp',
+  },
+  {
+    title: 'Vue.js Course: Introduction and Fundamentals',
+    source: 'Platzi',
+    date: 'March 2024',
+    diploma: '/diplomas/Platzi-Diploma-Vuejs-Introduccion-y-Fundamentos.webp',
+  },
+  {
+    title: 'JavaScript Closures and Scope Course',
+    source: 'Platzi',
+    date: 'March 2024',
+    diploma: '/diplomas/Platzi-Diploma-Javascript-Closures-Scope.jpg',
+  },
+  {
+    title: 'Clean Architectures for Software Development',
+    source: 'Platzi',
+    date: 'February 2024',
+    diploma: '/diplomas/Platzi-Diploma-Arquitecturas-Limpias.jpg',
+  },
+  {
+    title: 'Pentest Diploma',
+    source: 'Edutin Academy',
+    date: 'January 2024',
+    diploma: '/diplomas/Edutin-Academy-Diplomado-en-Pentest.jpg',
+  },
+  {
+    title: 'Practical React Native: Forms, Storage and Deploy',
+    source: 'Platzi',
+    date: 'July 2023',
+    diploma:
+      '/diplomas/Platzi-React-Native-Formularios-Almacenamiento-y-Deploy.jpg',
+  },
+  {
+    title: 'Practical React Native: List Management and API Consumption',
+    source: 'Platzi',
+    date: 'March 2023',
+    diploma:
+      '/diplomas/Platzi-Diploma-del-Curso-Practico-de-React-Native-Manejo-de-Listas-y-Consumo-de-APIs.jpg',
+  },
+  {
+    title: 'Introduction to React Native Course',
+    source: 'Platzi',
+    date: 'March 2023',
+    diploma: '/diplomas/Platzi-Introduccion-a-React-Native.jpg',
+  },
+  {
+    title: 'Creating UI Libraries for React Course',
+    source: 'Platzi',
+    date: 'February 2023',
+    diploma: '/diplomas/Platzi-Diploma-Creacion-Librerias-UI.jpg',
+  },
+  {
+    title: 'JavaScript Asynchronism Course',
+    source: 'Platzi',
+    date: 'January 2023',
+    diploma: '/diplomas/Platzi-Diploma-Asincronismo-JS.jpg',
+  },
+  {
+    title: 'Basic JavaScript Course',
+    source: 'Platzi',
+    date: 'December 2022',
+    diploma: '/diplomas/Platzi-Diploma-Basico-Javascript.jpg',
+  },
+  {
+    title:
+      'React JS, Golang and MongoDB Creating a Social Network like Twitter',
+    source: 'Udemy',
+    date: 'June 2022',
+    diploma:
+      '/diplomas/Udemy-React-JS-Golang-y-MongoDB-Creando-Red-Social-como-Twitter.jpg',
+  },
+  {
+    title: 'Complete Docker Course from Zero to Expert',
+    source: 'Udemy',
+    date: 'May 2022',
+    diploma: '/diplomas/Udemy-Curso-Completo-de-Docker-de-cero-a-experto.jpg',
+  },
+  {
+    title: 'React, Redux, Typescript, Firebase: Fullstack Serverless',
+    source: 'Udemy',
+    date: 'August 2021',
+    diploma:
+      '/diplomas/Udemy-React-Redux-Typescript-Firebase-Fullstack-Serverless.jpg',
+  },
+  {
+    title: 'Learn to program with Go (Golang)',
+    source: 'Udemy',
+    date: 'July 2021',
+    diploma: '/diplomas/Udemy-Aprende-a-programar-con-GO-Golang.jpg',
+  },
+  {
+    title: 'Scrum Foundation Professional Certificate (SFPC)',
+    source: 'CertiProf',
+    date: 'March 2020',
+    diploma: '/diplomas/Certificado-Scrum-Foundation-Professional.jpg',
+  },
+  {
+    title: 'ReactJS and redux: frontend expert in Spanish',
+    source: 'Udemy',
+    date: 'March 2020',
+    diploma:
+      '/diplomas/Udemy-Reactjs-y-redux-experto-en-frontend-en-espanol.jpg',
+  },
+  {
+    title: 'Big Data Certificate',
+    source: 'Politécnico Grancolombiano',
+    date: 'December 2018',
+    diploma: '/diplomas/Poli-Certificado-Internacional-en-Big-Data.jpg',
+  },
+  {
+    title: 'Introduction to Xamarin',
+    source: 'Campus MVP',
+    date: 'June 2017',
+    diploma:
+      '/diplomas/CAMPUSMVP-Introduccion_a_Xamarin_John_Alexander_Toro_Cortes.jpg',
+  },
 ];
 
 const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
@@ -62,29 +286,55 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       <h2 class="section-title">{t('courses.title')}</h2>
       <div class="section-line"></div>
     </div>
-    
+
     <div class="courses-list">
-      {coursesList.map(course => (
-        <a href={course.diploma} target="_blank" rel="noopener noreferrer" class="course-item glass diploma-link">
-          <div class="course-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="7"></circle>
-              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-            </svg>
-          </div>
-          <div class="course-info">
-            <h3 class="course-title">{course.title}</h3>
-            <span class="course-source">{course.source} - {course.date}</span>
-          </div>
-        </a>
-      ))}
+      {
+        coursesList.map((course) => (
+          <a
+            href={course.diploma}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="course-item glass diploma-link"
+          >
+            <div class="course-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="8" r="7" />
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+              </svg>
+            </div>
+            <div class="course-info">
+              <h3 class="course-title">{course.title}</h3>
+              <span class="course-source">
+                {course.source} - {course.date}
+              </span>
+            </div>
+          </a>
+        ))
+      }
     </div>
-    
+
     <!-- Modal para el Diploma -->
     <div id="diploma-modal" class="modal-overlay">
       <div class="modal-content">
-        <button id="close-modal" class="close-btn" aria-label="Cerrar">&times;</button>
-        <img id="modal-image" src="" alt="Diploma de Certificación" width="1200" height="850" />
+        <button id="close-modal" class="close-btn" aria-label="Cerrar"
+          >&times;</button
+        >
+        <img
+          id="modal-image"
+          src=""
+          alt="Diploma de Certificación"
+          width="1200"
+          height="850"
+        />
       </div>
     </div>
   </div>
@@ -123,7 +373,9 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     border-radius: 1rem;
     text-decoration: none;
     color: inherit;
-    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    transition:
+      transform var(--transition-fast),
+      border-color var(--transition-fast);
   }
 
   .course-item:hover {
@@ -163,7 +415,9 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     z-index: 9999;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
   }
 
   .modal-overlay.active {
@@ -215,7 +469,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
 
     if (!modal || !modalImg) return;
 
-    diplomaLinks.forEach(link => {
+    diplomaLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const diplomaUrl = link.getAttribute('href');
@@ -236,7 +490,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     };
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
-    
+
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         closeModal();

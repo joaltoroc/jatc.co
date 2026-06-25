@@ -6,21 +6,29 @@
   --text-secondary: #475569;
   --accent-primary: #2563eb;
   --accent-secondary: #7c3aed;
-  
+
   /* Semantic Colors - Light */
   --border-light: rgba(0, 0, 0, 0.08);
   --surface-light: rgba(15, 23, 42, 0.03);
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.5);
   --glow-opacity: 0.15;
-  
+
   /* Gradients */
-  --gradient-text: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-  --gradient-bg: radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 50%);
+  --gradient-text: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  --gradient-bg: radial-gradient(
+    circle at top,
+    rgba(37, 99, 235, 0.08),
+    transparent 50%
+  );
 
   /* Typography */
   --font-base: 'Inter', system-ui, -apple-system, sans-serif;
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
@@ -34,16 +42,20 @@
   --text-secondary: #94a3b8;
   --accent-primary: #3b82f6;
   --accent-secondary: #8b5cf6;
-  
+
   /* Semantic Colors - Dark */
   --border-light: rgba(255, 255, 255, 0.06);
   --surface-light: rgba(255, 255, 255, 0.03);
   --glass-bg: rgba(15, 23, 42, 0.6);
   --glass-border: rgba(255, 255, 255, 0.05);
   --glow-opacity: 0.3;
-  
+
   /* Gradients Override */
-  --gradient-bg: radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 45%);
+  --gradient-bg: radial-gradient(
+    circle at top,
+    rgba(59, 130, 246, 0.12),
+    transparent 45%
+  );
 }
 
 html {
@@ -63,7 +75,12 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   font-weight: 700;
   color: var(--text-primary);
@@ -160,9 +177,9 @@ section {
 /* Print Styles for PDF Generation */
 @media print {
   /* Hide interactive and non-essential elements */
-  header, 
-  footer, 
-  .theme-toggle, 
+  header,
+  footer,
+  .theme-toggle,
   #scroll-to-top,
   .btn-primary,
   .btn-secondary {
@@ -236,4 +253,3 @@ section {
 .copy-section-link.copied {
   color: #10b981; /* green */
 }
-

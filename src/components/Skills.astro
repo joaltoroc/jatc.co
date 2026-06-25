@@ -5,28 +5,91 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const skillCategories = [
+const skillCategoriesEs = [
   {
-    title: "Front-End & Mobile",
-    skills: ["React", "React Native", "Next.js", "NuxtJS", "Vue.js", "Astro", "TypeScript", "Tailwind CSS", "Xamarin"]
+    title: 'Front-End & Mobile',
+    skills: [
+      'React',
+      'React Native',
+      'Next.js',
+      'NuxtJS',
+      'Vue.js',
+      'Astro',
+      'TypeScript',
+      'Tailwind CSS',
+      'Xamarin',
+    ],
   },
   {
-    title: "Back-End",
-    skills: ["Node.js", "NestJS", "Golang", "C# / .NET", "PHP"]
+    title: 'Back-End',
+    skills: ['Node.js', 'NestJS', 'Golang', 'C# / .NET', 'PHP'],
   },
   {
-    title: "Bases de Datos & Data",
-    skills: ["SQL Server", "MongoDB", "MySQL", "Oracle", "Elasticsearch", "BigQuery", "Firebase", "Couchbase"]
+    title: 'Bases de Datos & Data',
+    skills: [
+      'SQL Server',
+      'MongoDB',
+      'MySQL',
+      'Oracle',
+      'Elasticsearch',
+      'BigQuery',
+      'Firebase',
+      'Couchbase',
+    ],
   },
   {
-    title: "Cloud & DevOps",
-    skills: ["Azure", "AWS", "Docker", "Terraform", "Azure DevOps"]
+    title: 'Cloud & DevOps',
+    skills: ['Azure', 'AWS', 'Docker', 'Terraform', 'Azure DevOps'],
   },
   {
-    title: "Seguridad & Metodologías",
-    skills: ["OWASP", "Pentesting", "Clean Architecture", "Scrum"]
-  }
+    title: 'Seguridad & Metodologías',
+    skills: ['OWASP', 'Pentesting', 'Clean Architecture', 'Scrum'],
+  },
 ];
+
+const skillCategoriesEn = [
+  {
+    title: 'Front-End & Mobile',
+    skills: [
+      'React',
+      'React Native',
+      'Next.js',
+      'NuxtJS',
+      'Vue.js',
+      'Astro',
+      'TypeScript',
+      'Tailwind CSS',
+      'Xamarin',
+    ],
+  },
+  {
+    title: 'Back-End',
+    skills: ['Node.js', 'NestJS', 'Golang', 'C# / .NET', 'PHP'],
+  },
+  {
+    title: 'Databases & Data',
+    skills: [
+      'SQL Server',
+      'MongoDB',
+      'MySQL',
+      'Oracle',
+      'Elasticsearch',
+      'BigQuery',
+      'Firebase',
+      'Couchbase',
+    ],
+  },
+  {
+    title: 'Cloud & DevOps',
+    skills: ['Azure', 'AWS', 'Docker', 'Terraform', 'Azure DevOps'],
+  },
+  {
+    title: 'Security & Methodologies',
+    skills: ['OWASP', 'Pentesting', 'Clean Architecture', 'Scrum'],
+  },
+];
+
+const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
 ---
 
 <section id="skills" class="skills-section">
@@ -35,18 +98,20 @@ const skillCategories = [
       <h2 class="section-title">{t('skills.title')}</h2>
       <div class="section-line"></div>
     </div>
-    
+
     <div class="skills-grid">
-      {skillCategories.map(category => (
-        <div class="skill-category glass">
-          <h3 class="category-title">{category.title}</h3>
-          <div class="skills-tags">
-            {category.skills.map(skill => (
-              <span class="skill-tag">{skill}</span>
-            ))}
+      {
+        skillCategories.map((category) => (
+          <div class="skill-category glass">
+            <h3 class="category-title">{category.title}</h3>
+            <div class="skills-tags">
+              {category.skills.map((skill) => (
+                <span class="skill-tag">{skill}</span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>

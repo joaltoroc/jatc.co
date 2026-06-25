@@ -13,22 +13,22 @@ const t = useTranslations(lang);
       <h2 class="section-title">{t('about.title')}</h2>
       <div class="section-line"></div>
     </div>
-    
+
     <div class="about-content">
       <div class="about-card glass">
         <h3 class="card-title">{t('about.profileTitle')}</h3>
-        <p set:html={t('about.p1')}></p>
-        <p style="margin-top: 1rem;" set:html={t('about.p2')}></p>
+        <p set:html={t('about.p1')} />
+        <p style="margin-top: 1rem;" set:html={t('about.p2')} />
       </div>
-      
+
       <div class="stats-grid">
         <div class="stat-card glass">
           <span class="stat-number text-gradient">+{experienceYears}</span>
-          <span class="stat-label" set:html={t('about.years')}></span>
+          <span class="stat-label" set:html={t('about.years')} />
         </div>
         <div class="stat-card glass">
           <span class="stat-number text-gradient">+20</span>
-          <span class="stat-label" set:html={t('about.projects')}></span>
+          <span class="stat-label" set:html={t('about.projects')} />
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@ const t = useTranslations(lang);
     margin-bottom: 1.5rem;
     color: var(--text-primary);
   }
-  
+
   strong {
     color: var(--text-primary);
     font-weight: 600;
@@ -92,7 +92,7 @@ const t = useTranslations(lang);
     text-align: center;
     transition: transform var(--transition-fast);
   }
-  
+
   .stat-card:hover {
     transform: translateY(-5px);
   }
@@ -117,7 +117,7 @@ const t = useTranslations(lang);
       grid-template-columns: 1fr;
     }
   }
-  
+
   @media (max-width: 500px) {
     .stats-grid {
       grid-template-columns: 1fr;

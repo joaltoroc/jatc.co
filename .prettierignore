@@ -1,0 +1,7 @@
+dist/
+.astro/
+node_modules/
+.agents/
+.github/
+.husky/
+pnpm-lock.yaml

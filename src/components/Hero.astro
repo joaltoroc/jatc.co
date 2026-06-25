@@ -11,20 +11,23 @@ const t = useTranslations(lang);
     <div class="hero-text">
       <div class="badge glass">{t('hero.badge')}</div>
       <h1 class="hero-title">
-        {t('hero.greeting')} <span class="text-gradient">John Toro</span><br/>
-        {t('hero.building')}<br/>
+        {t('hero.greeting')}
+        <span class="text-gradient">John Toro</span><br />
+        {t('hero.building')}<br />
         {t('hero.secure')}
       </h1>
       <p class="hero-description">
         {t('hero.desc')}
       </p>
-      
+
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">{t('hero.contact')}</a>
-        <button onclick="window.print()" class="btn-secondary">{t('hero.cv')}</button>
+        <button onclick="window.print()" class="btn-secondary"
+          >{t('hero.cv')}</button
+        >
       </div>
     </div>
-    
+
     <div class="hero-image-container">
       <div class="glow"></div>
       <div class="image-wrapper glass">
@@ -136,7 +139,7 @@ const t = useTranslations(lang);
     .hero-actions {
       justify-content: center;
     }
-    
+
     .image-wrapper {
       width: 280px;
       height: 280px;

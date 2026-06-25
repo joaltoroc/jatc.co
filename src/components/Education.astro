@@ -8,48 +8,49 @@ const isEn = lang === 'en';
 
 const educationListEs = [
   {
-    institution: "Politécnico Grancolombiano",
-    degree: "Especialización en Seguridad de la Información",
-    period: "2018 - 2019"
+    institution: 'Politécnico Grancolombiano',
+    degree: 'Especialización en Seguridad de la Información',
+    period: '2018 - 2019',
   },
   {
-    institution: "Instituto Tecnológico Metropolitano",
-    degree: "Ingeniería de Sistemas",
-    period: "2009 - 2014"
+    institution: 'Instituto Tecnológico Metropolitano',
+    degree: 'Ingeniería de Sistemas',
+    period: '2009 - 2014',
   },
   {
-    institution: "Instituto Tecnológico Metropolitano",
-    degree: "Tecnología en Sistemas de Información",
-    period: "2005 - 2009"
+    institution: 'Instituto Tecnológico Metropolitano',
+    degree: 'Tecnología en Sistemas de Información',
+    period: '2005 - 2009',
   },
   {
-    institution: "I.E. Gilberto Álzate Avendaño",
-    degree: "Bachiller Técnico en Informática (Diseño de Software)",
-    period: "1999 - 2004"
-  }
+    institution: 'I.E. Gilberto Álzate Avendaño',
+    degree: 'Bachiller Técnico en Informática (Diseño de Software)',
+    period: '1999 - 2004',
+  },
 ];
 
 const educationListEn = [
   {
-    institution: "Politécnico Grancolombiano",
-    degree: "Specialization in Information Security",
-    period: "2018 - 2019"
+    institution: 'Politécnico Grancolombiano',
+    degree: 'Specialization in Information Security',
+    period: '2018 - 2019',
   },
   {
-    institution: "Instituto Tecnológico Metropolitano",
-    degree: "Systems Engineering",
-    period: "2009 - 2014"
+    institution: 'Instituto Tecnológico Metropolitano',
+    degree: 'Systems Engineering',
+    period: '2009 - 2014',
   },
   {
-    institution: "Instituto Tecnológico Metropolitano",
-    degree: "Information Systems Technology",
-    period: "2005 - 2009"
+    institution: 'Instituto Tecnológico Metropolitano',
+    degree: 'Information Systems Technology',
+    period: '2005 - 2009',
   },
   {
-    institution: "I.E. Gilberto Álzate Avendaño",
-    degree: "Technical High School Diploma in Computer Science (Software Design)",
-    period: "1999 - 2004"
-  }
+    institution: 'I.E. Gilberto Álzate Avendaño',
+    degree:
+      'Technical High School Diploma in Computer Science (Software Design)',
+    period: '1999 - 2004',
+  },
 ];
 
 const educationList = isEn ? educationListEn : educationListEs;
@@ -61,23 +62,34 @@ const educationList = isEn ? educationListEn : educationListEs;
       <h2 class="section-title">{t('education.title')}</h2>
       <div class="section-line"></div>
     </div>
-    
+
     <div class="education-grid">
-      {educationList.map(edu => (
-        <div class="edu-card glass">
-          <div class="icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
+      {
+        educationList.map((edu) => (
+          <div class="edu-card glass">
+            <div class="icon-wrapper">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </div>
+            <div class="edu-content">
+              <h3 class="degree">{edu.degree}</h3>
+              <h4 class="institution text-gradient">{edu.institution}</h4>
+              <span class="period">{edu.period}</span>
+            </div>
           </div>
-          <div class="edu-content">
-            <h3 class="degree">{edu.degree}</h3>
-            <h4 class="institution text-gradient">{edu.institution}</h4>
-            <span class="period">{edu.period}</span>
-          </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
