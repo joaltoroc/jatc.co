@@ -20,20 +20,20 @@ export const ui = {
     'nav.contact': 'Contacto',
 
     // Hero
-    'hero.badge': '🚀 Team Lead & Senior Full Stack Engineer',
+    'hero.badge': '🚀 Engineering Manager & Technical Lead',
     'hero.greeting': 'Hola, soy',
     'hero.building': 'Construyendo plataformas',
     'hero.secure': 'escalables y seguras.',
-    'hero.desc': `Ingeniero de Sistemas y Especialista en Ciberseguridad con más de ${experienceYears} años de experiencia. Experto en arquitecturas Cloud, DevSecOps y liderazgo de equipos de alto rendimiento.`,
+    'hero.desc': `Ingeniero de Sistemas y Especialista en Ciberseguridad con más de ${experienceYears} años de experiencia. Experto en dirección de equipos de alto rendimiento, arquitecturas distribuidas Cloud (Azure/AWS), DevSecOps y Clean Architecture.`,
     'hero.contact': 'Contáctame',
     'hero.cv': 'Descargar CV',
 
     // About
     'about.title': 'Sobre Mí',
     'about.profileTitle': 'Perfil Profesional',
-    'about.p1': `<strong>Team Lead y Senior Full Stack Engineer</strong> con más de ${experienceYears} años de experiencia diseñando y construyendo productos de software escalables, seguros y de alto impacto. Especializado en ecosistemas modernos (<strong>TypeScript, React, Node.js, Golang, C#/.NET</strong>) y desarrollo de arquitecturas cloud (<strong>Azure, AWS</strong>).`,
+    'about.p1': `<strong>Engineering Manager y Technical Lead</strong> con más de ${experienceYears} años de trayectoria diseñando y construyendo productos de software escalables, seguros y de alto impacto. Especializado en el liderazgo de equipos de ingeniería, arquitecturas distribuidas cloud (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
     'about.p2':
-      'He liderado equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Además, mi sólida base como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting) desde el diseño hasta el despliegue continuo.',
+      'He dirigido con éxito equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Asimismo, mi sólida formación como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting, SonarCloud) de forma nativa desde el ciclo de diseño hasta el despliegue continuo.',
     'about.years': 'Años de <br/>Experiencia',
     'about.projects': 'Proyectos <br/>Completados',
 
@@ -49,7 +49,7 @@ export const ui = {
     'contact.title': 'Contacto',
     'contact.subtitle': 'Hablemos',
     'contact.desc':
-      'Abierto a explorar nuevas oportunidades profesionales y desafíos técnicos. Si consideras que mi experiencia puede aportar valor a tu equipo u organización, no dudes en ponerte en o conmigo.',
+      'Abierto a explorar nuevas oportunidades profesionales y desafíos técnicos. Si consideras que mi experiencia puede aportar valor a tu equipo u organización, no dudes en ponerte en contacto conmigo.',
     'contact.email': 'Contactar por Email',
     'contact.phone': 'Celular',
 
@@ -59,9 +59,9 @@ export const ui = {
 
     // SEO
     'seo.description':
-      'Portafolio de John Alexander Toro Cortés. Tech Lead, Senior Full Stack Engineer y Especialista en Ciberseguridad con experiencia en arquitecturas Cloud, DevSecOps y desarrollo web.',
+      'Portafolio de John Alexander Toro Cortés. Engineering Manager, Tech Lead y Especialista en Ciberseguridad con experiencia en arquitecturas Cloud, DevSecOps y desarrollo web.',
     'seo.keywords':
-      'Tech Lead, Full Stack Engineer, Ciberseguridad, DevSecOps, Arquitectura Cloud, React, Node.js, Golang, AWS, Azure',
+      'Engineering Manager, Tech Lead, Full Stack Engineer, Ciberseguridad, DevSecOps, Arquitectura Cloud, React, Node.js, Golang, AWS, Azure',
 
     // Actions
     'action.copyLink': 'Copiar link',
@@ -77,20 +77,20 @@ export const ui = {
     'nav.contact': 'Contact',
 
     // Hero
-    'hero.badge': '🚀 Team Lead & Senior Full Stack Engineer',
+    'hero.badge': '🚀 Engineering Manager & Technical Lead',
     'hero.greeting': "Hi, I'm",
     'hero.building': 'Building scalable',
     'hero.secure': 'and secure platforms.',
-    'hero.desc': `Systems Engineer and Cybersecurity Specialist with over ${experienceYears} years of experience. Expert in Cloud architectures, DevSecOps, and high-performance team leadership.`,
+    'hero.desc': `Systems Engineer and Cybersecurity Specialist with over ${experienceYears} years of experience. Expert in high-performance team leadership, Cloud architectures (Azure/AWS), DevSecOps, and Clean Architecture.`,
     'hero.contact': 'Contact me',
     'hero.cv': 'Download CV',
 
     // About
     'about.title': 'About Me',
     'about.profileTitle': 'Professional Profile',
-    'about.p1': `<strong>Tech Lead and Senior Full Stack Engineer</strong> with over ${experienceYears} years of experience designing and building scalable, secure, and high-impact software products. Specialized in modern ecosystems (<strong>TypeScript, React, Node.js, Golang, C#/.NET</strong>) and cloud architectures (<strong>Azure, AWS</strong>).`,
+    'about.p1': `<strong>Engineering Manager and Technical Lead</strong> with over ${experienceYears} years of experience designing and building scalable, secure, and high-impact software products. Specialized in leading engineering teams, distributed cloud architectures (<strong>Azure, AWS</strong>), and modern technologies like <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
     'about.p2':
-      'I have led technical teams in high-demand environments (such as Mercado Libre and Fintech/Web3 projects), applying agile methodologies and <strong>Clean Architecture</strong> principles. Furthermore, my solid background as a <strong>Cybersecurity and DevSecOps</strong> specialist allows me to integrate security practices (OWASP, Pentesting) from design to continuous deployment.',
+      'I have successfully directed technical teams in high-demand environments (such as Mercado Libre and Fintech/Web3 projects), applying agile methodologies and <strong>Clean Architecture</strong> principles. Furthermore, my solid background as a <strong>Cybersecurity and DevSecOps</strong> specialist allows me to integrate security practices (OWASP, Pentesting, SonarCloud) natively from design to continuous deployment.',
     'about.years': 'Years of <br/>Experience',
     'about.projects': 'Projects <br/>Completed',
 
@@ -115,9 +115,9 @@ export const ui = {
 
     // SEO
     'seo.description':
-      'Portfolio of John Alexander Toro Cortés. Team Lead, Senior Full Stack Engineer and Cybersecurity Specialist with experience in Cloud architectures, DevSecOps and web development.',
+      'Portfolio of John Alexander Toro Cortés. Engineering Manager, Tech Lead and Cybersecurity Specialist with experience in Cloud architectures, DevSecOps and web development.',
     'seo.keywords':
-      'Team Lead, Tech Lead, Full Stack Engineer, Cybersecurity, DevSecOps, Cloud Architecture, React, Node.js, Golang, AWS, Azure',
+      'Engineering Manager, Tech Lead, Full Stack Engineer, Cybersecurity, DevSecOps, Cloud Architecture, React, Node.js, Golang, AWS, Azure',
 
     // Actions
     'action.copyLink': 'Copy link to this section',
