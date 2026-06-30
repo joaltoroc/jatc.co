@@ -49,6 +49,7 @@ export default defineConfig({
           'Youbot',
         ].map((agent) => ({
           userAgent: agent,
+          allow: ['/llms.txt', '/llm.txt'],
           disallow: '/',
         })),
       ],

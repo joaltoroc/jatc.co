@@ -1,0 +1,68 @@
+# John Alexander Toro Cortés
+
+> Engineering Manager, Technical Lead & Cybersecurity Specialist with over 17 years of experience building secure, scalable, and high-performance applications.
+
+## Technical Skills
+
+- **Backend:** Go (Golang), C# (.NET Core), TypeScript, JavaScript, Node.js (NestJS), PHP, VB.NET.
+- **Frontend & Mobile:** React, Next.js, React Native, NuxtJS, Vue.js, Astro, Tailwind CSS, Xamarin, Android.
+- **Databases & Data:** SQL Server, MongoDB, MySQL, Oracle, Couchbase, Elasticsearch, BigQuery, Firebase.
+- **Cloud & DevOps:** Azure, AWS, Terraform, Docker, Azure DevOps, Git, CI/CD pipelines.
+- **Security & Methodologies:** OWASP Top 10, Pentesting, Clean Architecture, Scrum, DevSecOps.
+
+## Professional Experience
+
+### Software Engineering Senior Team Lead
+**Quetzal International Services SAS** | *Feb 2026 – Present*
+- Led a team of software engineers in the design and delivery of a centralized document management and case tracking platform integrated with Salesforce via Celigo, automating quality audits with artificial intelligence.
+- Directed the codebase security and quality strategy, mitigating critical vulnerabilities under OWASP standards and reducing technical debt based on SonarCloud reports across the entire application suite.
+
+### Software Engineer Tech Lead
+**Quetzal International Services SAS** | *Jan 2025 – Jan 2026*
+- Assumed technical leadership of the company's cross-sectional applications, designing microservices architectures with NestJS and NuxtJS on the Azure cloud. Automated the multilingual translation infrastructure and event processing, ensuring high system availability and optimizing query performance and data persistence.
+
+### Senior Software Engineer Tech Lead
+**Quetzal International Services SAS** | *Mar 2024 – Dec 2024*
+- Technically led development teams in the design of MarTech solutions focused on segmented client acquisition and customer service event management. Promoted the standardization of the software portfolio by implementing clean architecture templates and established DevSecOps policies to scan and proactively mitigate security vulnerabilities in the early stages of the software development lifecycle (SDLC).
+
+### Technical Lead
+**Zulu Tech** | *Sep 2022 – Dec 2023*
+- Directed the technical team in charge of the B2C Web3 Fintech platform, enabling users to save and transfer digital dollars (USDC) on the Polygon network through secure smart contract integrations. Additionally, orchestrated the B2B cross-border payment platform's architecture using Golang, Node.js, and Next.js, implementing infrastructure as code (IaC) with Terraform in the cloud.
+
+### Senior Software Engineer
+**Mercado Libre** | *Oct 2020 – Sep 2022*
+- Collaborated in the design and integration of new operating countries into the KYC (Know Your Customer) validation engine built in Golang, automating corporate and personal data verification. Led optimization initiatives for the manual operations console based on user feedback, successfully reducing case processing times. Additionally, programmed a dynamic React and Go system to parameterize rejection messages, reducing support queries.
+
+### Senior Consultant
+**Indra Company S.A.S** | *Sep 2019 – Sep 2020*
+- Served as a Senior Consultant in developing a critical mathematical optimization solution for Ecopetrol using C# and React, mapping complex formulas to project oil well energy consumption. This application automated engineering calculations, achieving a 60% energy cost and consumption optimization through real-time simulations.
+
+### Senior Backend Developer
+**Fuse Mobile S.A.S** | *May 2017 – Aug 2019*
+- Participated in developing the Alert Zone application in Australia, implementing the Node.js and Azure backend infrastructure for emergency push notification broadcasting. Designed the digital quoting software for Hunter Douglas blinds and integrated relational and non-relational (Couchbase) data persistence services in the Easy Payslip payroll application.
+
+### Lider Desarrollo .Net
+**Intergrupo** | *Sep 2011 – Apr 2017*
+- Led the design and implementation of the transactional Automatic Debit system for Factoring Bancolombia using C# and secure AS400 integrations. Directed the database integration and control lists for the mobile launch of Móvil Éxito and developed services for Crystal's smart inventory labeling.
+
+### Platform Administrator - Developer .Net
+**Inmel S.A.** | *May 2010 – Sep 2011*
+- Restructured and optimized the internal ERP system based on .NET and Reporting Services, leading the nationwide deployment and training operations personnel. Additionally, managed corporate servers (Active Directory, Exchange, proxies) and ensured operational business continuity.
+
+### Developer VB.Net
+**GroupM Colombia** | *Nov 2009 – May 2010*
+- Developed the corporate intranet and directory in ASP.NET using VB.NET, incorporating a unified security scheme for integration with external systems. Designed the technology asset depreciation module and integrated this data into the accounting ledger.
+
+### NET Developer
+**Asesorías En Sistemas GOD Ltda** | *Oct 2008 – Nov 2009*
+- Designed and programmed a web application in ASP.NET using C# and SQL Server to track, manage, and inventory telecommunication installation orders. Generé tableros analíticos interactivos con SQL Server Reporting Services (SSRS) y brindé soporte de infraestructura de redes.
+
+### PHP Web Developer
+**Savia Grupo Tecnológico** | *Apr 2008 – Oct 2008*
+- Developed a web platform dedicated to digital goods bartering using PHP, MySQL, and WordPress CMS. Created and integrated custom plugins for interactive forums and the company's digital brochure, ensuring basic SEO optimization.
+
+## Education
+
+- **Specialization in Information Security** | Politécnico Grancolombiano (2018 – 2019)
+- **Systems Engineering** | Instituto Tecnológico Metropolitano (2009 – 2014)
+- **Information Systems Technology** | Instituto Tecnológico Metropolitano (2005 – 2009)
