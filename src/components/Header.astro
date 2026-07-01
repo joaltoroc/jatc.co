@@ -33,7 +33,13 @@ const isEn = lang === 'en';
           >EN</a
         >
       </div>
-      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+      <button
+        class="mobile-menu-btn"
+        id="mobile-menu-btn"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu-drawer"
+      >
         <svg
           class="hamburger-icon"
           width="24"
@@ -250,12 +256,14 @@ const isEn = lang === 'en';
     const toggleMenu = () => {
       const isOpen = btn.classList.toggle('is-active');
       drawer.classList.toggle('is-active', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       document.body.style.overflow = isOpen ? 'hidden' : '';
     };
 
     const closeMenu = () => {
       btn.classList.remove('is-active');
       drawer.classList.remove('is-active');
+      btn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     };
 

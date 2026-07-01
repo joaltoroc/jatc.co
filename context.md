@@ -4,9 +4,9 @@ Este documento describe la estructura y configuración del portafolio web person
 
 ## 🛠 Stack Tecnológico
 
-- **Framework:** [Astro](https://astro.build/) (v7.0.3)
+- **Framework:** [Astro](https://astro.build/) (v7.0.5)
 - **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas, procesado con **LightningCSS**.
-- **Tipografías:** Google Fonts (Inter) con carga optimizada.
+- **Tipografías:** Google Fonts (Inter) auto-albergadas con precarga y fallback optimizado.
 - **Gestor de Paquetes:** `pnpm` (v11.9.0)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
@@ -53,6 +53,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
 - **Performance:**
   - Formato de build `directory` para URLs limpias.
   - Compresión Gzip y Brotli activa en el build de Vite.
+  - Pre-carga (preload) de la fuente crítica `Inter` e implementación de un font fallback stack optimizado con `size-adjust` para eliminar desplazamientos de diseño (CLS).
   - Pre-carga (preload) optimizada de imágenes LCP (.webp).
   - Uso de `lightningcss` para minificación eficiente.
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.

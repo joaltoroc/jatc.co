@@ -1,6 +1,6 @@
 # Portafolio Personal - John Alexander Toro Cortés
 
-Este es el repositorio del portafolio personal de John Alexander Toro Cortés, accesible en [jatc.co](https://jatc.co). Está construido sobre **Astro (v6)** y diseñado para ser un sitio estático de altísimo rendimiento, totalmente accesible, bilingüe, seguro y con soporte nativo de temas.
+Este es el repositorio del portafolio personal de John Alexander Toro Cortés, accesible en [jatc.co](https://jatc.co). Está construido sobre **Astro (v7)** y diseñado para ser un sitio estático de altísimo rendimiento, totalmente accesible, bilingüe, seguro y con soporte nativo de temas.
 
 ---
 
@@ -8,11 +8,11 @@ Este es el repositorio del portafolio personal de John Alexander Toro Cortés, a
 
 El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando el rendimiento bruto y la mantenibilidad:
 
-- **Framework principal:** [Astro (v6.4.7)](https://astro.build/)
+- **Framework principal:** [Astro (v7.0.5)](https://astro.build/)
 - **Lenguaje:** TypeScript / HTML5 Semántico
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
 - **Entorno de ejecución:** Node.js `>=24.0.0`
-- **Gestor de paquetes:** [pnpm (v11.7.0)](https://pnpm.io/)
+- **Gestor de paquetes:** [pnpm (v11.9.0)](https://pnpm.io/)
 - **Control de calidad y Git Hooks:** [Husky (v9.1.7)](https://typicode.github.io/husky/) y `@astrojs/check`
 - **CI/CD:** GitHub Actions (despliegue automatizado por SFTP)
 
@@ -35,10 +35,11 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 ### 🚀 Rendimiento de Vanguardia (Performance SEO)
 
 - **Compresión nativa:** Generación de recursos pre-comprimidos en formatos **Gzip (.gz)** y **Brotli (.br)** mediante `vite-plugin-compression` para una carga instantánea.
-- **Carga de fuentes diferida:** Las fuentes de Google Fonts (Inter) se pre-conectan y se cargan mediante un fallback asíncrono optimizado (`media="print" onload="..."`).
+- **Carga de fuentes optimizada (Self-Hosted):** La tipografía variable `Inter` se aloja de manera local para eliminar dependencias externas y se pre-carga de forma prioritaria.
+- **Ajuste de métricas de fuentes fallbacks:** Implementación de un stack de fuentes fallbacks utilizando `@font-face` con descriptores `size-adjust`, `ascent-override` y `descent-override` para emparejar la tipografía local (`Arial`) con `Inter Variable`, eliminando saltos visuales y previniendo cambios en el CLS.
 - **Optimización LCP (Largest Contentful Paint):** La imagen principal (`/jatc.webp`) se pre-carga de forma prioritaria mediante tags `<link rel="preload" fetchpriority="high">`.
 - **Formato de URL limpia:** Configuración de compilación `directory` en Astro para URLs sin la extensión `.html`.
-- **Carga diferida de Analytics:** Google Tag Manager se carga únicamente tras la primera interacción del usuario (click, scroll, keydown) o después de 3.5 segundos de inactividad, evitando bloquear el hilo principal.
+- **Carga diferida de Analytics:** Google Tag Manager se carga únicamente tras la primera interacción real del usuario (click, scroll, keydown, touchstart) o después de 10 segundos de inactividad, evitando competir por el hilo principal y mejorando la métrica LCP en auditorías móviles.
 
 ### 🛡️ Seguridad Avanzada (DevSecOps)
 
