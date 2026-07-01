@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '@fontsource-variable/inter';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ScrollToTop from '../components/ScrollToTop.astro';
 
@@ -31,7 +32,7 @@ const t = useTranslations(lang);
     </script>
     <meta
       http-equiv="Content-Security-Policy"
-      content={`default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com;`}
+      content={`default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com;`}
     />
 
     <!-- Google Tag Manager -->
@@ -136,22 +137,6 @@ const t = useTranslations(lang);
       name="twitter:image:alt"
       content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer"
     />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-      media="print"
-      onload="this.setAttribute('media', 'all')"
-    />
-    <noscript>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-      />
-    </noscript>
 
     <!-- Preload LCP Image -->
     <link

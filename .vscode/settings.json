@@ -1,10 +1,14 @@
 {
   "cSpell.words": [
+    "astrojs",
+    "esbuild",
     "jatc",
     "lightningcss",
     "Nuxt",
     "sidebase",
     "Sidebase"
   ],
-  "cSpell.language": "en,es"
+  "cSpell.language": "en,es",
+  "snyk.advanced.organization": "225b0e92-c77b-46b3-ae0e-fda06bce2292",
+  "snyk.advanced.autoSelectOrganization": true
 }

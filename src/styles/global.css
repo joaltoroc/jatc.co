@@ -27,7 +27,7 @@
   );
 
   /* Typography */
-  --font-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-base: 'Inter Variable', system-ui, -apple-system, sans-serif;
 
   /* Transitions */
   --transition-fast: 0.2s ease;
