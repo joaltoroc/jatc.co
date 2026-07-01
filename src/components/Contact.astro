@@ -233,7 +233,7 @@ const t = useTranslations(lang);
   }
 </style>
 
-<script>
+<script is:inline>
   // Obfuscate email to prevent spam bots from scraping it
   document.addEventListener('DOMContentLoaded', () => {
     const emailLinks = document.querySelectorAll('.email-link');

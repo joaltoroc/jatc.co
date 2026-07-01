@@ -4,22 +4,34 @@ ErrorDocument 404 /
 # Cache-Control optimization for production
 <IfModule mod_expires.c>
   ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 year"
 
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
+  ExpiresByType text/plain "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
   # Hashed assets in _astro/ (JS, CSS, Fonts, Images)
   # Cache for 1 year since hashes change when content changes
   <FilesMatch "\.(css|js|woff2|webp|png|jpg|jpeg|gif|ico|svg|webmanifest)$">
-    ExpiresDefault "access plus 1 year"
-    <IfModule mod_headers.c>
-      Header set Cache-Control "public, max-age=31536000, immutable"
-    </IfModule>
+    Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
 
   # HTML pages
   # Cache for 0 seconds (revalidate every time)
   <FilesMatch "\.(html|xml|txt)$">
-    ExpiresDefault "access plus 0 seconds"
-    <IfModule mod_headers.c>
-      Header set Cache-Control "public, max-age=0, must-revalidate"
-    </IfModule>
+    Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
 </IfModule>
+

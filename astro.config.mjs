@@ -6,7 +6,6 @@ import robotsTxt from 'astro-robots-txt';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jatc.co',
-  prefetch: true,
   integrations: [
     sitemap({
       i18n: {

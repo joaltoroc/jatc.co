@@ -11,7 +11,7 @@ const isEn = lang === 'en';
 <header class="header glass">
   <div class="container header-content">
     <div class="logo">
-      <a href={isEn ? '/en/' : '/'} data-astro-prefetch>JATC</a>
+      <a href={isEn ? '/en/' : '/'}>JATC</a>
     </div>
 
     <nav class="desktop-nav">
@@ -28,8 +28,8 @@ const isEn = lang === 'en';
     <div class="actions">
       <ThemeToggle />
       <div class="lang-selector">
-        <a href="/" class={!isEn ? 'active-lang' : ''} data-astro-prefetch>ES</a
-        > | <a href="/en/" class={isEn ? 'active-lang' : ''} data-astro-prefetch
+        <a href="/" class={!isEn ? 'active-lang' : ''}>ES</a
+        > | <a href="/en/" class={isEn ? 'active-lang' : ''}
           >EN</a
         >
       </div>
@@ -239,7 +239,7 @@ const isEn = lang === 'en';
   }
 </style>
 
-<script>
+<script is:inline>
   function initMobileMenu() {
     const btn = document.getElementById('mobile-menu-btn');
     const drawer = document.getElementById('mobile-menu-drawer');
