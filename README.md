@@ -11,7 +11,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 - **Framework principal:** [Astro (v6.4.7)](https://astro.build/)
 - **Lenguaje:** TypeScript / HTML5 Semántico
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
-- **Entorno de ejecución:** Node.js `>=22.12.0`
+- **Entorno de ejecución:** Node.js `>=24.0.0`
 - **Gestor de paquetes:** [pnpm (v11.7.0)](https://pnpm.io/)
 - **Control de calidad y Git Hooks:** [Husky (v9.1.7)](https://typicode.github.io/husky/) y `@astrojs/check`
 - **CI/CD:** GitHub Actions (despliegue automatizado por SFTP)
@@ -91,7 +91,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 
 ## 🧞 Comandos y Desarrollo Local
 
-Este proyecto utiliza `pnpm` como gestor de dependencias. Asegúrate de tener instalado Node.js `>=22.12.0`.
+Este proyecto utiliza `pnpm` como gestor de dependencias. Asegúrate de tener instalado Node.js `>=24.0.0`.
 
 ### Instalación de dependencias
 

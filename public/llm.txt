@@ -2,6 +2,16 @@
 
 > Engineering Manager, Technical Lead & Cybersecurity Specialist with over 17 years of experience building secure, scalable, and high-performance applications.
 
+## Links
+- [Main Portfolio (Spanish)](https://jatc.co/): Main landing page and contact form.
+- [Main Portfolio (English)](https://jatc.co/en/): English version of the portfolio.
+- [About](https://jatc.co/#about): Introduction and career focus.
+- [Professional Experience](https://jatc.co/#experience): Chronological work history.
+- [Education](https://jatc.co/#education): Degrees and formal studies.
+- [Courses & Certifications](https://jatc.co/#courses): List of verified professional courses and certifications.
+- [Technical Skills](https://jatc.co/#skills): Categorized technical skills matrix.
+- [Contact](https://jatc.co/#contact): Social profiles and contact form.
+
 ## Technical Skills
 
 - **Backend:** Go (Golang), C# (.NET Core), TypeScript, JavaScript, Node.js (NestJS), PHP, VB.NET.

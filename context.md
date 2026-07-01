@@ -10,7 +10,7 @@ Este documento describe la estructura y configuración del portafolio web person
 - **Gestor de Paquetes:** `pnpm` (v11.9.0)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
-- **Node.js:** Versión `>=22.12.0`
+- **Node.js:** Versión `>=24.0.0`
 
 ## 📁 Estructura del Proyecto
 
