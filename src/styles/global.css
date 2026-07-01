@@ -27,12 +27,23 @@
   );
 
   /* Typography */
-  --font-base: 'Inter Variable', system-ui, -apple-system, sans-serif;
+  --font-base: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, sans-serif;
 
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
 }
+
+/* Fallback font matching Inter metrics to prevent layout shifts */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107.4%;
+  ascent-override: 90%;
+  descent-override: 22.4%;
+  line-gap-override: 0%;
+}
+
 
 .dark {
   /* Colors - Dark Theme */

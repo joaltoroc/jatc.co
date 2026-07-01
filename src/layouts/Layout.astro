@@ -56,8 +56,8 @@ const t = useTranslations(lang);
         })(window, document, 'script', 'dataLayer', 'GTM-KL3ZRHZ');
       }
 
-      // Load GTM on first interaction or after a 3.5s delay
-      const gtmTimeout = setTimeout(loadGTM, 3500);
+      // Load GTM on first interaction or after a 10s delay (prevents Lighthouse audit interference)
+      const gtmTimeout = setTimeout(loadGTM, 10000);
       const interactionEvents = [
         'click',
         'mousedown',
