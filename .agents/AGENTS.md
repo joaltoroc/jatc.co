@@ -4,5 +4,5 @@
 - **Lint & Syntax Validation:** Before completing a task, run lint checks (e.g., `pnpm lint`) to verify there are no syntax or style violations.
 - **Build Verification:** Always verify that the static compilation (`pnpm build`) builds successfully without errors.
 - **TypeScript Integrity:** Run Astro/TypeScript type checking (`pnpm check`) to guarantee all type signatures are intact and error-free.
-- **Security Compliance:** Verify that security controls (e.g., Content Security Policy [CSP] directives in [Layout.astro](./src/layouts/Layout.astro), script sanitization, and AI crawler blocklists in [astro.config.mjs](./astro.config.mjs)) remain fully intact and correct.
+- **Security Compliance:** Verify that security controls (e.g., Content Security Policy [CSP] directives in [.htaccess](./public/.htaccess), script sanitization, and AI crawler blocklists in [astro.config.mjs](./astro.config.mjs)) remain fully intact and correct.
 

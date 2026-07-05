@@ -295,6 +295,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
             target="_blank"
             rel="noopener noreferrer"
             class="course-item glass diploma-link"
+            aria-label={t('courses.credentialLabel').replace('{title}', `${course.title} - ${course.source}`)}
           >
             <div class="course-icon">
               <svg

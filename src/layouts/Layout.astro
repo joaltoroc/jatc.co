@@ -31,12 +31,7 @@ const t = useTranslations(lang);
         document.documentElement.classList.remove('dark');
       }
     </script>
-    <meta
-      http-equiv="Content-Security-Policy"
-      content={`default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com;`}
-    />
 
-    <!-- Google Tag Manager -->
     <script is:inline>
       function loadGTM() {
         if (window.gtmLoaded) return;

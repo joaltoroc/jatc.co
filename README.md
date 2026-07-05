@@ -43,7 +43,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 
 ### 🛡️ Seguridad Avanzada (DevSecOps)
 
-- **Content Security Policy (CSP):** Directiva estricta configurada mediante metaetiquetas en el Layout base para restringir la ejecución de scripts no autorizados, previniendo ataques XSS.
+- **Content Security Policy (CSP):** Directiva estricta configurada a nivel de servidor mediante cabeceras HTTP en `.htaccess` para restringir la ejecución de scripts no autorizados y proteger contra ataques XSS y Clickjacking (`frame-ancestors 'none'`).
 - **Protección contra Cosechadores de Datos (AI Agents):** Configuración explícita en `robots.txt` que restringe el acceso de más de 20 agentes y scrapers de Inteligencia Artificial (como `GPTBot`, `ClaudeBot`, `CCBot`, `Google-Extended`, etc.) para proteger los datos y derechos de autor del portafolio.
 - Sanitización de enlaces y APIs seguras.
 

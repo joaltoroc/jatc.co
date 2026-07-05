@@ -22,6 +22,15 @@ ErrorDocument 404 /
 </IfModule>
 
 <IfModule mod_headers.c>
+  # Content Security Policy (CSP)
+  Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; frame-ancestors 'none';"
+
+  # Security Headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Frame-Options "DENY"
+  Header set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+
   # Hashed assets in _astro/ (JS, CSS, Fonts, Images)
   # Cache for 1 year since hashes change when content changes
   <FilesMatch "\.(css|js|woff2|webp|png|jpg|jpeg|gif|ico|svg|webmanifest)$">

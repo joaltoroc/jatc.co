@@ -58,6 +58,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Uso de `lightningcss` para minificación eficiente.
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.
 - **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.
+- **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción.
 - **Accesibilidad:** Uso de HTML semántico y etiquetas ARIA en componentes interactivos.
 
 ## 📜 Scripts Disponibles

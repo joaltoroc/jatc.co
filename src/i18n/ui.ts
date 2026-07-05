@@ -66,6 +66,9 @@ export const ui = {
     // Actions
     'action.copyLink': 'Copiar link',
     'themeToggle.label': 'Cambiar tema',
+    'lang.es.label': 'Cambiar idioma a Español',
+    'lang.en.label': 'Cambiar idioma a Inglés (Switch to English)',
+    'courses.credentialLabel': 'Ver credencial de {title} (abre en una nueva pestaña)',
   },
   en: {
     // Header
@@ -122,5 +125,8 @@ export const ui = {
     // Actions
     'action.copyLink': 'Copy link to this section',
     'themeToggle.label': 'Toggle theme',
+    'lang.es.label': 'Switch language to Spanish',
+    'lang.en.label': 'Switch language to English',
+    'courses.credentialLabel': 'View credential for {title} (opens in a new tab)',
   },
 } as const;
