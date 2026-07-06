@@ -8,11 +8,11 @@ Este es el repositorio del portafolio personal de John Alexander Toro Cortés, a
 
 El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando el rendimiento bruto y la mantenibilidad:
 
-- **Framework principal:** [Astro (v7.0.5)](https://astro.build/)
+- **Framework principal:** [Astro (v7.0.6)](https://astro.build/)
 - **Lenguaje:** TypeScript / HTML5 Semántico
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
 - **Entorno de ejecución:** Node.js `>=24.0.0`
-- **Gestor de paquetes:** [pnpm (v11.9.0)](https://pnpm.io/)
+- **Gestor de paquetes:** [pnpm (v11.10.0)](https://pnpm.io/)
 - **Control de calidad y Git Hooks:** [Husky (v9.1.7)](https://typicode.github.io/husky/) y `@astrojs/check`
 - **CI/CD:** GitHub Actions (despliegue automatizado por SFTP)
 
@@ -83,6 +83,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 │   ├── layouts/               # Plantillas estructurales de la web (Layout.astro)
 │   ├── pages/                 # Enrutamiento estático (index.astro, en/index.astro)
 │   └── styles/                # Variables CSS, paleta de colores y estilos globales
+├── ADR.md                     # Registro de Decisiones de Arquitectura (Architecture Decision Record)
 ├── astro.config.mjs           # Configuración detallada de Astro e integraciones
 ├── package.json               # Dependencias del proyecto y scripts npm
 └── tsconfig.json              # Configuración de TypeScript

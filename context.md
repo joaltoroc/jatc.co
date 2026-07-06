@@ -4,10 +4,10 @@ Este documento describe la estructura y configuración del portafolio web person
 
 ## 🛠 Stack Tecnológico
 
-- **Framework:** [Astro](https://astro.build/) (v7.0.5)
+- **Framework:** [Astro](https://astro.build/) (v7.0.6)
 - **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas, procesado con **LightningCSS**.
 - **Tipografías:** Google Fonts (Inter) auto-albergadas con precarga y fallback optimizado.
-- **Gestor de Paquetes:** `pnpm` (v11.9.0)
+- **Gestor de Paquetes:** `pnpm` (v11.10.0)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=24.0.0`
@@ -40,6 +40,7 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   ├── layouts/           # Plantilla base (Layout.astro con SEO y Meta avanzados)
 │   ├── pages/             # Rutas (index.astro, 404.astro y carpeta en/)
 │   └── styles/            # Reglas globales de CSS y variables de tema
+├── ADR.md                 # Registro de Decisiones de Arquitectura (Architecture Decision Record)
 ├── astro.config.mjs       # Configuración del framework (format: 'directory')
 └── package.json           # Dependencias y scripts
 ```
