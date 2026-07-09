@@ -60,7 +60,7 @@
 - Led the design and implementation of the transactional Automatic Debit system for Factoring Bancolombia using C# and secure AS400 integrations. Directed the database integration and control lists for the mobile launch of Móvil Éxito and developed services for Crystal's smart inventory labeling.
 
 ### Platform Administrator - Developer .Net
-**Inmel S.A.** | *May 2010 – Sep 2011*
+**Inmel Ingeniería** | *May 2010 – Sep 2011*
 - Restructured and optimized the internal ERP system based on .NET and Reporting Services, leading the nationwide deployment and training operations personnel. Additionally, managed corporate servers (Active Directory, Exchange, proxies) and ensured operational business continuity.
 
 ### Developer VB.Net
