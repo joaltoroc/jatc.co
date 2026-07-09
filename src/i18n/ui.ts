@@ -20,20 +20,20 @@ export const ui = {
     'nav.contact': 'Contacto',
 
     // Hero
-    'hero.badge': '🚀 Engineering Manager & Technical Lead',
+    'hero.badge': '🚀 Technical Lead & Software Engineer',
     'hero.greeting': 'Hola, soy ',
     'hero.building': 'Construyendo plataformas',
     'hero.secure': 'escalables y seguras.',
-    'hero.desc': `Engineering Manager & Technical Lead | +${experienceYears} años<br />Golang · C#/.NET · TypeScript · Cloud (Azure/AWS) · DevSecOps · Clean Architecture`,
+    'hero.desc': `Technical Lead & Software Engineer | +${experienceYears} años<br />Golang · C#/.NET · TypeScript · Cloud (Azure/AWS) · DevSecOps · Clean Architecture`,
     'hero.contact': 'Contáctame',
     'hero.cv': 'Descargar CV',
 
     // About
     'about.title': 'Sobre Mí',
     'about.profileTitle': 'Perfil Profesional',
-    'about.p1': `Soy <strong>Engineering Manager y Technical Lead</strong> con más de ${experienceYears} años diseñando y construyendo productos de software escalables, seguros y de alto impacto. Me especializo en liderar equipos de ingeniería, arquitecturas distribuidas en la nube (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
+    'about.p1': `Soy <strong>Technical Lead y Software Engineer</strong> con más de ${experienceYears} años diseñando y construyendo productos de software escalables, seguros y de alto impacto. Me especializo en liderar equipos de ingeniería, arquitecturas distribuidas en la nube (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
     'about.p2':
-      'He dirigido equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Mi formación como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting, SonarCloud) de forma nativa desde el diseño hasta el despliegue continuo.',
+      'He liderado equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Mi formación como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting, SonarCloud) de forma nativa desde el diseño hasta el despliegue continuo.',
     'about.p3':
       'Actualmente lidero un equipo de 11 personas entregando plataformas críticas de negocio. Estoy abierto a nuevas oportunidades y retos técnicos donde pueda aportar visión de arquitectura, seguridad y liderazgo. <strong>Hablemos.</strong>',
     'about.years': 'Años de <br/>Experiencia',
@@ -60,9 +60,9 @@ export const ui = {
     'scroll.top': 'Volver arriba',
 
     // SEO
-    'seo.description': `Portafolio de John Alexander Toro Cortés. Engineering Manager, Technical Lead y Especialista en Ciberseguridad con +${experienceYears} años de experiencia en arquitecturas Cloud, DevSecOps y Clean Architecture.`,
+    'seo.description': `Portafolio de John Alexander Toro Cortés. Technical Lead, Software Engineer y Especialista en Ciberseguridad con +${experienceYears} años de experiencia en arquitecturas Cloud, DevSecOps y Clean Architecture.`,
     'seo.keywords':
-      'Engineering Manager, Tech Lead, Technical Lead, Ciberseguridad, DevSecOps, Clean Architecture, Arquitectura Cloud, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
+      'Technical Lead, Software Engineer, Tech Lead, Ciberseguridad, DevSecOps, Clean Architecture, Arquitectura Cloud, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
     // Actions
     'action.copyLink': 'Copiar link',
@@ -82,18 +82,18 @@ export const ui = {
     'nav.contact': 'Contact',
 
     // Hero
-    'hero.badge': '🚀 Engineering Manager & Technical Lead',
+    'hero.badge': '🚀 Technical Lead & Software Engineer',
     'hero.greeting': "Hi, I'm ",
     'hero.building': 'Building scalable',
     'hero.secure': 'and secure platforms.',
-    'hero.desc': `Engineering Manager & Technical Lead | ${experienceYears}+ years<br />Golang · C#/.NET · TypeScript · Cloud (Azure/AWS) · DevSecOps · Clean Architecture`,
+    'hero.desc': `Technical Lead & Software Engineer | ${experienceYears}+ years<br />Golang · C#/.NET · TypeScript · Cloud (Azure/AWS) · DevSecOps · Clean Architecture`,
     'hero.contact': 'Contact me',
     'hero.cv': 'Download CV',
 
     // About
     'about.title': 'About Me',
     'about.profileTitle': 'Professional Profile',
-    'about.p1': `I’m an <strong>Engineering Manager and Technical Lead</strong> with ${experienceYears}+ years designing and building scalable, secure, and high-impact software products. I specialize in leading engineering teams, distributed cloud architectures (<strong>Azure, AWS</strong>), and modern technologies like <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
+    'about.p1': `I’m a <strong>Technical Lead and Software Engineer</strong> with ${experienceYears}+ years designing and building scalable, secure, high-impact software products. I specialize in leading engineering teams, distributed cloud architectures (<strong>Azure, AWS</strong>), and modern technologies like <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
     'about.p2':
       'I’ve led technical teams in demanding environments (such as Mercado Libre and Fintech/Web3 projects), applying agile methodologies and <strong>Clean Architecture</strong> principles. My background as a <strong>Cybersecurity and DevSecOps</strong> specialist lets me embed security practices (OWASP, Pentesting, SonarCloud) natively from design through continuous deployment.',
     'about.p3':
@@ -121,9 +121,9 @@ export const ui = {
     'scroll.top': 'Back to top',
 
     // SEO
-    'seo.description': `Portfolio of John Alexander Toro Cortés. Engineering Manager, Technical Lead and Cybersecurity Specialist with ${experienceYears}+ years of experience in Cloud architectures, DevSecOps, and Clean Architecture.`,
+    'seo.description': `Portfolio of John Alexander Toro Cortés. Technical Lead, Software Engineer and Cybersecurity Specialist with ${experienceYears}+ years of experience in Cloud architectures, DevSecOps, and Clean Architecture.`,
     'seo.keywords':
-      'Engineering Manager, Tech Lead, Technical Lead, Cybersecurity, DevSecOps, Clean Architecture, Cloud Architecture, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
+      'Technical Lead, Software Engineer, Tech Lead, Cybersecurity, DevSecOps, Clean Architecture, Cloud Architecture, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
     // Actions
     'action.copyLink': 'Copy link to this section',
