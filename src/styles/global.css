@@ -187,6 +187,14 @@ section {
 
 /* Print Styles for PDF Generation */
 @media print {
+  @page {
+    margin: 1.2cm; /* Sets margins directly on the page box so it applies to ALL printed pages (preventing clipped content on overflow pages) */
+  }
+
+  html {
+    font-size: 13.5px !important; /* Scales all rem-based font sizes down for a compact, clean look */
+  }
+
   /* Hide interactive and non-essential elements */
   header,
   footer,
@@ -200,6 +208,21 @@ section {
   body {
     background: white !important;
     color: black !important;
+    margin: 0 !important; /* Managed by @page box margin */
+    padding: 0 !important;
+    line-height: 1.4 !important;
+  }
+
+  /* Prevent cards/items from splitting across pages */
+  .timeline-item,
+  .timeline-content,
+  .about-card,
+  .stat-card,
+  .edu-card,
+  .course-item,
+  .skills-category {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
 
   /* Remove backgrounds from sections to save ink/improve readability */
@@ -217,10 +240,136 @@ section {
     color: black !important;
   }
 
-  /* Page breaks */
+  /* Section adjustments - allow breaks between sections/items, but tighten padding */
   section {
-    page-break-inside: avoid;
-    padding: 2rem 0 !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+    padding: 1rem 0 !important;
+  }
+
+  /* Force main sections to start on a fresh page (except the first hero section) */
+  section:not(.hero-section) {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+
+  /* Center Hero and About sections vertically on page 1 and page 2 respectively */
+  .hero-section,
+  .about-section {
+    min-height: 100vh !important; /* Represents full content height of a page box under print margins */
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .section-header {
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* About adjustments */
+  .about-content {
+    gap: 1.5rem !important;
+  }
+
+  .about-card {
+    padding: 1.5rem !important;
+  }
+
+  .stat-card {
+    padding: 1.25rem !important;
+  }
+
+  /* Timeline/Experience adjustments */
+  .timeline-item {
+    margin-bottom: 1.5rem !important;
+    padding-left: 45px !important;
+  }
+
+  .timeline-content {
+    padding: 1.25rem !important;
+  }
+
+  .tech-stack {
+    margin-top: 1rem !important;
+    padding-top: 1rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .tech-tag {
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  /* Compact education cards */
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .edu-card {
+    padding: 1.25rem !important;
+    border-radius: 0.75rem !important;
+    gap: 1rem !important;
+  }
+
+  .edu-card .icon-wrapper {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .edu-card .icon-wrapper svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .edu-card .degree {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .edu-card .institution {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .edu-card .period {
+    font-size: 0.75rem !important;
+    padding: 0.15rem 0.5rem !important;
+  }
+
+  /* Compact course items */
+  .courses-list {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .course-item {
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.5rem !important;
+    gap: 0.75rem !important;
+  }
+
+  .course-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  .course-icon svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .course-title {
+    font-size: 0.95rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .course-source {
+    font-size: 0.75rem !important;
   }
 
   /* Ensure the main container expands fully */
