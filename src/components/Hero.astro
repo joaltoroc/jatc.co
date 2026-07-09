@@ -16,9 +16,7 @@ const t = useTranslations(lang);
         {t('hero.building')}<br />
         {t('hero.secure')}
       </h1>
-      <p class="hero-description">
-        {t('hero.desc')}
-      </p>
+      <p class="hero-description" set:html={t('hero.desc')} />
 
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">{t('hero.contact')}</a>

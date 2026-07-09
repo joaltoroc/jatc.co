@@ -21,19 +21,21 @@ export const ui = {
 
     // Hero
     'hero.badge': '🚀 Engineering Manager & Technical Lead',
-    'hero.greeting': 'Hola, soy',
+    'hero.greeting': 'Hola, soy ',
     'hero.building': 'Construyendo plataformas',
     'hero.secure': 'escalables y seguras.',
-    'hero.desc': `Ingeniero de Sistemas y Especialista en Ciberseguridad con más de ${experienceYears} años de experiencia. Experto en dirección de equipos de alto rendimiento, arquitecturas distribuidas Cloud (Azure/AWS), DevSecOps y Clean Architecture.`,
+    'hero.desc': `Engineering Manager & Technical Lead | +${experienceYears} años<br />Golang · C#/.NET · TypeScript · Cloud (Azure/AWS) · DevSecOps · Clean Architecture`,
     'hero.contact': 'Contáctame',
     'hero.cv': 'Descargar CV',
 
     // About
     'about.title': 'Sobre Mí',
     'about.profileTitle': 'Perfil Profesional',
-    'about.p1': `<strong>Engineering Manager y Technical Lead</strong> con más de ${experienceYears} años de trayectoria diseñando y construyendo productos de software escalables, seguros y de alto impacto. Especializado en el liderazgo de equipos de ingeniería, arquitecturas distribuidas cloud (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
+    'about.p1': `Soy <strong>Engineering Manager y Technical Lead</strong> con más de ${experienceYears} años diseñando y construyendo productos de software escalables, seguros y de alto impacto. Me especializo en liderar equipos de ingeniería, arquitecturas distribuidas en la nube (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
     'about.p2':
-      'He dirigido con éxito equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Asimismo, mi sólida formación como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting, SonarCloud) de forma nativa desde el ciclo de diseño hasta el despliegue continuo.',
+      'He dirigido equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Mi formación como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting, SonarCloud) de forma nativa desde el diseño hasta el despliegue continuo.',
+    'about.p3':
+      'Actualmente lidero un equipo de 11 personas entregando plataformas críticas de negocio. Estoy abierto a nuevas oportunidades y retos técnicos donde pueda aportar visión de arquitectura, seguridad y liderazgo. <strong>Hablemos.</strong>',
     'about.years': 'Años de <br/>Experiencia',
     'about.projects': 'Proyectos <br/>Completados',
 
@@ -58,17 +60,17 @@ export const ui = {
     'scroll.top': 'Volver arriba',
 
     // SEO
-    'seo.description':
-      'Portafolio de John Alexander Toro Cortés. Engineering Manager, Tech Lead y Especialista en Ciberseguridad con experiencia en arquitecturas Cloud, DevSecOps y desarrollo web.',
+    'seo.description': `Portafolio de John Alexander Toro Cortés. Engineering Manager, Technical Lead y Especialista en Ciberseguridad con +${experienceYears} años de experiencia en arquitecturas Cloud, DevSecOps y Clean Architecture.`,
     'seo.keywords':
-      'Engineering Manager, Tech Lead, Full Stack Engineer, Ciberseguridad, DevSecOps, Arquitectura Cloud, React, Node.js, Golang, AWS, Azure',
+      'Engineering Manager, Tech Lead, Technical Lead, Ciberseguridad, DevSecOps, Clean Architecture, Arquitectura Cloud, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
     // Actions
     'action.copyLink': 'Copiar link',
     'themeToggle.label': 'Cambiar tema',
     'lang.es.label': 'Cambiar idioma a Español',
     'lang.en.label': 'Cambiar idioma a Inglés (Switch to English)',
-    'courses.credentialLabel': 'Ver credencial de {title} (abre en una nueva pestaña)',
+    'courses.credentialLabel':
+      'Ver credencial de {title} (abre en una nueva pestaña)',
   },
   en: {
     // Header
@@ -81,19 +83,21 @@ export const ui = {
 
     // Hero
     'hero.badge': '🚀 Engineering Manager & Technical Lead',
-    'hero.greeting': "Hi, I'm",
+    'hero.greeting': "Hi, I'm ",
     'hero.building': 'Building scalable',
     'hero.secure': 'and secure platforms.',
-    'hero.desc': `Systems Engineer and Cybersecurity Specialist with over ${experienceYears} years of experience. Expert in high-performance team leadership, Cloud architectures (Azure/AWS), DevSecOps, and Clean Architecture.`,
+    'hero.desc': `Engineering Manager & Technical Lead | ${experienceYears}+ years<br />Golang · C#/.NET · TypeScript · Cloud (Azure/AWS) · DevSecOps · Clean Architecture`,
     'hero.contact': 'Contact me',
     'hero.cv': 'Download CV',
 
     // About
     'about.title': 'About Me',
     'about.profileTitle': 'Professional Profile',
-    'about.p1': `<strong>Engineering Manager and Technical Lead</strong> with over ${experienceYears} years of experience designing and building scalable, secure, and high-impact software products. Specialized in leading engineering teams, distributed cloud architectures (<strong>Azure, AWS</strong>), and modern technologies like <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
+    'about.p1': `I’m an <strong>Engineering Manager and Technical Lead</strong> with ${experienceYears}+ years designing and building scalable, secure, and high-impact software products. I specialize in leading engineering teams, distributed cloud architectures (<strong>Azure, AWS</strong>), and modern technologies like <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
     'about.p2':
-      'I have successfully directed technical teams in high-demand environments (such as Mercado Libre and Fintech/Web3 projects), applying agile methodologies and <strong>Clean Architecture</strong> principles. Furthermore, my solid background as a <strong>Cybersecurity and DevSecOps</strong> specialist allows me to integrate security practices (OWASP, Pentesting, SonarCloud) natively from design to continuous deployment.',
+      'I’ve led technical teams in demanding environments (such as Mercado Libre and Fintech/Web3 projects), applying agile methodologies and <strong>Clean Architecture</strong> principles. My background as a <strong>Cybersecurity and DevSecOps</strong> specialist lets me embed security practices (OWASP, Pentesting, SonarCloud) natively from design through continuous deployment.',
+    'about.p3':
+      'I currently lead an 11-person team delivering business-critical platforms. I’m open to new opportunities and technical challenges where I can contribute architecture, security, and leadership. <strong>Let’s talk.</strong>',
     'about.years': 'Years of <br/>Experience',
     'about.projects': 'Projects <br/>Completed',
 
@@ -117,16 +121,16 @@ export const ui = {
     'scroll.top': 'Back to top',
 
     // SEO
-    'seo.description':
-      'Portfolio of John Alexander Toro Cortés. Engineering Manager, Tech Lead and Cybersecurity Specialist with experience in Cloud architectures, DevSecOps and web development.',
+    'seo.description': `Portfolio of John Alexander Toro Cortés. Engineering Manager, Technical Lead and Cybersecurity Specialist with ${experienceYears}+ years of experience in Cloud architectures, DevSecOps, and Clean Architecture.`,
     'seo.keywords':
-      'Engineering Manager, Tech Lead, Full Stack Engineer, Cybersecurity, DevSecOps, Cloud Architecture, React, Node.js, Golang, AWS, Azure',
+      'Engineering Manager, Tech Lead, Technical Lead, Cybersecurity, DevSecOps, Clean Architecture, Cloud Architecture, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
     // Actions
     'action.copyLink': 'Copy link to this section',
     'themeToggle.label': 'Toggle theme',
     'lang.es.label': 'Switch language to Spanish',
     'lang.en.label': 'Switch language to English',
-    'courses.credentialLabel': 'View credential for {title} (opens in a new tab)',
+    'courses.credentialLabel':
+      'View credential for {title} (opens in a new tab)',
   },
 } as const;

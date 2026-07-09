@@ -5,4 +5,6 @@
 - **Build Verification:** Always verify that the static compilation (`pnpm build`) builds successfully without errors.
 - **TypeScript Integrity:** Run Astro/TypeScript type checking (`pnpm check`) to guarantee all type signatures are intact and error-free.
 - **Security Compliance:** Verify that security controls (e.g., Content Security Policy [CSP] directives in [.htaccess](./public/.htaccess), script sanitization, and AI crawler blocklists in [astro.config.mjs](./astro.config.mjs)) remain fully intact and correct.
+- **SEO & Meta Sync:** Whenever you modify profile details or hero description (`hero.desc`), you MUST ensure that translation dictionaries ([ui.ts](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/i18n/ui.ts)), basic SEO tags, Open Graph / Twitter meta tags, and alt descriptions in [Layout.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/layouts/Layout.astro) are fully synchronized, localized, and up-to-date. Additionally, ensure that public text files [llm.txt](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/public/llm.txt) and [llms.txt](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/public/llms.txt) are kept in sync with these profile metrics.
+
 

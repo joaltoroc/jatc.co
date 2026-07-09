@@ -1,6 +1,6 @@
 # John Alexander Toro Cortés
 
-> Engineering Manager, Technical Lead & Cybersecurity Specialist with over 17 years of experience building secure, scalable, and high-performance applications.
+> Engineering Manager, Technical Lead & Cybersecurity Specialist with 18+ years of experience building secure, scalable, and high-performance applications.
 
 ## Links
 - [Main Portfolio (Spanish)](https://jatc.co/): Main landing page and contact form.
@@ -24,12 +24,13 @@
 
 ### Software Engineering Senior Team Lead
 **Quetzal International Services SAS** | *Feb 2026 – Present*
-- Led a team of software engineers in the design and delivery of a centralized document management and case tracking platform integrated with Salesforce via Celigo, automating quality audits with artificial intelligence.
-- Directed the codebase security and quality strategy, mitigating critical vulnerabilities under OWASP standards and reducing technical debt based on SonarCloud reports across the entire application suite.
+- I lead an 11-person team (5 developers, 3 QAs, 2 business analysts, and 1 PM) designing and delivering a centralized document management and case-control platform integrated with Salesforce via Celigo, automating quality audits with AI.
+- I drive the code security and quality strategy, mitigating critical vulnerabilities under OWASP standards and reducing technical debt by 21% (SonarCloud) across the entire application suite.
 
 ### Software Engineer Tech Lead
 **Quetzal International Services SAS** | *Jan 2025 – Jan 2026*
-- Assumed technical leadership of the company's cross-sectional applications, designing microservices architectures with NestJS and NuxtJS on the Azure cloud. Automated the multilingual translation infrastructure and event processing, ensuring high system availability and optimizing query performance and data persistence.
+- I took technical ownership of the company’s cross-functional applications, designing microservices architectures with NestJS and NuxtJS on Azure.
+- I automated the multilingual translation infrastructure and event processing, improving system performance and availability by 25% by optimizing queries and data persistence.
 
 ### Senior Software Engineer Tech Lead
 **Quetzal International Services SAS** | *Mar 2024 – Dec 2024*
@@ -37,11 +38,14 @@
 
 ### Technical Lead
 **Zulu Tech** | *Sep 2022 – Dec 2023*
-- Directed the technical team in charge of the B2C Web3 Fintech platform, enabling users to save and transfer digital dollars (USDC) on the Polygon network through secure smart contract integrations. Additionally, orchestrated the B2B cross-border payment platform's architecture using Golang, Node.js, and Next.js, implementing infrastructure as code (IaC) with Terraform in the cloud.
+- I led a 7-person technical team (5 developers and 2 QAs) responsible for the B2C Fintech Web3 platform, enabling savings and transfers of digital dollars (USDC) on the Polygon network through secure smart-contract integrations.
+- I orchestrated the architecture of the B2B international payments platform using Golang, Node.js, and Next.js, implementing infrastructure as code (IaC) with Terraform.
 
 ### Senior Software Engineer
 **Mercado Libre** | *Oct 2020 – Sep 2022*
-- Collaborated in the design and integration of new operating countries into the KYC (Know Your Customer) validation engine built in Golang, automating corporate and personal data verification. Led optimization initiatives for the manual operations console based on user feedback, successfully reducing case processing times. Additionally, programmed a dynamic React and Go system to parameterize rejection messages, reducing support queries.
+- I contributed to the design and integration of new markets in the KYC (Know Your Customer) validation engine built in Golang, automating corporate and personal data verification.
+- I led the optimization of the manual operations console based on user feedback, reducing case-handling time by 10%.
+- I built a dynamic system in React and Go to parameterize rejection messages, reducing support inquiries.rt queries.
 
 ### Senior Consultant
 **Indra Company S.A.S** | *Sep 2019 – Sep 2020*

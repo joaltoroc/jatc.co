@@ -84,11 +84,11 @@ const t = useTranslations(lang);
     <!-- Basic SEO -->
     <meta
       name="description"
-      content="John Alexander Toro Cortés - Team Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Team Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps."
+      content={t('seo.description')}
     />
     <meta
       name="keywords"
-      content="John Alexander Toro Cortés, JATC, Team Lead, Senior Full Stack Engineer, Cybersecurity, Ciberseguridad, DevSecOps, Cloud Architecture, Arquitectura Cloud, TypeScript, React, Node.js, Golang, C#, .NET, Azure, AWS, GCP, Terraform, Clean Architecture, OWASP, Pentesting, Fintech, Web3"
+      content={t('seo.keywords')}
     />
     <meta name="author" content="John Alexander Toro Cortés" />
     <link rel="canonical" href={`https://jatc.co${Astro.url.pathname}`} />
@@ -106,7 +106,7 @@ const t = useTranslations(lang);
     <meta property="og:title" content={t('layout.title')} />
     <meta
       property="og:description"
-      content="John Alexander Toro Cortés - Team Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Team Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps."
+      content={t('seo.description')}
     />
     <meta property="og:image" content="https://jatc.co/jatc.png" />
     <meta property="og:image:secure_url" content="https://jatc.co/jatc.png" />
@@ -115,7 +115,7 @@ const t = useTranslations(lang);
     <meta property="og:image:height" content="400" />
     <meta
       property="og:image:alt"
-      content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer"
+      content="John Alexander Toro Cortés - Engineering Manager & Technical Lead"
     />
 
     <!-- Twitter / X -->
@@ -126,12 +126,12 @@ const t = useTranslations(lang);
     <meta name="twitter:title" content={t('layout.title')} />
     <meta
       name="twitter:description"
-      content="John Alexander Toro Cortés - Team Lead, Senior Full Stack Engineer & Cybersecurity Specialist. Expert in Cloud Architectures and DevSecOps. / Team Lead y Especialista en Ciberseguridad con amplia experiencia en Arquitecturas Cloud y DevSecOps."
+      content={t('seo.description')}
     />
     <meta name="twitter:image" content="https://jatc.co/jatc.png" />
     <meta
       name="twitter:image:alt"
-      content="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer"
+      content="John Alexander Toro Cortés - Engineering Manager & Technical Lead"
     />
 
     <!-- Preload LCP Image -->
