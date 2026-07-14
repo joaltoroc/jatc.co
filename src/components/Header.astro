@@ -28,10 +28,9 @@ const isEn = lang === 'en';
     <div class="actions">
       <ThemeToggle />
       <div class="lang-selector">
-        <a href="/" class={!isEn ? 'active-lang' : ''} aria-label={t('lang.es.label')}>ES</a
-        > | <a href="/en/" class={isEn ? 'active-lang' : ''} aria-label={t('lang.en.label')}
-          >EN</a
-        >
+        <a href="/" class={!isEn ? 'active-lang' : ''} aria-label={t('lang.es.label')}>ES</a>
+        <span class="lang-divider" aria-hidden="true">|</span>
+        <a href="/en/" class={isEn ? 'active-lang' : ''} aria-label={t('lang.en.label')}>EN</a>
       </div>
       <button
         class="mobile-menu-btn"
@@ -146,6 +145,9 @@ const isEn = lang === 'en';
   }
 
   .lang-selector {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--text-secondary);
@@ -154,17 +156,29 @@ const isEn = lang === 'en';
   .lang-selector a {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color var(--transition-fast);
+    transition: all var(--transition-fast);
+    padding: 0.5rem; /* Aumenta el touch target vertical y horizontal */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    border-radius: 0.25rem;
   }
 
   .lang-selector a:hover {
     color: var(--text-primary);
+    background: var(--surface-light);
   }
 
   .lang-selector a.active-lang {
     color: var(--text-primary);
     font-weight: 700;
-    font-size: 1rem;
+    background: var(--surface-light);
+  }
+
+  .lang-divider {
+    color: var(--border-light);
+    user-select: none;
   }
 
   .mobile-menu-btn {
@@ -172,6 +186,8 @@ const isEn = lang === 'en';
     color: var(--text-primary);
     position: relative;
     z-index: 102;
+    padding: 10px; /* Aumenta el área táctil física sin mover el botón */
+    margin: -10px; /* Compensa el padding */
   }
 
   .mobile-menu-btn.is-active .hamburger-icon {

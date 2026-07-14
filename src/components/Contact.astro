@@ -21,116 +21,184 @@ const t = useTranslations(lang);
         </p>
 
         <div class="contact-methods">
-          {/* eslint-disable-next-line astro/jsx-a11y/anchor-is-valid */}
-          <a
-            href="#"
-            class="method-item email-link"
-            data-email="am9hbHRvcm9jQGphdGMuY28="
-          >
-            <div class="icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                ></path><polyline points="22,6 12,13 2,6"></polyline></svg
-              >
-            </div>
-            <span
-              ><span
-                class="email-text"
-                data-original-text="{t('contact.email')}"
-                >{t('contact.email')}</span
-              >
-              <span class="print-only print-email"></span></span
+          <div class="method-card">
+            {/* eslint-disable-next-line astro/jsx-a11y/anchor-is-valid */}
+            <a
+              href="#"
+              class="method-item email-link"
+              data-email="am9hbHRvcm9jQGphdGMuY28="
             >
-          </a>
-
-          <a
-            href="https://linkedin.com/in/joaltoroc"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="method-item"
-          >
-            <div class="icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><path
-                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-                ></path><rect x="2" y="9" width="4" height="12"></rect><circle
-                  cx="4"
-                  cy="4"
-                  r="2"></circle></svg
-              >
-            </div>
-            <span
-              >LinkedIn <span class="print-only"
-                >https://linkedin.com/in/joaltoroc</span
-              >
-            </span>
-          </a>
-
-          <a
-            href="https://github.com/joaltoroc"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="method-item"
-          >
-            <div class="icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                ></path></svg
-              >
-            </div>
-            <span
-              >GitHub <span class="print-only"
-                >https://github.com/joaltoroc</span
-              >
-            </span>
-          </a>
-
-          <div class="method-item print-only">
-            <div class="icon">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><path
-                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-                ></path></svg
-              >
-            </div>
-            <span
-              >{t('contact.phone')}
-              <span class="print-only">+573017228642</span></span
+              <div class="icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+                >
+              </div>
+              <div class="method-details">
+                <span class="method-name">Email</span>
+                <span class="method-value email-text" data-original-text={t('contact.email')}>{t('contact.email')}</span>
+              </div>
+            </a>
+            <button
+              class="copy-value-btn"
+              data-copy-type="email"
+              aria-label={t('action.copy')}
+              title={t('action.copy')}
+              data-copied-text={t('action.copied')}
             >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="tooltip">{t('action.copy')}</span>
+            </button>
+          </div>
+
+          <div class="method-card">
+            <a
+              href="https://linkedin.com/in/joaltoroc"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="method-item"
+            >
+              <div class="icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path><rect x="2" y="9" width="4" height="12"></rect><circle
+                    cx="4"
+                    cy="4"
+                    r="2"></circle></svg
+                >
+              </div>
+              <div class="method-details">
+                <span class="method-name">LinkedIn</span>
+                <span class="method-value">linkedin.com/in/joaltoroc</span>
+              </div>
+            </a>
+            <button
+              class="copy-value-btn"
+              data-copy-type="linkedin"
+              aria-label={t('action.copy')}
+              title={t('action.copy')}
+              data-copied-text={t('action.copied')}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="tooltip">{t('action.copy')}</span>
+            </button>
+          </div>
+
+          <div class="method-card">
+            <a
+              href="https://github.com/joaltoroc"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="method-item"
+            >
+              <div class="icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  ></path></svg
+                >
+              </div>
+              <div class="method-details">
+                <span class="method-name">GitHub</span>
+                <span class="method-value">github.com/joaltoroc</span>
+              </div>
+            </a>
+            <button
+              class="copy-value-btn"
+              data-copy-type="github"
+              aria-label={t('action.copy')}
+              title={t('action.copy')}
+              data-copied-text={t('action.copied')}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span class="tooltip">{t('action.copy')}</span>
+            </button>
+          </div>
+
+          <div class="method-card print-only">
+            <div class="method-item">
+              <div class="icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path></svg
+                >
+              </div>
+              <div class="method-details">
+                <span class="method-name">{t('contact.phone')}</span>
+                <span class="method-value">+573017228642</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -142,8 +210,8 @@ const t = useTranslations(lang);
   .section-header {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .section-title {
@@ -163,40 +231,62 @@ const t = useTranslations(lang);
   }
 
   .contact-info {
-    padding: 3rem;
-    border-radius: 1.5rem;
+    padding: var(--space-12) var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     text-align: center;
   }
 
   .info-title {
     font-size: 2rem;
     color: var(--text-primary);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
   }
 
   .info-desc {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-12);
   }
 
   .contact-methods {
     display: flex;
     flex-direction: column;
-    align-items: left;
-    gap: 1.5rem;
+    align-items: center;
+    gap: var(--space-4);
+    width: 100%;
+  }
+
+  .method-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    background: var(--surface-light);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+    max-width: 480px;
+    transition: all var(--transition-fast);
+  }
+
+  .method-card:hover {
+    border-color: var(--accent-secondary);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  :global(.dark) .method-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
 
   .method-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    width: fit-content;
-    text-align: left;
-  }
-
-  .method-item:hover {
-    color: var(--text-primary);
+    gap: var(--space-4);
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1;
+    transition: all var(--transition-fast);
   }
 
   .method-item .icon {
@@ -206,14 +296,93 @@ const t = useTranslations(lang);
     width: 48px;
     height: 48px;
     background: var(--surface-light);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     color: var(--accent-primary);
     transition: all var(--transition-fast);
+    flex-shrink: 0;
   }
 
-  .method-item:hover .icon {
+  .method-card:hover .method-item .icon {
     background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #fff;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.3);
+  }
+
+  .method-details {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .method-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .method-value {
+    font-size: 1.05rem;
     color: var(--text-primary);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
+  .copy-value-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .copy-value-btn:hover {
+    color: var(--accent-primary);
+    background: var(--surface-light);
+  }
+
+  .copy-value-btn.copied {
+    color: #10b981;
+  }
+
+  .copy-value-btn .tooltip {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: var(--text-primary);
+    color: var(--bg-secondary);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .copy-value-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media print {
+    .copy-value-btn {
+      display: none !important;
+    }
   }
 
   .print-only {
@@ -234,47 +403,70 @@ const t = useTranslations(lang);
 </style>
 
 <script is:inline>
-  // Obfuscate email to prevent spam bots from scraping it
-  document.addEventListener('DOMContentLoaded', () => {
+  const initContact = () => {
+    // 1. Decode email on mount
     const emailLinks = document.querySelectorAll('.email-link');
-
     emailLinks.forEach((link) => {
-      let isDecoded = false;
-
-      // Decode the base64 email
-      const decodeEmail = () => {
-        if (isDecoded) return;
-
-        const encoded = link.getAttribute('data-email');
-        if (encoded) {
-          const decoded = atob(encoded);
-          link.setAttribute('href', `mailto:${decoded}`);
-
-          // Update the text content if you want to show the email on hover
-          const textSpan = link.querySelector('.email-text');
-          if (
-            textSpan &&
-            textSpan.textContent === textSpan.getAttribute('data-original-text')
-          ) {
-            textSpan.textContent = decoded;
-          }
-
-          // Securely inject the email for printing
-          const printSpan = link.querySelector('.print-email');
-          if (printSpan) {
-            printSpan.textContent = decoded;
-          }
-
-          isDecoded = true;
+      const encoded = link.getAttribute('data-email');
+      if (encoded) {
+        const decoded = atob(encoded);
+        link.setAttribute('href', `mailto:${decoded}`);
+        const textSpan = link.querySelector('.email-text');
+        if (textSpan) {
+          textSpan.textContent = decoded;
         }
-      };
-
-      // Decode on interaction
-      link.addEventListener('mouseenter', decodeEmail);
-      link.addEventListener('click', decodeEmail);
-
-      // Decode right before the user attempts to print
-      window.addEventListener('beforeprint', decodeEmail);
+      }
     });
-  });
+
+    // 2. Set up copy buttons
+    const copyBtns = document.querySelectorAll('.copy-value-btn');
+    copyBtns.forEach((btn) => {
+      // Remove any existing listener to prevent duplicates on client routing changes
+      const newBtn = btn.cloneNode(true);
+      if (btn.parentNode) {
+        btn.parentNode.replaceChild(newBtn, btn);
+      }
+
+      newBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        let valueToCopy = '';
+        const copyType = newBtn.getAttribute('data-copy-type');
+
+        if (copyType === 'email') {
+          const emailLink = document.querySelector('.email-link');
+          const encoded = emailLink ? emailLink.getAttribute('data-email') : '';
+          if (encoded) {
+            valueToCopy = atob(encoded);
+          }
+        } else if (copyType === 'linkedin') {
+          valueToCopy = 'https://linkedin.com/in/joaltoroc';
+        } else if (copyType === 'github') {
+          valueToCopy = 'https://github.com/joaltoroc';
+        }
+
+        if (valueToCopy) {
+          navigator.clipboard.writeText(valueToCopy).then(() => {
+            newBtn.classList.add('copied');
+            const tooltip = newBtn.querySelector('.tooltip');
+            const originalText = tooltip ? tooltip.textContent : '';
+            if (tooltip) {
+              tooltip.textContent = newBtn.getAttribute('data-copied-text') || 'Copied!';
+            }
+
+            setTimeout(() => {
+              newBtn.classList.remove('copied');
+              if (tooltip) {
+                tooltip.textContent = originalText;
+              }
+            }, 2000);
+          });
+        }
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initContact);
+  document.addEventListener('astro:page-load', initContact);
 </script>

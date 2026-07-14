@@ -98,8 +98,8 @@ const educationList = isEn ? educationListEn : educationListEs;
   .section-header {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .section-title {
@@ -116,20 +116,27 @@ const educationList = isEn ? educationListEn : educationListEs;
   .education-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    gap: var(--space-8);
   }
 
   .edu-card {
-    padding: 2.5rem;
-    border-radius: 1.5rem;
+    padding: var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     display: flex;
-    gap: 1.5rem;
-    transition: transform var(--transition-normal);
+    gap: var(--space-6);
+    transition: all var(--transition-normal);
   }
 
   .edu-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(59, 130, 246, 0.3);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.12);
+  }
+
+  :global(.dark) .edu-card:hover {
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
   }
 
   .icon-wrapper {
@@ -142,6 +149,7 @@ const educationList = isEn ? educationListEn : educationListEs;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgba(59, 130, 246, 0.2);
   }
 
   .edu-content {
@@ -153,12 +161,12 @@ const educationList = isEn ? educationListEn : educationListEs;
   .degree {
     font-size: 1.25rem;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
   }
 
   .institution {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-2);
   }
 
   .period {

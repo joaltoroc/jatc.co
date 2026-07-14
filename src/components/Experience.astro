@@ -379,6 +379,8 @@ const techIcons: Record<string, string> = {
                           aria-hidden="true"
                           width="14"
                           height="14"
+                          loading="lazy"
+                          decoding="async"
                           class="tech-icon"
                         />
                       )}
@@ -399,8 +401,8 @@ const techIcons: Record<string, string> = {
   .section-header {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .section-title {
@@ -433,7 +435,7 @@ const techIcons: Record<string, string> = {
   .timeline-item {
     position: relative;
     padding-left: 60px;
-    margin-bottom: 2.5rem;
+    margin-bottom: var(--space-8);
   }
 
   .timeline-item:last-child {
@@ -442,7 +444,7 @@ const techIcons: Record<string, string> = {
 
   .timeline-dot {
     position: absolute;
-    top: 0;
+    top: 6px;
     left: 14px;
     width: 14px;
     height: 14px;
@@ -451,17 +453,31 @@ const techIcons: Record<string, string> = {
     border: 2px solid var(--accent-primary);
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
     z-index: 1;
+    transition: all var(--transition-fast);
+  }
+
+  .timeline-item:hover .timeline-dot {
+    background: var(--accent-primary);
+    box-shadow: 0 0 15px var(--accent-primary);
+    transform: scale(1.2);
   }
 
   .timeline-content {
-    padding: 2rem;
-    border-radius: 1rem;
-    transition: transform var(--transition-normal);
+    padding: var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: all var(--transition-normal);
   }
 
   .timeline-content:hover {
-    transform: translateX(5px);
-    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateX(6px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.12);
+  }
+
+  :global(.dark) .timeline-content:hover {
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
   }
 
   .timeline-header {
@@ -469,8 +485,8 @@ const techIcons: Record<string, string> = {
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
+    gap: var(--space-4);
+    margin-bottom: var(--space-2);
   }
 
   .role {
@@ -488,40 +504,41 @@ const techIcons: Record<string, string> = {
 
   .company {
     font-size: 1.1rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
   }
 
   .description {
     font-size: 0.95rem;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-4);
   }
 
   .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+    padding-top: var(--space-6);
     border-top: 1px dashed var(--border-light);
   }
 
   .tech-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-2);
     font-size: 0.8rem;
     font-weight: 500;
     padding: 0.4rem 0.8rem;
     border-radius: 9999px;
-    background: rgba(59, 130, 246, 0.08);
-    color: var(--text-primary);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: var(--tag-bg);
+    color: var(--tag-color);
+    border: 1px solid var(--tag-border);
     transition: all var(--transition-fast);
   }
 
   .tech-tag:hover {
-    background: rgba(59, 130, 246, 0.15);
-    border-color: rgba(59, 130, 246, 0.6);
+    background: var(--tag-hover-bg);
+    border-color: var(--tag-hover-border);
+    color: var(--text-primary);
     transform: translateY(-2px);
   }
 
@@ -546,7 +563,7 @@ const techIcons: Record<string, string> = {
     }
 
     .timeline-content {
-      padding: 1.5rem;
+      padding: var(--space-6);
     }
   }
 </style>

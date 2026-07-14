@@ -66,11 +66,16 @@ export const ui = {
 
     // Actions
     'action.copyLink': 'Copiar link',
+    'action.copy': 'Copiar al portapapeles',
+    'action.copied': '¡Copiado!',
+    'action.print': 'Imprimir portafolio',
+    'action.skipToContent': 'Saltar al contenido principal',
     'themeToggle.label': 'Cambiar tema',
     'lang.es.label': 'Cambiar idioma a Español',
     'lang.en.label': 'Cambiar idioma a Inglés (Switch to English)',
     'courses.credentialLabel':
       'Ver credencial de {title} (abre en una nueva pestaña)',
+    'courses.modalTitle': 'Detalles del Diploma',
   },
   en: {
     // Header
@@ -127,10 +132,15 @@ export const ui = {
 
     // Actions
     'action.copyLink': 'Copy link to this section',
+    'action.copy': 'Copy to clipboard',
+    'action.copied': 'Copied!',
+    'action.print': 'Print portfolio',
+    'action.skipToContent': 'Skip to main content',
     'themeToggle.label': 'Toggle theme',
     'lang.es.label': 'Switch language to Spanish',
     'lang.en.label': 'Switch language to English',
     'courses.credentialLabel':
       'View credential for {title} (opens in a new tab)',
+    'courses.modalTitle': 'Diploma Details',
   },
 } as const;

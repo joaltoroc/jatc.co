@@ -17,7 +17,7 @@ El portafolio personal (disponible en [jatc.co](https://jatc.co)) tiene como pro
 ## 2. STACK
 
 El stack tecnológico seleccionado se enfoca en minimizar la sobrecarga (overhead) de JavaScript y maximizar el rendimiento de la compilación estática:
-- **Framework Principal:** [Astro (v7.0.6)](https://astro.build/) - Elegido por su arquitectura de "islas", generación estática por defecto y cero JavaScript en el cliente.
+- **Framework Principal:** [Astro (v7.0.9)](https://astro.build/) - Elegido por su arquitectura de "islas", generación estática por defecto y cero JavaScript en el cliente.
 - **Procesador de Estilos:** **LightningCSS** (integrado en Vite/Astro) - Utilizado para la minificación avanzada, autocompletado de prefijos de navegadores y transpilación rápida de CSS moderno.
 - **Tipografías:** `Inter Variable` (auto-albergada mediante `@fontsource-variable/inter`) para evitar dependencias de CDNs externos, mejorar la privacidad de los usuarios y optimizar los tiempos de respuesta DNS.
 - **Gestor de Paquetes:** **pnpm (v11.10.0)** - Adoptado por su velocidad, eficiencia de almacenamiento a través de enlaces duros, y rigurosidad con las dependencias (evitando dependencias fantasma).

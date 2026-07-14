@@ -120,8 +120,8 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
   .section-header {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .section-title {
@@ -138,38 +138,45 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: var(--space-8);
   }
 
   .skill-category {
-    padding: 2rem;
-    border-radius: 1.5rem;
-    transition: transform var(--transition-normal);
+    padding: var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: all var(--transition-normal);
   }
 
   .skill-category:hover {
     transform: translateY(-5px);
-    border-color: rgba(139, 92, 246, 0.3);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.12);
+  }
+
+  :global(.dark) .skill-category:hover {
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
   }
 
   .category-title {
     font-size: 1.25rem;
     color: var(--text-primary);
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
     border-bottom: 1px solid var(--border-light);
   }
 
   .skills-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: var(--space-3);
   }
 
   .skill-tag {
-    background: var(--surface-light);
-    border: 1px solid var(--border-light);
-    color: var(--text-secondary);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--tag-color);
     padding: 0.5rem 1rem;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -178,8 +185,8 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
   }
 
   .skill-tag:hover {
-    background: rgba(59, 130, 246, 0.1);
-    border-color: var(--accent-primary);
+    background: var(--tag-hover-bg);
+    border-color: var(--tag-hover-border);
     color: var(--text-primary);
     transform: scale(1.05);
   }

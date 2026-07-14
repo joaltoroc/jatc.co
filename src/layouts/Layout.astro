@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
 import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
 import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import spaceGroteskWoff2 from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ScrollToTop from '../components/ScrollToTop.astro';
 
@@ -151,6 +153,13 @@ const t = useTranslations(lang);
       type="font/woff2"
       crossorigin
     />
+    <link
+      rel="preload"
+      href={spaceGroteskWoff2}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <!-- Critical CSS -->
     <style is:inline>
@@ -176,6 +185,7 @@ const t = useTranslations(lang);
     </style>
   </head>
   <body>
+    <a href="#about" class="skip-link">{t('action.skipToContent')}</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -219,6 +229,14 @@ const t = useTranslations(lang);
               const id = entry.target.getAttribute('id');
               if (id) {
                 history.replaceState(null, null, `#${id}`);
+                // Highlight active link in header
+                document.querySelectorAll('.desktop-nav a').forEach((link) => {
+                  if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('active-link');
+                  } else {
+                    link.classList.remove('active-link');
+                  }
+                });
               }
             }
           });

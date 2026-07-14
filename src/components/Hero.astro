@@ -40,6 +40,25 @@ const t = useTranslations(lang);
           style="width: 100%; height: 100%; object-fit: cover;"
         />
       </div>
+
+      <!-- CLI Terminal HUD overlay -->
+      <div class="cli-container hero-cli glass">
+        <div class="cli-header">
+          <span class="cli-dot red"></span>
+          <span class="cli-dot yellow"></span>
+          <span class="cli-dot green"></span>
+          <span class="cli-title">john@jatc: ~</span>
+        </div>
+        <div class="cli-body">
+          <div class="cli-line"><span class="cli-prompt">$</span> whoami</div>
+          <div class="cli-output">John Toro | Technical Lead</div>
+          <div class="cli-line"><span class="cli-prompt">$</span> security --check</div>
+          <div class="cli-output success">✓ OWASP & DevSecOps: Active</div>
+          <div class="cli-output success">✓ Cloud Infra: Active</div>
+          <div class="cli-output success">✓ Code Quality: Active</div>
+          <div class="cli-line"><span class="cli-prompt">$</span> <span class="cli-cursor">_</span></div>
+        </div>
+      </div>
     </div>
 
       <!-- Print-only contact info for resume generation -->
@@ -145,6 +164,20 @@ const t = useTranslations(lang);
     border: 1px solid var(--border-light);
   }
 
+  .hero-cli {
+    position: absolute;
+    bottom: -30px;
+    right: -40px;
+    z-index: 10;
+    max-width: 300px !important;
+    font-size: 0.8rem;
+  }
+
+  .hero-cli .cli-body {
+    min-height: 140px;
+    padding: 1rem;
+  }
+
   @media (max-width: 992px) {
     .hero-content {
       grid-template-columns: 1fr;
@@ -167,6 +200,20 @@ const t = useTranslations(lang);
     .image-wrapper {
       width: 280px;
       height: 280px;
+    }
+
+    .hero-cli {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin: 1.5rem auto 0 auto;
+      max-width: 100% !important;
+    }
+  }
+
+  @media print {
+    .hero-cli {
+      display: none !important;
     }
   }
 

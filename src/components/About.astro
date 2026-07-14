@@ -18,8 +18,8 @@ const t = useTranslations(lang);
       <div class="about-card glass">
         <h3 class="card-title">{t('about.profileTitle')}</h3>
         <p set:html={t('about.p1')} />
-        <p style="margin-top: 1rem;" set:html={t('about.p2')} />
-        <p style="margin-top: 1rem;" set:html={t('about.p3')} />
+        <p style="margin-top: var(--space-4);" set:html={t('about.p2')} />
+        <p style="margin-top: var(--space-4);" set:html={t('about.p3')} />
       </div>
 
       <div class="stats-grid">
@@ -40,8 +40,8 @@ const t = useTranslations(lang);
   .section-header {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .section-title {
@@ -58,17 +58,19 @@ const t = useTranslations(lang);
   .about-content {
     display: grid;
     grid-template-columns: 3fr 2fr;
-    gap: 2rem;
+    gap: var(--space-8);
   }
 
   .about-card {
-    padding: 2.5rem;
-    border-radius: 1.5rem;
+    padding: var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
   }
 
   .card-title {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-6);
     color: var(--text-primary);
   }
 
@@ -80,22 +82,30 @@ const t = useTranslations(lang);
   .stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: var(--space-6);
   }
 
   .stat-card {
-    padding: 2rem;
-    border-radius: 1.5rem;
+    padding: var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: transform var(--transition-fast);
+    transition: all var(--transition-fast);
   }
 
   .stat-card:hover {
     transform: translateY(-5px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.12);
+  }
+
+  :global(.dark) .stat-card:hover {
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.2);
   }
 
   .stat-number {

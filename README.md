@@ -8,7 +8,7 @@ Este es el repositorio del portafolio personal de John Alexander Toro Cortés, a
 
 El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando el rendimiento bruto y la mantenibilidad:
 
-- **Framework principal:** [Astro (v7.0.6)](https://astro.build/)
+- **Framework principal:** [Astro (v7.0.9)](https://astro.build/)
 - **Lenguaje:** TypeScript / HTML5 Semántico
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
 - **Entorno de ejecución:** Node.js `>=24.0.0`
@@ -35,10 +35,11 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 ### 🚀 Rendimiento de Vanguardia (Performance SEO)
 
 - **Compresión nativa:** Generación de recursos pre-comprimidos en formatos **Gzip (.gz)** y **Brotli (.br)** mediante `vite-plugin-compression` para una carga instantánea.
-- **Carga de fuentes optimizada (Self-Hosted):** La tipografía variable `Inter` se aloja de manera local para eliminar dependencias externas y se pre-carga de forma prioritaria.
-- **Ajuste de métricas de fuentes fallbacks:** Implementación de un stack de fuentes fallbacks utilizando `@font-face` con descriptores `size-adjust`, `ascent-override` y `descent-override` para emparejar la tipografía local (`Arial`) con `Inter Variable`, eliminando saltos visuales y previniendo cambios en el CLS.
+- **Carga de fuentes optimizada (Self-Hosted):** Las tipografías variables `Inter` (cuerpo) y `Space Grotesk` (títulos) se alojan de manera local para eliminar dependencias externas y se pre-cargan de forma prioritaria.
+- **Ajuste de métricas de fuentes fallbacks:** Implementación de stacks de fuentes fallbacks utilizando `@font-face` con descriptores `size-adjust` para emparejar tipografías locales (`Arial`) con las fuentes del proyecto, eliminando saltos visuales y previniendo cambios en el CLS.
 - **Optimización LCP (Largest Contentful Paint):** La imagen principal (`/jatc.webp`) se pre-carga de forma prioritaria mediante tags `<link rel="preload" fetchpriority="high">`.
 - **Formato de URL limpia:** Configuración de compilación `directory` en Astro para URLs sin la extensión `.html`.
+- **Carga de imágenes optimizada:** Las imágenes del portafolio se estructuran según su posición en el viewport. La imagen del avatar LCP y las imágenes percibidas por encima del fold se cargan ansiosamente (`loading="eager"`), mientras que los iconos tecnológicos inferiores se cargan diferidos (`loading="lazy"`), garantizando un renderizado rápido y 0 advertencias de auditorías de rendimiento.
 - **Carga diferida de Analytics:** Google Tag Manager se carga únicamente tras la primera interacción real del usuario (click, scroll, keydown, touchstart) o después de 10 segundos de inactividad, evitando competir por el hilo principal y mejorando la métrica LCP en auditorías móviles.
 
 ### 🛡️ Seguridad Avanzada (DevSecOps)
@@ -49,9 +50,13 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 
 ### 📱 Experiencia de Usuario & Accesibilidad (UX/UI)
 
-- Interfaz 100% responsiva bajo metodología "mobile-first".
+- Interfaz 100% responsiva bajo metodología "mobile-first" y estandarizada mediante un sistema semántico de tokens CSS (escala de espaciados de 8px y variables de tarjetas/etiquetas).
 - **Enlaces rápidos de sección:** Generación automática de botones interactivos para copiar el enlace de anclaje directo de cada sección con retroalimentación visual al usuario.
-- Navegación mejorada con botón flotante "Scroll to Top" e indicadores de sección activa en la barra de direcciones en tiempo real (mediante `IntersectionObserver`).
+- **Navegación y acciones rápidas:** Navegación mejorada con botones flotantes para "Scroll to Top" (volver arriba) e impresión de la página (optimizados mediante posicionamiento absoluto y transiciones fluidas por variables CSS nativas), de manera que el botón de imprimir se desliza suavemente al aparecer el scroll.
+- **Accesibilidad (A11y):** Enlace "Skip to main content" (saltar al contenido principal) para navegación fácil por teclado (WCAG 2.4.1), áreas táctiles mínimas de 44px, e inyección dinámica del atributo `aria-label` sincronizado en encabezados de modales interactivos para cumplir con WCAG y pasar al 100% las pruebas de accesibilidad.
+- **Elemento de Firma:** Widget visual HUD simulador de terminal de comandos (CLI) en la sección Hero que detalla métricas de Ciberseguridad (OWASP) y DevSecOps.
+- **Visualizador interactivo de certificados:** Modal de visualización de diplomas en [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro) que incluye soporte de paginación lateral para navegar secuencialmente entre certificados, panel de metadatos integrados (título, emisor y fecha) y control completo por teclado (flechas Izquierda/Derecha para paginar, Escape para cerrar).
+- **Copia de datos de contacto:** Visualización directa y opción rápida de copiado al portapapeles para los datos clave de contacto (Email, LinkedIn y GitHub) en la sección de Contacto con retroalimentación visual.
 
 ---
 
@@ -76,7 +81,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 │   │   ├── Footer.astro       # Pie de página y firma de créditos
 │   │   ├── Header.astro       # Menú de navegación, links y selector de idioma
 │   │   ├── Hero.astro         # Presentación inicial con LCP optimizado
-│   │   ├── ScrollToTop.astro  # Botón flotante para regresar arriba
+│   │   ├── ScrollToTop.astro  # Botones flotantes de acciones rápidas (volver arriba e imprimir)
 │   │   ├── Skills.astro       # Habilidades técnicas organizadas por categorías
 │   │   └── ThemeToggle.astro  # Botón selector del tema Light/Dark
 │   ├── i18n/                  # Lógica de traducción, diccionarios (ui.ts, utils.ts)

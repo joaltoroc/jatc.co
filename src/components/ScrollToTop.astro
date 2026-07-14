@@ -6,76 +6,113 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<button id="scroll-to-top" class="scroll-to-top" aria-label={t('scroll.top')}>
-  <svg
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+<div
+  class="floating-actions"
+  style="position: fixed; bottom: 2rem; right: 2rem; width: 45px; height: 45px; z-index: 99; --print-translate: 0px; --scroll-opacity: 0; --scroll-scale: 0.5; --scroll-pointer: none;"
+>
+  <button
+    id="print-page"
+    class="floating-btn print-btn"
+    aria-label={t('action.print')}
+    title={t('action.print')}
+    style="position: absolute; bottom: 0; right: 0; width: 45px; height: 45px; border-radius: 50%; background: var(--accent-primary); color: #fff; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, box-shadow 0.3s; transform: translateY(var(--print-translate));"
   >
-    <path d="M18 15l-6-6-6 6"></path>
-  </svg>
-</button>
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polyline points="6 9 6 2 18 2 18 9"></polyline>
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+      <rect x="6" y="14" width="12" height="8"></rect>
+    </svg>
+  </button>
+  
+  <button
+    id="scroll-to-top"
+    class="floating-btn scroll-btn"
+    aria-label={t('scroll.top')}
+    title={t('scroll.top')}
+    style="position: absolute; bottom: 0; right: 0; width: 45px; height: 45px; border-radius: 50%; background: var(--accent-primary); color: #fff; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s, box-shadow 0.3s; opacity: var(--scroll-opacity); transform: scale(var(--scroll-scale)); pointer-events: var(--scroll-pointer);"
+  >
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M18 15l-6-6-6 6"></path>
+    </svg>
+  </button>
+</div>
 
 <style>
-  .scroll-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: var(--accent-primary);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 99;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
+  /* Common hover effects */
+  .floating-btn:hover {
+    background-color: var(--accent-secondary) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
   }
 
-  .scroll-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  /* Hover translation calculated dynamically based on scroll state variable */
+  .print-btn:hover {
+    transform: translateY(calc(var(--print-translate) - 3px)) !important;
   }
 
-  .scroll-to-top:hover {
-    background: var(--accent-secondary);
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  .scroll-btn:hover {
+    transform: scale(1) translateY(-3px) !important;
   }
 
   @media (max-width: 768px) {
-    .scroll-to-top {
-      bottom: 1.5rem;
-      right: 1.5rem;
+    .floating-actions {
+      bottom: 1.5rem !important;
+      right: 1.5rem !important;
+    }
+  }
+
+  @media print {
+    .floating-actions {
+      display: none !important;
     }
   }
 </style>
 
 <script is:inline>
-  function initScrollToTop() {
+  function initFloatingActions() {
+    const container = document.querySelector('.floating-actions');
     const scrollBtn = document.getElementById('scroll-to-top');
+    const printBtn = document.getElementById('print-page');
 
-    if (scrollBtn) {
-      window.addEventListener('scroll', () => {
+    if (container && scrollBtn) {
+      // Store scroll handler globally to remove it on page navigation / re-init
+      if (window.handleFloatingScroll) {
+        window.removeEventListener('scroll', window.handleFloatingScroll);
+      }
+
+      window.handleFloatingScroll = function() {
         if (window.scrollY > 300) {
-          scrollBtn.classList.add('visible');
+          container.style.setProperty('--print-translate', '-53px');
+          container.style.setProperty('--scroll-opacity', '1');
+          container.style.setProperty('--scroll-scale', '1');
+          container.style.setProperty('--scroll-pointer', 'auto');
         } else {
-          scrollBtn.classList.remove('visible');
+          container.style.setProperty('--print-translate', '0px');
+          container.style.setProperty('--scroll-opacity', '0');
+          container.style.setProperty('--scroll-scale', '0.5');
+          container.style.setProperty('--scroll-pointer', 'none');
         }
-      });
+      };
+
+      window.addEventListener('scroll', window.handleFloatingScroll);
+      window.handleFloatingScroll(); // Trigger once on load
 
       scrollBtn.addEventListener('click', () => {
         window.scrollTo({
@@ -84,11 +121,17 @@ const t = useTranslations(lang);
         });
       });
     }
+
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        window.print();
+      });
+    }
   }
 
   // Initialize on load
-  initScrollToTop();
+  initFloatingActions();
 
-  // Re-initialize after view transitions (if any)
-  document.addEventListener('astro:after-swap', initScrollToTop);
+  // Re-initialize after view transitions
+  document.addEventListener('astro:page-load', initFloatingActions);
 </script>

@@ -551,12 +551,17 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
 
     <div class="courses-list">
       {
-        coursesList.map((course) => (
+        coursesList.map((course, index) => (
           <a
             href={course.diploma}
             target="_blank"
             rel="noopener noreferrer"
             class="course-item glass diploma-link"
+            data-index={index}
+            data-title={course.title}
+            data-source={course.source}
+            data-date={course.date}
+            data-diploma={course.diploma}
             aria-label={t('courses.credentialLabel').replace('{title}', `${course.title} - ${course.source}`)}
           >
             <div class="course-icon">
@@ -587,17 +592,39 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
 
     <!-- Modal para el Diploma -->
     <div id="diploma-modal" class="modal-overlay">
-      <div class="modal-content">
-        <button id="close-modal" class="close-btn" aria-label="Cerrar"
-          >&times;</button
-        >
-        <img
-          id="modal-image"
-          src=""
-          alt="Diploma de Certificación"
-          width="1200"
-          height="850"
-        />
+      <div class="modal-content-wrapper">
+        <button id="close-modal" class="close-btn" aria-label="Cerrar">&times;</button>
+        
+        <div class="modal-inner-content">
+          <div class="modal-info-panel">
+            <h3 id="modal-title" class="modal-title" data-placeholder={t('courses.modalTitle')} aria-label={t('courses.modalTitle')}>{t('courses.modalTitle')}</h3>
+            <p id="modal-meta" class="modal-meta"></p>
+          </div>
+          <div class="modal-image-panel">
+            <!-- Navigation Buttons -->
+            <button id="prev-modal" class="nav-btn prev" aria-label="Anterior">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+
+            <img
+              id="modal-image"
+              src=""
+              alt="Diploma de Certificación"
+              width="1200"
+              height="850"
+              loading="eager"
+              decoding="async"
+            />
+
+            <button id="next-modal" class="nav-btn next" aria-label="Siguiente">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -607,8 +634,8 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
   .section-header {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 4rem;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .section-title {
@@ -625,36 +652,44 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
   .courses-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    gap: var(--space-4);
   }
 
   .course-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1.5rem;
-    border-radius: 1rem;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-6);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
     text-decoration: none;
     color: inherit;
-    transition:
-      transform var(--transition-fast),
-      border-color var(--transition-fast);
+    transition: all var(--transition-fast);
   }
 
   .course-item:hover {
-    transform: translateX(5px);
+    transform: translateX(6px);
     border-color: var(--accent-secondary);
+    box-shadow: 0 8px 20px -5px rgba(124, 58, 237, 0.12);
+  }
+
+  :global(.dark) .course-item:hover {
+    box-shadow: 0 8px 20px -5px rgba(139, 92, 246, 0.2);
   }
 
   .course-icon {
     flex-shrink: 0;
     color: var(--accent-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .course-title {
     font-size: 1rem;
     color: var(--text-primary);
-    margin-bottom: 0.25rem;
+    margin-bottom: var(--space-1);
     font-weight: 600;
   }
 
@@ -670,8 +705,8 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(5px);
+    background-color: rgba(248, 250, 252, 0.95);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -679,8 +714,12 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     opacity: 0;
     visibility: hidden;
     transition:
-      opacity 0.3s ease,
-      visibility 0.3s ease;
+      opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  :global(.dark) .modal-overlay {
+    background-color: rgba(2, 6, 23, 0.95);
   }
 
   .modal-overlay.active {
@@ -688,21 +727,62 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     visibility: visible;
   }
 
-  .modal-content {
+  .modal-content-wrapper {
     position: relative;
     max-width: 90%;
-    max-height: 90vh;
+    max-height: 95vh;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .modal-inner-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .modal-info-panel {
+    text-align: center;
+  }
+
+  .modal-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: var(--space-1);
+    color: var(--text-primary);
+  }
+
+  .modal-meta {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .modal-image-panel {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 
-  .modal-content img {
+  .modal-image-panel img {
     max-width: 100%;
-    max-height: 90vh;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-height: 70vh;
+    border-radius: var(--card-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--card-border);
     object-fit: contain;
+  }
+
+  :global(.dark) .modal-image-panel img {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   }
 
   .close-btn {
@@ -711,15 +791,77 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     right: 0;
     background: none;
     border: none;
-    color: white;
-    font-size: 2.5rem;
+    color: var(--text-secondary);
+    font-size: 2.25rem;
     cursor: pointer;
     line-height: 1;
-    transition: color 0.2s ease;
+    transition: all var(--transition-fast);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .close-btn:hover {
-    color: var(--accent-secondary);
+    color: var(--text-primary);
+    transform: scale(1.1);
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--text-secondary);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 10000;
+  }
+
+  .nav-btn:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #ffffff;
+  }
+
+  .nav-btn.prev {
+    left: -70px;
+  }
+
+  .nav-btn.next {
+    right: -70px;
+  }
+
+  @media (max-width: 1100px) {
+    .nav-btn.prev {
+      left: var(--space-2);
+    }
+    .nav-btn.next {
+      right: var(--space-2);
+    }
+    .modal-content-wrapper {
+      width: 95%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .modal-title {
+      font-size: 1.1rem;
+    }
+    .modal-meta {
+      font-size: 0.8rem;
+    }
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+    }
   }
 </style>
 
@@ -727,17 +869,46 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
   const initModal = () => {
     const modal = document.getElementById('diploma-modal');
     const modalImg = document.getElementById('modal-image');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMeta = document.getElementById('modal-meta');
     const closeBtn = document.getElementById('close-modal');
+    const prevBtn = document.getElementById('prev-modal');
+    const nextBtn = document.getElementById('next-modal');
     const diplomaLinks = document.querySelectorAll('.diploma-link');
 
     if (!modal || !modalImg) return;
 
+    // Dynamically retrieve the items list from DOM elements data-attributes
+    const items = Array.from(diplomaLinks).map((link) => ({
+      index: parseInt(link.getAttribute('data-index') || '0', 10),
+      title: link.getAttribute('data-title') || '',
+      source: link.getAttribute('data-source') || '',
+      date: link.getAttribute('data-date') || '',
+      diploma: link.getAttribute('data-diploma') || '',
+    }));
+
+    let currentIndex = 0;
+
+    const updateModal = () => {
+      const item = items[currentIndex];
+      if (!item) return;
+
+      modalImg.setAttribute('src', item.diploma);
+      modalImg.setAttribute('alt', `Diploma: ${item.title}`);
+      if (modalTitle) {
+        modalTitle.textContent = item.title;
+        modalTitle.setAttribute('aria-label', item.title);
+      }
+      if (modalMeta) modalMeta.textContent = `${item.source} - ${item.date}`;
+    };
+
     diplomaLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const diplomaUrl = link.getAttribute('href');
-        if (diplomaUrl) {
-          modalImg.setAttribute('src', diplomaUrl);
+        const index = link.getAttribute('data-index');
+        if (index !== null) {
+          currentIndex = parseInt(index, 10);
+          updateModal();
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
         }
@@ -749,10 +920,32 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       document.body.style.overflow = '';
       setTimeout(() => {
         modalImg.setAttribute('src', '');
+        if (modalTitle) {
+          const placeholder = modalTitle.getAttribute('data-placeholder') || '';
+          modalTitle.textContent = placeholder;
+          modalTitle.setAttribute('aria-label', placeholder);
+        }
+        if (modalMeta) modalMeta.textContent = '';
       }, 300);
     };
 
+    const showPrev = (e) => {
+      if (e) e.stopPropagation();
+      if (items.length === 0) return;
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      updateModal();
+    };
+
+    const showNext = (e) => {
+      if (e) e.stopPropagation();
+      if (items.length === 0) return;
+      currentIndex = (currentIndex + 1) % items.length;
+      updateModal();
+    };
+
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (prevBtn) prevBtn.addEventListener('click', showPrev);
+    if (nextBtn) nextBtn.addEventListener('click', showNext);
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -760,11 +953,21 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       }
     });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('active')) {
+    const handleKeydown = (e) => {
+      if (!modal.classList.contains('active')) return;
+
+      if (e.key === 'Escape') {
         closeModal();
+      } else if (e.key === 'ArrowLeft') {
+        showPrev();
+      } else if (e.key === 'ArrowRight') {
+        showNext();
       }
-    });
+    };
+
+    // Remove existing event listener if any to avoid duplicates on client routing changes
+    document.removeEventListener('keydown', handleKeydown);
+    document.addEventListener('keydown', handleKeydown);
   };
 
   document.addEventListener('DOMContentLoaded', initModal);

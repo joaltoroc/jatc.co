@@ -26,15 +26,38 @@
     transparent 50%
   );
 
+  /* Spacing Scale (8px Grid) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-24: 6rem;    /* 96px */
+
+  /* Component Tokens - Light */
+  --card-bg: var(--glass-bg);
+  --card-border: var(--glass-border);
+  --card-radius: 1.5rem;
+  --tag-bg: rgba(37, 99, 235, 0.05);
+  --tag-border: rgba(37, 99, 235, 0.15);
+  --tag-color: var(--text-primary);
+  --tag-hover-bg: rgba(37, 99, 235, 0.1);
+  --tag-hover-border: var(--accent-primary);
+  --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.35);
+
   /* Typography */
   --font-base: 'Inter Variable', 'Inter Fallback', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk Fallback', system-ui, sans-serif;
 
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
 }
 
-/* Fallback font matching Inter metrics to prevent layout shifts */
+/* Fallback fonts matching metrics to prevent layout shifts */
 @font-face {
   font-family: 'Inter Fallback';
   src: local('Arial');
@@ -44,6 +67,11 @@
   line-gap-override: 0%;
 }
 
+@font-face {
+  font-family: 'Space Grotesk Fallback';
+  src: local('Arial');
+  size-adjust: 100%;
+}
 
 .dark {
   /* Colors - Dark Theme */
@@ -67,6 +95,13 @@
     rgba(59, 130, 246, 0.12),
     transparent 45%
   );
+
+  /* Component Tokens - Dark */
+  --tag-bg: rgba(59, 130, 246, 0.08);
+  --tag-border: rgba(59, 130, 246, 0.25);
+  --tag-hover-bg: rgba(59, 130, 246, 0.15);
+  --tag-hover-border: var(--accent-primary);
+  --focus-ring: 0 0 0 3px rgba(59, 130, 246, 0.4);
 }
 
 html {
@@ -93,6 +128,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -412,4 +448,136 @@ section {
 
 .copy-section-link.copied {
   color: #10b981; /* green */
+}
+
+/* Accessibility - Skip link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  z-index: 9999;
+  font-weight: 600;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Active Navigation styles */
+.desktop-nav a.active-link {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+  position: relative;
+}
+
+.desktop-nav a.active-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gradient-text);
+  border-radius: 2px;
+}
+
+/* CLI Terminal HUD Simulator */
+.cli-container {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  text-align: left;
+}
+
+.dark .cli-container {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cli-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.05);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.dark .cli-header {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cli-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cli-dot.red { background: #ef4444; }
+.cli-dot.yellow { background: #f59e0b; }
+.cli-dot.green { background: #10b981; }
+
+.cli-title {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-left: 0.5rem;
+  font-weight: 500;
+}
+
+.cli-body {
+  padding: 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  min-height: 200px;
+}
+
+.cli-line {
+  margin-bottom: 0.5rem;
+}
+
+.cli-prompt {
+  color: var(--accent-primary);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.cli-output {
+  margin-bottom: 0.75rem;
+  padding-left: 1rem;
+  color: var(--text-secondary);
+}
+
+.cli-output.success {
+  color: #10b981;
+}
+
+.cli-cursor {
+  animation: blink 1s step-end infinite;
+  font-weight: 700;
+}
+
+@keyframes blink {
+  from, to { color: transparent }
+  50% { color: var(--accent-primary) }
+}
+
+/* Accessibility Focus Indicators */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
