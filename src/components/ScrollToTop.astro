@@ -87,9 +87,11 @@ const t = useTranslations(lang);
   }
 </style>
 
-<script is:inline>
+<script>
   function initFloatingActions() {
-    const container = document.querySelector('.floating-actions');
+    const container = document.querySelector(
+      '.floating-actions'
+    ) as HTMLElement;
     const scrollBtn = document.getElementById('scroll-to-top');
     const printBtn = document.getElementById('print-page');
 
@@ -113,8 +115,10 @@ const t = useTranslations(lang);
         }
       };
 
-      window.addEventListener('scroll', window.handleFloatingScroll);
-      window.handleFloatingScroll(); // Trigger once on load
+      if (window.handleFloatingScroll) {
+        window.addEventListener('scroll', window.handleFloatingScroll);
+        window.handleFloatingScroll(); // Trigger once on load
+      }
 
       scrollBtn.addEventListener('click', () => {
         window.scrollTo({

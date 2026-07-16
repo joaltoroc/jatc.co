@@ -412,7 +412,7 @@ const t = useTranslations(lang);
   }
 </style>
 
-<script is:inline>
+<script>
   const initContact = () => {
     // 1. Decode email on mount
     const emailLinks = document.querySelectorAll('.email-link');
@@ -432,7 +432,7 @@ const t = useTranslations(lang);
     const copyBtns = document.querySelectorAll('.copy-value-btn');
     copyBtns.forEach((btn) => {
       // Remove any existing listener to prevent duplicates on client routing changes
-      const newBtn = btn.cloneNode(true);
+      const newBtn = btn.cloneNode(true) as HTMLElement;
       if (btn.parentNode) {
         btn.parentNode.replaceChild(newBtn, btn);
       }

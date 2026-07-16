@@ -798,7 +798,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
   }
 </style>
 
-<script is:inline>
+<script>
   const initModal = () => {
     const modal = document.getElementById('diploma-modal');
     const modalImg = document.getElementById('modal-image');
@@ -862,14 +862,14 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       }, 300);
     };
 
-    const showPrev = (e) => {
+    const showPrev = (e?: Event) => {
       if (e) e.stopPropagation();
       if (items.length === 0) return;
       currentIndex = (currentIndex - 1 + items.length) % items.length;
       updateModal();
     };
 
-    const showNext = (e) => {
+    const showNext = (e?: Event) => {
       if (e) e.stopPropagation();
       if (items.length === 0) return;
       currentIndex = (currentIndex + 1) % items.length;
@@ -886,7 +886,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       }
     });
 
-    const handleKeydown = (e) => {
+    const handleKeydown = (e: KeyboardEvent) => {
       if (!modal.classList.contains('active')) return;
 
       if (e.key === 'Escape') {
