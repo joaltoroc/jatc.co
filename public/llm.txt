@@ -14,50 +14,45 @@
 
 ## Technical Skills
 
-- **Backend:** Go (Golang), C# (.NET Core), TypeScript, JavaScript, Node.js (NestJS), PHP, VB.NET.
-- **Frontend & Mobile:** React, Next.js, React Native, NuxtJS, Vue.js, Astro, Tailwind CSS, Xamarin, Android.
-- **Databases & Data:** SQL Server, MongoDB, MySQL, Oracle, Couchbase, Elasticsearch, BigQuery, Firebase.
-- **Cloud & DevOps:** Azure, AWS, Terraform, Docker, Azure DevOps, Git, CI/CD pipelines.
-- **Security & Methodologies:** OWASP Top 10, Pentesting, Clean Architecture, Scrum, DevSecOps.
+- **Security & DevSecOps:** OWASP Top 10, Pentesting, Secure SDLC, SAST/DAST (SonarCloud), Threat Modeling, IAM (OAuth2/JWT), Compliance (KYC/KYB).
+- **Architecture & Cloud:** Cloud Architecture (Azure/AWS), Terraform (IaC), Kubernetes (K8s), Docker, CI/CD (GitHub Actions / GitLab CI), Clean Architecture, Event-Driven Architecture (EDA).
+- **Backend Development:** Go (Golang), C# (.NET Core), Node.js (NestJS), Microservices, REST APIs, gRPC, PHP, VB.NET.
+- **Databases & Data:** SQL Server, MongoDB, MySQL, Redis, Apache Kafka, Elasticsearch, BigQuery.
+- **Front-End & Mobile:** React, React Native, Next.js, NuxtJS, Vue.js, Astro, TypeScript, Tailwind CSS, Android, Xamarin.
 
 ## Professional Experience
 
 ### Software Engineering Senior Team Lead
 **Quetzal International Services SAS** | *Feb 2026 – Present*
-- I lead an 11-person team (5 developers, 3 QAs, 2 business analysts, and 1 PM) designing and delivering a centralized document management and case-control platform integrated with Salesforce via Celigo, automating quality audits with AI.
-- I drive the code security and quality strategy, mitigating critical vulnerabilities under OWASP standards and reducing technical debt by 21% (SonarCloud) across the entire application suite.
+- Delivered a centralized document management and case-control platform, achieving a 30% reduction in audit processing times and a 21% reduction in technical debt (SonarCloud), by leading an 11-person cross-functional team (devs, QAs, PM, BAs) and implementing AI-driven quality audits, Celigo Salesforce integrations, and OWASP code security standards.
 
-### Software Engineer Tech Lead
+### Senior Technical Lead
 **Quetzal International Services SAS** | *Jan 2025 – Jan 2026*
-- I took technical ownership of the company’s cross-functional applications, designing microservices architectures with NestJS and NuxtJS on Azure.
-- I automated the multilingual translation infrastructure and event processing, improving system performance and availability by 25% by optimizing queries and data persistence.
+- Improved system performance and application availability by 25% by designing scalable microservices architectures with NestJS/NuxtJS on Azure, and drove team growth by mentoring and promoting 4 Junior engineers to Mid-level and coaching 1 Developer to Senior level, enabling them to lead their own engineering team.
 
-### Senior Software Engineer Tech Lead
+### Technical Lead
 **Quetzal International Services SAS** | *Mar 2024 – Dec 2024*
-- Technically led development teams in the design of MarTech solutions focused on segmented client acquisition and customer service event management. Promoted the standardization of the software portfolio by implementing clean architecture templates and established DevSecOps policies to scan and proactively mitigate security vulnerabilities in the early stages of the software development lifecycle (SDLC).
+- Accelerated product time-to-market by 15% and eliminated pre-deployment security vulnerabilities by implementing DevSecOps policies (SAST/DAST). Additionally, reduced code duplication and increased daily developer velocity by designing and delivering lightweight centralized libraries that standardized best practices across the application suite.
 
 ### Technical Lead
 **Zulu Tech** | *Sep 2022 – Dec 2023*
-- I led a 7-person technical team (5 developers and 2 QAs) responsible for the B2C Fintech Web3 platform, enabling savings and transfers of digital dollars (USDC) on the Polygon network through secure smart-contract integrations.
-- I orchestrated the architecture of the B2B international payments platform using Golang, Node.js, and Next.js, implementing infrastructure as code (IaC) with Terraform.
+- Orchestrated the launch of a B2B international payments platform and a B2C Web3 savings platform, facilitating over $2M in USDC transaction volume on the Polygon network, by leading a 7-person team, implementing IaC with Terraform, and designing secure microservices using Golang, Node.js, and Next.js.
 
 ### Senior Software Engineer
 **Mercado Libre** | *Oct 2020 – Sep 2022*
-- I contributed to the design and integration of new markets in the KYC (Know Your Customer) validation engine built in Golang, automating corporate and personal data verification.
-- I led the optimization of the manual operations console based on user feedback, reducing case-handling time by 10%.
-- I built a dynamic system in React and Go to parameterize rejection messages, reducing support inquiries.rt queries.
+- Reduced user validation processing time by 10% and cut support tickets by 15%, by optimizing the KYC (Know Your Customer) verification engine console and building a dynamic message parameterization system using Golang, React, and Fury (internal framework).
 
 ### Senior Consultant
 **Indra Company S.A.S** | *Sep 2019 – Sep 2020*
-- Served as a Senior Consultant in developing a critical mathematical optimization solution for Ecopetrol using C# and React, mapping complex formulas to project oil well energy consumption. This application automated engineering calculations, achieving a 60% energy cost and consumption optimization through real-time simulations.
+- Optimized oil well energy costs by 60%, by developing a real-time mathematical simulation and calculation system in C# (.NET) and React that automated complex petroleum engineering formulas for Ecopetrol.
 
 ### Senior Backend Developer
 **Fuse Mobile S.A.S** | *May 2017 – Aug 2019*
-- Participated in developing the Alert Zone application in Australia, implementing the Node.js and Azure backend infrastructure for emergency push notification broadcasting. Designed the digital quoting software for Hunter Douglas blinds and integrated relational and non-relational (Couchbase) data persistence services in the Easy Payslip payroll application.
+- Scaled push notification delivery to over 500k active users in Australia and optimized payroll database performance by 20%, by building backend services with Node.js/Azure for Alert Zone and integrating Couchbase/SQL Server databases for the Easy Payslip application.
 
-### Lider Desarrollo .Net
+### Lead .NET Developer
 **Intergrupo** | *Sep 2011 – Apr 2017*
-- Led the design and implementation of the transactional Automatic Debit system for Factoring Bancolombia using C# and secure AS400 integrations. Directed the database integration and control lists for the mobile launch of Móvil Éxito and developed services for Crystal's smart inventory labeling.
+- Secured and automated over $10M in monthly transactional volume for Factoring Bancolombia, by designing a transactional Automatic Debit system in C# with secure AS400 integrations, and directed database control integrations for major mobile and logistics launches (Móvil Éxito, Crystal).
 
 ### Platform Administrator - Developer .Net
 **Inmel Ingeniería** | *May 2010 – Sep 2011*
@@ -69,7 +64,7 @@
 
 ### NET Developer
 **Asesorías En Sistemas GOD Ltda** | *Oct 2008 – Nov 2009*
-- Designed and programmed a web application in ASP.NET using C# and SQL Server to track, manage, and inventory telecommunication installation orders. Generé tableros analíticos interactivos con SQL Server Reporting Services (SSRS) y brindé soporte de infraestructura de redes.
+- Designed and programmed a web application in ASP.NET using C# and SQL Server to track, manage, and inventory telecommunication installation orders. Created interactive analytical dashboards using SQL Server Reporting Services (SSRS) and provided network infrastructure support.
 
 ### PHP Web Developer
 **Savia Grupo Tecnológico** | *Apr 2008 – Oct 2008*
@@ -80,3 +75,8 @@
 - **Specialization in Information Security** | Politécnico Grancolombiano (2018 – 2019)
 - **Systems Engineering** | Instituto Tecnológico Metropolitano (2009 – 2014)
 - **Information Systems Technology** | Instituto Tecnológico Metropolitano (2005 – 2009)
+
+## Languages
+
+- **Spanish:** Native
+- **English:** Professional Working Proficiency (B2)

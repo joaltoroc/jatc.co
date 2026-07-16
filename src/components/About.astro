@@ -20,6 +20,22 @@ const t = useTranslations(lang);
         <p set:html={t('about.p1')} />
         <p style="margin-top: var(--space-4);" set:html={t('about.p2')} />
         <p style="margin-top: var(--space-4);" set:html={t('about.p3')} />
+
+        <div class="languages-container">
+          <h4 class="languages-title">{t('about.languagesTitle')}</h4>
+          <div class="languages-tags">
+            <span class="lang-tag">
+              <span class="lang-name">{t('about.langEs')}</span>
+              <span class="lang-divider">|</span>
+              <span class="lang-level">{t('about.langEsLevel')}</span>
+            </span>
+            <span class="lang-tag">
+              <span class="lang-name">{t('about.langEn')}</span>
+              <span class="lang-divider">|</span>
+              <span class="lang-level">{t('about.langEnLevel')}</span>
+            </span>
+          </div>
+        </div>
       </div>
 
       <div class="stats-grid">
@@ -66,6 +82,58 @@ const t = useTranslations(lang);
     border-radius: var(--card-radius);
     background: var(--card-bg);
     border: 1px solid var(--card-border);
+  }
+
+  .languages-container {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--card-border);
+  }
+
+  .languages-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--space-4);
+    font-weight: 600;
+  }
+
+  .languages-tags {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .lang-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+  }
+
+  .lang-tag:hover {
+    background: var(--tag-hover-bg);
+    border-color: var(--tag-hover-border);
+    transform: translateY(-2px);
+  }
+
+  .lang-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .lang-divider {
+    color: var(--border-light);
+    opacity: 0.5;
+  }
+
+  .lang-level {
+    color: var(--accent-primary);
+    font-weight: 500;
   }
 
   .card-title {

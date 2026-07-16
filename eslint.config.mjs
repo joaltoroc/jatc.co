@@ -7,13 +7,25 @@ export default [
   {
     ignores: ['dist/', '.astro/', 'node_modules/', '.agents/', '.github/', '.husky/'],
   },
-  // TypeScript Configuration
+  // TypeScript Configuration (applies to .ts, .tsx)
   ...tsEslint.configs.recommended,
-  // Astro Configuration
+  
+  // Astro Configuration (includes recommended and accessibility rules)
   ...eslintPluginAstro.configs['flat/recommended'],
   ...eslintPluginAstro.configs['flat/jsx-a11y-recommended'],
-  // Prettier configuration to turn off conflicting rules (placed last)
-  eslintConfigPrettier,
+
+  // Parser configuration for Astro files with TypeScript frontmatter
+  {
+    files: ['**/*.astro'],
+    languageOptions: {
+      parser: eslintPluginAstro.parser,
+      parserOptions: {
+        parser: tsEslint.parser,
+        extraFileExtensions: ['.astro'],
+      },
+    },
+  },
+
   // Project custom rules
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.astro'],
@@ -22,4 +34,7 @@ export default [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
+
+  // Prettier configuration to turn off conflicting rules (placed last)
+  eslintConfigPrettier,
 ];

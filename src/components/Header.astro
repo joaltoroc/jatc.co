@@ -28,9 +28,17 @@ const isEn = lang === 'en';
     <div class="actions">
       <ThemeToggle />
       <div class="lang-selector">
-        <a href="/" class={!isEn ? 'active-lang' : ''} aria-label={t('lang.es.label')}>ES</a>
+        <a
+          href="/"
+          class={!isEn ? 'active-lang' : ''}
+          aria-label={t('lang.es.label')}>ES</a
+        >
         <span class="lang-divider" aria-hidden="true">|</span>
-        <a href="/en/" class={isEn ? 'active-lang' : ''} aria-label={t('lang.en.label')}>EN</a>
+        <a
+          href="/en/"
+          class={isEn ? 'active-lang' : ''}
+          aria-label={t('lang.en.label')}>EN</a
+        >
       </div>
       <button
         class="mobile-menu-btn"

@@ -1,10 +1,8 @@
 # Custom Rules
 
 - **Documentation Sync:** Whenever you modify any code, styles, or configuration in this repository, you MUST review and update `README.md` and `context.md` (if they are relevant to the change) to ensure that the documentation remains perfectly synchronized with the codebase.
-- **Lint & Syntax Validation:** Before completing a task, run lint checks (e.g., `pnpm lint`) to verify there are no syntax or style violations.
+- **Lint, Formatting & Syntax Validation:** Whenever you modify any code, styles, or configuration in this repository, you MUST run the formatter (`pnpm run format`) and then the linter (`pnpm lint`) to ensure that all changes are formatted correctly and there are no syntax or style violations before completing a task.
 - **Build Verification:** Always verify that the static compilation (`pnpm build`) builds successfully without errors.
 - **TypeScript Integrity:** Run Astro/TypeScript type checking (`pnpm check`) to guarantee all type signatures are intact and error-free.
 - **Security Compliance:** Verify that security controls (e.g., Content Security Policy [CSP] directives in [.htaccess](./public/.htaccess), script sanitization, and AI crawler blocklists in [astro.config.mjs](./astro.config.mjs)) remain fully intact and correct.
 - **SEO & Meta Sync:** Whenever you modify profile details or hero description (`hero.desc`), you MUST ensure that translation dictionaries ([ui.ts](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/i18n/ui.ts)), basic SEO tags, Open Graph / Twitter meta tags, and alt descriptions in [Layout.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/layouts/Layout.astro) are fully synchronized, localized, and up-to-date. Additionally, ensure that public text files [llm.txt](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/public/llm.txt) and [llms.txt](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/public/llms.txt) are kept in sync with these profile metrics.
-
-

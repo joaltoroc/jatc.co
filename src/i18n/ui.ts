@@ -38,6 +38,11 @@ export const ui = {
       'Actualmente lidero un equipo de 11 personas entregando plataformas críticas de negocio. Estoy abierto a nuevas oportunidades y retos técnicos donde pueda aportar visión de arquitectura, seguridad y liderazgo. <strong>Hablemos.</strong>',
     'about.years': 'Años de <br/>Experiencia',
     'about.projects': 'Proyectos <br/>Completados',
+    'about.languagesTitle': 'Idiomas',
+    'about.langEs': 'Español',
+    'about.langEsLevel': 'Nativo',
+    'about.langEn': 'Inglés',
+    'about.langEnLevel': 'B2',
 
     // Titles
     'layout.title':
@@ -105,6 +110,11 @@ export const ui = {
       'I currently lead an 11-person team delivering business-critical platforms. I’m open to new opportunities and technical challenges where I can contribute architecture, security, and leadership. <strong>Let’s talk.</strong>',
     'about.years': 'Years of <br/>Experience',
     'about.projects': 'Projects <br/>Completed',
+    'about.languagesTitle': 'Languages',
+    'about.langEs': 'Spanish',
+    'about.langEsLevel': 'Native',
+    'about.langEn': 'English',
+    'about.langEnLevel': 'B2',
 
     // Titles
     'layout.title': 'John Alexander Toro Cortés - Portfolio',

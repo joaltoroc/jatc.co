@@ -45,7 +45,11 @@ const t = useTranslations(lang);
               </div>
               <div class="method-details">
                 <span class="method-name">Email</span>
-                <span class="method-value email-text" data-original-text={t('contact.email')}>{t('contact.email')}</span>
+                <span
+                  class="method-value email-text"
+                  data-original-text={t('contact.email')}
+                  >{t('contact.email')}</span
+                >
               </div>
             </a>
             <button
@@ -66,7 +70,9 @@ const t = useTranslations(lang);
                 stroke-linejoin="round"
               >
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
               </svg>
               <span class="tooltip">{t('action.copy')}</span>
             </button>
@@ -120,7 +126,9 @@ const t = useTranslations(lang);
                 stroke-linejoin="round"
               >
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
               </svg>
               <span class="tooltip">{t('action.copy')}</span>
             </button>
@@ -171,7 +179,9 @@ const t = useTranslations(lang);
                 stroke-linejoin="round"
               >
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                <path
+                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                ></path>
               </svg>
               <span class="tooltip">{t('action.copy')}</span>
             </button>
@@ -452,7 +462,8 @@ const t = useTranslations(lang);
             const tooltip = newBtn.querySelector('.tooltip');
             const originalText = tooltip ? tooltip.textContent : '';
             if (tooltip) {
-              tooltip.textContent = newBtn.getAttribute('data-copied-text') || 'Copied!';
+              tooltip.textContent =
+                newBtn.getAttribute('data-copied-text') || 'Copied!';
             }
 
             setTimeout(() => {

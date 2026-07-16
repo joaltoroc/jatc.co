@@ -24,19 +24,19 @@
     "@astrojs/sitemap": "3.7.3",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.10",
-    "@typescript-eslint/parser": "8.63.0",
+    "@typescript-eslint/parser": "8.64.0",
     "astro-robots-txt": "1.0.0",
-    "eslint": "10.6.0",
+    "eslint": "10.7.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-astro": "2.1.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "husky": "9.1.7",
     "lightningcss": "1.32.0",
-    "prettier": "3.9.4",
+    "prettier": "3.9.5",
     "prettier-plugin-astro": "0.14.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.63.0",
+    "typescript-eslint": "8.64.0",
     "vite-plugin-compression": "0.5.1"
   },
-  "packageManager": "pnpm@11.10.0"
+  "packageManager": "pnpm@11.13.1"
 }
