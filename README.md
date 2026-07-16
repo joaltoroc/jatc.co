@@ -4,7 +4,7 @@
 ![Tests Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?style=flat-square&logo=vitest)
 ![Security: Gitleaks](https://img.shields.io/badge/security-gitleaks--clean-success?style=flat-square&logo=gitleaks)
 
-Este es el repositorio del portafolio personal de John Alexander Toro Cortés, accesible en [jatc.co](https://jatc.co). Está construido sobre **Astro (v7)** y diseñado para ser un sitio estático de altísimo rendimiento, totalmente accesible, bilingüe, seguro y con soporte nativo de temas.
+Este es el repositorio del portafolio personal de John Alexander Toro Cortés, accesible en [www.jatc.co](https://www.jatc.co). Está construido sobre **Astro (v7)** y diseñado para ser un sitio estático de altísimo rendimiento, totalmente accesible, bilingüe, seguro y con soporte nativo de temas.
 
 ---
 
@@ -168,4 +168,4 @@ Al hacer push a la rama `main`, se activa el workflow `.github/workflows/sftp-de
 
 ---
 
-Desarrollado con ❤️ por [John Toro](https://jatc.co)
+Desarrollado con ❤️ por [John Toro](https://www.jatc.co)
