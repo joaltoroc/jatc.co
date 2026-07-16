@@ -612,15 +612,16 @@ section {
 .cli-cursor {
   animation: blink 1s step-end infinite;
   font-weight: 700;
+  color: var(--accent-primary);
 }
 
 @keyframes blink {
   from,
   to {
-    color: transparent;
+    opacity: 0;
   }
   50% {
-    color: var(--accent-primary);
+    opacity: 1;
   }
 }
 
