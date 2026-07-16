@@ -1,5 +1,9 @@
 # Portafolio Personal - John Alexander Toro Cortés
 
+[![Deploy via SFTP](https://img.shields.io/github/actions/workflow/status/joaltoroc/jatc.co/sftp-deploy.yml?branch=main&label=Deploy&logo=github&style=flat-square)](https://github.com/joaltoroc/jatc.co/actions/workflows/sftp-deploy.yml)
+![Tests Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?style=flat-square&logo=vitest)
+![Security: Gitleaks](https://img.shields.io/badge/security-gitleaks--clean-success?style=flat-square&logo=gitleaks)
+
 Este es el repositorio del portafolio personal de John Alexander Toro Cortés, accesible en [jatc.co](https://jatc.co). Está construido sobre **Astro (v7)** y diseñado para ser un sitio estático de altísimo rendimiento, totalmente accesible, bilingüe, seguro y con soporte nativo de temas.
 
 ---
@@ -41,6 +45,8 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 - **Formato de URL limpia:** Configuración de compilación `directory` en Astro para URLs sin la extensión `.html`.
 - **Carga de imágenes optimizada:** Las imágenes del portafolio se estructuran según su posición en el viewport. La imagen del avatar LCP y las imágenes percibidas por encima del fold se cargan ansiosamente (`loading="eager"`), mientras que los iconos tecnológicos inferiores se cargan diferidos (`loading="lazy"`), garantizando un renderizado rápido y 0 advertencias de auditorías de rendimiento.
 - **Carga diferida de Analytics:** Google Tag Manager se carga únicamente tras la primera interacción real del usuario (click, scroll, keydown, touchstart) o después de 10 segundos de inactividad, evitando competir por el hilo principal y mejorando la métrica LCP en auditorías móviles.
+- **Compilación y optimización de scripts de cliente:** Remoción de directivas `is:inline` en scripts interactivos de componentes para compilar, minificar y empaquetar todo el código JavaScript cliente a través del compilador nativo de Astro/Vite. Esto reduce significativamente el peso de las páginas HTML finales, reduce la cantidad de hashes requeridos en las directivas de seguridad CSP de `.htaccess` y mejora los tiempos de análisis sintáctico.
+- **Animaciones compuestas (PageSpeed optimization):** Optimización de la animación del parpadeo del cursor CLI utilizando propiedades de opacidad (`opacity: 0` a `opacity: 1`) compuestas directamente por GPU en lugar de cambiar colores de texto. Esto elimina recálculos de pintura (repaints) y mantiene el hilo principal responsivo en dispositivos móviles.
 
 ### 🛡️ Seguridad Avanzada (DevSecOps)
 
@@ -90,8 +96,11 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 │   └── styles/                # Variables CSS, paleta de colores y estilos globales
 ├── ADR.md                     # Registro de Decisiones de Arquitectura (Architecture Decision Record)
 ├── astro.config.mjs           # Configuración detallada de Astro e integraciones
+├── LICENSE                    # Términos de uso y copia restrictiva
 ├── package.json               # Dependencias del proyecto y scripts npm
-└── tsconfig.json              # Configuración de TypeScript
+├── tsconfig.json              # Configuración de TypeScript
+├── vitest.config.ts           # Configuración de Vitest para pruebas unitarias
+└── tests/                     # Suite de pruebas unitarias
 ```
 
 ---

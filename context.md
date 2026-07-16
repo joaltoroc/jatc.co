@@ -42,7 +42,11 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   └── styles/            # Reglas globales de CSS y variables de tema
 ├── ADR.md                 # Registro de Decisiones de Arquitectura (Architecture Decision Record)
 ├── astro.config.mjs       # Configuración del framework (format: 'directory')
-└── package.json           # Dependencias y scripts
+├── LICENSE                # Términos de uso y copia restrictiva
+├── package.json           # Dependencias y scripts
+├── tsconfig.json          # Configuración de TypeScript
+├── vitest.config.ts       # Configuración de Vitest para pruebas unitarias
+└── tests/                 # Suite de pruebas unitarias
 ```
 
 ## 💡 Estado Actual y Características
@@ -55,6 +59,8 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Formato de build `directory` para URLs limpias.
   - Compresión Gzip y Brotli activa en el build de Vite.
   - Pre-carga (preload) de las fuentes críticas (`Inter` y `Space Grotesk`) e implementación de font fallback stacks optimizados con `size-adjust` para eliminar desplazamientos de diseño (CLS).
+  - Compilación y optimización de scripts de cliente: Todos los scripts interactivos se compilan, minifican y empaquetan a través del pipeline nativo de Astro/Vite en lugar de servirse in-line, reduciendo el tamaño del HTML y optimizando la firma de seguridad (CSP).
+  - Optimización de animaciones móviles: Animación del cursor de la terminal optimizada mediante propiedades compuestas por GPU (opacidad) para evitar parpadeos de color no optimizados y reducir el bloqueo de hilos principales (PageSpeed).
 - **Accesibilidad y UX:**
   - Enlace accesible "Skip to main content" (saltar al contenido) para navegación rápida con teclado (WCAG 2.4.1).
   - Sincronización activa de links en el menú de navegación (Header) según la sección de la página visible durante el scroll, con controles flotantes de "Scroll to Top" e impresión rápida de página (optimizados por posicionamiento absoluto y transiciones mediante variables CSS nativas, ocultándose durante la impresión).
@@ -65,7 +71,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Uso de `lightningcss` para minificación eficiente.
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.
 - **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.
-- **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción.
+- **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción. Bloqueo de versión de TypeScript en la v6.x debido a incompatibilidades de API en TS 7.0+ con la suite de verificación de Astro.
 - **Accesibilidad:** Uso de HTML semántico y etiquetas ARIA en componentes interactivos.
 
 ## 📜 Scripts Disponibles

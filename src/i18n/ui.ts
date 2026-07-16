@@ -81,6 +81,7 @@ export const ui = {
     'courses.credentialLabel':
       'Ver credencial de {title} (abre en una nueva pestaña)',
     'courses.modalTitle': 'Detalles del Diploma',
+    'test.fallbackOnlyEs': 'Solo Español',
   },
   en: {
     // Header

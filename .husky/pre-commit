@@ -1,1 +1,1 @@
-ASTRO_TELEMETRY_DISABLED=1 pnpm check
+ASTRO_TELEMETRY_DISABLED=1 pnpm check && pnpm test

@@ -5,7 +5,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 export default [
   // Global ignores
   {
-    ignores: ['dist/', '.astro/', 'node_modules/', '.agents/', '.github/', '.husky/'],
+    ignores: ['dist/', '.astro/', 'node_modules/', '.agents/', '.github/', '.husky/', 'coverage/'],
   },
   // TypeScript Configuration (applies to .ts, .tsx)
   ...tsEslint.configs.recommended,

@@ -91,3 +91,22 @@ El desarrollo de este portafolio se rige por tres pilares fundamentales:
 1. **Performance-First**: Ningún recurso o script se añade a la experiencia final si no se justifica su impacto en la carga inicial y el tiempo de interacción.
 2. **DevSecOps en Entornos Pequeños**: La seguridad no es una característica añadida al final, sino una parte fundamental de la configuración del entorno de desarrollo (`pnpm-workspace.yaml`), el servidor (`.htaccess`) y las automatizaciones (`husky`).
 3. **Simplicidad y Robustez**: Preferencia por APIs y características CSS/HTML nativas de los navegadores modernos por encima de librerías externas o frameworks de interfaz pesados.
+
+---
+
+## 7. RECENT ARCHITECTURAL DECISIONS
+
+### Retención de TypeScript en la rama v6.x (v6.0.3)
+
+- **Decisión**: Mantener congelada la versión de TypeScript en la versión `6.0.3` (evitando actualizar a la versión `7.0.2` propuesta).
+- **Justificación**: TypeScript 7.0 remueve las API programáticas del compilador nativo en las que se apoya el formateador y analizador estático de Astro (`astro check`). Intentar actualizar causa una rotura inmediata del pipeline de compilación. Se mantendrá en la v6.x hasta que la comunidad publique soporte para la nueva arquitectura del compilador de TS v7.
+
+### Optimización y Compilación de Scripts del Cliente
+
+- **Decisión**: Remover la directiva `is:inline` de todos los scripts interactivos de componentes del cliente ([ThemeToggle.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/ThemeToggle.astro), [ScrollToTop.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/ScrollToTop.astro), [Contact.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Contact.astro), [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro), [Hero.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Hero.astro) y [Header.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Header.astro)), permitiendo que Astro y Vite los procesen de forma unificada.
+- **Consecuencia**: Todo el JS del cliente ahora se compila, minimiza y optimiza, reduciendo el tamaño del DOM en el HTML final y asegurando firmas hash deterministas para el cumplimiento estricto de CSP.
+
+### Animaciones Compuestas para PageSpeed
+
+- **Decisión**: Cambiar la animación de parpadeo del cursor CLI (`cli-cursor`) de alternar `color: transparent` a animar `opacity: 0` y `opacity: 1`.
+- **Justificación**: Las animaciones sobre opacidad son procesadas por el compositor de la GPU y no causan repintados (repaints) ni recálculos de flujo (reflows), optimizando la responsividad del hilo principal de renderizado en móviles (reduciendo TBT y bloqueos de hilo principal indicados en PageSpeed).
