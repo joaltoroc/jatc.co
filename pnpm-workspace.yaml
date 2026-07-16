@@ -27,3 +27,4 @@ minimumReleaseAgeExclude:
   - prettier@3.9.4
   - typescript-eslint@8.62.1
   - '@astrojs/telemetry@3.3.3'
+  - eslint-plugin-astro@3.0.1

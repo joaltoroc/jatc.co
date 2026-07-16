@@ -6,6 +6,7 @@ import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal
 import spaceGroteskWoff2 from '@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2?url';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ScrollToTop from '../components/ScrollToTop.astro';
+import profileImage from '../assets/jatc.webp';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -127,7 +128,7 @@ const t = useTranslations(lang);
     <!-- Preload LCP Image -->
     <link
       rel="preload"
-      href="/jatc.webp"
+      href={profileImage.src}
       as="image"
       type="image/webp"
       fetchpriority="high"
@@ -171,8 +172,36 @@ const t = useTranslations(lang);
         }
       }
     </style>
+    <!-- JSON-LD Structured Data -->
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'John Alexander Toro Cortés',
+        jobTitle: 'Technical Lead & Software Engineer',
+        url: 'https://jatc.co',
+        image: 'https://jatc.co/jatc.png',
+        sameAs: [
+          'https://github.com/joaltoroc',
+          'https://linkedin.com/in/joaltoroc',
+        ],
+        description: t('seo.description'),
+        knowsAbout: [
+          'Software Engineering',
+          'Cybersecurity',
+          'DevSecOps',
+          'Cloud Architecture',
+          'Golang',
+          'C#/.NET',
+          'TypeScript',
+          'Clean Architecture',
+        ],
+      })}
+    />
   </head>
-  <body>
+  <body data-copy-link-text={t('action.copyLink')}>
     <a href="#about" class="skip-link">{t('action.skipToContent')}</a>
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -186,7 +215,7 @@ const t = useTranslations(lang);
     <!-- End Google Tag Manager (noscript) -->
     <slot />
     <ScrollToTop />
-    <script is:inline define:vars={{ copyLinkText: t('action.copyLink') }}>
+    <script is:inline>
       // Force light theme for printing
       window.addEventListener('beforeprint', () => {
         if (document.documentElement.classList.contains('dark')) {
@@ -203,6 +232,8 @@ const t = useTranslations(lang);
 
       // Update URL hash on scroll based on visible section
       document.addEventListener('DOMContentLoaded', () => {
+        const copyLinkText =
+          document.body.getAttribute('data-copy-link-text') || 'Copy link';
         const sections = document.querySelectorAll('section[id]');
 
         const observerOptions = {

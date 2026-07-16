@@ -1,4 +1,4 @@
-import { defineConfig, passthroughImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import compression from 'vite-plugin-compression';
 import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
@@ -54,9 +54,7 @@ export default defineConfig({
       ],
     }),
   ],
-  image: {
-    service: passthroughImageService()
-  },
+
   build: {
     format: 'directory',
     inlineStylesheets: 'always'
