@@ -45,3 +45,6 @@ coverage/
 .vercel/
 .netlify/
 .cache/
+
+# agents / AI tools
+.agents/skills/
