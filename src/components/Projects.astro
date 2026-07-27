@@ -116,6 +116,37 @@ const projects = [
                 </a>
               )}
             </div>
+
+            <div class="project-print-urls">
+              {project.liveUrl && (
+                <div class="print-url-item">
+                  <span class="print-url-label">{t('projects.demoLabel')}</span>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="print-url-link"
+                  >
+                    {project.liveUrl}
+                  </a>
+                </div>
+              )}
+              {project.githubUrl && (
+                <div class="print-url-item">
+                  <span class="print-url-label">
+                    {t('projects.githubLabel')}
+                  </span>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="print-url-link"
+                  >
+                    {project.githubUrl}
+                  </a>
+                </div>
+              )}
+            </div>
           </div>
         ))
       }
@@ -229,6 +260,40 @@ const projects = [
     padding: 0.65rem 1.25rem;
     font-size: 0.95rem;
     text-decoration: none;
+  }
+
+  .project-print-urls {
+    display: none;
+  }
+
+  @media print {
+    .project-print-urls {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.35rem !important;
+      margin-top: 0.5rem !important;
+      padding-top: 0.5rem !important;
+      border-top: 1px dashed var(--border-light, #cbd5e1) !important;
+      font-size: 0.85rem !important;
+    }
+
+    .print-url-item {
+      display: flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      word-break: break-all !important;
+    }
+
+    .print-url-label {
+      font-weight: 600 !important;
+      color: #1e293b !important;
+      min-width: 65px !important;
+    }
+
+    .print-url-link {
+      color: #2563eb !important;
+      text-decoration: underline !important;
+    }
   }
 
   @media (max-width: 768px) {

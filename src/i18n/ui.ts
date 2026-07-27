@@ -57,6 +57,8 @@ export const ui = {
     // Projects
     'projects.viewLive': 'Ver Demo en Vivo',
     'projects.viewGithub': 'Código Fuente (GitHub)',
+    'projects.demoLabel': 'Demo:',
+    'projects.githubLabel': 'GitHub:',
     'projects.githubHelpers.title':
       'GitHub Helpers - Stats Generator & Live API',
     'projects.githubHelpers.tagline': 'Microservicio Open Source & Cliente Web',
@@ -146,6 +148,8 @@ export const ui = {
     // Projects
     'projects.viewLive': 'View Live Demo',
     'projects.viewGithub': 'Source Code (GitHub)',
+    'projects.demoLabel': 'Demo:',
+    'projects.githubLabel': 'GitHub:',
     'projects.githubHelpers.title':
       'GitHub Helpers - Stats Generator & Live API',
     'projects.githubHelpers.tagline': 'Open Source Microservice & Web Client',

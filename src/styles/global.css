@@ -258,7 +258,8 @@ section {
   .stat-card,
   .edu-card,
   .course-item,
-  .skill-category {
+  .skill-category,
+  .project-card {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
