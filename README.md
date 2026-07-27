@@ -50,9 +50,9 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 
 ### 🛡️ Seguridad Avanzada (DevSecOps)
 
-- **Content Security Policy (CSP):** Directiva estricta configurada a nivel de servidor mediante cabeceras HTTP en `.htaccess` para restringir la ejecución de scripts no autorizados y proteger contra ataques XSS y Clickjacking (`frame-ancestors 'none'`).
+- **Content Security Policy (CSP) y Cabeceras de Seguridad:** Directiva estricta configurada a nivel de servidor mediante cabeceras HTTP en `.htaccess` para restringir la ejecución de scripts no autorizados y proteger contra ataques XSS y Clickjacking (`frame-ancestors 'none'`). Inclusión de cabeceras HSTS (`Strict-Transport-Security`), COOP (`Cross-Origin-Opener-Policy`) y `X-XSS-Protection`.
 - **Protección contra Cosechadores de Datos (AI Agents):** Configuración explícita en `robots.txt` que restringe el acceso de más de 20 agentes y scrapers de Inteligencia Artificial (como `GPTBot`, `ClaudeBot`, `CCBot`, `Google-Extended`, etc.) para proteger los datos y derechos de autor del portafolio.
-- Sanitización de enlaces y APIs seguras.
+- **Resolución de Vulnerabilidades de Dependencias:** Uso de `overrides` en `pnpm-workspace.yaml` para forzar versiones parcheadas de dependencias transitivas (como `brace-expansion` traída por `eslint-plugin-jsx-a11y`), logrando 0 vulnerabilidades en auditorías de seguridad.
 
 ### 📱 Experiencia de Usuario & Accesibilidad (UX/UI)
 

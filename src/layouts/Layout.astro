@@ -267,6 +267,7 @@ const t = useTranslations(lang);
           // Add copy link icon to section titles
           const title = section.querySelector('.section-title');
           if (title) {
+            if (title.querySelector('.copy-section-link')) return;
             const linkBtn = document.createElement('button');
             linkBtn.className = 'copy-section-link';
             linkBtn.setAttribute('aria-label', copyLinkText);

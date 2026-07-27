@@ -419,11 +419,15 @@ const t = useTranslations(lang);
     emailLinks.forEach((link) => {
       const encoded = link.getAttribute('data-email');
       if (encoded) {
-        const decoded = atob(encoded);
-        link.setAttribute('href', `mailto:${decoded}`);
-        const textSpan = link.querySelector('.email-text');
-        if (textSpan) {
-          textSpan.textContent = decoded;
+        try {
+          const decoded = atob(encoded);
+          link.setAttribute('href', `mailto:${decoded}`);
+          const textSpan = link.querySelector('.email-text');
+          if (textSpan) {
+            textSpan.textContent = decoded;
+          }
+        } catch {
+          // Fault tolerance against malformed base64
         }
       }
     });
@@ -448,7 +452,11 @@ const t = useTranslations(lang);
           const emailLink = document.querySelector('.email-link');
           const encoded = emailLink ? emailLink.getAttribute('data-email') : '';
           if (encoded) {
-            valueToCopy = atob(encoded);
+            try {
+              valueToCopy = atob(encoded);
+            } catch {
+              // Fault tolerance
+            }
           }
         } else if (copyType === 'linkedin') {
           valueToCopy = 'https://linkedin.com/in/joaltoroc';

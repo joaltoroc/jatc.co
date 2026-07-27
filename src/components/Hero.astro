@@ -22,9 +22,7 @@ const t = useTranslations(lang);
 
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">{t('hero.contact')}</a>
-        <button onclick="window.print()" class="btn-secondary"
-          >{t('hero.cv')}</button
-        >
+        <button id="hero-cv-btn" class="btn-secondary">{t('hero.cv')}</button>
       </div>
     </div>
 
@@ -357,23 +355,44 @@ const t = useTranslations(lang);
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  const initHero = () => {
+    const printBtn = document.getElementById('hero-cv-btn');
+    if (printBtn) {
+      printBtn.addEventListener('click', () => {
+        window.print();
+      });
+    }
+
     const decodeHeroData = () => {
       const secureSpans = document.querySelectorAll('.hero-secure-data');
       secureSpans.forEach((span) => {
         const encoded = span.getAttribute('data-value');
         const type = span.getAttribute('data-type');
         if (encoded) {
-          const decoded = atob(encoded);
-          if (type === 'link') {
-            span.innerHTML = `<a href="${decoded}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${decoded}</a>`;
-          } else {
-            span.textContent = decoded;
+          try {
+            const decoded = atob(encoded);
+            if (type === 'link') {
+              const anchor = document.createElement('a');
+              anchor.href = decoded;
+              anchor.target = '_blank';
+              anchor.rel = 'noopener noreferrer';
+              anchor.style.color = 'inherit';
+              anchor.style.textDecoration = 'none';
+              anchor.textContent = decoded;
+              span.replaceChildren(anchor);
+            } else {
+              span.textContent = decoded;
+            }
+          } catch {
+            // Fault tolerance against malformed base64
           }
         }
       });
     };
     window.addEventListener('beforeprint', decodeHeroData);
     decodeHeroData();
-  });
+  };
+
+  document.addEventListener('DOMContentLoaded', initHero);
+  document.addEventListener('astro:page-load', initHero);
 </script>

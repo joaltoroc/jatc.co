@@ -36,6 +36,9 @@ ErrorDocument 404 /
   Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'sha256-bhfVK4HDtVucNaZirFvMpyM5AnLNj3+bWKtQAj7/3T4=' 'sha256-wYxHlCB64y9ML4rASaVx/f5y9Um7Vgq9ufrJX/SBL4c=' 'sha256-7uBJAHCuWSj9j9u+F4FDNv+CgP6sV9JaW7OGn0yxgRI=' 'sha256-JmNLu7E8lSjqN4zaZ01eFHLti006u+Oy19MzQ6cujvA=' 'sha256-ngWcjZnuJTN54zDnf008/W6G13GFi4pNtoy58B1Nkvo=' 'sha256-caeSnnQARILHK3h+8YhrzwE9dq1b9ftNEJ0DBQqZdd8=' 'sha256-HtKATUN89W2wsMxsbWejTA1ivC/FQtL4j+zR18zzpSQ=' 'sha256-Nwe8d+DppmOAD6ehxDgSax6tPF1sh3B9VxwRoyB+TI8=' 'sha256-gGYhQmLDPVSzzMqWypWm/4N1V3WRGsdynloJSePB0Wc=' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; frame-ancestors 'none';"
 
   # Security Headers
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set X-XSS-Protection "1; mode=block"
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set X-Frame-Options "DENY"
