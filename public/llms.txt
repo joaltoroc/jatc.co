@@ -7,6 +7,7 @@
 - [Main Portfolio (English)](https://jatc.co/en/): English version of the portfolio.
 - [About](https://jatc.co/#about): Introduction and career focus.
 - [Professional Experience](https://jatc.co/#experience): Chronological work history.
+- [Featured Projects](https://jatc.co/#projects): Open source and featured projects.
 - [Education](https://jatc.co/#education): Degrees and formal studies.
 - [Courses & Certifications](https://jatc.co/#courses): List of verified professional courses and certifications.
 - [Technical Skills](https://jatc.co/#skills): Categorized technical skills matrix.
@@ -69,6 +70,20 @@
 ### PHP Web Developer
 **Savia Grupo Tecnológico** | *Apr 2008 – Oct 2008*
 - Developed a web platform dedicated to digital goods bartering using PHP, MySQL, and WordPress CMS. Created and integrated custom plugins for interactive forums and the company's digital brochure, ensuring basic SEO optimization.
+
+## Featured Projects
+
+### GitHub Helpers - Stats Generator & Live API
+- **Repository:** https://github.com/creativecodeco/github-helpers
+- **Live Demo:** https://github-helpers.creativecode.com.co/
+- **Technologies:** Node.js, Express, TypeScript, Clean Architecture, PostgreSQL, Docker, Vitest, SVG
+- **Description:** Microservice and web client built with Node.js and TypeScript. It allows real-time querying of general statistics and language distribution for any GitHub user, generating vector (SVG) cards ready to embed directly into your README.md file.
+
+### JATC.co - Personal Portfolio & Web Platform
+- **Repository:** https://github.com/joaltoroc/jatc.co
+- **Live Demo:** https://jatc.co/
+- **Technologies:** Astro v7, TypeScript, LightningCSS, i18n, DevSecOps, Vitest, PWA
+- **Description:** High-performance personal portfolio and web site built with Astro v7, TypeScript, LightningCSS, and Clean Architecture. Features bilingual support (ES/EN), dark/light mode with persistence, Brotli/Gzip compression, font & image LCP optimization, WCAG 2.2 accessibility, strict CSP security directives, and 0 vulnerabilities.
 
 ## Education
 

@@ -1,0 +1,252 @@
+---
+// Projects Component
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const projects = [
+  {
+    title: t('projects.githubHelpers.title'),
+    tagline: t('projects.githubHelpers.tagline'),
+    description: t('projects.githubHelpers.desc'),
+    technologies: [
+      'Node.js',
+      'Express',
+      'TypeScript',
+      'Clean Architecture',
+      'PostgreSQL',
+      'Docker',
+      'Vitest',
+      'SVG',
+    ],
+    liveUrl: 'https://github-helpers.creativecode.com.co/',
+    githubUrl: 'https://github.com/creativecodeco/github-helpers',
+    featured: true,
+  },
+  {
+    title: t('projects.jatcPortfolio.title'),
+    tagline: t('projects.jatcPortfolio.tagline'),
+    description: t('projects.jatcPortfolio.desc'),
+    technologies: [
+      'Astro v7',
+      'TypeScript',
+      'LightningCSS',
+      'i18n',
+      'DevSecOps',
+      'Vitest',
+      'PWA',
+    ],
+    liveUrl: lang === 'en' ? 'https://jatc.co/en/' : 'https://jatc.co/',
+    githubUrl: 'https://github.com/joaltoroc/jatc.co',
+    featured: true,
+  },
+];
+---
+
+<section id="projects" class="projects-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{t('projects.title')}</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="projects-grid">
+      {
+        projects.map((project) => (
+          <div class="project-card glass">
+            <div class="project-header">
+              <div class="project-badge">{project.tagline}</div>
+              <h3 class="project-title">{project.title}</h3>
+            </div>
+
+            <p class="project-desc">{project.description}</p>
+
+            <div class="tech-stack">
+              {project.technologies.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+
+            <div class="project-actions">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-primary project-btn"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                  <span>{t('projects.viewLive')}</span>
+                </a>
+              )}
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-secondary project-btn"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                  </svg>
+                  <span>{t('projects.viewGithub')}</span>
+                </a>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-light), transparent);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .project-card {
+    padding: var(--space-8);
+    border-radius: var(--card-radius);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .project-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.15);
+  }
+
+  :global(.dark) .project-card:hover {
+    box-shadow: 0 12px 30px -10px rgba(59, 130, 246, 0.25);
+  }
+
+  .project-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .project-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    background: var(--surface-light);
+    border: 1px solid var(--border-light);
+  }
+
+  .project-title {
+    font-size: 1.75rem;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .tech-tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--text-primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+  }
+
+  .project-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .project-card {
+      padding: var(--space-6);
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+    }
+
+    .project-actions {
+      flex-direction: column;
+    }
+
+    .project-btn {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>

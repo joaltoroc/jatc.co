@@ -87,6 +87,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 │   │   ├── Footer.astro       # Pie de página y firma de créditos
 │   │   ├── Header.astro       # Menú de navegación, links y selector de idioma
 │   │   ├── Hero.astro         # Presentación inicial con LCP optimizado
+│   │   ├── Projects.astro     # Sección de proyectos destacados (GitHub Helpers)
 │   │   ├── ScrollToTop.astro  # Botones flotantes de acciones rápidas (volver arriba e imprimir)
 │   │   ├── Skills.astro       # Habilidades técnicas organizadas por categorías
 │   │   └── ThemeToggle.astro  # Botón selector del tema Light/Dark

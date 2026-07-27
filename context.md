@@ -30,6 +30,7 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   │   ├── Hero.astro       # Sección de inicio (LCP optimizado)
 │   │   ├── About.astro      # Perfil profesional
 │   │   ├── Experience.astro # Trayectoria laboral bilingüe
+│   │   ├── Projects.astro   # Proyectos destacados (GitHub Helpers)
 │   │   ├── Education.astro  # Formación académica
 │   │   ├── Courses.astro    # Certificaciones y cursos
 │   │   ├── Skills.astro     # Stack tecnológico y habilidades

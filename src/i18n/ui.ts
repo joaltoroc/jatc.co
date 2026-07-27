@@ -14,6 +14,7 @@ export const ui = {
     // Header
     'nav.about': 'Sobre mí',
     'nav.experience': 'Experiencia',
+    'nav.projects': 'Proyectos',
     'nav.education': 'Educación',
     'nav.courses': 'Cursos',
     'nav.skills': 'Habilidades',
@@ -48,9 +49,25 @@ export const ui = {
     'layout.title':
       'John Alexander Toro Cortés - Experiencia, Educación y Habilidades',
     'experience.title': 'Experiencia',
+    'projects.title': 'Proyectos Destacados',
     'education.title': 'Educación',
     'courses.title': 'Cursos y Certificaciones',
     'skills.title': 'Habilidades',
+
+    // Projects
+    'projects.viewLive': 'Ver Demo en Vivo',
+    'projects.viewGithub': 'Código Fuente (GitHub)',
+    'projects.githubHelpers.title':
+      'GitHub Helpers - Stats Generator & Live API',
+    'projects.githubHelpers.tagline': 'Microservicio Open Source & Cliente Web',
+    'projects.githubHelpers.desc':
+      'Microservicio y cliente web desarrollado en Node.js con TypeScript. Permite consultar en tiempo real las estadísticas generales y la distribución de lenguajes de cualquier usuario de GitHub, generando tarjetas vectoriales (SVG) listas para incrustar directamente en tu archivo README.md.',
+    'projects.jatcPortfolio.title':
+      'JATC.co - Personal Portfolio & Web Platform',
+    'projects.jatcPortfolio.tagline':
+      'Portafolio Web de Alto Rendimiento & PWA',
+    'projects.jatcPortfolio.desc':
+      'Sitio web profesional de alto rendimiento construido con Astro v7, TypeScript, LightningCSS y Clean Architecture. Cuenta con soporte bilingüe (ES/EN), modo claro/oscuro con persistencia, compresión Brotli/Gzip, optimización LCP de fuentes e imágenes, accesibilidad WCAG 2.2, directivas estrictas de seguridad CSP y 0 vulnerabilidades.',
 
     // Contact
     'contact.title': 'Contacto',
@@ -87,6 +104,7 @@ export const ui = {
     // Header
     'nav.about': 'About',
     'nav.experience': 'Experience',
+    'nav.projects': 'Projects',
     'nav.education': 'Education',
     'nav.courses': 'Courses',
     'nav.skills': 'Skills',
@@ -120,9 +138,24 @@ export const ui = {
     // Titles
     'layout.title': 'John Alexander Toro Cortés - Portfolio',
     'experience.title': 'Experience',
+    'projects.title': 'Featured Projects',
     'education.title': 'Education',
     'courses.title': 'Courses and Certifications',
     'skills.title': 'Skills',
+
+    // Projects
+    'projects.viewLive': 'View Live Demo',
+    'projects.viewGithub': 'Source Code (GitHub)',
+    'projects.githubHelpers.title':
+      'GitHub Helpers - Stats Generator & Live API',
+    'projects.githubHelpers.tagline': 'Open Source Microservice & Web Client',
+    'projects.githubHelpers.desc':
+      'Microservice and web client built with Node.js and TypeScript. It allows real-time querying of general statistics and language distribution for any GitHub user, generating vector (SVG) cards ready to embed directly into your README.md file.',
+    'projects.jatcPortfolio.title':
+      'JATC.co - Personal Portfolio & Web Platform',
+    'projects.jatcPortfolio.tagline': 'High-Performance Web Portfolio & PWA',
+    'projects.jatcPortfolio.desc':
+      'High-performance personal portfolio and web site built with Astro v7, TypeScript, LightningCSS, and Clean Architecture. Features bilingual support (ES/EN), dark/light mode with persistence, Brotli/Gzip compression, font & image LCP optimization, WCAG 2.2 accessibility, strict CSP security directives, and 0 vulnerabilities.',
 
     // Contact
     'contact.title': 'Contact',
