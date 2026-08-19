@@ -68,7 +68,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Widget simulador de consola CLI en la sección Hero destacando métricas de seguridad (OWASP) y DevSecOps.
   - Modal interactivo de visualización de diplomas en [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro) con paginación lateral, panel de información (título, emisor y fecha), navegación mediante teclado (flechas Izquierda/Derecha y tecla Escape para cerrar) y sincronización ARIA dinámica (`aria-label`) del título del encabezado.
   - Visualización directa y copiado al portapapeles rápido para datos clave de contacto (Email, LinkedIn y GitHub) con feedback mediante tooltips en [Contact.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Contact.astro).
-  - Pre-carga (preload) optimizada de imágenes LCP (.webp) y orden de carga estructurado (`loading="lazy"` / `"eager"`) según la visibilidad en el fold del viewport para conseguir 0 advertencias de auditorías de rendimiento.
+  - Pre-carga (preload) optimizada de imagen LCP de avatar de perfil (`.webp` en alta resolución 800x800) y orden de carga estructurado (`loading="lazy"` / `"eager"`) según la visibilidad en el fold del viewport para conseguir 0 advertencias de auditorías de rendimiento.
   - Uso de `lightningcss` para minificación eficiente.
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.
 - **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.

@@ -1,6 +1,6 @@
 # John Alexander Toro Cortés
 
-> Technical Lead, Software Engineer & Cybersecurity Specialist with 18+ years of experience building secure, scalable, and high-performance applications.
+> Development Manager, Technical Lead, Software Engineer & Cybersecurity Specialist with 18+ years of experience building secure, scalable, and high-performance applications.
 
 ## Links
 - [Main Portfolio (Spanish)](https://jatc.co/): Main landing page and contact form.
@@ -23,8 +23,12 @@
 
 ## Professional Experience
 
+### Development Manager
+**Gerente de Desarrollo** | *Aug 2026 – Present*
+- Directing software engineering strategy, architecture, and team management to drive high-impact digital initiatives, aligning DevSecOps security, cloud infrastructure, and delivery speed with key business goals.
+
 ### Software Engineering Senior Team Lead
-**Quetzal International Services SAS** | *Feb 2026 – Present*
+**Quetzal International Services SAS** | *Feb 2026 – Jul 2026*
 - Delivered a centralized document management and case-control platform, achieving a 30% reduction in audit processing times and a 21% reduction in technical debt (SonarCloud), by leading an 11-person cross-functional team (devs, QAs, PM, BAs) and implementing AI-driven quality audits, Celigo Salesforce integrations, and OWASP code security standards.
 
 ### Senior Technical Lead
