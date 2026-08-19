@@ -27,6 +27,12 @@ jobs:
           pnpm approve-builds
           pnpm install
 
+      - name: Run code quality checks & tests
+        run: |
+          pnpm lint
+          pnpm check
+          pnpm test
+
       - name: Build project
         run: pnpm build
 

@@ -172,31 +172,52 @@ const t = useTranslations(lang);
         }
       }
     </style>
+    <!-- Service Worker Registration -->
+    <script is:inline>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+
     <!-- JSON-LD Structured Data -->
     <script
       is:inline
       type="application/ld+json"
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: 'John Alexander Toro Cortés',
-        jobTitle: 'Development Manager & Technical Lead',
-        url: 'https://jatc.co',
-        image: 'https://jatc.co/jatc.png',
-        sameAs: [
-          'https://github.com/joaltoroc',
-          'https://linkedin.com/in/joaltoroc',
-        ],
-        description: t('seo.description'),
-        knowsAbout: [
-          'Software Engineering',
-          'Cybersecurity',
-          'DevSecOps',
-          'Cloud Architecture',
-          'Golang',
-          'C#/.NET',
-          'TypeScript',
-          'Clean Architecture',
+        '@graph': [
+          {
+            '@type': 'Person',
+            '@id': 'https://jatc.co/#person',
+            name: 'John Alexander Toro Cortés',
+            jobTitle: 'Development Manager & Technical Lead',
+            url: 'https://jatc.co',
+            image: 'https://jatc.co/jatc.png',
+            sameAs: [
+              'https://github.com/joaltoroc',
+              'https://linkedin.com/in/joaltoroc',
+            ],
+            description: t('seo.description'),
+            knowsAbout: [
+              'Software Engineering Management',
+              'DevSecOps & Cybersecurity',
+              'Cloud Architecture (Azure/AWS)',
+              'Golang',
+              'C#/.NET',
+              'TypeScript',
+              'Clean Architecture',
+            ],
+          },
+          {
+            '@type': 'WebSite',
+            '@id': 'https://jatc.co/#website',
+            url: 'https://jatc.co',
+            name: 'JATC - John Alexander Toro Cortés',
+            author: { '@id': 'https://jatc.co/#person' },
+            inLanguage: ['es', 'en'],
+          },
         ],
       })}
     />

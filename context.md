@@ -34,6 +34,7 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   │   ├── Education.astro  # Formación académica
 │   │   ├── Courses.astro    # Certificaciones y cursos
 │   │   ├── Skills.astro     # Stack tecnológico y habilidades
+│   │   ├── AiAssistant.astro # Widget de asistente virtual interactivo con IA
 │   │   ├── Contact.astro    # Formulario e información de contacto
 │   │   ├── ScrollToTop.astro # Botones flotantes de navegación e impresión
 │   │   └── Footer.astro     # Pie de página
@@ -65,12 +66,16 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
 - **Accesibilidad y UX:**
   - Enlace accesible "Skip to main content" (saltar al contenido) para navegación rápida con teclado (WCAG 2.4.1).
   - Sincronización activa de links en el menú de navegación (Header) según la sección de la página visible durante el scroll, con controles flotantes de "Scroll to Top" e impresión rápida de página (optimizados por posicionamiento absoluto y transiciones mediante variables CSS nativas, ocultándose durante la impresión).
-  - Widget simulador de consola CLI en la sección Hero destacando métricas de seguridad (OWASP) y DevSecOps.
+  - Consola CLI interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `matrix`, `clear`, `sudo`) y navegación por historial (flechas Arriba/Abajo).
+  - Filtro dinámico cruzado por tecnologías en [Skills.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Skills.astro) que resalta las tarjetas correspondientes en Experiencia y Proyectos.
+  - Modal interactivo de detalles de arquitectura de proyectos en [Projects.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Projects.astro).
+  - Widget de asistente de IA flotante bilingüe ("Ask John's AI") en [AiAssistant.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/AiAssistant.astro).
+  - Service Worker PWA (`public/sw.js`) con soporte de caché offline y precarga de recursos.
   - Modal interactivo de visualización de diplomas en [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro) con paginación lateral, panel de información (título, emisor y fecha), navegación mediante teclado (flechas Izquierda/Derecha y tecla Escape para cerrar) y sincronización ARIA dinámica (`aria-label`) del título del encabezado.
   - Visualización directa y copiado al portapapeles rápido para datos clave de contacto (Email, LinkedIn y GitHub) con feedback mediante tooltips en [Contact.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Contact.astro).
   - Pre-carga (preload) optimizada de imagen LCP de avatar de perfil (`.webp` en alta resolución 800x800) y orden de carga estructurado (`loading="lazy"` / `"eager"`) según la visibilidad en el fold del viewport para conseguir 0 advertencias de auditorías de rendimiento.
   - Uso de `lightningcss` para minificación eficiente.
-- **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards y etiquetas `hreflang` para indexación internacional.
+- **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards, gráfico JSON-LD ampliado (`Person`, `WebSite`) y etiquetas `hreflang` para indexación internacional.
 - **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.
 - **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción. Inclusión de cabeceras HSTS (`Strict-Transport-Security`), COOP (`Cross-Origin-Opener-Policy`) y `X-XSS-Protection`. Uso de `overrides` en `pnpm-workspace.yaml` para neutralizar vulnerabilidades DoS en dependencias transitivas (como `brace-expansion` traída por `eslint-plugin-jsx-a11y`). Bloqueo de versión de TypeScript en la v6.x debido a incompatibilidades de API en TS 7.0+ con la suite de verificación de Astro.
 - **Accesibilidad:** Uso de HTML semántico y etiquetas ARIA en componentes interactivos.

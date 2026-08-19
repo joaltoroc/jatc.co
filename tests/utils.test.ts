@@ -37,6 +37,16 @@ describe('i18n utils', () => {
       expect(t('contact.title')).toBe('Contact');
     });
 
+    it('should translate Development Manager hero badge in Spanish', () => {
+      const t = useTranslations('es');
+      expect(t('hero.badge')).toContain('Gerente de Desarrollo');
+    });
+
+    it('should translate Development Manager hero badge in English', () => {
+      const t = useTranslations('en');
+      expect(t('hero.badge')).toContain('Development Manager');
+    });
+
     it('should fallback to default language translation if key is missing in selected language', () => {
       const t = useTranslations('en');
       // @ts-expect-error: test.fallbackOnlyEs is defined in 'es' but not in 'en'

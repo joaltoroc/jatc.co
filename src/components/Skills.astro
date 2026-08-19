@@ -150,7 +150,15 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
             <h3 class="category-title">{category.title}</h3>
             <div class="skills-tags">
               {category.skills.map((skill) => (
-                <span class="skill-tag">{skill}</span>
+                <span
+                  class="skill-tag"
+                  data-skill={skill}
+                  role="button"
+                  tabindex="0"
+                  title={`Filtrar experiencias y proyectos con ${skill}`}
+                >
+                  {skill}
+                </span>
               ))}
             </div>
           </div>
@@ -225,13 +233,98 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 500;
+    cursor: pointer;
     transition: all var(--transition-fast);
+    user-select: none;
   }
 
-  .skill-tag:hover {
+  .skill-tag:hover,
+  .skill-tag.active {
     background: var(--tag-hover-bg);
-    border-color: var(--tag-hover-border);
+    border-color: var(--accent-primary);
     color: var(--text-primary);
     transform: scale(1.05);
   }
+
+  .skill-tag.active {
+    box-shadow: 0 0 12px var(--accent-primary);
+  }
 </style>
+
+<script>
+  const initSkillFilter = () => {
+    const skillTags = document.querySelectorAll('.skill-tag');
+    const expCards = document.querySelectorAll('.timeline-item');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    let activeSkill: string | null = null;
+
+    const filterAll = (skill: string | null) => {
+      activeSkill = skill;
+
+      skillTags.forEach((tag) => {
+        if (
+          skill &&
+          tag.getAttribute('data-skill')?.toLowerCase() === skill.toLowerCase()
+        ) {
+          tag.classList.add('active');
+        } else {
+          tag.classList.remove('active');
+        }
+      });
+
+      if (!skill) {
+        expCards.forEach((card) => ((card as HTMLElement).style.opacity = '1'));
+        projectCards.forEach(
+          (card) => ((card as HTMLElement).style.opacity = '1')
+        );
+        return;
+      }
+
+      const term = skill.toLowerCase();
+
+      expCards.forEach((card) => {
+        const text = card.textContent?.toLowerCase() || '';
+        (card as HTMLElement).style.opacity = text.includes(term)
+          ? '1'
+          : '0.25';
+      });
+
+      projectCards.forEach((card) => {
+        const text = card.textContent?.toLowerCase() || '';
+        (card as HTMLElement).style.opacity = text.includes(term)
+          ? '1'
+          : '0.25';
+      });
+    };
+
+    skillTags.forEach((tag) => {
+      const handleSelect = () => {
+        const skill = tag.getAttribute('data-skill');
+        if (!skill) return;
+        if (activeSkill === skill) {
+          filterAll(null);
+        } else {
+          filterAll(skill);
+          document
+            .getElementById('experience')
+            ?.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      tag.addEventListener('click', handleSelect);
+      tag.addEventListener('keydown', (e: Event) => {
+        if (
+          (e as KeyboardEvent).key === 'Enter' ||
+          (e as KeyboardEvent).key === ' '
+        ) {
+          e.preventDefault();
+          handleSelect();
+        }
+      });
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initSkillFilter);
+  document.addEventListener('astro:page-load', initSkillFilter);
+</script>

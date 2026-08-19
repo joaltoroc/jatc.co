@@ -115,6 +115,35 @@ const projects = [
                   <span>{t('projects.viewGithub')}</span>
                 </a>
               )}
+              <button
+                type="button"
+                class="btn-secondary project-btn project-detail-btn"
+                data-title={project.title}
+                data-desc={project.description}
+                data-stack={project.technologies.join(', ')}
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <>
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                  </>
+                </svg>
+                <span>
+                  {lang === 'en'
+                    ? 'Architecture & Details'
+                    : 'Detalles & Arquitectura'}
+                </span>
+              </button>
             </div>
 
             <div class="project-print-urls">
@@ -150,6 +179,48 @@ const projects = [
           </div>
         ))
       }
+    </div>
+  </div>
+
+  <!-- Project Detail Modal -->
+  <div
+    id="project-modal"
+    class="project-modal-backdrop"
+    aria-hidden="true"
+    role="dialog"
+  >
+    <div class="project-modal-card glass">
+      <div class="project-modal-header">
+        <h3 id="project-modal-title" class="project-modal-title">
+          {lang === 'en' ? 'Project Details' : 'Detalles del Proyecto'}
+        </h3>
+        <button
+          id="project-modal-close"
+          class="modal-close-btn"
+          aria-label="Close modal">&times;</button
+        >
+      </div>
+      <div class="project-modal-body">
+        <p id="project-modal-desc" class="project-modal-desc"></p>
+        <div class="project-modal-section">
+          <h4>
+            {
+              lang === 'en'
+                ? 'Architectural Highlights'
+                : 'Puntos Clave de Arquitectura'
+            }
+          </h4>
+          <ul class="project-modal-highlights">
+            <li>✓ Clean Architecture & Modular Microservices Design</li>
+            <li>✓ High-Performance Static & API Response Caching</li>
+            <li>✓ Enterprise Security Standards & Zero Vulnerabilities</li>
+          </ul>
+        </div>
+        <div class="project-modal-section">
+          <h4>Stack</h4>
+          <p id="project-modal-stack" class="project-modal-stack-text"></p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -314,4 +385,132 @@ const projects = [
       width: 100%;
     }
   }
+
+  /* Project Modal Styling */
+  .project-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .project-modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .project-modal-card {
+    background: var(--card-bg, #ffffff);
+    border: 1px solid var(--card-border, #e2e8f0);
+    border-radius: 1.25rem;
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .project-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .project-modal-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+  }
+
+  .modal-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .project-modal-desc {
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .project-modal-section h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-primary);
+  }
+
+  .project-modal-highlights {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .project-modal-stack-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
 </style>
+
+<script>
+  const initProjectModal = () => {
+    const detailBtns = document.querySelectorAll('.project-detail-btn');
+    const modal = document.getElementById('project-modal');
+    const closeBtn = document.getElementById('project-modal-close');
+    const titleEl = document.getElementById('project-modal-title');
+    const descEl = document.getElementById('project-modal-desc');
+    const stackEl = document.getElementById('project-modal-stack');
+
+    if (!modal || !closeBtn || !titleEl || !descEl || !stackEl) return;
+
+    const openModal = (title: string, desc: string, stack: string) => {
+      titleEl.textContent = title;
+      descEl.textContent = desc;
+      stackEl.textContent = stack;
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+    };
+
+    detailBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const title = btn.getAttribute('data-title') || '';
+        const desc = btn.getAttribute('data-desc') || '';
+        const stack = btn.getAttribute('data-stack') || '';
+        openModal(title, desc, stack);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  };
+
+  document.addEventListener('DOMContentLoaded', initProjectModal);
+  document.addEventListener('astro:page-load', initProjectModal);
+</script>
