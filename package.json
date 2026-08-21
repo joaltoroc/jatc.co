@@ -2,7 +2,7 @@
   "name": "jatc",
   "description": "Personal Portfolio of John Alexander Toro Cortés - Engineering Manager, Tech Lead & Cybersecurity Specialist. Built with Astro, TypeScript, and high-performance static rendering.",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "engines": {
     "node": ">=24.0.0"
   },

@@ -1,5 +1,5 @@
 // Service Worker for JATC Portfolio PWA Offline Support
-const CACHE_NAME = 'jatc-portfolio-v1';
+const CACHE_NAME = 'jatc-portfolio-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/en/',

@@ -66,7 +66,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
 - **Accesibilidad y UX:**
   - Enlace accesible "Skip to main content" (saltar al contenido) para navegación rápida con teclado (WCAG 2.4.1).
   - Sincronización activa de links en el menú de navegación (Header) según la sección de la página visible durante el scroll, con controles flotantes de "Scroll to Top" e impresión rápida de página (optimizados por posicionamiento absoluto y transiciones mediante variables CSS nativas, ocultándose durante la impresión).
-  - Consola CLI interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `matrix`, `clear`, `sudo`) y navegación por historial (flechas Arriba/Abajo).
+  - Consola CLI interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `version`, `matrix`, `clear`, `sudo`) y navegación por historial (flechas Arriba/Abajo).
   - Filtro dinámico cruzado por tecnologías en [Skills.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Skills.astro) que resalta las tarjetas correspondientes en Experiencia y Proyectos.
   - Modal interactivo de detalles de arquitectura de proyectos en [Projects.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Projects.astro).
   - Widget de asistente de IA flotante bilingüe ("Ask John's AI") en [AiAssistant.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/AiAssistant.astro).
