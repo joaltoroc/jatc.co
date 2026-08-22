@@ -4,22 +4,22 @@ import { getLangFromUrl, useTranslations } from '../src/i18n/utils';
 describe('i18n utils', () => {
   describe('getLangFromUrl', () => {
     it('should return default language "es" for root URL', () => {
-      const url = new URL('https://jatc.co/');
+      const url = new URL('https://www.jatc.co/');
       expect(getLangFromUrl(url)).toBe('es');
     });
 
     it('should return "en" for English URL paths', () => {
-      const url = new URL('https://jatc.co/en/about');
+      const url = new URL('https://www.jatc.co/en/about');
       expect(getLangFromUrl(url)).toBe('en');
     });
 
     it('should return default language "es" for invalid language paths', () => {
-      const url = new URL('https://jatc.co/fr/contact');
+      const url = new URL('https://www.jatc.co/fr/contact');
       expect(getLangFromUrl(url)).toBe('es');
     });
 
     it('should return default language "es" for standard paths without language prefix', () => {
-      const url = new URL('https://jatc.co/about');
+      const url = new URL('https://www.jatc.co/about');
       expect(getLangFromUrl(url)).toBe('es');
     });
   });

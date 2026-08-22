@@ -5,11 +5,19 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 export default [
   // Global ignores
   {
-    ignores: ['dist/', '.astro/', 'node_modules/', '.agents/', '.github/', '.husky/', 'coverage/'],
+    ignores: [
+      'dist/',
+      '.astro/',
+      'node_modules/',
+      '.agents/',
+      '.github/',
+      '.husky/',
+      'coverage/',
+    ],
   },
   // TypeScript Configuration (applies to .ts, .tsx)
   ...tsEslint.configs.recommended,
-  
+
   // Astro Configuration (includes recommended and accessibility rules)
   ...eslintPluginAstro.configs['flat/recommended'],
   ...eslintPluginAstro.configs['flat/jsx-a11y-recommended'],
@@ -30,7 +38,10 @@ export default [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.astro'],
     rules: {
-      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_' },
+      ],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },

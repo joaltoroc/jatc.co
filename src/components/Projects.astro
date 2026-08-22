@@ -37,7 +37,7 @@ const projects = [
       'Vitest',
       'PWA',
     ],
-    liveUrl: lang === 'en' ? 'https://jatc.co/en/' : 'https://jatc.co/',
+    liveUrl: lang === 'en' ? 'https://www.jatc.co/en/' : 'https://www.jatc.co/',
     githubUrl: 'https://github.com/joaltoroc/jatc.co',
     featured: true,
   },
@@ -255,7 +255,10 @@ const projects = [
     border-radius: var(--card-radius);
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    transition: all var(--transition-fast);
+    transition:
+      transform var(--transition-apple, 250ms cubic-bezier(0.16, 1, 0.3, 1)),
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
@@ -265,6 +268,11 @@ const projects = [
     border-color: var(--accent-primary);
     transform: translateY(-4px);
     box-shadow: 0 12px 30px -10px rgba(37, 99, 235, 0.15);
+  }
+
+  .project-card:active {
+    transform: scale(0.985) !important;
+    transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   :global(.dark) .project-card:hover {
@@ -364,6 +372,11 @@ const projects = [
     .print-url-link {
       color: #2563eb !important;
       text-decoration: underline !important;
+    }
+
+    #project-modal,
+    .project-modal {
+      display: none !important;
     }
   }
 

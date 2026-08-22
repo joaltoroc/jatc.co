@@ -6,7 +6,7 @@ Este documento registra las decisiones arquitectónicas clave del portafolio web
 
 ## 1. PURPOSE
 
-El portafolio personal (disponible en [jatc.co](https://jatc.co)) tiene como propósito representar el perfil profesional de John Alexander Toro Cortés como Engineering Manager, Tech Lead y Especialista en Ciberseguridad. Los objetivos fundamentales del sitio son:
+El portafolio personal (disponible en [jatc.co](https://www.jatc.co)) tiene como propósito representar el perfil profesional de John Alexander Toro Cortés como Engineering Manager, Tech Lead y Especialista en Ciberseguridad. Los objetivos fundamentales del sitio son:
 
 - **Rendimiento excepcional:** Tiempos de carga mínimos e instantáneos.
 - **Seguridad robusta:** Reducción de la superficie de ataque y protección de datos.

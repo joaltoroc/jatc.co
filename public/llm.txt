@@ -3,15 +3,15 @@
 > Development Manager, Technical Lead, Software Engineer & Cybersecurity Specialist with 18+ years of experience building secure, scalable, and high-performance applications.
 
 ## Links
-- [Main Portfolio (Spanish)](https://jatc.co/): Main landing page and contact form.
-- [Main Portfolio (English)](https://jatc.co/en/): English version of the portfolio.
-- [About](https://jatc.co/#about): Introduction and career focus.
-- [Professional Experience](https://jatc.co/#experience): Chronological work history.
-- [Featured Projects](https://jatc.co/#projects): Open source and featured projects.
-- [Education](https://jatc.co/#education): Degrees and formal studies.
-- [Courses & Certifications](https://jatc.co/#courses): List of verified professional courses and certifications.
-- [Technical Skills](https://jatc.co/#skills): Categorized technical skills matrix.
-- [Contact](https://jatc.co/#contact): Social profiles and contact form.
+- [Main Portfolio (Spanish)](https://www.jatc.co/): Main landing page and contact form.
+- [Main Portfolio (English)](https://www.jatc.co/en/): English version of the portfolio.
+- [About](https://www.jatc.co/#about): Introduction and career focus.
+- [Professional Experience](https://www.jatc.co/#experience): Chronological work history.
+- [Featured Projects](https://www.jatc.co/#projects): Open source and featured projects.
+- [Education](https://www.jatc.co/#education): Degrees and formal studies.
+- [Courses & Certifications](https://www.jatc.co/#courses): List of verified professional courses and certifications.
+- [Technical Skills](https://www.jatc.co/#skills): Categorized technical skills matrix.
+- [Contact](https://www.jatc.co/#contact): Social profiles and contact form.
 
 ## Technical Skills
 
@@ -85,7 +85,7 @@
 
 ### JATC.co - Personal Portfolio & Web Platform
 - **Repository:** https://github.com/joaltoroc/jatc.co
-- **Live Demo:** https://jatc.co/
+- **Live Demo:** https://www.jatc.co/
 - **Technologies:** Astro v7, TypeScript, LightningCSS, i18n, DevSecOps, Vitest, PWA
 - **Description:** High-performance personal portfolio and web site built with Astro v7, TypeScript, LightningCSS, and Clean Architecture. Features bilingual support (ES/EN), dark/light mode with persistence, Brotli/Gzip compression, font & image LCP optimization, WCAG 2.2 accessibility, strict CSP security directives, and 0 vulnerabilities.
 

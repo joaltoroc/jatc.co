@@ -57,6 +57,8 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
+  --transition-apple: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Fallback fonts matching metrics to prevent layout shifts */
@@ -88,7 +90,7 @@
   --border-light: rgba(255, 255, 255, 0.06);
   --surface-light: rgba(255, 255, 255, 0.03);
   --glass-bg: rgba(15, 23, 42, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
   --glow-opacity: 0.3;
 
   /* Gradients Override */
@@ -114,6 +116,7 @@ html {
   background-image: var(--gradient-bg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-optical-sizing: auto;
 }
 
 body {
@@ -121,6 +124,8 @@ body {
   padding: 0;
   overflow-x: hidden;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -133,12 +138,15 @@ h6 {
   font-family: var(--font-display);
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.025em; /* Apple Typography: tight tracking for display text */
+  font-optical-sizing: auto;
 }
 
 p {
   margin: 0;
   color: var(--text-secondary);
   line-height: 1.6;
+  letter-spacing: 0; /* Apple Typography: neutral tracking for body text */
 }
 
 a {
@@ -160,13 +168,13 @@ button {
   font-family: inherit;
 }
 
-/* Glassmorphism Utilities */
+/* Glassmorphism & Translucent Materials (Apple Fluid Design) */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
 }
 
 /* Container */
@@ -189,7 +197,7 @@ section {
   background-clip: text;
 }
 
-/* Buttons */
+/* Buttons & Touch Feedback (Apple Instant Press Response) */
 .btn-primary {
   display: inline-block;
   background: var(--accent-primary);
@@ -197,7 +205,10 @@ section {
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   font-weight: 600;
-  transition: all var(--transition-fast);
+  transition:
+    transform var(--transition-apple),
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.2);
 }
 
@@ -205,6 +216,11 @@ section {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.15);
   background: #1d4ed8;
+}
+
+.btn-primary:active {
+  transform: scale(0.97) !important;
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .btn-secondary {
@@ -215,7 +231,10 @@ section {
   border-radius: 9999px;
   font-weight: 600;
   border: 1px solid var(--text-primary);
-  transition: all var(--transition-fast);
+  transition:
+    transform var(--transition-apple),
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .btn-secondary:hover {
@@ -223,23 +242,63 @@ section {
   color: var(--bg-primary);
 }
 
-/* Print Styles for PDF Generation */
+.btn-secondary:active {
+  transform: scale(0.97) !important;
+  transition: transform 100ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Accessibility - Apple Reduced Motion & Reduced Transparency */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-secondary:hover,
+  .btn-secondary:active {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--bg-secondary) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* Print Styles for PDF Generation (Clean Section Page Breaks & Margins) */
 @media print {
   @page {
-    margin: 1.2cm; /* Sets margins directly on the page box so it applies to ALL printed pages (preventing clipped content on overflow pages) */
+    size: portrait;
+    margin: 1.2cm 2.4cm; /* Márgenes laterales amplios (2.4cm) para máxima simetría y legibilidad */
   }
 
   html {
-    font-size: 13.5px !important; /* Scales all rem-based font sizes down for a compact, clean look */
+    font-size: 13.5px !important; /* Scale rem-based fonts for compact, professional PDF layout */
   }
 
-  /* Hide interactive and non-essential elements */
+  /* Hide interactive, modal, and floating non-essential elements */
   header,
   footer,
   .theme-toggle,
   #scroll-to-top,
+  .print-btn,
   .btn-primary,
-  .btn-secondary {
+  .btn-secondary,
+  .ai-assistant-container,
+  .copy-section-link,
+  .skip-link,
+  .modal,
+  #diploma-modal,
+  #project-modal {
     display: none !important;
   }
 
@@ -251,7 +310,7 @@ section {
     line-height: 1.4 !important;
   }
 
-  /* Prevent cards/items from splitting across pages */
+  /* Prevent cards and items from splitting across pages */
   .timeline-item,
   .timeline-content,
   .about-card,
@@ -259,7 +318,8 @@ section {
   .edu-card,
   .course-item,
   .skill-category,
-  .project-card {
+  .project-card,
+  .contact-card {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
@@ -279,11 +339,17 @@ section {
     color: black !important;
   }
 
-  /* Section adjustments - allow breaks between sections/items, but tighten padding */
+  /* Default sections start at the top of their page box */
   section {
     page-break-inside: auto !important;
     break-inside: auto !important;
-    padding: 1rem 0 !important;
+    min-height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding: 1.5rem 0 1rem 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
   }
 
   /* Force main sections to start on a fresh page (except the first hero section) */
@@ -292,17 +358,13 @@ section {
     break-before: page !important;
   }
 
-  /* Center Hero and About sections vertically on page 1 and page 2 respectively */
+  /* Hero, About and Contact sections centered vertically on their respective pages */
   .hero-section,
-  .about-section {
-    min-height: 100vh !important; /* Represents full content height of a page box under print margins */
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
+  .about-section,
+  .contact-section {
+    min-height: calc(100vh - 1cm) !important;
     justify-content: center !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    box-sizing: border-box !important;
+    padding: 1rem 0 !important;
   }
 
   .section-header {
@@ -332,10 +394,28 @@ section {
     padding: 1.25rem !important;
   }
 
-  /* Timeline/Experience adjustments */
+  /* Timeline/Experience adjustments - dots and vertical line align inside container bounds */
+  .timeline {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-left: 1.2rem !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+  }
+
+  .timeline::before {
+    left: 1.7rem !important;
+  }
+
+  .timeline-dot {
+    left: 1.25rem !important;
+    top: 6px !important;
+  }
+
   .timeline-item {
     margin-bottom: 1.5rem !important;
-    padding-left: 45px !important;
+    padding-left: 2.8rem !important;
   }
 
   .timeline-content {
@@ -390,41 +470,53 @@ section {
     padding: 0.15rem 0.5rem !important;
   }
 
-  /* Compact course items */
+  /* Compact course items - fits all 25 courses on a single page box */
+  .courses-section {
+    padding: 0.5rem 0 !important;
+  }
+
+  .courses-section .section-header {
+    margin-bottom: 0.75rem !important;
+  }
+
   .courses-list {
+    display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
+    gap: 0.35rem 0.6rem !important;
   }
 
   .course-item {
-    padding: 0.75rem 1rem !important;
-    border-radius: 0.5rem !important;
-    gap: 0.75rem !important;
+    padding: 0.35rem 0.65rem !important;
+    border-radius: 0.35rem !important;
+    gap: 0.5rem !important;
   }
 
   .course-icon {
-    width: 20px !important;
-    height: 20px !important;
-  }
-
-  .course-icon svg {
     width: 16px !important;
     height: 16px !important;
   }
 
+  .course-icon svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+
   .course-title {
-    font-size: 0.95rem !important;
-    margin-bottom: 0.15rem !important;
+    font-size: 0.85rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.1rem !important;
   }
 
   .course-source {
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
   }
 
-  /* Ensure the main container expands fully */
+  /* Ensure the main container has symmetric side padding */
   .container {
     max-width: 100% !important;
-    padding: 0 !important;
+    width: 100% !important;
+    padding: 0 0.5rem !important;
+    box-sizing: border-box !important;
   }
 
   /* Prevent grid breaking bugs in Chrome Print & fit on a single page */

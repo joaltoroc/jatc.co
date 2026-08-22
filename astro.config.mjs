@@ -5,7 +5,7 @@ import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://jatc.co',
+  site: 'https://www.jatc.co',
   integrations: [
     sitemap({
       i18n: {
@@ -17,7 +17,7 @@ export default defineConfig({
       },
     }),
     robotsTxt({
-      sitemap: 'https://jatc.co/sitemap-index.xml',
+      sitemap: 'https://www.jatc.co/sitemap-index.xml',
       policy: [
         {
           userAgent: '*',
@@ -57,11 +57,11 @@ export default defineConfig({
 
   build: {
     format: 'directory',
-    inlineStylesheets: 'always'
+    inlineStylesheets: 'always',
   },
   vite: {
     build: {
-      cssMinify: 'lightningcss'
+      cssMinify: 'lightningcss',
     },
     plugins: [
       compression({
@@ -71,7 +71,7 @@ export default defineConfig({
       compression({
         algorithm: 'brotliCompress',
         ext: '.br',
-      })
-    ]
-  }
+      }),
+    ],
+  },
 });

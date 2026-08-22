@@ -88,24 +88,27 @@ const t = useTranslations(lang);
     <meta name="description" content={t('seo.description')} />
     <meta name="keywords" content={t('seo.keywords')} />
     <meta name="author" content="John Alexander Toro Cortés" />
-    <link rel="canonical" href={`https://jatc.co${Astro.url.pathname}`} />
+    <link rel="canonical" href={`https://www.jatc.co${Astro.url.pathname}`} />
 
     <!-- Hreflang for Internationalization -->
-    <link rel="alternate" hreflang="es" href="https://jatc.co/" />
-    <link rel="alternate" hreflang="en" href="https://jatc.co/en/" />
-    <link rel="alternate" hreflang="x-default" href="https://jatc.co/" />
+    <link rel="alternate" hreflang="es" href="https://www.jatc.co/" />
+    <link rel="alternate" hreflang="en" href="https://www.jatc.co/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.jatc.co/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JATC - John Alexander Toro Cortés" />
     <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CO'} />
-    <meta property="og:url" content={`https://jatc.co${Astro.url.pathname}`} />
+    <meta
+      property="og:url"
+      content={`https://www.jatc.co${Astro.url.pathname}`}
+    />
     <meta property="og:title" content={t('layout.title')} />
     <meta property="og:description" content={t('seo.description')} />
-    <meta property="og:image" content="https://jatc.co/jatc.png?v=0.2.0" />
+    <meta property="og:image" content="https://www.jatc.co/jatc.png?v=0.3.0" />
     <meta
       property="og:image:secure_url"
-      content="https://jatc.co/jatc.png?v=0.2.0"
+      content="https://www.jatc.co/jatc.png?v=0.3.0"
     />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="800" />
@@ -119,10 +122,13 @@ const t = useTranslations(lang);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@joaltoroc" />
     <meta name="twitter:creator" content="@joaltoroc" />
-    <meta name="twitter:url" content={`https://jatc.co${Astro.url.pathname}`} />
+    <meta
+      name="twitter:url"
+      content={`https://www.jatc.co${Astro.url.pathname}`}
+    />
     <meta name="twitter:title" content={t('layout.title')} />
     <meta name="twitter:description" content={t('seo.description')} />
-    <meta name="twitter:image" content="https://jatc.co/jatc.png?v=0.2.0" />
+    <meta name="twitter:image" content="https://www.jatc.co/jatc.png?v=0.3.0" />
     <meta
       name="twitter:image:alt"
       content="John Alexander Toro Cortés - Development Manager & Technical Lead"
@@ -193,11 +199,11 @@ const t = useTranslations(lang);
         '@graph': [
           {
             '@type': 'Person',
-            '@id': 'https://jatc.co/#person',
+            '@id': 'https://www.jatc.co/#person',
             name: 'John Alexander Toro Cortés',
             jobTitle: 'Development Manager & Technical Lead',
-            url: 'https://jatc.co',
-            image: 'https://jatc.co/jatc.png',
+            url: 'https://www.jatc.co',
+            image: 'https://www.jatc.co/jatc.png',
             sameAs: [
               'https://github.com/joaltoroc',
               'https://linkedin.com/in/joaltoroc',
@@ -215,10 +221,10 @@ const t = useTranslations(lang);
           },
           {
             '@type': 'WebSite',
-            '@id': 'https://jatc.co/#website',
-            url: 'https://jatc.co',
+            '@id': 'https://www.jatc.co/#website',
+            url: 'https://www.jatc.co',
             name: 'JATC - John Alexander Toro Cortés',
-            author: { '@id': 'https://jatc.co/#person' },
+            author: { '@id': 'https://www.jatc.co/#person' },
             inLanguage: ['es', 'en'],
           },
         ],
