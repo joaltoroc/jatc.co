@@ -387,6 +387,30 @@ const t = useTranslations(lang);
   }
 
   @media print {
+    .glow {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    .image-wrapper {
+      transform: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      filter: none !important;
+      -webkit-filter: none !important;
+    }
+
+    .hero-profile-img {
+      filter: none !important;
+      -webkit-filter: none !important;
+      mask-image: none !important;
+      -webkit-mask-image: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      mix-blend-mode: normal !important;
+    }
+
     .hero-cli {
       display: none !important;
     }

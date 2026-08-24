@@ -34,7 +34,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 
 - Soporte para modo claro y modo oscuro con guardado automático en `localStorage`.
 - **Prevención de parpadeo (Flash of Unstyled Content):** Se ejecuta un script crítico síncrono inline directamente en el `<head>` antes de renderizar la página para aplicar la clase `.dark` de inmediato.
-- Soporte de impresión optimizado: fuerza de forma temporal el tema claro al imprimir documentos físicos (`beforeprint` y `afterprint`).
+- Soporte de impresión optimizado: fuerza de forma temporal el tema claro al imprimir documentos físicos (`beforeprint` y `afterprint`), añade márgenes laterales simétricos en el contenedor (`padding: 0 1.75rem`), y remueve máscaras de degradado, sombreados (`drop-shadow`) y resplandores (`blur`) en imágenes para una impresión y generación de PDF limpia en navegadores móviles.
 
 ### 🚀 Rendimiento de Vanguardia (Performance SEO)
 
