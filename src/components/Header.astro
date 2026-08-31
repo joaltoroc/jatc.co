@@ -83,7 +83,12 @@ const isEn = lang === 'en';
   </div>
 
   <!-- Mobile Menu Drawer -->
-  <div class="mobile-menu-drawer" id="mobile-menu-drawer">
+  <div
+    class="mobile-menu-drawer"
+    id="mobile-menu-drawer"
+    aria-hidden="true"
+    inert
+  >
     <nav class="mobile-nav">
       <ul>
         <li><a href="#about" class="mobile-nav-link">{t('nav.about')}</a></li>
@@ -293,12 +298,21 @@ const isEn = lang === 'en';
       drawer.classList.toggle('is-active', isOpen);
       btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (isOpen) {
+        drawer.removeAttribute('aria-hidden');
+        drawer.removeAttribute('inert');
+      } else {
+        drawer.setAttribute('aria-hidden', 'true');
+        drawer.setAttribute('inert', '');
+      }
     };
 
     const closeMenu = () => {
       btn.classList.remove('is-active');
       drawer.classList.remove('is-active');
       btn.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      drawer.setAttribute('inert', '');
       document.body.style.overflow = '';
     };
 

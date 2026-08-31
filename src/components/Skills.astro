@@ -155,7 +155,12 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
                   data-skill={skill}
                   role="button"
                   tabindex="0"
-                  title={`Filtrar experiencias y proyectos con ${skill}`}
+                  aria-pressed="false"
+                  title={
+                    lang === 'en'
+                      ? `Filter experience and projects by ${skill}`
+                      : `Filtrar experiencias y proyectos con ${skill}`
+                  }
                 >
                   {skill}
                 </span>
@@ -262,16 +267,26 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
     const filterAll = (skill: string | null) => {
       activeSkill = skill;
 
+      const isEn = document.documentElement.lang === 'en';
       skillTags.forEach((tag) => {
-        if (
+        const isActive = Boolean(
           skill &&
           tag.getAttribute('data-skill')?.toLowerCase() === skill.toLowerCase()
-        ) {
-          tag.classList.add('active');
-        } else {
-          tag.classList.remove('active');
-        }
+        );
+        tag.classList.toggle('active', isActive);
+        tag.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
+
+      const announcer = document.getElementById('sr-announcer');
+      if (announcer) {
+        announcer.textContent = skill
+          ? isEn
+            ? `Filtered portfolio by ${skill}`
+            : `Portafolio filtrado por ${skill}`
+          : isEn
+            ? 'Skill filters cleared'
+            : 'Filtros de habilidades limpiados';
+      }
 
       if (!skill) {
         expCards.forEach((card) => ((card as HTMLElement).style.opacity = '1'));
