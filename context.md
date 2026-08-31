@@ -7,7 +7,7 @@ Este documento describe la estructura y configuración del portafolio web person
 - **Framework:** [Astro](https://astro.build/) (v7.0.9)
 - **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas (escala de tokens semántica integrada), procesado con **LightningCSS**.
 - **Tipografías:** Google Fonts (Space Grotesk para títulos y Inter para cuerpo) auto-albergadas con precarga y fallback optimizado.
-- **Gestor de Paquetes:** `pnpm` (v11.10.0)
+- **Gestor de Paquetes:** `pnpm` (v11.25.0)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=24.0.0`
@@ -72,7 +72,6 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Consola CLI interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `version`, `matrix`, `clear`, `sudo`) y navegación por historial (flechas Arriba/Abajo).
   - Filtro dinámico cruzado por tecnologías en [Skills.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Skills.astro) que resalta las tarjetas correspondientes en Experiencia y Proyectos.
   - Modal interactivo de detalles de arquitectura de proyectos en [Projects.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Projects.astro).
-  - Widget de asistente de IA flotante bilingüe ("Ask John's AI") en [AiAssistant.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/AiAssistant.astro).
   - Service Worker PWA (`public/sw.js`) con soporte de caché offline y precarga de recursos.
   - Modal interactivo de visualización de diplomas en [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro) con paginación lateral, panel de información (título, emisor y fecha), navegación mediante teclado (flechas Izquierda/Derecha y tecla Escape para cerrar) y sincronización ARIA dinámica (`aria-label`) del título del encabezado.
   - Visualización directa y copiado al portapapeles rápido para datos clave de contacto (Email, LinkedIn y GitHub) con feedback mediante tooltips en [Contact.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Contact.astro).

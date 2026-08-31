@@ -16,7 +16,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 - **Lenguaje:** TypeScript / HTML5 Semántico
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
 - **Entorno de ejecución:** Node.js `>=24.0.0`
-- **Gestor de paquetes:** [pnpm (v11.10.0)](https://pnpm.io/)
+- **Gestor de paquetes:** [pnpm (v11.25.0)](https://pnpm.io/)
 - **Control de calidad y Git Hooks:** [Husky (v9.1.7)](https://typicode.github.io/husky/) y `@astrojs/check`
 - **CI/CD:** GitHub Actions (despliegue automatizado por SFTP)
 
@@ -58,13 +58,12 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 
 - **Apple Design System & Motion:** Interfaz 100% responsiva bajo metodología "mobile-first", guiada por los principios de **Apple Design** (_Designing Fluid Interfaces_): tipografía óptica con tracking negativo (`letter-spacing: -0.025em`) en títulos, materiales translúcidos (`backdrop-filter: blur(20px) saturate(180%)`), bordes de alta definición y respuesta táctil reactiva al presionar (`:active { transform: scale(0.97); }`) mediante curvas de aceleración elásticas estilo iOS (`cubic-bezier(0.16, 1, 0.3, 1)`).
 - **Soporte de Accesibilidad de Sistema:** Adaptación a `@media (prefers-reduced-motion)` (animaciones cross-fade) y `@media (prefers-reduced-transparency)` (superficies opacas fallbacks).
-- **Exportación a PDF por Secciones Independientes:** Reglas estandarizadas de salto de página (`break-before: page; page-break-before: always;`) para cada una de las 8 secciones principales con márgenes de caja `@page { size: portrait; margin: 1.2cm 1.5cm; }` y ocultamiento automático de elementos interactivos (asistente de IA, modales y botones flotantes).
+- **Exportación a PDF por Secciones Independientes:** Reglas estandarizadas de salto de página (`break-before: page; page-break-before: always;`) para cada una de las 8 secciones principales con márgenes de caja `@page { size: portrait; margin: 1.2cm 1.5cm; }` y ocultamiento automático de elementos interactivos (modales y botones flotantes).
 - **Enlaces rápidos de sección:** Generación automática de botones interactivos para copiar el enlace de anclaje directo de cada sección con retroalimentación visual al usuario.
 - **Navegación y acciones rápidas:** Navegación mejorada con botones flotantes para "Scroll to Top" (volver arriba) e impresión de la página (optimizados mediante posicionamiento absoluto y transiciones fluidas por variables CSS nativas), de manera que el botón de imprimir se desliza suavemente al aparecer el scroll.
 - **Accesibilidad (A11y):** Enlace "Skip to main content" (saltar al contenido principal) para navegación fácil por teclado (WCAG 2.4.1), áreas táctiles mínimas de 44px, e inyección dinámica del atributo `aria-label` sincronizado en encabezados de modales interactivos para cumplir con WCAG y pasar al 100% las pruebas de accesibilidad.
 - **Consola Terminal CLI Interactivo:** Consola interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `matrix`, `clear`, `sudo`), autocompletado y navegación por historial de comandos (flechas Arriba/Abajo).
 - **Filtro Cruzado de Tecnologías:** Selección interactiva de badges en la sección de Habilidades que resalta automáticamente la experiencia laboral y proyectos asociados a dicha tecnología.
-- **Asistente Virtual con IA ("Ask John's AI"):** Widget flotante bilingüe interactivo que responde preguntas frecuentes sobre el perfil directivo de John, tecnologías, años de experiencia y vías de contacto.
 - **PWA & Caché Offline:** Service Worker PWA (`public/sw.js`) configurado con estrategia Cache-First para navegación offline instantánea.
 - **Visualizador interactivo de certificados y proyectos:** Modales accesibles en [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro) y [Projects.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Projects.astro) para inspeccionar certificados y arquitecturas detalladas de proyectos.
 - **Copia de datos de contacto:** Visualización directa y opción rápida de copiado al portapapeles para los datos clave de contacto (Email, LinkedIn y GitHub) en la sección de Contacto con retroalimentación visual.

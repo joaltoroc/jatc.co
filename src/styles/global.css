@@ -303,7 +303,6 @@ section {
   .print-btn,
   .btn-primary,
   .btn-secondary,
-  .ai-assistant-container,
   .copy-section-link,
   .skip-link,
   .modal,
@@ -765,4 +764,17 @@ input:focus-visible,
 textarea:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
+}
+
+/* Screen reader utility class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

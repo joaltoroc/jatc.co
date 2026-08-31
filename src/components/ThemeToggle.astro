@@ -118,6 +118,18 @@ const t = useTranslations(lang);
         const isDarkNow = element.classList.contains('dark');
         localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
         toggle.setAttribute('aria-pressed', isDarkNow ? 'true' : 'false');
+        const isEn = document.documentElement.lang === 'en';
+        const msg = isDarkNow
+          ? isEn
+            ? 'Switched to dark theme'
+            : 'Cambiado a tema oscuro'
+          : isEn
+            ? 'Switched to light theme'
+            : 'Cambiado a tema claro';
+        const announcer = document.getElementById('sr-announcer');
+        if (announcer) {
+          announcer.textContent = msg;
+        }
       });
     }
   }

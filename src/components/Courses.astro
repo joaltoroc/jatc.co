@@ -497,7 +497,15 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     </div>
 
     <!-- Modal para el Diploma -->
-    <div id="diploma-modal" class="modal-overlay">
+    <div
+      id="diploma-modal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+      inert
+    >
       <div class="modal-content-wrapper">
         <button id="close-modal" class="close-btn" aria-label="Cerrar"
           >&times;</button
@@ -857,14 +865,19 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
         if (index !== null) {
           currentIndex = parseInt(index, 10);
           updateModal();
+          modal.removeAttribute('inert');
+          modal.setAttribute('aria-hidden', 'false');
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
+          if (closeBtn) closeBtn.focus();
         }
       });
     });
 
     const closeModal = () => {
       modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('inert', '');
       document.body.style.overflow = '';
       setTimeout(() => {
         modalImg.setAttribute('src', '');

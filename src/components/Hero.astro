@@ -543,7 +543,7 @@ const t = useTranslations(lang);
           case 'version':
           case 'ver':
             appendLine(
-              'JATC Portfolio v0.3.0 (Astro 7.2.4 + TypeScript)',
+              'JATC Portfolio v0.4.0 (Astro 7.2.10 + TypeScript)',
               false,
               true
             );
@@ -620,7 +620,30 @@ const t = useTranslations(lang);
       });
 
       cliInput.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowUp') {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          const currentVal = cliInput.value.trim().toLowerCase();
+          if (currentVal) {
+            const validCmds = [
+              'help',
+              'whoami',
+              'skills',
+              'experience',
+              'projects',
+              'contact',
+              'cv',
+              'theme',
+              'version',
+              'matrix',
+              'clear',
+              'sudo',
+            ];
+            const match = validCmds.find((cmd) => cmd.startsWith(currentVal));
+            if (match) {
+              cliInput.value = match;
+            }
+          }
+        } else if (e.key === 'ArrowUp') {
           if (historyIndex > 0) {
             historyIndex--;
             cliInput.value = commandHistoryList[historyIndex] || '';
