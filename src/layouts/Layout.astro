@@ -157,6 +157,7 @@ const t = useTranslations(lang);
       as="font"
       type="font/woff2"
       crossorigin
+      fetchpriority="high"
     />
 
     <!-- Critical CSS -->
@@ -168,6 +169,10 @@ const t = useTranslations(lang);
         padding-top: 70px;
       }
       .hero-title {
+        font-family:
+          'Space Grotesk Variable', 'Space Grotesk Fallback', system-ui,
+          sans-serif;
+        font-display: swap;
         font-size: 3.5rem;
         line-height: 1.1;
         margin-bottom: 1.5rem;

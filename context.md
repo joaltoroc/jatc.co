@@ -60,7 +60,9 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
 - **Performance:**
   - Formato de build `directory` para URLs limpias.
   - Compresión Gzip y Brotli activa en el build de Vite.
-  - Pre-carga (preload) de las fuentes críticas (`Inter` y `Space Grotesk`) e implementación de font fallback stacks optimizados con `size-adjust` para eliminar desplazamientos de diseño (CLS).
+  - Configuración de cabeceras de caché de 1 año (`max-age=31536000, immutable`) en `.htaccess` para todos los recursos estáticos versionados en `/_astro/`.
+  - Pre-carga (preload) con alta prioridad (`fetchpriority="high"`) de las fuentes críticas (`Inter` y `Space Grotesk`) e inyección inline en `<head>` de tipografías hero con `font-display: swap` e implementación de font fallback stacks optimizados con `size-adjust` para eliminar desplazamientos de diseño (CLS) y retardos de renderizado LCP.
+  - Eliminación de recálculos de diseño forzados (Forced Reflows) en la consola CLI terminal (`Hero.astro`) y manejadores de scroll (`ScrollToTop.astro`) mediante sincronización de frames con `requestAnimationFrame()`.
   - Compilación y optimización de scripts de cliente: Todos los scripts interactivos se compilan, minifican y empaquetan a través del pipeline nativo de Astro/Vite en lugar de servirse in-line, reduciendo el tamaño del HTML y optimizando la firma de seguridad (CSP).
   - Optimización de animaciones móviles: Animación del cursor de la terminal optimizada mediante propiedades compuestas por GPU (opacidad) para evitar parpadeos de color no optimizados y reducir el bloqueo de hilos principales (PageSpeed).
 - **Accesibilidad y UX (Apple Design System):**

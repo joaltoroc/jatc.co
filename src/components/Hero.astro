@@ -515,7 +515,9 @@ const t = useTranslations(lang);
           div.textContent = text;
         }
         cliHistory.appendChild(div);
-        cliBody.scrollTop = cliBody.scrollHeight;
+        requestAnimationFrame(() => {
+          cliBody.scrollTop = cliBody.scrollHeight;
+        });
       };
 
       const handleCommand = (cmdStr: string) => {

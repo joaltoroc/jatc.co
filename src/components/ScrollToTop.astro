@@ -106,22 +106,31 @@ const t = useTranslations(lang);
         window.removeEventListener('scroll', window.handleFloatingScroll);
       }
 
+      let ticking = false;
       window.handleFloatingScroll = function () {
-        if (window.scrollY > 300) {
-          container.style.setProperty('--print-translate', '-53px');
-          container.style.setProperty('--scroll-opacity', '1');
-          container.style.setProperty('--scroll-scale', '1');
-          container.style.setProperty('--scroll-pointer', 'auto');
-        } else {
-          container.style.setProperty('--print-translate', '0px');
-          container.style.setProperty('--scroll-opacity', '0');
-          container.style.setProperty('--scroll-scale', '0.5');
-          container.style.setProperty('--scroll-pointer', 'none');
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            if (window.scrollY > 300) {
+              container.style.setProperty('--print-translate', '-53px');
+              container.style.setProperty('--scroll-opacity', '1');
+              container.style.setProperty('--scroll-scale', '1');
+              container.style.setProperty('--scroll-pointer', 'auto');
+            } else {
+              container.style.setProperty('--print-translate', '0px');
+              container.style.setProperty('--scroll-opacity', '0');
+              container.style.setProperty('--scroll-scale', '0.5');
+              container.style.setProperty('--scroll-pointer', 'none');
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       };
 
       if (window.handleFloatingScroll) {
-        window.addEventListener('scroll', window.handleFloatingScroll);
+        window.addEventListener('scroll', window.handleFloatingScroll, {
+          passive: true,
+        });
         window.handleFloatingScroll(); // Trigger once on load
       }
 
