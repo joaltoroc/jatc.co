@@ -82,7 +82,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards, gráfico JSON-LD ampliado (`Person`, `WebSite`) y etiquetas `hreflang` para indexación internacional.
 - **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.
 - **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción. Inclusión de cabeceras HSTS (`Strict-Transport-Security`), COOP (`Cross-Origin-Opener-Policy`) y `X-XSS-Protection`. Uso de `overrides` en `pnpm-workspace.yaml` para neutralizar vulnerabilidades DoS en dependencias transitivas (como `brace-expansion` traída por `eslint-plugin-jsx-a11y`). Bloqueo de versión de TypeScript en la v6.x debido a incompatibilidades de API de TS 7.0+ con `typescript-eslint` (v8) y la suite de verificación de Astro. Actualizadas dependencias de pruebas (`vitest` y `@vitest/coverage-v8`) a v5.0.0.
-- **Accesibilidad:** Uso de HTML semántico y etiquetas ARIA en componentes interactivos.
+- **Accesibilidad y WCAG 2.2:** Cumplimiento avanzado con HTML5 semántico, etiquetas ARIA bilingües, ocultamiento de iconos decorativos mediante `aria-hidden="true"`, internacionalización completa de controles modales y restauración automática de foco (`focus management`) al cerrar ventanas modales.
 
 ## 📜 Scripts Disponibles
 

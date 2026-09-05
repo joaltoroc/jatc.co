@@ -57,6 +57,7 @@ export const ui = {
     // Projects
     'projects.viewLive': 'Ver Demo en Vivo',
     'projects.viewGithub': 'Código Fuente (GitHub)',
+    'projects.viewDetails': 'Ver Detalles',
     'projects.demoLabel': 'Demo:',
     'projects.githubLabel': 'GitHub:',
     'projects.githubHelpers.title':
@@ -70,6 +71,9 @@ export const ui = {
       'Portafolio Web de Alto Rendimiento & PWA',
     'projects.jatcPortfolio.desc':
       'Sitio web profesional de alto rendimiento construido con Astro v7, TypeScript, LightningCSS y Clean Architecture. Cuenta con soporte bilingüe (ES/EN), modo claro/oscuro con persistencia, compresión Brotli/Gzip, optimización LCP de fuentes e imágenes, accesibilidad WCAG 2.2, directivas estrictas de seguridad CSP y 0 vulnerabilidades.',
+
+    // Skills
+    'skills.filterTitle': 'Filtrar experiencias y proyectos con {skill}',
 
     // Contact
     'contact.title': 'Contacto',
@@ -88,12 +92,19 @@ export const ui = {
     'seo.keywords':
       'Gerente de Desarrollo, Development Manager, Technical Lead, Software Engineer, Tech Lead, Ciberseguridad, DevSecOps, Clean Architecture, Arquitectura Cloud, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
-    // Actions
+    // Actions & Modal A11y
     'action.copyLink': 'Copiar link',
     'action.copy': 'Copiar al portapapeles',
     'action.copied': '¡Copiado!',
     'action.print': 'Imprimir portafolio',
     'action.skipToContent': 'Saltar al contenido principal',
+    'action.close': 'Cerrar',
+    'action.previous': 'Anterior',
+    'action.next': 'Siguiente',
+    'action.closeModal': 'Cerrar ventana modal',
+    'hero.cliInputLabel': 'Entrada de comandos de la consola terminal',
+    'projects.architectureTitle': 'Puntos Clave de Arquitectura',
+    'projects.stackTitle': 'Tecnologías',
     'themeToggle.label': 'Cambiar tema',
     'lang.es.label': 'Cambiar idioma a Español',
     'lang.en.label': 'Cambiar idioma a Inglés (Switch to English)',
@@ -148,6 +159,7 @@ export const ui = {
     // Projects
     'projects.viewLive': 'View Live Demo',
     'projects.viewGithub': 'Source Code (GitHub)',
+    'projects.viewDetails': 'View Details',
     'projects.demoLabel': 'Demo:',
     'projects.githubLabel': 'GitHub:',
     'projects.githubHelpers.title':
@@ -160,6 +172,9 @@ export const ui = {
     'projects.jatcPortfolio.tagline': 'High-Performance Web Portfolio & PWA',
     'projects.jatcPortfolio.desc':
       'High-performance personal portfolio and web site built with Astro v7, TypeScript, LightningCSS, and Clean Architecture. Features bilingual support (ES/EN), dark/light mode with persistence, Brotli/Gzip compression, font & image LCP optimization, WCAG 2.2 accessibility, strict CSP security directives, and 0 vulnerabilities.',
+
+    // Skills
+    'skills.filterTitle': 'Filter experience and projects by {skill}',
 
     // Contact
     'contact.title': 'Contact',
@@ -178,12 +193,19 @@ export const ui = {
     'seo.keywords':
       'Development Manager, Gerente de Desarrollo, Technical Lead, Software Engineer, Tech Lead, Cybersecurity, DevSecOps, Clean Architecture, Cloud Architecture, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
-    // Actions
+    // Actions & Modal A11y
     'action.copyLink': 'Copy link to this section',
     'action.copy': 'Copy to clipboard',
     'action.copied': 'Copied!',
     'action.print': 'Print portfolio',
     'action.skipToContent': 'Skip to main content',
+    'action.close': 'Close',
+    'action.previous': 'Previous',
+    'action.next': 'Next',
+    'action.closeModal': 'Close modal window',
+    'hero.cliInputLabel': 'Terminal command line input',
+    'projects.architectureTitle': 'Architectural Highlights',
+    'projects.stackTitle': 'Technologies',
     'themeToggle.label': 'Toggle theme',
     'lang.es.label': 'Switch language to Spanish',
     'lang.en.label': 'Switch language to English',

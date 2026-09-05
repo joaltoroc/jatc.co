@@ -138,11 +138,7 @@ const projects = [
                     <line x1="12" y1="8" x2="12.01" y2="8" />
                   </>
                 </svg>
-                <span>
-                  {lang === 'en'
-                    ? 'Architecture & Details'
-                    : 'Detalles & Arquitectura'}
-                </span>
+                <span>{t('projects.viewDetails')}</span>
               </button>
             </div>
 
@@ -195,24 +191,19 @@ const projects = [
     <div class="project-modal-card glass">
       <div class="project-modal-header">
         <h3 id="project-modal-title" class="project-modal-title">
-          {lang === 'en' ? 'Project Details' : 'Detalles del Proyecto'}
+          {t('courses.modalTitle')}
         </h3>
         <button
           id="project-modal-close"
           class="modal-close-btn"
-          aria-label={lang === 'en' ? 'Close modal' : 'Cerrar modal'}
-          >&times;</button
+          aria-label={t('action.closeModal')}>&times;</button
         >
       </div>
       <div class="project-modal-body">
         <p id="project-modal-desc" class="project-modal-desc"></p>
         <div class="project-modal-section">
           <h4>
-            {
-              lang === 'en'
-                ? 'Architectural Highlights'
-                : 'Puntos Clave de Arquitectura'
-            }
+            {t('projects.architectureTitle')}
           </h4>
           <ul class="project-modal-highlights">
             <li>✓ Clean Architecture & Modular Microservices Design</li>
@@ -221,7 +212,7 @@ const projects = [
           </ul>
         </div>
         <div class="project-modal-section">
-          <h4>Stack</h4>
+          <h4>{t('projects.stackTitle')}</h4>
           <p id="project-modal-stack" class="project-modal-stack-text"></p>
         </div>
       </div>
@@ -504,7 +495,15 @@ const projects = [
 
     if (!modal || !closeBtn || !titleEl || !descEl || !stackEl) return;
 
-    const openModal = (title: string, desc: string, stack: string) => {
+    let lastFocusedElement: HTMLElement | null = null;
+
+    const openModal = (
+      title: string,
+      desc: string,
+      stack: string,
+      triggerBtn: HTMLElement
+    ) => {
+      lastFocusedElement = triggerBtn;
       titleEl.textContent = title;
       descEl.textContent = desc;
       stackEl.textContent = stack;
@@ -518,6 +517,10 @@ const projects = [
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden', 'true');
       modal.setAttribute('inert', '');
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
     };
 
     detailBtns.forEach((btn) => {
@@ -525,7 +528,7 @@ const projects = [
         const title = btn.getAttribute('data-title') || '';
         const desc = btn.getAttribute('data-desc') || '';
         const stack = btn.getAttribute('data-stack') || '';
-        openModal(title, desc, stack);
+        openModal(title, desc, stack, btn as HTMLElement);
       });
     });
 

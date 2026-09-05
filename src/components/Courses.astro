@@ -507,8 +507,10 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       inert
     >
       <div class="modal-content-wrapper">
-        <button id="close-modal" class="close-btn" aria-label="Cerrar"
-          >&times;</button
+        <button
+          id="close-modal"
+          class="close-btn"
+          aria-label={t('action.close')}>&times;</button
         >
 
         <div class="modal-inner-content">
@@ -525,7 +527,11 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
           </div>
           <div class="modal-image-panel">
             <!-- Navigation Buttons -->
-            <button id="prev-modal" class="nav-btn prev" aria-label="Anterior">
+            <button
+              id="prev-modal"
+              class="nav-btn prev"
+              aria-label={t('action.previous')}
+            >
               <svg
                 viewBox="0 0 24 24"
                 width="24"
@@ -535,6 +541,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                aria-hidden="true"
               >
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
@@ -550,7 +557,11 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
               decoding="async"
             />
 
-            <button id="next-modal" class="nav-btn next" aria-label="Siguiente">
+            <button
+              id="next-modal"
+              class="nav-btn next"
+              aria-label={t('action.next')}
+            >
               <svg
                 viewBox="0 0 24 24"
                 width="24"
@@ -560,6 +571,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                aria-hidden="true"
               >
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
@@ -844,6 +856,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     }));
 
     let currentIndex = 0;
+    let lastFocusedElement: HTMLElement | null = null;
 
     const updateModal = () => {
       const item = items[currentIndex];
@@ -861,6 +874,7 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     diplomaLinks.forEach((link) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
+        lastFocusedElement = link as HTMLElement;
         const index = link.getAttribute('data-index');
         if (index !== null) {
           currentIndex = parseInt(index, 10);
@@ -879,6 +893,10 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       modal.setAttribute('aria-hidden', 'true');
       modal.setAttribute('inert', '');
       document.body.style.overflow = '';
+      if (lastFocusedElement) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
       setTimeout(() => {
         modalImg.setAttribute('src', '');
         if (modalTitle) {
