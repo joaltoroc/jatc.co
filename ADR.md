@@ -22,7 +22,7 @@ El stack tecnológico seleccionado se enfoca en minimizar la sobrecarga (overhea
 - **Framework Principal:** [Astro (v7.0.9)](https://astro.build/) - Elegido por su arquitectura de "islas", generación estática por defecto y cero JavaScript en el cliente.
 - **Procesador de Estilos:** **LightningCSS** (integrado en Vite/Astro) - Utilizado para la minificación avanzada, autocompletado de prefijos de navegadores y transpilación rápida de CSS moderno.
 - **Tipografías:** `Inter Variable` (auto-albergada mediante `@fontsource-variable/inter`) para evitar dependencias de CDNs externos, mejorar la privacidad de los usuarios y optimizar los tiempos de respuesta DNS.
-- **Gestor de Paquetes:** **pnpm (v11.25.0)** - Adoptado por su velocidad, eficiencia de almacenamiento a través de enlaces duros, y rigurosidad con las dependencias (evitando dependencias fantasma).
+- **Gestor de Paquetes:** **pnpm (v12.3.4)** - Adoptado por su velocidad, eficiencia de almacenamiento a través de enlaces duros, y rigurosidad con las dependencias (evitando dependencias fantasma).
 - **Lenguaje:** **TypeScript (v6.0.3)** y HTML semántico para garantizar la seguridad de tipos en tiempo de compilación y una estructura web accesible.
 - **DevOps y Automatización:** **GitHub Actions** (despliegue SFTP) y **Husky (v9.1.7)** para garantizar validaciones automáticas locales (hooks de pre-commit y pre-push).
 

@@ -16,7 +16,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 - **Lenguaje:** TypeScript / HTML5 Semántico
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
 - **Entorno de ejecución:** Node.js `>=24.0.0`
-- **Gestor de paquetes:** [pnpm (v11.25.0)](https://pnpm.io/)
+- **Gestor de paquetes:** [pnpm (v12.3.4)](https://pnpm.io/)
 - **Control de calidad y Git Hooks:** [Husky (v9.1.7)](https://typicode.github.io/husky/) y `@astrojs/check`
 - **CI/CD:** GitHub Actions (despliegue automatizado por SFTP)
 

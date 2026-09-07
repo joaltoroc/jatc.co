@@ -7,7 +7,7 @@ Este documento describe la estructura y configuración del portafolio web person
 - **Framework:** [Astro](https://astro.build/) (v7.0.9)
 - **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas (escala de tokens semántica integrada), procesado con **LightningCSS**.
 - **Tipografías:** Google Fonts (Space Grotesk para títulos y Inter para cuerpo) auto-albergadas con precarga y fallback optimizado.
-- **Gestor de Paquetes:** `pnpm` (v11.25.0)
+- **Gestor de Paquetes:** `pnpm` (v12.3.4)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=24.0.0`
