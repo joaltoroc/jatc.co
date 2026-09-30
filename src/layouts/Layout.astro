@@ -34,7 +34,6 @@ const t = useTranslations(lang);
         document.documentElement.classList.remove('dark');
       }
     </script>
-
     <script is:inline>
       function loadGTM() {
         if (window.gtmLoaded) return;
@@ -105,10 +104,10 @@ const t = useTranslations(lang);
     />
     <meta property="og:title" content={t('layout.title')} />
     <meta property="og:description" content={t('seo.description')} />
-    <meta property="og:image" content="https://www.jatc.co/jatc.png?v=0.4.0" />
+    <meta property="og:image" content="https://www.jatc.co/jatc.png?v=0.5.0" />
     <meta
       property="og:image:secure_url"
-      content="https://www.jatc.co/jatc.png?v=0.4.0"
+      content="https://www.jatc.co/jatc.png?v=0.5.0"
     />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="800" />
@@ -128,7 +127,7 @@ const t = useTranslations(lang);
     />
     <meta name="twitter:title" content={t('layout.title')} />
     <meta name="twitter:description" content={t('seo.description')} />
-    <meta name="twitter:image" content="https://www.jatc.co/jatc.png?v=0.4.0" />
+    <meta name="twitter:image" content="https://www.jatc.co/jatc.png?v=0.5.0" />
     <meta
       name="twitter:image:alt"
       content="John Alexander Toro Cortés - Development Manager & Technical Lead"
@@ -194,7 +193,6 @@ const t = useTranslations(lang);
         });
       }
     </script>
-
     <!-- JSON-LD Structured Data -->
     <script
       is:inline
@@ -246,23 +244,25 @@ const t = useTranslations(lang);
     />
   </head>
   <body data-copy-link-text={t('action.copyLink')}>
-    <a href="#about" class="skip-link">{t('action.skipToContent')}</a>
+    <a href="#about" class="skip-link">
+      {t('action.skipToContent')}
+    </a>
     <div
       id="sr-announcer"
       class="sr-only"
       aria-live="polite"
       aria-atomic="true"
-    >
-    </div>
+    ></div>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
+    <noscript>
+      <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-KL3ZRHZ"
         height="0"
         width="0"
         style="display:none;visibility:hidden"
-        title="Google Tag Manager (noscript)"></iframe></noscript
-    >
+        title="Google Tag Manager (noscript)"
+      ></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <slot />
     <ScrollToTop />

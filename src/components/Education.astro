@@ -64,32 +64,30 @@ const educationList = isEn ? educationListEn : educationListEs;
     </div>
 
     <div class="education-grid">
-      {
-        educationList.map((edu) => (
-          <div class="edu-card glass">
-            <div class="icon-wrapper">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-              </svg>
-            </div>
-            <div class="edu-content">
-              <h3 class="degree">{edu.degree}</h3>
-              <h4 class="institution text-gradient">{edu.institution}</h4>
-              <span class="period">{edu.period}</span>
-            </div>
+      {educationList.map((edu) => (
+        <div class="edu-card glass">
+          <div class="icon-wrapper">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+              <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            </svg>
           </div>
-        ))
-      }
+          <div class="edu-content">
+            <h3 class="degree">{edu.degree}</h3>
+            <h4 class="institution text-gradient">{edu.institution}</h4>
+            <span class="period">{edu.period}</span>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>

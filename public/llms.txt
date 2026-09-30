@@ -24,7 +24,7 @@
 ## Professional Experience
 
 ### Development Manager
-**Gerente de Desarrollo** | *Aug 2026 – Present*
+**Banco Contactar** | *Aug 2026 – Present*
 - Directing software engineering strategy, architecture, and team management to drive high-impact digital initiatives, aligning DevSecOps security, cloud infrastructure, and delivery speed with key business goals.
 
 ### Software Engineering Senior Team Lead

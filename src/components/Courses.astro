@@ -451,49 +451,47 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     </div>
 
     <div class="courses-list">
-      {
-        coursesList
-          .filter((course) => !course.hidden)
-          .map((course, index) => (
-            <a
-              href={course.diploma}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="course-item glass diploma-link"
-              data-index={index}
-              data-title={course.title}
-              data-source={course.source}
-              data-date={course.date}
-              data-diploma={course.diploma}
-              aria-label={t('courses.credentialLabel').replace(
-                '{title}',
-                `${course.title} - ${course.source}`
-              )}
-            >
-              <div class="course-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="8" r="7" />
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                </svg>
-              </div>
-              <div class="course-info">
-                <h3 class="course-title">{course.title}</h3>
-                <span class="course-source">
-                  {course.source} - {course.date}
-                </span>
-              </div>
-            </a>
-          ))
-      }
+      {coursesList
+        .filter((course) => !course.hidden)
+        .map((course, index) => (
+          <a
+            href={course.diploma}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="course-item glass diploma-link"
+            data-index={index}
+            data-title={course.title}
+            data-source={course.source}
+            data-date={course.date}
+            data-diploma={course.diploma}
+            aria-label={t('courses.credentialLabel').replace(
+              '{title}',
+              `${course.title} - ${course.source}`
+            )}
+          >
+            <div class="course-icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="8" r="7" />
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+              </svg>
+            </div>
+            <div class="course-info">
+              <h3 class="course-title">{course.title}</h3>
+              <span class="course-source">
+                {course.source} - {course.date}
+              </span>
+            </div>
+          </a>
+        ))}
     </div>
 
     <!-- Modal para el Diploma -->
@@ -510,8 +508,10 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
         <button
           id="close-modal"
           class="close-btn"
-          aria-label={t('action.close')}>&times;</button
+          aria-label={t('action.close')}
         >
+          &times;
+        </button>
 
         <div class="modal-inner-content">
           <div class="modal-info-panel">

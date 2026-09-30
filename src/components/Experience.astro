@@ -8,7 +8,7 @@ const isEn = lang === 'en';
 
 const experiencesEs = [
   {
-    company: 'Gerente de Desarrollo',
+    company: 'Banco Contactar',
     role: 'Gerente de Desarrollo',
     period: 'Agosto 2026 - Presente',
     description:
@@ -180,7 +180,7 @@ const experiencesEs = [
 
 const experiencesEn = [
   {
-    company: 'Development Manager',
+    company: 'Banco Contactar',
     role: 'Development Manager',
     period: 'August 2026 - Present',
     description:
@@ -391,42 +391,40 @@ const techIcons: Record<string, string> = {
     </div>
 
     <div class="timeline">
-      {
-        experiences.map((exp) => (
-          <div class="timeline-item">
-            <div class="timeline-dot" />
-            <div class="timeline-content glass">
-              <div class="timeline-header">
-                <h3 class="role">{exp.role}</h3>
-                <span class="period">{exp.period}</span>
-              </div>
-              <h4 class="text-gradient company">{exp.company}</h4>
-              <p class="description">{exp.description}</p>
-              {exp.technologies && (
-                <div class="tech-stack">
-                  {exp.technologies.map((tech) => (
-                    <span class="tech-tag">
-                      {techIcons[tech] && (
-                        <img
-                          src={techIcons[tech]}
-                          alt=""
-                          aria-hidden="true"
-                          width="14"
-                          height="14"
-                          loading="lazy"
-                          decoding="async"
-                          class="tech-icon"
-                        />
-                      )}
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              )}
+      {experiences.map((exp) => (
+        <div class="timeline-item">
+          <div class="timeline-dot" />
+          <div class="timeline-content glass">
+            <div class="timeline-header">
+              <h3 class="role">{exp.role}</h3>
+              <span class="period">{exp.period}</span>
             </div>
+            <h4 class="text-gradient company">{exp.company}</h4>
+            <p class="description">{exp.description}</p>
+            {exp.technologies && (
+              <div class="tech-stack">
+                {exp.technologies.map((tech) => (
+                  <span class="tech-tag">
+                    {techIcons[tech] && (
+                      <img
+                        src={techIcons[tech]}
+                        alt=""
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        loading="lazy"
+                        decoding="async"
+                        class="tech-icon"
+                      />
+                    )}
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
   </div>
 </section>

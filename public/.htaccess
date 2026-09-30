@@ -1,6 +1,27 @@
 # Redirigir errores 404 a la página de inicio
 ErrorDocument 404 /
 
+# Desactivar el listado de directorios por seguridad
+Options -Indexes
+
+# Bloquear acceso a archivos ocultos y sensibles (.git, .env, .htaccess, etc.)
+<FilesMatch "^\.">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Forzar HTTPS vía mod_rewrite si está habilitado
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
 # MIME types mappings
 <IfModule mod_mime.c>
   AddType font/woff2 .woff2
@@ -39,11 +60,13 @@ ErrorDocument 404 /
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'sha256-31fQF/g9KGmEnutu6M7cTHdK4cN5J5z5NRerO5mFMfQ=' 'sha256-5cLdmBlyDdqM1hLnMaWRqCUKBuIVEyforg9ieylWe8A=' 'sha256-6qE4uvX+SzyAaO9MBZfuaqnejYjwg52teNNjLuMh8zw=' 'sha256-9e87km+FLNSzdjDCcmZ/MpgPuK0AO9dUMGnsFdzhJzM=' 'sha256-FMwFesxTHxXBE/k3tpCwT0/LbC+/4G8P57ohi3pp3/0=' 'sha256-MTzmlHJr0TwJ374tZYCZd9o4IUCZ+TVQc8W05ITz3sQ=' 'sha256-Nxyl0BbYAZ7FftrChNpIq/c/gDqzAhl+bwg0muInjLw=' 'sha256-Xirpji6ujJRWvlo+bUuoR9Bc6crOV4qyrO9IE3oJe40=' 'sha256-YRcgsl9mdqkAnRKHXjsgL+9cFKwLShnbVMmQj8eukk4=' 'sha256-Yc4NgcStwPJjhEX/8uDyMCn+fXmbwd5FdAaHi3a9uRU=' 'sha256-amHRZeB8QQWcU77ymun563dhPiAJijevgl0S0prG/og=' 'sha256-bhfVK4HDtVucNaZirFvMpyM5AnLNj3+bWKtQAj7/3T4=' 'sha256-ghcVQyFCQhQiAqbnqQSvnCRf9s3NyR7G4AQEKvlVvFA=' 'sha256-mWDufatLe59tsiZMmL3Hu+s9D2W+PT22MDNj4QJxzpY=' 'sha256-wYxHlCB64y9ML4rASaVx/f5y9Um7Vgq9ufrJX/SBL4c=' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; frame-ancestors 'none';"
+  # Enhanced Content Security Policy (CSP)
+  Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'sha256-31fQF/g9KGmEnutu6M7cTHdK4cN5J5z5NRerO5mFMfQ=' 'sha256-5cLdmBlyDdqM1hLnMaWRqCUKBuIVEyforg9ieylWe8A=' 'sha256-6qE4uvX+SzyAaO9MBZfuaqnejYjwg52teNNjLuMh8zw=' 'sha256-9e87km+FLNSzdjDCcmZ/MpgPuK0AO9dUMGnsFdzhJzM=' 'sha256-FMwFesxTHxXBE/k3tpCwT0/LbC+/4G8P57ohi3pp3/0=' 'sha256-MTzmlHJr0TwJ374tZYCZd9o4IUCZ+TVQc8W05ITz3sQ=' 'sha256-Nxyl0BbYAZ7FftrChNpIq/c/gDqzAhl+bwg0muInjLw=' 'sha256-Pykg9oKVIZNaG9OEi9FXuObnmO0jCfJ8k1YbQ7TqJ9k=' 'sha256-Xirpji6ujJRWvlo+bUuoR9Bc6crOV4qyrO9IE3oJe40=' 'sha256-YRcgsl9mdqkAnRKHXjsgL+9cFKwLShnbVMmQj8eukk4=' 'sha256-Yc4NgcStwPJjhEX/8uDyMCn+fXmbwd5FdAaHi3a9uRU=' 'sha256-amHRZeB8QQWcU77ymun563dhPiAJijevgl0S0prG/og=' 'sha256-bhfVK4HDtVucNaZirFvMpyM5AnLNj3+bWKtQAj7/3T4=' 'sha256-ghcVQyFCQhQiAqbnqQSvnCRf9s3NyR7G4AQEKvlVvFA=' 'sha256-mWDufatLe59tsiZMmL3Hu+s9D2W+PT22MDNj4QJxzpY=' 'sha256-wYxHlCB64y9ML4rASaVx/f5y9Um7Vgq9ufrJX/SBL4c=' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; upgrade-insecure-requests; frame-ancestors 'none';"
 
   # Security Headers
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
   Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set Cross-Origin-Resource-Policy "same-origin"
   Header set X-XSS-Protection "1; mode=block"
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
@@ -66,4 +89,3 @@ ErrorDocument 404 /
     Header always set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
 </IfModule>
-

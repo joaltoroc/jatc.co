@@ -16,13 +16,27 @@ const isEn = lang === 'en';
 
     <nav class="desktop-nav">
       <ul>
-        <li><a href="#about">{t('nav.about')}</a></li>
-        <li><a href="#experience">{t('nav.experience')}</a></li>
-        <li><a href="#projects">{t('nav.projects')}</a></li>
-        <li><a href="#education">{t('nav.education')}</a></li>
-        <li><a href="#courses">{t('nav.courses')}</a></li>
-        <li><a href="#skills">{t('nav.skills')}</a></li>
-        <li><a href="#contact">{t('nav.contact')}</a></li>
+        <li>
+          <a href="#about">{t('nav.about')}</a>
+        </li>
+        <li>
+          <a href="#experience">{t('nav.experience')}</a>
+        </li>
+        <li>
+          <a href="#projects">{t('nav.projects')}</a>
+        </li>
+        <li>
+          <a href="#education">{t('nav.education')}</a>
+        </li>
+        <li>
+          <a href="#courses">{t('nav.courses')}</a>
+        </li>
+        <li>
+          <a href="#skills">{t('nav.skills')}</a>
+        </li>
+        <li>
+          <a href="#contact">{t('nav.contact')}</a>
+        </li>
       </ul>
     </nav>
 
@@ -32,14 +46,20 @@ const isEn = lang === 'en';
         <a
           href="/"
           class={!isEn ? 'active-lang' : ''}
-          aria-label={t('lang.es.label')}>ES</a
+          aria-label={t('lang.es.label')}
         >
-        <span class="lang-divider" aria-hidden="true">|</span>
+          ES
+        </a>
+        <span class="lang-divider" aria-hidden="true">
+          |
+        </span>
         <a
           href="/en/"
           class={isEn ? 'active-lang' : ''}
-          aria-label={t('lang.en.label')}>EN</a
+          aria-label={t('lang.en.label')}
         >
+          EN
+        </a>
       </div>
       <button
         class="mobile-menu-btn"
@@ -93,23 +113,40 @@ const isEn = lang === 'en';
   >
     <nav class="mobile-nav">
       <ul>
-        <li><a href="#about" class="mobile-nav-link">{t('nav.about')}</a></li>
         <li>
-          <a href="#experience" class="mobile-nav-link">{t('nav.experience')}</a
-          >
+          <a href="#about" class="mobile-nav-link">
+            {t('nav.about')}
+          </a>
         </li>
         <li>
-          <a href="#projects" class="mobile-nav-link">{t('nav.projects')}</a>
+          <a href="#experience" class="mobile-nav-link">
+            {t('nav.experience')}
+          </a>
         </li>
         <li>
-          <a href="#education" class="mobile-nav-link">{t('nav.education')}</a>
+          <a href="#projects" class="mobile-nav-link">
+            {t('nav.projects')}
+          </a>
         </li>
         <li>
-          <a href="#courses" class="mobile-nav-link">{t('nav.courses')}</a>
+          <a href="#education" class="mobile-nav-link">
+            {t('nav.education')}
+          </a>
         </li>
-        <li><a href="#skills" class="mobile-nav-link">{t('nav.skills')}</a></li>
         <li>
-          <a href="#contact" class="mobile-nav-link">{t('nav.contact')}</a>
+          <a href="#courses" class="mobile-nav-link">
+            {t('nav.courses')}
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="mobile-nav-link">
+            {t('nav.skills')}
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="mobile-nav-link">
+            {t('nav.contact')}
+          </a>
         </li>
       </ul>
     </nav>

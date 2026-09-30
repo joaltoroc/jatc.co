@@ -13,12 +13,13 @@ export default [
       '.github/',
       '.husky/',
       'coverage/',
+      'public/sw.js',
     ],
   },
-  // TypeScript Configuration (applies to .ts, .tsx)
+  // Recommended TypeScript rules
   ...tsEslint.configs.recommended,
 
-  // Astro Configuration (includes recommended and accessibility rules)
+  // Recommended Astro & Accessibility rules
   ...eslintPluginAstro.configs['flat/recommended'],
   ...eslintPluginAstro.configs['flat/jsx-a11y-recommended'],
 
@@ -34,18 +35,24 @@ export default [
     },
   },
 
-  // Project custom rules
+  // Project custom rules for TypeScript & Astro
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.astro'],
     rules: {
       '@typescript-eslint/no-unused-vars': [
-        'warn',
-        { argsIgnorePattern: '^_' },
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+        },
       ],
+      '@typescript-eslint/no-explicit-any': 'warn',
       'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'no-duplicate-imports': 'error',
     },
   },
 
-  // Prettier configuration to turn off conflicting rules (placed last)
+  // Prettier config to disable conflicting formatting rules (must be last)
   eslintConfigPrettier,
 ];

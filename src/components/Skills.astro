@@ -144,31 +144,29 @@ const skillCategories = lang === 'en' ? skillCategoriesEn : skillCategoriesEs;
     </div>
 
     <div class="skills-grid">
-      {
-        skillCategories.map((category) => (
-          <div class="skill-category glass">
-            <h3 class="category-title">{category.title}</h3>
-            <div class="skills-tags">
-              {category.skills.map((skill) => (
-                <span
-                  class="skill-tag"
-                  data-skill={skill}
-                  role="button"
-                  tabindex="0"
-                  aria-pressed="false"
-                  title={
-                    lang === 'en'
-                      ? `Filter experience and projects by ${skill}`
-                      : `Filtrar experiencias y proyectos con ${skill}`
-                  }
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+      {skillCategories.map((category) => (
+        <div class="skill-category glass">
+          <h3 class="category-title">{category.title}</h3>
+          <div class="skills-tags">
+            {category.skills.map((skill) => (
+              <span
+                class="skill-tag"
+                data-skill={skill}
+                role="button"
+                tabindex="0"
+                aria-pressed="false"
+                title={
+                  lang === 'en'
+                    ? `Filter experience and projects by ${skill}`
+                    : `Filtrar experiencias y proyectos con ${skill}`
+                }
+              >
+                {skill}
+              </span>
+            ))}
           </div>
-        ))
-      }
+        </div>
+      ))}
     </div>
   </div>
 </section>
