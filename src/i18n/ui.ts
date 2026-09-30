@@ -21,22 +21,23 @@ export const ui = {
     'nav.contact': 'Contacto',
 
     // Hero
-    'hero.badge': '🚀 Gerente de Desarrollo & Technical Lead',
+    'hero.badge':
+      '🚀 Gerente de Desarrollo · Tech Lead · Especialista en Ciberseguridad',
     'hero.greeting': 'Hola, soy ',
     'hero.building': 'Construyendo plataformas',
     'hero.secure': 'escalables y seguras.',
-    'hero.desc': `Gerente de Desarrollo & Software Engineer | +${experienceYears} años<br />Liderazgo de Ingeniería · Arquitectura Cloud · DevSecOps · Golang · C#/.NET · TypeScript`,
+    'hero.desc': `Gerente de Desarrollo & Especialista en Seguridad | +${experienceYears} años<br />Liderazgo Bancario & Fintech · Arquitectura Cloud · DevSecOps · IA & Golang/C#/.NET`,
     'hero.contact': 'Contáctame',
     'hero.cv': 'Descargar CV',
 
     // About
     'about.title': 'Sobre Mí',
     'about.profileTitle': 'Perfil Profesional',
-    'about.p1': `Soy <strong>Gerente de Desarrollo y Software Engineer</strong> con más de ${experienceYears} años diseñando y construyendo productos de software escalables, seguros y de alto impacto. Me especializo en la gestión y liderazgo de equipos de ingeniería, arquitecturas distribuidas en la nube (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
+    'about.p1': `Soy <strong>Gerente de Desarrollo, Ingeniero de Sistemas y Especialista en Seguridad de la Información</strong> con más de ${experienceYears} años liderando la creación de productos digitales de alto impacto, plataformas transaccionales y soluciones de software escalables. Me especializo en la gestión estratégica de equipos de ingeniería, arquitecturas distribuidas en la nube (<strong>Azure, AWS</strong>) y tecnologías modernas como <strong>Golang, C#/.NET, NestJS, TypeScript y React</strong>.`,
     'about.p2':
-      'He liderado equipos técnicos en entornos de alta exigencia (como Mercado Libre y proyectos Fintech/Web3), aplicando metodologías ágiles y principios de <strong>Clean Architecture</strong>. Mi formación como especialista en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar prácticas de seguridad (OWASP, Pentesting, SonarCloud) de forma nativa desde el diseño hasta el despliegue continuo.',
+      'He liderado equipos técnicos multiculturales en sectores de alta exigencia como el <strong>Sector Bancario, Fintech, Web3 y e-Commerce</strong> (incluyendo Mercado Libre), aplicando metodologías ágiles, auditorías asistidas por IA y principios de <strong>Clean Architecture</strong>. Mi especialización en <strong>Ciberseguridad y DevSecOps</strong> me permite integrar controles defensivos (OWASP, SAST/DAST, Pentesting) de forma nativa desde el diseño hasta la entrega continua.',
     'about.p3':
-      'Actualmente me desempeño como <strong>Gerente de Desarrollo</strong>, liderando la estrategia de tecnología, la entrega continua y el crecimiento de equipos de ingeniería. Estoy abierto a nuevas oportunidades y retos técnicos donde pueda aportar visión de gestión, arquitectura y liderazgo. <strong>Hablemos.</strong>',
+      'Actualmente me desempeño como <strong>Gerente de Desarrollo en el Sector Bancario</strong>, dirigiendo la estrategia tecnológica, la gobernanza de infraestructura y el crecimiento de equipos de ingeniería de alto rendimiento. Estoy abierto a retos ejecutivos y técnicos donde pueda aportar liderazgo, visión de arquitectura y seguridad. <strong>Hablemos.</strong>',
     'about.years': 'Años de <br/>Experiencia',
     'about.projects': 'Proyectos <br/>Completados',
     'about.languagesTitle': 'Idiomas',
@@ -88,9 +89,9 @@ export const ui = {
     'scroll.top': 'Volver arriba',
 
     // SEO
-    'seo.description': `Portafolio de John Alexander Toro Cortés. Gerente de Desarrollo, Technical Lead y Especialista en Ciberseguridad con +${experienceYears} años de experiencia en liderazgo de ingeniería, arquitecturas Cloud y DevSecOps.`,
+    'seo.description': `Portafolio de John Alexander Toro Cortés. Gerente de Desarrollo en el Sector Bancario, Especialista en Seguridad de la Información y Technical Lead con +${experienceYears} años de trayectoria en liderazgo de ingeniería, Cloud y DevSecOps.`,
     'seo.keywords':
-      'Gerente de Desarrollo, Development Manager, Technical Lead, Software Engineer, Tech Lead, Ciberseguridad, DevSecOps, Clean Architecture, Arquitectura Cloud, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
+      'Gerente de Desarrollo, Development Manager, Sector Bancario, Banking, Technical Lead, Tech Lead, Especialista en Seguridad de la Información, Cybersecurity Specialist, DevSecOps, Engineering Manager, Clean Architecture, Arquitectura Cloud, Golang, C#, .NET, TypeScript, AWS, Azure, Fintech, JATC',
 
     // Actions & Modal A11y
     'action.copyLink': 'Copiar link',
@@ -124,22 +125,23 @@ export const ui = {
     'nav.contact': 'Contact',
 
     // Hero
-    'hero.badge': '🚀 Development Manager & Technical Lead',
+    'hero.badge':
+      '🚀 Development Manager · Tech Lead · Cybersecurity Specialist',
     'hero.greeting': "Hi, I'm ",
     'hero.building': 'Building scalable',
     'hero.secure': 'and secure platforms.',
-    'hero.desc': `Development Manager & Software Engineer | ${experienceYears}+ years<br />Engineering Leadership · Cloud Architecture · DevSecOps · Golang · C#/.NET · TypeScript`,
+    'hero.desc': `Development Manager & Information Security Specialist | ${experienceYears}+ years<br />Banking & Fintech Leadership · Cloud Architecture · DevSecOps · AI & Golang/C#/.NET`,
     'hero.contact': 'Contact me',
     'hero.cv': 'Download CV',
 
     // About
     'about.title': 'About Me',
     'about.profileTitle': 'Professional Profile',
-    'about.p1': `I’m a <strong>Development Manager and Software Engineer</strong> with ${experienceYears}+ years designing and building scalable, secure, high-impact software products. I specialize in leading and managing engineering teams, distributed cloud architectures (<strong>Azure, AWS</strong>), and modern technologies like <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
+    'about.p1': `I’m a <strong>Development Manager, Systems Engineer, and Information Security Specialist</strong> with over ${experienceYears} years of experience building high-impact digital products, transactional platforms, and scalable software. I specialize in engineering team leadership, distributed cloud architecture (<strong>Azure, AWS</strong>), and modern stacks including <strong>Golang, C#/.NET, NestJS, TypeScript, and React</strong>.`,
     'about.p2':
-      'I’ve led technical teams in demanding environments (such as Mercado Libre and Fintech/Web3 projects), applying agile methodologies and <strong>Clean Architecture</strong> principles. My background as a <strong>Cybersecurity and DevSecOps</strong> specialist lets me embed security practices (OWASP, Pentesting, SonarCloud) natively from design through continuous deployment.',
+      'I’ve spearheaded cross-functional technical teams across demanding environments in <strong>Banking, Fintech, Web3, and e-Commerce</strong> (such as Mercado Libre), applying agile frameworks, AI-driven quality governance, and <strong>Clean Architecture</strong>. My background in <strong>Cybersecurity and DevSecOps</strong> allows me to embed security controls (OWASP, SAST/DAST, Pentesting) natively from architecture design through deployment pipelines.',
     'about.p3':
-      'Currently serving as a <strong>Development Manager</strong>, leading technology strategy, continuous delivery, and engineering team growth. I’m open to new opportunities and technical challenges where I can contribute management, architecture, and leadership vision. <strong>Let’s talk.</strong>',
+      'Currently serving as a <strong>Development Manager in Banking</strong>, steering technology strategy, cloud infrastructure governance, and high-performing engineering teams. Open to executive and technical leadership opportunities where I can drive management, security, and architectural vision. <strong>Let’s talk.</strong>',
     'about.years': 'Years of <br/>Experience',
     'about.projects': 'Projects <br/>Completed',
     'about.languagesTitle': 'Languages',
@@ -189,9 +191,9 @@ export const ui = {
     'scroll.top': 'Back to top',
 
     // SEO
-    'seo.description': `Portfolio of John Alexander Toro Cortés. Development Manager, Technical Lead, and Cybersecurity Specialist with ${experienceYears}+ years of experience in engineering leadership, Cloud architectures, and DevSecOps.`,
+    'seo.description': `Portfolio of John Alexander Toro Cortés. Banking Development Manager, Information Security Specialist, and Technical Lead with ${experienceYears}+ years in engineering leadership, Cloud architecture, and DevSecOps.`,
     'seo.keywords':
-      'Development Manager, Gerente de Desarrollo, Technical Lead, Software Engineer, Tech Lead, Cybersecurity, DevSecOps, Clean Architecture, Cloud Architecture, React, Node.js, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
+      'Development Manager, Gerente de Desarrollo, Banking, Fintech, Technical Lead, Tech Lead, Information Security Specialist, Cybersecurity Specialist, DevSecOps, Engineering Manager, Clean Architecture, Cloud Architecture, Golang, C#, .NET, TypeScript, AWS, Azure, JATC',
 
     // Actions & Modal A11y
     'action.copyLink': 'Copy link to this section',

@@ -37,7 +37,7 @@ const t = useTranslations(lang);
       <div class="image-wrapper">
         <Image
           src={profileImage}
-          alt="John Alexander Toro Cortés - Team Lead & Senior Full Stack Engineer"
+          alt="John Alexander Toro Cortés - Development Manager & Technical Lead"
           width={400}
           height={400}
           loading="eager"
@@ -60,7 +60,9 @@ const t = useTranslations(lang);
             <div class="cli-line">
               <span class="cli-prompt">$</span> whoami
             </div>
-            <div class="cli-output">John Toro | Development Manager</div>
+            <div class="cli-output">
+              John Toro | Development Manager & Technical Lead
+            </div>
             <div class="cli-line">
               <span class="cli-prompt">$</span> security --check
             </div>
@@ -518,7 +520,11 @@ const t = useTranslations(lang);
         const div = document.createElement('div');
         if (isCommand) {
           div.className = 'cli-line';
-          div.innerHTML = `<span class="cli-prompt">$</span> ${text}`;
+          const promptSpan = document.createElement('span');
+          promptSpan.className = 'cli-prompt';
+          promptSpan.textContent = '$';
+          div.appendChild(promptSpan);
+          div.appendChild(document.createTextNode(` ${text}`));
         } else {
           div.className = `cli-output ${isSuccess ? 'success' : ''}`;
           div.textContent = text;
@@ -554,7 +560,7 @@ const t = useTranslations(lang);
           case 'version':
           case 'ver':
             appendLine(
-              'JATC Portfolio v0.5.0 (Astro 7.3.5 + TypeScript)',
+              'JATC Portfolio v0.6.0 (Astro 7.3.5 + TypeScript)',
               false,
               true
             );
