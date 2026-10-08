@@ -22,7 +22,7 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   └── workflows/
 │       └── sftp-deploy.yml    # Pipeline de despliegue continuo mediante SFTP
 ├── .husky/                    # Automatización de Git Hooks (pre-commit y pre-push)
-├── public/                # Recursos estáticos (imágenes, iconos, favicon, etc.)
+├── public/                # Recursos estáticos (imágenes, iconos, favicon, bimi-logo.svg, etc.)
 ├── src/                   # Código fuente
 │   ├── components/        # Componentes modulares de la UI:
 │   │   ├── Header.astro     # Navegación principal e idioma

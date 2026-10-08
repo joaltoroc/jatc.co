@@ -80,7 +80,7 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 ├── .husky/                    # Automatización de Git Hooks
 │   ├── pre-commit             # Validación estática de Astro y tipos antes del commit
 │   └── pre-push               # Compilación previa para validar errores antes del push
-├── public/                    # Archivos estáticos públicos (imágenes, favicons, etc.)
+├── public/                    # Archivos estáticos públicos (imágenes, favicons, bimi-logo.svg, etc.)
 ├── src/
 │   ├── components/            # Componentes modulares y reutilizables de Astro
 │   │   ├── About.astro        # Sección de perfil y presentación
