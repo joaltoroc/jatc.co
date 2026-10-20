@@ -1,6 +1,27 @@
 {
   "name": "jatc",
-  "description": "Personal Portfolio of John Alexander Toro Cortés - Engineering Manager, Tech Lead & Cybersecurity Specialist. Built with Astro, TypeScript, and high-performance static rendering.",
+  "description": "Personal portfolio of John Alexander Toro Cortés — Development Manager, Information Security Specialist & Technical Lead. Built with Astro 7, TypeScript, LightningCSS, strict CSP (DevSecOps), WCAG 2.2 accessibility, and PWA offline support.",
+  "homepage": "https://www.jatc.co",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joaltoroc/jatc.co.git"
+  },
+  "keywords": [
+    "astro",
+    "typescript",
+    "portfolio-website",
+    "devsecops",
+    "cybersecurity",
+    "clean-architecture",
+    "pwa",
+    "wcag",
+    "a11y",
+    "i18n",
+    "lightningcss",
+    "vitest",
+    "static-site",
+    "owasp"
+  ],
   "type": "module",
   "version": "0.7.0",
   "engines": {
