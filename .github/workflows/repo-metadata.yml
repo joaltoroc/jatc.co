@@ -1,0 +1,164 @@
+name: Sync Repository Metadata & Release
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'package.json'
+      - 'CHANGELOG.md'
+      - '.github/workflows/repo-metadata.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-metadata:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Sync GitHub About (Description, Homepage & Topics) from package.json
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT || github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          node << 'EOF'
+          const fs = require('node:fs');
+          const { execFileSync } = require('node:child_process');
+
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const description = (pkg.description || '').trim();
+          const homepage = (pkg.homepage || '').trim();
+          const topics = Array.isArray(pkg.keywords)
+            ? pkg.keywords
+                .map((k) =>
+                  String(k)
+                    .toLowerCase()
+                    .trim()
+                    .replace(/[^a-z0-9-]/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/^-|-$/g, '')
+                )
+                .filter((k) => k.length > 0 && k.length <= 50)
+                .slice(0, 20)
+            : [];
+
+          const repo = process.env.REPO;
+
+          try {
+            console.log(`Updating description and homepage for ${repo}...`);
+            execFileSync(
+              'gh',
+              [
+                'api',
+                '-X',
+                'PATCH',
+                `repos/${repo}`,
+                '-f',
+                `description=${description}`,
+                '-f',
+                `homepage=${homepage}`,
+              ],
+              { stdio: 'inherit' }
+            );
+
+            console.log(`Updating topics (${topics.length}) for ${repo}...`);
+            execFileSync(
+              'gh',
+              [
+                'api',
+                '-X',
+                'PUT',
+                `repos/${repo}/topics`,
+                '-H',
+                'Accept: application/vnd.github+json',
+                '--input',
+                '-',
+              ],
+              {
+                input: JSON.stringify({ names: topics }),
+                stdio: ['pipe', 'inherit', 'inherit'],
+              }
+            );
+            console.log('✓ Repository metadata and topics synchronized successfully.');
+          } catch (error) {
+            console.warn(
+              '::warning::Could not update repository About/Topics with the current token. ' +
+                'GitHub REST API requires a Personal Access Token (secret GH_PAT) with ' +
+                '"Administration: Read and write" permission on this repository.'
+            );
+          }
+          EOF
+
+      - name: Sync GitHub Release from package.json & CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          node << 'EOF'
+          const fs = require('node:fs');
+          const { execFileSync } = require('node:child_process');
+
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const version = pkg.version;
+          const tag = `v${version}`;
+          const repo = process.env.REPO;
+
+          let notes = `Release ${tag}`;
+          if (fs.existsSync('CHANGELOG.md')) {
+            const changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
+            const escaped = version.replace(/\./g, '\\.');
+            const regex = new RegExp(
+              `## \\[${escaped}\\][^\\n]*\\n([\\s\\S]*?)(?=\\n## \\[|$)`
+            );
+            const match = changelog.match(regex);
+            if (match && match[1]) {
+              notes = match[1].trim().replace(/\n---\s*$/, '').trim();
+            }
+          }
+
+          fs.writeFileSync('/tmp/release-notes.md', notes, 'utf8');
+
+          try {
+            execFileSync('gh', ['release', 'view', tag, '--repo', repo], {
+              stdio: 'ignore',
+            });
+            console.log(`Release ${tag} already exists. Updating release notes...`);
+            execFileSync(
+              'gh',
+              [
+                'release',
+                'edit',
+                tag,
+                '--repo',
+                repo,
+                '--title',
+                tag,
+                '--notes-file',
+                '/tmp/release-notes.md',
+              ],
+              { stdio: 'inherit' }
+            );
+          } catch {
+            console.log(`Creating new GitHub Release ${tag}...`);
+            execFileSync(
+              'gh',
+              [
+                'release',
+                'create',
+                tag,
+                '--repo',
+                repo,
+                '--title',
+                tag,
+                '--notes-file',
+                '/tmp/release-notes.md',
+              ],
+              { stdio: 'inherit' }
+            );
+          }
+          EOF

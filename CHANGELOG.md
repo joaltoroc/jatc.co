@@ -22,9 +22,10 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 - **Nueva Suite de Pruebas de Sincronización e Integridad (`tests/sync.test.ts`)**:
   - Implementadas pruebas automatizadas en Vitest que verifican la consistencia de la versión del proyecto (`v0.7.0`), la versión de `Astro` (`v7.4.1`) y la versión de `pnpm` (`v12.14.0`) a través de `package.json`, `Hero.astro` (comando `version` del CLI), `Layout.astro` (parámetros `?v=` en Open Graph y Twitter), `public/sw.js` (`CACHE_NAME`) y archivos de documentación.
   - Añadida validación criptográfica automatizada que comprueba que todos los `<script>` inline generados en `dist/` coincidan exactamente 1:1 con los hashes `sha256-...` autorizados en `public/.htaccess`.
-- **Optimización de PWA y Pipeline CI/CD (`public/sw.js`, `.github/workflows/sftp-deploy.yml`)**:
+- **Optimización de PWA y Pipeline CI/CD (`public/sw.js`, `.github/workflows/sftp-deploy.yml`, `.github/workflows/repo-metadata.yml`)**:
   - Actualizado el identificador de caché del Service Worker a `jatc-portfolio-v0.7.0` para invalidar cachés previas tras el despliegue.
   - Reemplazado `pnpm approve-builds` + `pnpm install` por `pnpm install --frozen-lockfile` en GitHub Actions para garantizar compilaciones deterministas y no interactivas.
+  - Añadido el workflow `.github/workflows/repo-metadata.yml` para sincronizar automáticamente la descripción, el sitio web, los _topics_ (`keywords`) y los _GitHub Releases_ desde `package.json` y `CHANGELOG.md`.
 - **Documentación y Muestra Interactiva de GitCard Studio (`README.md`, `context.md`, `CHANGELOG.md`)**:
   - Renovado `README.md` con el detalle completo de mejoras arquitectónicas, tabla de comandos e integración en vivo de tarjetas SVG dinámicas de **[GitCard Studio](https://gitcard-studio.creativecode.com.co/)** como muestra de uso.
   - Depuradas referencias obsoletas en `context.md` y estandarizada la documentación de márgenes de impresión PDF (`@page { size: portrait; margin: 2.5cm 2.4cm 2cm 2.4cm; }`).

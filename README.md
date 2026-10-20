@@ -126,6 +126,7 @@ Puedes incrustar estas tarjetas dinámicas en cualquier `README.md` apuntando a 
 /
 ├── .github/
 │   └── workflows/
+│       ├── repo-metadata.yml  # Sincronización automática de About, Topics y Releases desde package.json/CHANGELOG.md
 │       └── sftp-deploy.yml    # Pipeline CI/CD (lint, check, test, build y despliegue SFTP)
 ├── .husky/                    # Automatización de Git Hooks
 │   ├── pre-commit             # Ejecuta pnpm check && pnpm test antes de confirmar cambios
@@ -202,6 +203,8 @@ Al hacer push a la rama `main`, el workflow [`.github/workflows/sftp-deploy.yml`
 3. **Puerta de Calidad (Quality Gate):** Ejecuta `pnpm lint`, `pnpm check` y `pnpm test`.
 4. **Compilación de Producción:** Ejecuta `pnpm build` generando los activos optimizados y pre-comprimidos (`.gz` / `.br`) en `./dist/`.
 5. **Despliegue Seguro:** Transfiere el directorio `./dist/` al servidor de producción mediante SFTP.
+
+Adicionalmente, el workflow [`.github/workflows/repo-metadata.yml`](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/.github/workflows/repo-metadata.yml) sincroniza automáticamente la sección **About** del repositorio en GitHub (`description`, `homepage` y `topics` tomados de `keywords` en `package.json`) y publica/actualiza el **GitHub Release** correspondiente extrayendo las notas de `CHANGELOG.md`.
 
 ---
 
