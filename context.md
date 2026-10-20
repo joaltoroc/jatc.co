@@ -4,10 +4,10 @@ Este documento describe la estructura y configuración del portafolio web person
 
 ## 🛠 Stack Tecnológico
 
-- **Framework:** [Astro](https://astro.build/) (v7.0.9)
+- **Framework:** [Astro](https://astro.build/) (v7.4.1)
 - **Estilos:** CSS nativo (`src/styles/global.css`) con soporte para temas (escala de tokens semántica integrada), procesado con **LightningCSS**.
 - **Tipografías:** Google Fonts (Space Grotesk para títulos y Inter para cuerpo) auto-albergadas con precarga y fallback optimizado.
-- **Gestor de Paquetes:** `pnpm` (v12.3.4)
+- **Gestor de Paquetes:** `pnpm` (v12.14.0)
 - **Lenguaje Principal:** TypeScript (v6.0.3) / HTML semántico / Astro
 - **Internacionalización (i18n):** Soporte bilingüe (ES/EN) con enrutamiento basado en carpetas.
 - **Node.js:** Versión `>=24.0.0`
@@ -34,7 +34,6 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   │   ├── Education.astro  # Formación académica
 │   │   ├── Courses.astro    # Certificaciones y cursos
 │   │   ├── Skills.astro     # Stack tecnológico y habilidades
-│   │   ├── AiAssistant.astro # Widget de asistente virtual interactivo con IA
 │   │   ├── Contact.astro    # Formulario e información de contacto
 │   │   ├── ScrollToTop.astro # Botones flotantes de navegación e impresión
 │   │   └── Footer.astro     # Pie de página
@@ -43,6 +42,7 @@ El proyecto se basa en una arquitectura de componentes modulares y estáticos:
 │   ├── pages/             # Rutas (index.astro, 404.astro y carpeta en/)
 │   └── styles/            # Reglas globales de CSS y variables de tema
 ├── ADR.md                 # Registro de Decisiones de Arquitectura (Architecture Decision Record)
+├── CHANGELOG.md           # Historial detallado de versiones y cambios del proyecto
 ├── astro.config.mjs       # Configuración del framework (format: 'directory')
 ├── LICENSE                # Términos de uso y copia restrictiva
 ├── package.json           # Dependencias y scripts
@@ -68,7 +68,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
 - **Accesibilidad y UX (Apple Design System):**
   - Sistema de diseño guiado por los principios de **Apple Design** (_Designing Fluid Interfaces_): tipografía óptica con tracking negativo (`letter-spacing: -0.025em`) en títulos, materiales translúcidos (`backdrop-filter: blur(20px) saturate(180%)`), bordes de alta definición y respuesta táctil reactiva al presionar (`:active { transform: scale(0.97); }`) mediante curvas de aceleración elásticas estilo iOS (`cubic-bezier(0.16, 1, 0.3, 1)`).
   - Soporte completo para accesibilidad de sistema: adaptación a `@media (prefers-reduced-motion)` y `@media (prefers-reduced-transparency)`.
-  - Exportación en PDF profesional por secciones independientes: reglas explícitas de salto de página (`break-before: page; page-break-before: always;`) para cada una de las 8 secciones principales con márgenes de caja `@page { size: portrait; margin: 2.5cm 2.4cm 2cm 2.4cm; }`, espaciado superior holgado en páginas subsecuentes y elementos (`padding-top: 4.5rem`, `margin-top: 0.75rem`), márgenes laterales simétricos en contenedor (`padding: 0 1.75rem`), eliminación de máscaras/sombras/resplandores en imágenes para renderizado limpio en motores de impresión móvil, y ocultamiento automático de controles interactivos (asistente de IA, modales y botones flotantes).
+  - Exportación en PDF profesional por secciones independientes: reglas explícitas de salto de página (`break-before: page; page-break-before: always;`) para cada una de las 8 secciones principales con márgenes de caja `@page { size: portrait; margin: 2.5cm 2.4cm 2cm 2.4cm; }`, espaciado superior holgado en páginas subsecuentes y elementos (`padding-top: 4.5rem`, `margin-top: 0.75rem`), márgenes laterales simétricos en contenedor (`padding: 0 1.75rem`), eliminación de máscaras/sombras/resplandores en imágenes para renderizado limpio en motores de impresión móvil, y ocultamiento automático de controles interactivos (modales y botones flotantes).
   - Enlace accesible "Skip to main content" (saltar al contenido) para navegación rápida con teclado (WCAG 2.4.1).
   - Sincronización activa de links en el menú de navegación (Header) según la sección de la página visible durante el scroll, con controles flotantes de "Scroll to Top" e impresión rápida de página (optimizados por posicionamiento absoluto y transiciones mediante variables CSS nativas, ocultándose durante la impresión).
   - Consola CLI interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `version`, `matrix`, `clear`, `sudo`) y navegación por historial (flechas Arriba/Abajo).
@@ -81,7 +81,7 @@ El proyecto es un portafolio de alto rendimiento, optimizado para SEO y experien
   - Uso de `lightningcss` para minificación eficiente.
 - **SEO Avanzado:** Metadatos bilingües consolidados, Open Graph, Twitter Cards, gráfico JSON-LD ampliado (`Person`, `WebSite`) y etiquetas `hreflang` para indexación internacional.
 - **Seguridad de Agentes (robots.txt):** Restricción explícita en `robots.txt` a más de 20 crawlers de IA/LLMs (e.g., `GPTBot`, `ClaudeBot`, `CCBot`) para evitar entrenamiento sin consentimiento.
-- **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción. Inclusión de cabeceras HSTS (`Strict-Transport-Security`), COOP (`Cross-Origin-Opener-Policy`) y `X-XSS-Protection`. Uso de `overrides` en `pnpm-workspace.yaml` para neutralizar vulnerabilidades DoS en dependencias transitivas (como `brace-expansion` traída por `eslint-plugin-jsx-a11y`). Bloqueo de versión de TypeScript en la v6.x debido a incompatibilidades de API de TS 7.0+ con `typescript-eslint` (v8) y la suite de verificación de Astro. Actualizadas dependencias de pruebas (`vitest` y `@vitest/coverage-v8`) a v5.0.0.
+- **Seguridad y CSP (.htaccess):** Directiva estricta de Content Security Policy (CSP) con protección anti-clickjacking (`frame-ancestors 'none'`) configurada mediante cabeceras HTTP en `.htaccess` para máxima protección en producción. Inclusión de cabeceras HSTS (`Strict-Transport-Security`), COOP (`Cross-Origin-Opener-Policy`) y `X-XSS-Protection`. Uso de `overrides` en `pnpm-workspace.yaml` para neutralizar vulnerabilidades DoS en dependencias transitivas (como `brace-expansion` traída por `eslint-plugin-jsx-a11y`). Bloqueo de versión de TypeScript en la v6.x debido a incompatibilidades de API de TS 7.0+ con `typescript-eslint` (v8) y la suite de verificación de Astro. Actualizadas dependencias de pruebas (`vitest` y `@vitest/coverage-v8`) a v5.0.5.
 - **Accesibilidad y WCAG 2.2:** Cumplimiento avanzado con HTML5 semántico, etiquetas ARIA bilingües, ocultamiento de iconos decorativos mediante `aria-hidden="true"`, internacionalización completa de controles modales y restauración automática de foco (`focus management`) al cerrar ventanas modales.
 
 ## 📜 Scripts Disponibles

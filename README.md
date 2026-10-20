@@ -3,70 +3,120 @@
 [![Deploy via SFTP](https://img.shields.io/github/actions/workflow/status/joaltoroc/jatc.co/sftp-deploy.yml?branch=main&label=Deploy&logo=github&style=flat-square)](https://github.com/joaltoroc/jatc.co/actions/workflows/sftp-deploy.yml)
 ![Tests Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?style=flat-square&logo=vitest)
 ![Security: Gitleaks](https://img.shields.io/badge/security-gitleaks--clean-success?style=flat-square&logo=gitleaks)
+[![Version](https://img.shields.io/badge/version-v0.7.0-2563eb?style=flat-square)](./CHANGELOG.md)
+[![Profile Views](https://gitcard-studio.creativecode.com.co/api/badge?username=joaltoroc&type=views&color=38bdf8)](https://gitcard-studio.creativecode.com.co/)
 
-Este es el repositorio del portafolio personal de John Alexander Toro Cortés, accesible en [www.jatc.co](https://www.jatc.co). Está construido sobre **Astro (v7)** y diseñado para ser un sitio estático de altísimo rendimiento, totalmente accesible, bilingüe, seguro y con soporte nativo de temas.
+Este es el repositorio del portafolio personal de **John Alexander Toro Cortés**, accesible en [www.jatc.co](https://www.jatc.co). Está construido sobre **Astro (v7)** y diseñado bajo principios de **Clean Architecture**, **Apple Design** y **DevSecOps** para ofrecer un sitio estático de altísimo rendimiento, accesible (WCAG 2.2), bilingüe (ES/EN), seguro y con soporte offline mediante PWA.
 
 ---
 
 ## 🚀 Stack Tecnológico
 
-El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando el rendimiento bruto y la mantenibilidad:
+El proyecto prioriza el rendimiento bruto, la seguridad en la cadena de suministro y la mantenibilidad a largo plazo:
 
-- **Framework principal:** [Astro (v7.0.9)](https://astro.build/)
-- **Lenguaje:** TypeScript / HTML5 Semántico
-- **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) procesado con **LightningCSS** para minificación avanzada.
-- **Entorno de ejecución:** Node.js `>=24.0.0`
-- **Gestor de paquetes:** [pnpm (v12.3.4)](https://pnpm.io/)
-- **Control de calidad y Git Hooks:** [Husky (v9.1.7)](https://typicode.github.io/husky/) y `@astrojs/check`
-- **CI/CD:** GitHub Actions (despliegue automatizado por SFTP)
+- **Framework principal:** [Astro (v7.4.1)](https://astro.build/) — Generación estática (SSG) con cero JavaScript innecesario en el cliente.
+- **Lenguaje:** [TypeScript (v6.0.3)](https://www.typescriptlang.org/) / HTML5 Semántico.
+- **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) con sistema de tokens semánticos procesado con **LightningCSS (v1.33.0)**.
+- **Entorno de ejecución:** Node.js `>=24.0.0`.
+- **Gestor de paquetes:** [pnpm (v12.14.0)](https://pnpm.io/) con políticas estrictas de integridad y bloqueo de compilaciones no autorizadas.
+- **Calidad, Linting y Testing:** [Vitest (v5.0.5)](https://vitest.dev/), ESLint (v10.13.0), Prettier (v3.9.10), `@astrojs/check` (v0.9.11) y [Husky (v9.1.7)](https://typicode.github.io/husky/).
+- **CI/CD:** GitHub Actions con instalación determinista (`--frozen-lockfile`), auditoría de tipos/tests y despliegue automatizado por SFTP.
 
 ---
 
-## ✨ Características Principales
+## ✨ Características Principales y Mejoras Recientes
 
-### 🌍 Internacionalización (i18n) Bilingüe
+### 🌍 Internacionalización (i18n) Bilingüe y SEO para IA
 
-- Enrutamiento basado en directorios limpio (Español en `/` e Inglés en `/en/`).
-- Sistema de traducciones ligero basado en diccionarios estáticos (`src/i18n/`).
-- Metadatos bilingües integrales con etiquetas `hreflang` y `x-default` para indexación internacional precisa en motores de búsqueda.
+- **Enrutamiento limpio por directorios:** Español por defecto en `/` e Inglés en `/en/`.
+- **Diccionarios tipados con paridad verificada:** Sistema de traducciones estático en `src/i18n/` validado mediante pruebas unitarias (`tests/i18n.test.ts`) para garantizar que no existan claves faltantes ni traducciones vacías entre idiomas.
+- **SEO Internacional y Datos Estructurados:** Etiquetas `hreflang`, `x-default`, Open Graph, Twitter Cards con control de caché (`?v=0.7.0`) y grafo JSON-LD (`Person`, `WebSite`).
+- **Contexto Estructurado para LLMs (`llm.txt` / `llms.txt`):** Archivos públicos estandarizados en `/llm.txt` y `/llms.txt` sincronizados y verificados por tests (`tests/llm.test.ts`) para ofrecer información profesional estructurada a asistentes de IA autorizados.
 
-### 🌓 Gestión del Tema (Light/Dark Mode)
+### 🌓 Gestión del Tema (Light/Dark Mode) e Impresión Profesional
 
-- Soporte para modo claro y modo oscuro con guardado automático en `localStorage`.
-- **Prevención de parpadeo (Flash of Unstyled Content):** Se ejecuta un script crítico síncrono inline directamente en el `<head>` antes de renderizar la página para aplicar la clase `.dark` de inmediato.
-- Soporte de impresión optimizado: fuerza de forma temporal el tema claro al imprimir documentos físicos (`beforeprint` y `afterprint`), añade márgenes laterales simétricos en el contenedor (`padding: 0 1.75rem`), y remueve máscaras de degradado, sombreados (`drop-shadow`) y resplandores (`blur`) en imágenes para una impresión y generación de PDF limpia en navegadores móviles.
+- **Persistencia sin parpadeo (Zero-FOUC):** Script crítico síncrono inline en `<head>` que evalúa `localStorage` y `prefers-color-scheme` antes del primer pintado para aplicar `.dark` de forma instantánea.
+- **Exportación a PDF / Impresión de Currículum:**
+  - Fuerza temporalmente el tema claro durante la impresión (`beforeprint` / `afterprint`).
+  - Reglas estandarizadas de salto de página (`break-before: page; page-break-before: always;`) por cada sección principal con márgenes de caja `@page { size: portrait; margin: 2.5cm 2.4cm 2cm 2.4cm; }`.
+  - Limpieza automática de máscaras de degradado, sombras (`drop-shadow`), resplandores (`blur`) y elementos interactivos (modales, terminal y botones flotantes) para obtener un PDF nítido en escritorio y móviles.
 
-### 🚀 Rendimiento de Vanguardia (Performance SEO)
+### ⚡ Rendimiento de Vanguardia (Core Web Vitals)
 
-- **Compresión nativa y directivas de caché avanzadas:** Generación de recursos pre-comprimidos en formatos **Gzip (.gz)** y **Brotli (.br)** mediante `vite-plugin-compression`, e inyección en `.htaccess` de cabeceras `Cache-Control: public, max-age=31536000, immutable` (1 año) para recursos estáticos versionados en `/_astro/`.
-- **Carga de fuentes optimizada (Self-Hosted):** Las tipografías variables `Inter` (cuerpo) y `Space Grotesk` (títulos) se alojan de manera local para eliminar dependencias externas, se pre-cargan de forma prioritaria (`fetchpriority="high"` en font LCP), e inyectan reglas `font-display: swap` inline en `<head>` para eliminar el retardo de renderizado del elemento LCP (`h1.hero-title`).
-- **Ajuste de métricas de fuentes fallbacks:** Implementación de stacks de fuentes fallbacks utilizando `@font-face` con descriptores `size-adjust` para emparejar tipografías locales (`Arial`) con las fuentes del proyecto, eliminando saltos visuales y previniendo cambios en el CLS.
-- **Optimización LCP (Largest Contentful Paint):** La imagen principal del avatar (procesada dinámicamente por Astro) y la fuente de títulos se pre-cargan de forma prioritaria con sus rutas optimizadas mediante tags `<link rel="preload" fetchpriority="high">`.
-- **Formato de URL limpia:** Configuración de compilación `directory` en Astro para URLs sin la extensión `.html`.
-- **Eliminación de Recálculos de Diseño Forzados (Forced Reflows):** Desacoplamiento de lecturas de geometría (`scrollHeight`, `scrollY`) y escrituras DOM mediante `requestAnimationFrame()` en la terminal interactiva CLI (`Hero.astro`) y manejadores de scroll flotantes (`ScrollToTop.astro`).
-- **Carga diferida de Analytics:** Google Tag Manager se carga únicamente tras la primera interacción real del usuario (click, scroll, keydown, touchstart) o después de 10 segundos de inactividad, evitando competir por el hilo principal y mejorando la métrica LCP en auditorías móviles.
-- **Compilación y optimización de scripts de cliente:** Remoción de directivas `is:inline` en scripts interactivos de componentes para compilar, minificar y empaquetar todo el código JavaScript cliente a través del compilador nativo de Astro/Vite. Esto reduce significativamente el peso de las páginas HTML finales, reduce la cantidad de hashes requeridos en las directivas de seguridad CSP de `.htaccess` y mejora los tiempos de análisis sintáctico.
-- **Animaciones compuestas (PageSpeed optimization):** Optimización de la animación del parpadeo del cursor CLI utilizando propiedades de opacidad (`opacity: 0` a `opacity: 1`) compuestas directamente por GPU en lugar de cambiar colores de texto. Esto elimina recálculos de pintura (repaints) y mantiene el hilo principal responsivo en dispositivos móviles.
+- **Pre-compresión estática dual:** Generación de activos en formatos **Gzip (`.gz`)** y **Brotli (`.br`)** durante el build mediante `vite-plugin-compression`.
+- **Caché inmutable de 1 año:** Configuración en `.htaccess` de `Cache-Control: public, max-age=31536000, immutable` para activos estáticos versionados en `/_astro/` y revalidación inmediata (`max-age=0, must-revalidate`) para documentos HTML/XML/TXT.
+- **Tipografías locales optimizadas (Self-Hosted):** Fuentes variables `Inter` y `Space Grotesk` alojadas localmente con precarga prioritaria (`fetchpriority="high"`), `font-display: swap` y ajuste métrico (`size-adjust`) sobre fallbacks locales (`Arial`) para eliminar cambios de diseño acumulados (**CLS = 0**).
+- **Optimización LCP y GPU Compositing:**
+  - Precarga de alta prioridad de la imagen de perfil en formato `.webp` optimizado.
+  - Desacoplamiento de lecturas geométricas (`scrollHeight`, `scrollY`) y escrituras DOM con `requestAnimationFrame()` en [`Hero.astro`](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Hero.astro) y [`ScrollToTop.astro`](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/ScrollToTop.astro) para evitar _Forced Reflows_.
+  - Animaciones del cursor de la terminal CLI compuestas por GPU (`opacity`) para eliminar repintados en el hilo principal.
+- **Carga diferida de Analítica:** Google Tag Manager se inyecta únicamente tras la primera interacción real del usuario o después de 10 segundos de inactividad.
 
-### 🛡️ Seguridad Avanzada (DevSecOps)
+### 🛡️ Seguridad Avanzada (DevSecOps & Hardening)
 
-- **Content Security Policy (CSP) y Cabeceras de Seguridad:** Directiva estricta configurada a nivel de servidor mediante cabeceras HTTP en `.htaccess` para restringir la ejecución de scripts no autorizados y proteger contra ataques XSS y Clickjacking (`frame-ancestors 'none'`). Inclusión de cabeceras HSTS (`Strict-Transport-Security`), COOP (`Cross-Origin-Opener-Policy`) y `X-XSS-Protection`.
-- **Protección contra Cosechadores de Datos (AI Agents):** Configuración explícita en `robots.txt` que restringe el acceso de más de 20 agentes y scrapers de Inteligencia Artificial (como `GPTBot`, `ClaudeBot`, `CCBot`, `Google-Extended`, etc.) para proteger los datos y derechos de autor del portafolio.
-- **Resolución de Vulnerabilidades de Dependencias:** Uso de `overrides` en `pnpm-workspace.yaml` para forzar versiones parcheadas de dependencias transitivas (como `brace-expansion` traída por `eslint-plugin-jsx-a11y`), logrando 0 vulnerabilidades en auditorías de seguridad.
+- **Content Security Policy (CSP) con Verificación Automatizada de Hashes:**
+  - Directiva `Content-Security-Policy` estricta en [`public/.htaccess`](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/public/.htaccess) sin `unsafe-inline` en `script-src`, autorizando únicamente hashes criptográficos `sha256-...` exactos de los scripts compilados.
+  - **Validación automática en Vitest (`tests/sync.test.ts`):** Verifica en cada ejecución que todos los `<script>` del HTML compilado en `dist/` coincidan exactamente 1:1 con los hashes declarados en `.htaccess` (sin hashes faltantes ni huérfanos).
+- **Cabeceras HTTP de Seguridad:** Configuración de `Strict-Transport-Security` (HSTS con `preload`), `Cross-Origin-Opener-Policy` (`same-origin`), `Cross-Origin-Resource-Policy` (`same-origin`), `X-Content-Type-Options` (`nosniff`), `X-Frame-Options` (`DENY`), `frame-ancestors 'none'` y `Permissions-Policy`.
+- **Protección de Cadena de Suministro (`pnpm-workspace.yaml`):**
+  - Restricción explícita de scripts de compilación mediante `allowBuilds` únicamente para `esbuild` y `sharp`.
+  - Depuración estricta de `minimumReleaseAgeExclude` exclusivamente para versiones activas auditadas y `overrides` para forzar versiones parcheadas en dependencias transitivas (**0 vulnerabilidades**).
+- **Identidad de Correo Verificada (BIMI):** Inclusión de activos vectoriales estandarizados (`public/bimi-logo.svg` y `public/bimi.svg`) para autenticación visual de marca en clientes de correo compatibles con DMARC/BIMI.
+- **Control de Scrapers de IA (`robots.txt`):** Bloqueo explícito de más de 20 bots de raspado de entrenamiento no consentido (`GPTBot`, `ClaudeBot`, `CCBot`, `Google-Extended`, etc.), permitiendo únicamente la lectura de `/llm.txt` y `/llms.txt`.
 
-### 📱 Experiencia de Usuario & Accesibilidad (UX/UI & Apple Design)
+### 📱 Experiencia de Usuario & Accesibilidad (WCAG 2.2 + Apple Design)
 
-- **Apple Design System & Motion:** Interfaz 100% responsiva bajo metodología "mobile-first", guiada por los principios de **Apple Design** (_Designing Fluid Interfaces_): tipografía óptica con tracking negativo (`letter-spacing: -0.025em`) en títulos, materiales translúcidos (`backdrop-filter: blur(20px) saturate(180%)`), bordes de alta definición y respuesta táctil reactiva al presionar (`:active { transform: scale(0.97); }`) mediante curvas de aceleración elásticas estilo iOS (`cubic-bezier(0.16, 1, 0.3, 1)`).
-- **Soporte de Accesibilidad de Sistema:** Adaptación a `@media (prefers-reduced-motion)` (animaciones cross-fade) y `@media (prefers-reduced-transparency)` (superficies opacas fallbacks).
-- **Exportación a PDF por Secciones Independientes:** Reglas estandarizadas de salto de página (`break-before: page; page-break-before: always;`) para cada una de las 8 secciones principales con márgenes de caja `@page { size: portrait; margin: 1.2cm 1.5cm; }` y ocultamiento automático de elementos interactivos (modales y botones flotantes).
-- **Enlaces rápidos de sección:** Generación automática de botones interactivos para copiar el enlace de anclaje directo de cada sección con retroalimentación visual al usuario.
-- **Navegación y acciones rápidas:** Navegación mejorada con botones flotantes para "Scroll to Top" (volver arriba) e impresión de la página (optimizados mediante posicionamiento absoluto y transiciones fluidas por variables CSS nativas), de manera que el botón de imprimir se desliza suavemente al aparecer el scroll.
-- **Accesibilidad (A11y & WCAG 2.2):** Enlace "Skip to main content" (saltar al contenido principal) para navegación fácil por teclado (WCAG 2.4.1), áreas táctiles mínimas de 44px, inyección dinámica del atributo `aria-label` sincronizado bilingüe en encabezados de modales interactivos, ocultamiento explícito de iconos decorativos con `aria-hidden="true"`, y restauración automática de foco (`focus management`) al cerrar ventanas modales.
-- **Consola Terminal CLI Interactivo:** Consola interactiva en la sección Hero con soporte para comandos de teclado (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `matrix`, `clear`, `sudo`), autocompletado y navegación por historial de comandos (flechas Arriba/Abajo).
-- **Filtro Cruzado de Tecnologías:** Selección interactiva de badges en la sección de Habilidades que resalta automáticamente la experiencia laboral y proyectos asociados a dicha tecnología.
-- **PWA & Caché Offline:** Service Worker PWA (`public/sw.js`) configurado con estrategia Cache-First para navegación offline instantánea.
-- **Visualizador interactivo de certificados y proyectos:** Modales accesibles en [Courses.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Courses.astro) y [Projects.astro](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/src/components/Projects.astro) para inspeccionar certificados y arquitecturas detalladas de proyectos.
-- **Copia de datos de contacto:** Visualización directa y opción rápida de copiado al portapapeles para los datos clave de contacto (Email, LinkedIn y GitHub) en la sección de Contacto con retroalimentación visual.
+- **Apple Design System & Fluid Motion:** Superficies translúcidas (`backdrop-filter: blur(20px) saturate(180%)`), tipografía óptica (`letter-spacing: -0.025em`) y respuesta táctil elástica (`cubic-bezier(0.16, 1, 0.3, 1)`), respetando `@media (prefers-reduced-motion)` y `@media (prefers-reduced-transparency)`.
+- **Cumplimiento WCAG 2.2:** Enlace _Skip to main content_, áreas táctiles mínimas de `44px`, atributos `inert` y `aria-modal="true"` en modales y menú móvil, estados `aria-pressed` en filtros interactivos y restauración automática de foco al cerrar diálogos.
+- **Consola Terminal CLI Interactiva (`Hero.astro`):** Soporta comandos en vivo (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `version`, `matrix`, `clear`, `sudo`), autocompletado con tecla `Tab` e historial de comandos con flechas `Arriba`/`Abajo`.
+- **Filtro Cruzado de Tecnologías (`Skills.astro`):** Selección interactiva de tecnologías que resalta en tiempo real las tarjetas asociadas en Experiencia y Proyectos.
+- **Service Worker PWA Versionado (`public/sw.js`):** Caché offline sincronizada con la versión activa del proyecto (`jatc-portfolio-v0.7.0`) y validada mediante tests automatizados.
+
+---
+
+## 📊 Muestra en Vivo — GitCard Studio
+
+Como muestra de integración de uno de los proyectos destacados de código abierto incluidos en este portafolio (**[GitCard Studio](https://github.com/creativecodeco/gitcard-studio)**), a continuación se renderizan en tiempo real las tarjetas SVG de telemetría de GitHub para `@joaltoroc`:
+
+> 🎨 **Estudio Interactivo en Vivo:** Personaliza temas, idiomas, colores y diseños en **[https://gitcard-studio.creativecode.com.co/](https://gitcard-studio.creativecode.com.co/)**
+
+<div align="center">
+
+|                                                                                📊 Estadísticas Generales (`dark`)                                                                                 |                                                                                     💻 Lenguajes más Usados (`tokyonight`)                                                                                     |
+| :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Tarjeta de Estadísticas](https://gitcard-studio.creativecode.com.co/api/stats?username=joaltoroc&theme=dark&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=dark) | [![Tarjeta de Lenguajes](https://gitcard-studio.creativecode.com.co/api/languages?username=joaltoroc&theme=tokyonight&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=tokyonight) |
+
+|                                                                             📅 Matriz de Hábitos de Commit 7x24 (`neon`)                                                                              |                                                                                  🔥 Racha de Contribuciones (`radical`)                                                                                  |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Matriz de Hábitos](https://gitcard-studio.creativecode.com.co/api/commit-activity?username=joaltoroc&theme=neon&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=neon) | [![Racha de Contribuciones](https://gitcard-studio.creativecode.com.co/api/streak?username=joaltoroc&theme=radical&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=radical) |
+
+|                                                                                    🎖️ Rango de Desarrollador (`glassmorphism`)                                                                                    |                                                                             🏆 Trofeos e Hitos en GitHub (`dark`)                                                                              |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [![Rango de Desarrollador](https://gitcard-studio.creativecode.com.co/api/rank?username=joaltoroc&theme=glassmorphism&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=glassmorphism) | [![Trofeos en GitHub](https://gitcard-studio.creativecode.com.co/api/trophies?username=joaltoroc&theme=dark&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=dark) |
+
+</div>
+
+### 📡 Ejemplo de Uso en Markdown (`GitCard Studio`)
+
+Puedes incrustar estas tarjetas dinámicas en cualquier `README.md` apuntando a la API de **GitCard Studio**:
+
+```markdown
+<!-- Tarjeta de Estadísticas Generales -->
+
+[![GitHub Stats](https://gitcard-studio.creativecode.com.co/api/stats?username=joaltoroc&theme=dark&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=dark)
+
+<!-- Tarjeta de Lenguajes más Usados -->
+
+[![Top Languages](https://gitcard-studio.creativecode.com.co/api/languages?username=joaltoroc&theme=tokyonight&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=tokyonight)
+
+<!-- Matriz 7x24 de Actividad de Commits -->
+
+[![Commit Activity](https://gitcard-studio.creativecode.com.co/api/commit-activity?username=joaltoroc&theme=neon&locale=es)](https://gitcard-studio.creativecode.com.co/?user=joaltoroc&theme=neon)
+
+<!-- Badge de Visitas de Perfil -->
+
+[![Profile Views](https://gitcard-studio.creativecode.com.co/api/badge?username=joaltoroc&type=views&color=38bdf8)](https://gitcard-studio.creativecode.com.co/)
+```
 
 ---
 
@@ -76,81 +126,63 @@ El proyecto está diseñado bajo un enfoque moderno y minimalista, priorizando e
 /
 ├── .github/
 │   └── workflows/
-│       └── sftp-deploy.yml    # Pipeline de despliegue continuo mediante SFTP
+│       └── sftp-deploy.yml    # Pipeline CI/CD (lint, check, test, build y despliegue SFTP)
 ├── .husky/                    # Automatización de Git Hooks
-│   ├── pre-commit             # Validación estática de Astro y tipos antes del commit
-│   └── pre-push               # Compilación previa para validar errores antes del push
-├── public/                    # Archivos estáticos públicos (imágenes, favicons, bimi-logo.svg, etc.)
+│   ├── pre-commit             # Ejecuta pnpm check && pnpm test antes de confirmar cambios
+│   └── pre-push               # Ejecuta pnpm build antes de subir cambios al remoto
+├── public/                    # Activos estáticos (.htaccess, sw.js, llm.txt, llms.txt, bimi-logo.svg, diplomas, iconos)
 ├── src/
-│   ├── components/            # Componentes modulares y reutilizables de Astro
-│   │   ├── About.astro        # Sección de perfil y presentación
-│   │   ├── Contact.astro      # Formulario e información de contacto
-│   │   ├── Courses.astro      # Certificaciones y educación complementaria
-│   │   ├── Education.astro    # Trayectoria de educación formal
-│   │   ├── Experience.astro   # Trayectoria profesional bilingüe detallada
-│   │   ├── Footer.astro       # Pie de página y firma de créditos
-│   │   ├── Header.astro       # Menú de navegación, links y selector de idioma
-│   │   ├── Hero.astro         # Presentación inicial con LCP optimizado
-│   │   ├── Projects.astro     # Sección de proyectos destacados (GitHub Helpers)
-│   │   ├── ScrollToTop.astro  # Botones flotantes de acciones rápidas (volver arriba e imprimir)
-│   │   ├── Skills.astro       # Habilidades técnicas organizadas por categorías
-│   │   └── ThemeToggle.astro  # Botón selector del tema Light/Dark
-│   ├── i18n/                  # Lógica de traducción, diccionarios (ui.ts, utils.ts)
-│   ├── layouts/               # Plantillas estructurales de la web (Layout.astro)
-│   ├── pages/                 # Enrutamiento estático (index.astro, en/index.astro)
-│   └── styles/                # Variables CSS, paleta de colores y estilos globales
+│   ├── assets/                # Imagen principal procesada por Astro Assets (jatc.webp)
+│   ├── components/            # Componentes modulares de Astro
+│   │   ├── About.astro        # Sección de perfil profesional y métricas clave
+│   │   ├── Contact.astro      # Formulario e información de contacto con copiado rápido
+│   │   ├── Courses.astro      # Certificaciones con visor modal interactivo y paginación
+│   │   ├── Education.astro    # Trayectoria de formación académica
+│   │   ├── Experience.astro   # Historial profesional bilingüe filtrable por tecnología
+│   │   ├── Footer.astro       # Pie de página y créditos
+│   │   ├── Header.astro       # Navegación principal, drawer móvil accesible y selector de idioma
+│   │   ├── Hero.astro         # Presentación principal con LCP optimizado y consola CLI interactiva
+│   │   ├── Projects.astro     # Proyectos destacados con modal de detalles de arquitectura
+│   │   ├── ScrollToTop.astro  # Acciones flotantes (volver arriba e imprimir CV en PDF)
+│   │   ├── Skills.astro       # Matriz de habilidades con filtro cruzado interactivo
+│   │   └── ThemeToggle.astro  # Selector de tema Claro/Oscuro
+│   ├── i18n/                  # Diccionarios bilingües y utilidades (ui.ts, utils.ts)
+│   ├── layouts/               # Plantilla estructural con SEO, Open Graph y JSON-LD (Layout.astro)
+│   ├── pages/                 # Rutas estáticas (index.astro, 404.astro, en/index.astro)
+│   └── styles/                # Sistema de diseño, tokens CSS y estilos de impresión (global.css)
+├── tests/                     # Suite de pruebas unitarias e integridad con Vitest
+│   ├── i18n.test.ts           # Paridad de claves y validación de traducciones ES/EN
+│   ├── llm.test.ts            # Consistencia de archivos públicos llm.txt y llms.txt
+│   ├── sync.test.ts           # Sincronización de versiones (package.json, CLI, PWA, docs) y hashes CSP
+│   └── utils.test.ts          # Pruebas unitarias de funciones auxiliares de i18n y rutas
 ├── ADR.md                     # Registro de Decisiones de Arquitectura (Architecture Decision Record)
-├── astro.config.mjs           # Configuración detallada de Astro e integraciones
-├── LICENSE                    # Términos de uso y copia restrictiva
-├── package.json               # Dependencias del proyecto y scripts npm
-├── tsconfig.json              # Configuración de TypeScript
-├── vitest.config.ts           # Configuración de Vitest para pruebas unitarias
-└── tests/                     # Suite de pruebas unitarias
+├── CHANGELOG.md               # Historial detallado de versiones y cambios del proyecto
+├── context.md                 # Contexto técnico y arquitectónico del proyecto
+├── astro.config.mjs           # Configuración de Astro, Sitemap, Robots.txt y compresión Gzip/Brotli
+├── eslint.config.mjs          # Configuración plana (Flat Config) de ESLint v10 + Astro + A11y
+├── package.json               # Dependencias, scripts y definición estricta de packageManager
+├── pnpm-workspace.yaml        # Políticas de seguridad de pnpm (allowBuilds, overrides, exclusiones)
+├── tsconfig.json              # Configuración estricta de TypeScript
+└── vitest.config.ts           # Configuración del runner de pruebas Vitest
 ```
 
 ---
 
 ## 🧞 Comandos y Desarrollo Local
 
-Este proyecto utiliza `pnpm` como gestor de dependencias. Asegúrate de tener instalado Node.js `>=24.0.0`.
+Este proyecto utiliza `pnpm` (`v12.14.0`) como gestor de paquetes. Asegúrate de contar con Node.js `>=24.0.0`.
 
-### Instalación de dependencias
-
-```bash
-pnpm install
-```
-
-### Iniciar servidor de desarrollo
-
-Inicia el servidor local con recarga rápida (HMR) en [http://localhost:4321](http://localhost:4321):
-
-```bash
-pnpm dev
-```
-
-### Compilar para producción
-
-Compila el proyecto y genera los archivos estáticos listos para producción en la carpeta `./dist/`:
-
-```bash
-pnpm build
-```
-
-### Previsualizar el sitio compilado
-
-Inicia un servidor local para inspeccionar la versión final compilada antes de desplegar:
-
-```bash
-pnpm preview
-```
-
-### Verificación de sintaxis y tipos
-
-Valida la consistencia de tipos de TypeScript y sintaxis de Astro en toda la base de código:
-
-```bash
-pnpm check
-```
+| Comando              | Descripción                                                                                    |
+| :------------------- | :--------------------------------------------------------------------------------------------- |
+| `pnpm install`       | Instala las dependencias respetando `pnpm-lock.yaml` y las políticas de `pnpm-workspace.yaml`. |
+| `pnpm dev`           | Inicia el servidor de desarrollo local con HMR en `http://localhost:4321`.                     |
+| `pnpm check`         | Ejecuta el analizador estático de Astro y validación de tipos de TypeScript.                   |
+| `pnpm lint`          | Analiza el código fuente con ESLint (TypeScript, Astro y reglas de accesibilidad JSX A11y).    |
+| `pnpm run format`    | Formatea todos los archivos con Prettier y corrige problemas automáticos de ESLint.            |
+| `pnpm test`          | Ejecuta la suite de pruebas unitarias y de sincronización con Vitest.                          |
+| `pnpm test:coverage` | Ejecuta las pruebas unitarias generando reporte de cobertura con `@vitest/coverage-v8`.        |
+| `pnpm build`         | Verifica tipos (`astro check`) y compila el sitio estático para producción en `./dist/`.       |
+| `pnpm preview`       | Sirve localmente la compilación generada en `./dist/` para inspección previa al despliegue.    |
 
 ---
 
@@ -158,19 +190,19 @@ pnpm check
 
 ### Git Hooks (Husky)
 
-Para mantener un estándar de calidad y prevenir fallos en producción, el proyecto tiene hooks automáticos:
-
-- **Pre-commit:** Ejecuta `pnpm check` para asegurar que no haya errores de sintaxis o de tipos antes de confirmar cambios.
-- **Pre-push:** Ejecuta `pnpm build` para validar que el proyecto compila correctamente antes de subirlo al repositorio remoto.
+- **Pre-commit (`.husky/pre-commit`):** Ejecuta `ASTRO_TELEMETRY_DISABLED=1 pnpm check && pnpm test` para garantizar cero errores de tipos y el paso total de los tests antes de cada commit.
+- **Pre-push (`.husky/pre-push`):** Ejecuta `ASTRO_TELEMETRY_DISABLED=1 pnpm build` para asegurar que la compilación estática y los hashes CSP estén íntegros antes de publicar cambios.
 
 ### CI/CD (GitHub Actions)
 
-Al hacer push a la rama `main`, se activa el workflow `.github/workflows/sftp-deploy.yml` que:
+Al hacer push a la rama `main`, el workflow [`.github/workflows/sftp-deploy.yml`](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/.github/workflows/sftp-deploy.yml) ejecuta:
 
-1. Descarga el código e instala Node.js / `pnpm`.
-2. Ejecuta el proceso de build (`pnpm build`).
-3. Transfiere de manera segura el contenido del directorio `./dist/` a la ruta remota del servidor web usando SFTP.
+1. **Configuración de entorno:** Instala `pnpm` (leyendo automáticamente `packageManager` desde `package.json`) y Node.js 24 con caché de dependencias.
+2. **Instalación determinista:** Ejecuta `pnpm install --frozen-lockfile`.
+3. **Puerta de Calidad (Quality Gate):** Ejecuta `pnpm lint`, `pnpm check` y `pnpm test`.
+4. **Compilación de Producción:** Ejecuta `pnpm build` generando los activos optimizados y pre-comprimidos (`.gz` / `.br`) en `./dist/`.
+5. **Despliegue Seguro:** Transfiere el directorio `./dist/` al servidor de producción mediante SFTP.
 
 ---
 
-Desarrollado con ❤️ por [John Toro](https://www.jatc.co)
+Desarrollado con ❤️ por [John Toro](https://www.jatc.co) · [Historial de Cambios (CHANGELOG.md)](./CHANGELOG.md)
