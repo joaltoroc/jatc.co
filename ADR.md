@@ -19,10 +19,10 @@ El portafolio personal (disponible en [jatc.co](https://www.jatc.co)) tiene como
 
 El stack tecnológico seleccionado se enfoca en minimizar la sobrecarga (overhead) de JavaScript y maximizar el rendimiento de la compilación estática:
 
-- **Framework Principal:** [Astro (v7.4.1)](https://astro.build/) - Elegido por su arquitectura de "islas", generación estática por defecto y cero JavaScript en el cliente.
+- **Framework Principal:** [Astro (v7.4.2)](https://astro.build/) - Elegido por su arquitectura de "islas", generación estática por defecto y cero JavaScript en el cliente.
 - **Procesador de Estilos:** **LightningCSS** (integrado en Vite/Astro) - Utilizado para la minificación avanzada, autocompletado de prefijos de navegadores y transpilación rápida de CSS moderno.
 - **Tipografías:** `Inter Variable` (auto-albergada mediante `@fontsource-variable/inter`) para evitar dependencias de CDNs externos, mejorar la privacidad de los usuarios y optimizar los tiempos de respuesta DNS.
-- **Gestor de Paquetes:** **pnpm (v12.14.0)** - Adoptado por su velocidad, eficiencia de almacenamiento a través de enlaces duros, y rigurosidad con las dependencias (evitando dependencias fantasma).
+- **Gestor de Paquetes:** **pnpm (v12.15.0)** - Adoptado por su velocidad, eficiencia de almacenamiento a través de enlaces duros, y rigurosidad con las dependencias (evitando dependencias fantasma).
 - **Lenguaje:** **TypeScript (v6.0.3)** y HTML semántico para garantizar la seguridad de tipos en tiempo de compilación y una estructura web accesible.
 - **DevOps y Automatización:** **GitHub Actions** (despliegue SFTP) y **Husky (v9.1.7)** para garantizar validaciones automáticas locales (hooks de pre-commit y pre-push).
 
@@ -110,3 +110,8 @@ El desarrollo de este portafolio se rige por tres pilares fundamentales:
 
 - **Decisión**: Cambiar la animación de parpadeo del cursor CLI (`cli-cursor`) de alternar `color: transparent` a animar `opacity: 0` y `opacity: 1`.
 - **Justificación**: Las animaciones sobre opacidad son procesadas por el compositor de la GPU y no causan repintados (repaints) ni recálculos de flujo (reflows), optimizando la responsividad del hilo principal de renderizado en móviles (reduciendo TBT y bloqueos de hilo principal indicados en PageSpeed).
+
+### Integración Nativa de `robots.txt` en `astro.config.mjs`
+
+- **Decisión**: Reemplazar el paquete externo `astro-robots-txt@1.0.0` por una integración nativa de Astro definida en [`astro.config.mjs`](file:///Users/joaltoroc/Code/joaltoroc/jatc.co/astro.config.mjs) mediante el hook `astro:build:done`.
+- **Justificación**: `astro-robots-txt` se encontraba sin mantenimiento y anclado a `zod@^3.22.2` (afectado por `GHSA-mrhx-c7xc-m3w5` e incompatible con el entrypoint principal de Zod v4). La integración nativa genera exactamente el mismo `robots.txt` sin introducir dependencias transitivas innecesarias.

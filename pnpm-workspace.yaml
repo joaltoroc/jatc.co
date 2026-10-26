@@ -2,20 +2,21 @@ allowBuilds:
   esbuild: true
   sharp: true
 minimumReleaseAgeExclude:
-  - '@astrojs/check@0.9.11'
+  - '@astrojs/check@0.9.12'
   - '@astrojs/sitemap@3.7.4'
-  - '@typescript-eslint/eslint-plugin@8.72.0'
-  - '@typescript-eslint/parser@8.72.0'
-  - '@typescript-eslint/project-service@8.72.0'
-  - '@typescript-eslint/scope-manager@8.72.0'
-  - '@typescript-eslint/tsconfig-utils@8.72.0'
-  - '@typescript-eslint/type-utils@8.72.0'
-  - '@typescript-eslint/types@8.72.0'
-  - '@typescript-eslint/typescript-estree@8.72.0'
-  - '@typescript-eslint/utils@8.72.0'
-  - '@typescript-eslint/visitor-keys@8.72.0'
-  - astro@7.4.1
-  - typescript-eslint@8.72.0
+  - '@typescript-eslint/eslint-plugin@8.72.1'
+  - '@typescript-eslint/parser@8.72.1'
+  - '@typescript-eslint/project-service@8.72.1'
+  - '@typescript-eslint/scope-manager@8.72.1'
+  - '@typescript-eslint/tsconfig-utils@8.72.1'
+  - '@typescript-eslint/type-utils@8.72.1'
+  - '@typescript-eslint/types@8.72.1'
+  - '@typescript-eslint/typescript-estree@8.72.1'
+  - '@typescript-eslint/utils@8.72.1'
+  - '@typescript-eslint/visitor-keys@8.72.1'
+  - astro@7.4.2
+  - prettier-plugin-astro@1.1.2
+  - typescript-eslint@8.72.1
 
 overrides:
   brace-expansion: '>=5.0.8'

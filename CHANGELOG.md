@@ -6,6 +6,22 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [0.7.1] - 2026-10-26
+
+### 🛡️ Remediación de Seguridad en `robots.txt` y Actualización de Dependencias
+
+- **Integración Nativa de `robots.txt` y Mitigación de Vulnerabilidad en Cadena de Suministro (`astro.config.mjs`, `package.json`)**:
+  - Remediada la vulnerabilidad **High** en `zod < 4.6.6` ([`GHSA-mrhx-c7xc-m3w5`](https://github.com/advisories/GHSA-mrhx-c7xc-m3w5)) introducida transitivamente por el paquete desactualizado `astro-robots-txt@1.0.0` (`zod@3.25.76`).
+  - Reemplazado `astro-robots-txt` por una integración nativa ligera en `astro.config.mjs` (hook `astro:build:done`) sin dependencias de terceros, preservando de forma idéntica la generación de `dist/robots.txt` y la lista de bloqueo de crawlers de IA.
+- **Actualización de Plataforma y Herramientas (`package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`)**:
+  - Actualizado el gestor de paquetes a **`pnpm@12.15.0`**.
+  - Actualizado **Astro** a **`v7.4.2`**, `@astrojs/check` a **`v0.9.12`**, `@typescript-eslint/*` a **`v8.72.1`** y `prettier-plugin-astro` a **`v1.1.2`**.
+  - Sincronizada la lista `minimumReleaseAgeExclude` en `pnpm-workspace.yaml` con las versiones activas auditadas.
+- **Sincronización de Versión y CSP (`src/components/Hero.astro`, `src/layouts/Layout.astro`, `public/sw.js`, `public/.htaccess`)**:
+  - Incrementada la versión del proyecto a **`v0.7.1`** en `package.json`, comando `version` de la consola CLI (`Hero.astro`), parámetros de caché Open Graph/Twitter (`?v=0.7.1`), Service Worker (`jatc-portfolio-v0.7.1`) y rotado el hash SHA-256 en la política `Content-Security-Policy` de `.htaccess`.
+
+---
+
 ## [0.7.0] - 2026-10-19
 
 ### 🚀 Estandarización de Plataforma, Seguridad CSP Automatizada y Muestra de GitCard Studio
