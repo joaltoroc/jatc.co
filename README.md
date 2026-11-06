@@ -3,7 +3,7 @@
 [![Deploy via SFTP](https://img.shields.io/github/actions/workflow/status/joaltoroc/jatc.co/sftp-deploy.yml?branch=main&label=Deploy&logo=github&style=flat-square)](https://github.com/joaltoroc/jatc.co/actions/workflows/sftp-deploy.yml)
 ![Tests Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen?style=flat-square&logo=vitest)
 ![Security: Gitleaks](https://img.shields.io/badge/security-gitleaks--clean-success?style=flat-square&logo=gitleaks)
-[![Version](https://img.shields.io/badge/version-v0.7.1-2563eb?style=flat-square)](./CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-v0.7.2-2563eb?style=flat-square)](./CHANGELOG.md)
 [![Profile Views](https://gitcard-studio.creativecode.com.co/api/badge?username=joaltoroc&type=views&color=38bdf8)](https://gitcard-studio.creativecode.com.co/)
 
 Este es el repositorio del portafolio personal de **John Alexander Toro Cortés**, accesible en [www.jatc.co](https://www.jatc.co). Está construido sobre **Astro (v7)** y diseñado bajo principios de **Clean Architecture**, **Apple Design** y **DevSecOps** para ofrecer un sitio estático de altísimo rendimiento, accesible (WCAG 2.2), bilingüe (ES/EN), seguro y con soporte offline mediante PWA.
@@ -14,12 +14,12 @@ Este es el repositorio del portafolio personal de **John Alexander Toro Cortés*
 
 El proyecto prioriza el rendimiento bruto, la seguridad en la cadena de suministro y la mantenibilidad a largo plazo:
 
-- **Framework principal:** [Astro (v7.4.2)](https://astro.build/) — Generación estática (SSG) con cero JavaScript innecesario en el cliente.
+- **Framework principal:** [Astro (v7.4.7)](https://astro.build/) — Generación estática (SSG) con cero JavaScript innecesario en el cliente.
 - **Lenguaje:** [TypeScript (v6.0.3)](https://www.typescriptlang.org/) / HTML5 Semántico.
 - **Estilos:** CSS nativo y modularizado (`src/styles/global.css`) con sistema de tokens semánticos procesado con **LightningCSS (v1.33.0)**.
 - **Entorno de ejecución:** Node.js `>=24.0.0`.
-- **Gestor de paquetes:** [pnpm (v12.15.0)](https://pnpm.io/) con políticas estrictas de integridad y bloqueo de compilaciones no autorizadas.
-- **Calidad, Linting y Testing:** [Vitest (v5.0.5)](https://vitest.dev/), ESLint (v10.13.0), Prettier (v3.9.10), `@astrojs/check` (v0.9.12) y [Husky (v9.1.7)](https://typicode.github.io/husky/).
+- **Gestor de paquetes:** [pnpm (v12.18.0)](https://pnpm.io/) con políticas estrictas de integridad y bloqueo de compilaciones no autorizadas.
+- **Calidad, Linting y Testing:** [Vitest (v5.1.0)](https://vitest.dev/), ESLint (v10.14.0), Prettier (v3.9.10), `@astrojs/check` (v0.9.12) y [Husky (v9.1.7)](https://typicode.github.io/husky/).
 - **CI/CD:** GitHub Actions con instalación determinista (`--frozen-lockfile`), auditoría de tipos/tests y despliegue automatizado por SFTP.
 
 ---
@@ -30,7 +30,7 @@ El proyecto prioriza el rendimiento bruto, la seguridad en la cadena de suminist
 
 - **Enrutamiento limpio por directorios:** Español por defecto en `/` e Inglés en `/en/`.
 - **Diccionarios tipados con paridad verificada:** Sistema de traducciones estático en `src/i18n/` validado mediante pruebas unitarias (`tests/i18n.test.ts`) para garantizar que no existan claves faltantes ni traducciones vacías entre idiomas.
-- **SEO Internacional y Datos Estructurados:** Etiquetas `hreflang`, `x-default`, Open Graph, Twitter Cards con control de caché (`?v=0.7.1`) y grafo JSON-LD (`Person`, `WebSite`).
+- **SEO Internacional y Datos Estructurados:** Etiquetas `hreflang`, `x-default`, Open Graph, Twitter Cards con control de caché (`?v=0.7.2`) y grafo JSON-LD (`Person`, `WebSite`).
 - **Contexto Estructurado para LLMs (`llm.txt` / `llms.txt`):** Archivos públicos estandarizados en `/llm.txt` y `/llms.txt` sincronizados y verificados por tests (`tests/llm.test.ts`) para ofrecer información profesional estructurada a asistentes de IA autorizados.
 
 ### 🌓 Gestión del Tema (Light/Dark Mode) e Impresión Profesional
@@ -66,11 +66,13 @@ El proyecto prioriza el rendimiento bruto, la seguridad en la cadena de suminist
 
 ### 📱 Experiencia de Usuario & Accesibilidad (WCAG 2.2 + Apple Design)
 
-- **Apple Design System & Fluid Motion:** Superficies translúcidas (`backdrop-filter: blur(20px) saturate(180%)`), tipografía óptica (`letter-spacing: -0.025em`) y respuesta táctil elástica (`cubic-bezier(0.16, 1, 0.3, 1)`), respetando `@media (prefers-reduced-motion)` y `@media (prefers-reduced-transparency)`.
-- **Cumplimiento WCAG 2.2:** Enlace _Skip to main content_, áreas táctiles mínimas de `44px`, atributos `inert` y `aria-modal="true"` en modales y menú móvil, estados `aria-pressed` en filtros interactivos y restauración automática de foco al cerrar diálogos.
+- **Apple Design System & Fluid Motion:** Superficies translúcidas (`backdrop-filter: blur(20px) saturate(180%)`), tipografía óptica (`letter-spacing: -0.025em`) con balanceo automático (`text-wrap: balance` en títulos y `text-wrap: pretty` en párrafos), respuesta táctil física (`scale(0.96)`–`scale(0.97)`) y transiciones específicas compositables por GPU (cero `transition: all`).
+- **Micro-interacciones y Modales Asimétricos:** Cross-fade de iconos (`opacity` + `scale` + `blur`) en el selector de tema, menú móvil y botones de copiado (con transición a check `✓`), _intent delay_ (`80ms`) en tooltips y animaciones asimétricas de apertura/cierre (`250ms` entrada / `150ms–180ms` salida con escala `0.96 -> 1`) en los modales de proyectos y diplomas.
+- **Sensibilidad al Movimiento Selectiva (`prefers-reduced-motion`):** Desactiva desplazamientos espaciales (`transform`, `scroll-behavior`) y animaciones de fotogramas clave preservando el feedback visual no espacial (`opacity`, `color`, `background-color`).
+- **Cumplimiento WCAG 2.2:** Enlace _Skip to main content_, áreas táctiles mínimas de `44×44px` en todos los controles interactivos, atributos `inert` y `aria-modal="true"` en modales y menú móvil, estados `aria-pressed` en filtros interactivos y restauración automática de foco al cerrar diálogos.
 - **Consola Terminal CLI Interactiva (`Hero.astro`):** Soporta comandos en vivo (`help`, `whoami`, `skills`, `experience`, `projects`, `contact`, `cv`, `theme`, `version`, `matrix`, `clear`, `sudo`), autocompletado con tecla `Tab` e historial de comandos con flechas `Arriba`/`Abajo`.
 - **Filtro Cruzado de Tecnologías (`Skills.astro`):** Selección interactiva de tecnologías que resalta en tiempo real las tarjetas asociadas en Experiencia y Proyectos.
-- **Service Worker PWA Versionado (`public/sw.js`):** Caché offline sincronizada con la versión activa del proyecto (`jatc-portfolio-v0.7.1`) y validada mediante tests automatizados.
+- **Service Worker PWA Versionado (`public/sw.js`):** Caché offline sincronizada con la versión activa del proyecto (`jatc-portfolio-v0.7.2`) y validada mediante tests automatizados.
 
 ---
 
@@ -171,7 +173,7 @@ Puedes incrustar estas tarjetas dinámicas en cualquier `README.md` apuntando a 
 
 ## 🧞 Comandos y Desarrollo Local
 
-Este proyecto utiliza `pnpm` (`v12.15.0`) como gestor de paquetes. Asegúrate de contar con Node.js `>=24.0.0`.
+Este proyecto utiliza `pnpm` (`v12.18.0`) como gestor de paquetes. Asegúrate de contar con Node.js `>=24.0.0`.
 
 | Comando              | Descripción                                                                                    |
 | :------------------- | :--------------------------------------------------------------------------------------------- |

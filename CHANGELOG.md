@@ -6,6 +6,25 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1
 
 ---
 
+## [0.7.2] - 2026-11-05
+
+### ✨ Pulido de Interfaz, Micro-interacciones, Rendimiento CSS y Actualización de Dependencias
+
+- **Pulido de Interfaz, Micro-interacciones y Rendimiento CSS (`src/styles/global.css`, `src/components/*.astro`, `src/layouts/Layout.astro`)**:
+  - Eliminadas las 16 ocurrencias de `transition: all` en favor de propiedades explícitas compositables (`transform`, `opacity`, `background-color`, `border-color`, `color`, `box-shadow`).
+  - Añadido `text-wrap: balance` en encabezados (`h1–h6`) y `text-wrap: pretty` en párrafos (`p`), radios concéntricos en tarjetas de contacto (`20px` exterior / `12px` interior), respuesta táctil `:active` calibrada (`scale(0.96)`) y áreas táctiles mínimas de `44×44px` en todos los controles interactivos.
+  - Implementadas transiciones de _icon swap_ (`opacity`, `scale(0.25 -> 1)`, `blur(4px -> 0px)`) en `ThemeToggle.astro`, menú móvil (`Header.astro`) y confirmación con check (`✓`) al copiar en `Contact.astro` y enlaces de sección (`Layout.astro`).
+  - Añadida asimetría de apertura/cierre (`250ms` entrada / `150ms–180ms` salida con escala `0.96 -> 1`) en los modales de `Projects.astro` y `Courses.astro`, _intent delay_ de `80ms` en tooltips y modo `prefers-reduced-motion` selectivo que conserva transiciones no espaciales.
+- **Actualización de Plataforma y Herramientas (`package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`)**:
+  - Actualizado el gestor de paquetes a **`pnpm@12.18.0`**.
+  - Actualizado **Astro** a **`v7.4.7`**, **Vitest** y `@vitest/coverage-v8` a **`v5.1.0`** y **ESLint** a **`v10.14.0`**.
+  - Sincronizada y ordenada alfabéticamente la lista `minimumReleaseAgeExclude` en `pnpm-workspace.yaml`.
+- **Sincronización de Versión, CSP y Pruebas (`src/components/Hero.astro`, `src/layouts/Layout.astro`, `public/sw.js`, `public/.htaccess`, `tests/sync.test.ts`)**:
+  - Incrementada la versión del proyecto a **`v0.7.2`** en `package.json`, comando `version` de la consola CLI (`Hero.astro`), parámetros de caché Open Graph/Twitter (`?v=0.7.2`), Service Worker (`jatc-portfolio-v0.7.2`) y rotados los hashes SHA-256 en la política `Content-Security-Policy` de `.htaccess`.
+  - Ampliada la cobertura de `tests/sync.test.ts` para verificar la sincronización de versiones de todas las herramientas en `README.md`, `context.md` y `ADR.md`.
+
+---
+
 ## [0.7.1] - 2026-10-26
 
 ### 🛡️ Remediación de Seguridad en `robots.txt` y Actualización de Dependencias

@@ -54,6 +54,7 @@ const t = useTranslations(lang);
 
 <style>
   .theme-toggle {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +64,11 @@ const t = useTranslations(lang);
     background: var(--surface-light);
     border: 1px solid var(--border-light);
     color: var(--text-primary);
-    transition: all var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      transform 160ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
     cursor: pointer;
     padding: 0;
     z-index: 101;
@@ -71,23 +76,46 @@ const t = useTranslations(lang);
 
   .theme-toggle:hover {
     background: var(--border-light);
-    transform: scale(1.1);
+    transform: scale(1.06);
+  }
+
+  .theme-toggle:active {
+    transform: scale(0.96);
+  }
+
+  .sun,
+  .moon {
+    transition:
+      opacity 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+      transform 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+      filter 200ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
   }
 
   /* Default (Light Mode): Show Moon to switch to dark */
   .sun {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.25) rotate(-45deg);
+    filter: blur(4px);
+    pointer-events: none;
   }
   .moon {
-    display: block;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
   }
 
   /* Dark Mode Override: Show Sun to switch back to light */
   :global(.dark) .sun {
-    display: block;
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
   }
   :global(.dark) .moon {
-    display: none;
+    opacity: 0;
+    transform: scale(0.25) rotate(45deg);
+    filter: blur(4px);
+    pointer-events: none;
   }
 </style>
 

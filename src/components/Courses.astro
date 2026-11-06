@@ -675,8 +675,8 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     opacity: 0;
     visibility: hidden;
     transition:
-      opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-      visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity 180ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+      visibility 180ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
   }
 
   :global(.dark) .modal-overlay {
@@ -686,6 +686,9 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
   .modal-overlay.active {
     opacity: 1;
     visibility: visible;
+    transition:
+      opacity 250ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+      visibility 250ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
   }
 
   .modal-content-wrapper {
@@ -698,6 +701,13 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     justify-content: center;
     align-items: center;
     gap: var(--space-4);
+    transform: scale(0.96) translateY(8px);
+    transition: transform 180ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  .modal-overlay.active .modal-content-wrapper {
+    transform: scale(1) translateY(0);
+    transition: transform 250ms var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1));
   }
 
   .modal-inner-content {
@@ -756,8 +766,12 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     font-size: 2.25rem;
     cursor: pointer;
     line-height: 1;
-    transition: all var(--transition-fast);
+    transition:
+      color var(--transition-fast),
+      transform 160ms var(--ease-out);
     padding: 0.5rem;
+    min-width: 44px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -765,7 +779,11 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
 
   .close-btn:hover {
     color: var(--text-primary);
-    transform: scale(1.1);
+    transform: scale(1.08);
+  }
+
+  .close-btn:active {
+    transform: scale(0.96);
   }
 
   .nav-btn {
@@ -782,7 +800,11 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      transform 160ms var(--ease-out);
     z-index: 10000;
   }
 
@@ -790,6 +812,10 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
     background: var(--accent-primary);
     border-color: var(--accent-primary);
     color: #ffffff;
+  }
+
+  .nav-btn:active {
+    transform: translateY(-50%) scale(0.96);
   }
 
   .nav-btn.prev {
@@ -820,8 +846,8 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       font-size: 0.8rem;
     }
     .nav-btn {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
     }
   }
 

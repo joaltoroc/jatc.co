@@ -104,10 +104,10 @@ const t = useTranslations(lang);
     />
     <meta property="og:title" content={t('layout.title')} />
     <meta property="og:description" content={t('seo.description')} />
-    <meta property="og:image" content="https://www.jatc.co/jatc.png?v=0.7.1" />
+    <meta property="og:image" content="https://www.jatc.co/jatc.png?v=0.7.2" />
     <meta
       property="og:image:secure_url"
-      content="https://www.jatc.co/jatc.png?v=0.7.1"
+      content="https://www.jatc.co/jatc.png?v=0.7.2"
     />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="800" />
@@ -127,7 +127,7 @@ const t = useTranslations(lang);
     />
     <meta name="twitter:title" content={t('layout.title')} />
     <meta name="twitter:description" content={t('seo.description')} />
-    <meta name="twitter:image" content="https://www.jatc.co/jatc.png?v=0.7.1" />
+    <meta name="twitter:image" content="https://www.jatc.co/jatc.png?v=0.7.2" />
     <meta
       name="twitter:image:alt"
       content="John Alexander Toro Cortés - Development Manager & Technical Lead"
@@ -324,7 +324,7 @@ const t = useTranslations(lang);
             linkBtn.setAttribute('aria-label', copyLinkText);
             linkBtn.setAttribute('title', copyLinkText);
             linkBtn.innerHTML =
-              '<svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
+              '<svg class="icon-link" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
 
             linkBtn.addEventListener('click', (e) => {
               e.preventDefault();

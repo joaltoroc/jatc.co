@@ -11,6 +11,13 @@ describe('Repository Version & Security Synchronization', () => {
   const projectVersion: string = pkg.version;
   const astroVersion: string = pkg.dependencies.astro;
   const pnpmVersion: string = pkg.packageManager.replace('pnpm@', '');
+  const tsVersion: string = pkg.devDependencies.typescript;
+  const lightningcssVersion: string = pkg.devDependencies.lightningcss;
+  const vitestVersion: string = pkg.devDependencies.vitest;
+  const eslintVersion: string = pkg.devDependencies.eslint;
+  const prettierVersion: string = pkg.devDependencies.prettier;
+  const astroCheckVersion: string = pkg.devDependencies['@astrojs/check'];
+  const huskyVersion: string = pkg.devDependencies.husky;
 
   it('should keep project version synchronized across Hero, Layout, and Service Worker', () => {
     const heroContent = fs.readFileSync(
@@ -29,6 +36,10 @@ describe('Repository Version & Security Synchronization', () => {
       path.join(rootDir, 'CHANGELOG.md'),
       'utf-8'
     );
+    const readmeContent = fs.readFileSync(
+      path.join(rootDir, 'README.md'),
+      'utf-8'
+    );
 
     expect(heroContent).toContain(
       `JATC Portfolio v${projectVersion} (Astro ${astroVersion} + TypeScript)`
@@ -36,6 +47,9 @@ describe('Repository Version & Security Synchronization', () => {
     expect(layoutContent).toContain(`?v=${projectVersion}`);
     expect(swContent).toContain(`jatc-portfolio-v${projectVersion}`);
     expect(changelogContent).toContain(`## [${projectVersion}]`);
+    expect(readmeContent).toContain(`version-v${projectVersion}`);
+    expect(readmeContent).toContain(`?v=${projectVersion}`);
+    expect(readmeContent).toContain(`jatc-portfolio-v${projectVersion}`);
   });
 
   it('should keep pnpm and Astro versions synchronized across documentation', () => {
@@ -50,12 +64,28 @@ describe('Repository Version & Security Synchronization', () => {
     const adrContent = fs.readFileSync(path.join(rootDir, 'ADR.md'), 'utf-8');
 
     expect(readmeContent).toContain(`pnpm (v${pnpmVersion})`);
+    expect(readmeContent).toContain(`\`pnpm\` (\`v${pnpmVersion}\`)`);
     expect(contextContent).toContain(`\`pnpm\` (v${pnpmVersion})`);
     expect(adrContent).toContain(`pnpm (v${pnpmVersion})`);
 
     expect(readmeContent).toContain(`Astro (v${astroVersion})`);
     expect(contextContent).toContain(`(v${astroVersion})`);
     expect(adrContent).toContain(`Astro (v${astroVersion})`);
+
+    expect(readmeContent).toContain(`TypeScript (v${tsVersion})`);
+    expect(contextContent).toContain(`TypeScript (v${tsVersion})`);
+    expect(adrContent).toContain(`TypeScript (v${tsVersion})`);
+
+    expect(readmeContent).toContain(`LightningCSS (v${lightningcssVersion})`);
+    expect(readmeContent).toContain(`Vitest (v${vitestVersion})`);
+    expect(contextContent).toContain(`v${vitestVersion}`);
+    expect(readmeContent).toContain(`ESLint (v${eslintVersion})`);
+    expect(readmeContent).toContain(`Prettier (v${prettierVersion})`);
+    expect(readmeContent).toContain(
+      `\`@astrojs/check\` (v${astroCheckVersion})`
+    );
+    expect(readmeContent).toContain(`Husky (v${huskyVersion})`);
+    expect(adrContent).toContain(`Husky (v${huskyVersion})`);
   });
 
   it('should keep CSP script-src hashes in .htaccess synchronized with built HTML when dist exists', () => {

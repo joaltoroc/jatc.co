@@ -95,7 +95,6 @@ const isEn = lang === 'en';
           stroke-linecap="round"
           stroke-linejoin="round"
           aria-hidden="true"
-          style="display: none;"
         >
           <line x1="18" y1="6" x2="6" y2="18"></line>
           <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -219,7 +218,10 @@ const isEn = lang === 'en';
   .lang-selector a {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: all var(--transition-fast);
+    transition:
+      color var(--transition-fast),
+      background-color var(--transition-fast),
+      transform 160ms var(--ease-out);
     padding: 0.5rem; /* Aumenta el touch target vertical y horizontal */
     display: inline-flex;
     align-items: center;
@@ -231,6 +233,10 @@ const isEn = lang === 'en';
   .lang-selector a:hover {
     color: var(--text-primary);
     background: var(--surface-light);
+  }
+
+  .lang-selector a:active {
+    transform: scale(0.96);
   }
 
   .lang-selector a.active-lang {
@@ -246,19 +252,47 @@ const isEn = lang === 'en';
 
   .mobile-menu-btn {
     display: none;
+    align-items: center;
+    justify-content: center;
     color: var(--text-primary);
     position: relative;
     z-index: 102;
     padding: 10px; /* Aumenta el área táctil física sin mover el botón */
     margin: -10px; /* Compensa el padding */
+    transition: transform 160ms var(--ease-out);
+  }
+
+  .mobile-menu-btn:active {
+    transform: scale(0.96);
+  }
+
+  .mobile-menu-btn .hamburger-icon,
+  .mobile-menu-btn .close-icon {
+    transition:
+      opacity 200ms var(--ease-out),
+      transform 200ms var(--ease-out),
+      filter 200ms var(--ease-out);
+  }
+
+  .mobile-menu-btn .close-icon {
+    position: absolute;
+    opacity: 0;
+    transform: scale(0.25);
+    filter: blur(4px);
+    pointer-events: none;
   }
 
   .mobile-menu-btn.is-active .hamburger-icon {
-    display: none !important;
+    opacity: 0;
+    transform: scale(0.25);
+    filter: blur(4px);
+    pointer-events: none;
   }
 
   .mobile-menu-btn.is-active .close-icon {
-    display: block !important;
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
   }
 
   /* Mobile Menu Drawer */
@@ -319,7 +353,7 @@ const isEn = lang === 'en';
     }
 
     .mobile-menu-btn {
-      display: block;
+      display: inline-flex;
     }
   }
 </style>

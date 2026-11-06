@@ -468,6 +468,7 @@ const techIcons: Record<string, string> = {
     position: relative;
     padding-left: 60px;
     margin-bottom: var(--space-8);
+    transition: opacity var(--transition-normal);
   }
 
   .timeline-item:last-child {
@@ -485,7 +486,10 @@ const techIcons: Record<string, string> = {
     border: 2px solid var(--accent-primary);
     box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
     z-index: 1;
-    transition: all var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      box-shadow var(--transition-fast),
+      transform var(--transition-apple);
   }
 
   .timeline-item:hover .timeline-dot {
@@ -499,7 +503,10 @@ const techIcons: Record<string, string> = {
     border-radius: var(--card-radius);
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    transition: all var(--transition-normal);
+    transition:
+      transform var(--transition-apple),
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
   }
 
   .timeline-content:hover {
@@ -564,7 +571,11 @@ const techIcons: Record<string, string> = {
     background: var(--tag-bg);
     color: var(--tag-color);
     border: 1px solid var(--tag-border);
-    transition: all var(--transition-fast);
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast),
+      transform var(--transition-apple);
   }
 
   .tech-tag:hover {

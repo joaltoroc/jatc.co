@@ -124,7 +124,10 @@ const educationList = isEn ? educationListEn : educationListEs;
     border: 1px solid var(--card-border);
     display: flex;
     gap: var(--space-6);
-    transition: all var(--transition-normal);
+    transition:
+      transform var(--transition-apple),
+      border-color var(--transition-fast),
+      box-shadow var(--transition-fast);
   }
 
   .edu-card:hover {

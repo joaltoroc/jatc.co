@@ -3,6 +3,8 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - '@astrojs/check@0.9.12'
+  - '@astrojs/internal-helpers@0.13.1'
+  - '@astrojs/markdown-satteri@0.4.7'
   - '@astrojs/sitemap@3.7.4'
   - '@typescript-eslint/eslint-plugin@8.72.1'
   - '@typescript-eslint/parser@8.72.1'
@@ -14,7 +16,7 @@ minimumReleaseAgeExclude:
   - '@typescript-eslint/typescript-estree@8.72.1'
   - '@typescript-eslint/utils@8.72.1'
   - '@typescript-eslint/visitor-keys@8.72.1'
-  - astro@7.4.2
+  - astro@7.4.7
   - prettier-plugin-astro@1.1.2
   - typescript-eslint@8.72.1
 
