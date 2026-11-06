@@ -77,6 +77,7 @@ const t = useTranslations(lang);
               id="cli-input"
               class="cli-input-field"
               placeholder="type 'help'..."
+              maxlength="64"
               spellcheck="false"
               aria-label={t('hero.cliInputLabel')}
             />
@@ -478,19 +479,22 @@ const t = useTranslations(lang);
           try {
             const decoded = atob(encoded);
             if (type === 'link') {
-              const anchor = document.createElement('a');
-              anchor.href = decoded;
-              anchor.target = '_blank';
-              anchor.rel = 'noopener noreferrer';
-              anchor.style.color = 'inherit';
-              anchor.style.textDecoration = 'none';
-              anchor.textContent = decoded;
-              span.replaceChildren(anchor);
+              const parsedUrl = new URL(decoded);
+              if (parsedUrl.protocol === 'https:') {
+                const anchor = document.createElement('a');
+                anchor.href = parsedUrl.toString();
+                anchor.target = '_blank';
+                anchor.rel = 'noopener noreferrer';
+                anchor.style.color = 'inherit';
+                anchor.style.textDecoration = 'none';
+                anchor.textContent = decoded;
+                span.replaceChildren(anchor);
+              }
             } else {
               span.textContent = decoded;
             }
           } catch {
-            // Fault tolerance against malformed base64
+            // Fault tolerance against malformed base64 or invalid URLs
           }
         }
       });
@@ -536,10 +540,13 @@ const t = useTranslations(lang);
       };
 
       const handleCommand = (cmdStr: string) => {
-        const trimmed = cmdStr.trim().toLowerCase();
+        const trimmed = cmdStr.trim().slice(0, 64).toLowerCase();
         if (!trimmed) return;
 
         appendLine(trimmed, true);
+        if (commandHistoryList.length >= 50) {
+          commandHistoryList.shift();
+        }
         commandHistoryList.push(trimmed);
         historyIndex = commandHistoryList.length;
 
@@ -601,15 +608,20 @@ const t = useTranslations(lang);
             appendLine('Opening print view for CV generation...', false, true);
             window.print();
             break;
-          case 'theme':
+          case 'theme': {
             const isDark = document.documentElement.classList.toggle('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            try {
+              localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch {
+              // Ignore storage write errors in restricted privacy modes
+            }
             appendLine(
               `Switched to ${isDark ? 'Dark' : 'Light'} mode`,
               false,
               true
             );
             break;
+          }
           case 'matrix':
             appendLine(
               '01001010 01000001 01010100 01000011 00100001',

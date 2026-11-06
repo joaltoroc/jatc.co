@@ -12,56 +12,71 @@ const ASSETS_TO_CACHE = [
   '/jatc.webp',
 ];
 
+async function precacheAssets() {
+  const cache = await caches.open(CACHE_NAME);
+  await cache.addAll(ASSETS_TO_CACHE);
+  await self.skipWaiting();
+}
+
+async function cleanupOldCaches() {
+  const keys = await caches.keys();
+  const staleKeys = keys.filter((key) => key !== CACHE_NAME);
+  await Promise.all(staleKeys.map((key) => caches.delete(key)));
+  await self.clients.claim();
+}
+
+async function updateCacheInBackground(request) {
+  try {
+    const networkResponse = await fetch(request);
+    if (networkResponse?.status === 200 && networkResponse.type === 'basic') {
+      const responseToCache = networkResponse.clone();
+      const cache = await caches.open(CACHE_NAME);
+      await cache.put(request, responseToCache);
+    }
+  } catch {
+    // Ignore background network errors while offline
+  }
+}
+
+async function handleFetchRequest(event) {
+  const { request } = event;
+  const cachedResponse = await caches.match(request);
+  if (cachedResponse) {
+    event.waitUntil(updateCacheInBackground(request));
+    return cachedResponse;
+  }
+
+  try {
+    return await fetch(request);
+  } catch {
+    if (request.headers.get('accept')?.includes('text/html')) {
+      const fallbackResponse = await caches.match('/');
+      if (fallbackResponse) return fallbackResponse;
+    }
+    return Response.error();
+  }
+}
+
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
-  );
-  self.skipWaiting();
+  event.waitUntil(precacheAssets());
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
-  );
-  self.clients.claim();
+  event.waitUntil(cleanupOldCaches());
 });
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
-  event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        // Fetch background update
-        fetch(event.request)
-          .then((networkResponse) => {
-            if (networkResponse.status === 200) {
-              caches
-                .open(CACHE_NAME)
-                .then((cache) => cache.put(event.request, networkResponse));
-            }
-          })
-          .catch(() => {});
-        return cachedResponse;
-      }
-      return fetch(event.request)
-        .then((networkResponse) => {
-          return networkResponse;
-        })
-        .catch(() => {
-          if (event.request.headers.get('accept')?.includes('text/html')) {
-            return caches.match('/');
-          }
-        });
-    })
-  );
+
+  let url;
+  try {
+    url = new URL(event.request.url);
+  } catch {
+    return;
+  }
+
+  // Strictly handle same-origin HTTP(S) requests only (prevents cross-origin cache poisoning)
+  if (url.origin !== self.location.origin) return;
+
+  event.respondWith(handleFetchRequest(event));
 });

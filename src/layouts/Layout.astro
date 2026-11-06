@@ -19,11 +19,15 @@ const t = useTranslations(lang);
     <meta name="viewport" content="width=device-width" />
     <script is:inline>
       const theme = (() => {
-        if (
-          typeof localStorage !== 'undefined' &&
-          localStorage.getItem('theme')
-        ) {
-          return localStorage.getItem('theme');
+        try {
+          if (typeof localStorage !== 'undefined') {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark' || saved === 'light') {
+              return saved;
+            }
+          }
+        } catch {
+          // Fallback if storage is restricted
         }
         return 'light';
       })();
@@ -80,7 +84,6 @@ const t = useTranslations(lang);
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
     <title>{t('layout.title')}</title>
 
     <!-- Basic SEO -->
@@ -293,11 +296,32 @@ const t = useTranslations(lang);
           threshold: 0,
         };
 
+        const createSvgIcon = (cls, children) => {
+          const ns = 'http://www.w3.org/2000/svg';
+          const svg = document.createElementNS(ns, 'svg');
+          svg.setAttribute('class', cls);
+          svg.setAttribute('viewBox', '0 0 24 24');
+          svg.setAttribute('width', '22');
+          svg.setAttribute('height', '22');
+          svg.setAttribute('stroke', 'currentColor');
+          svg.setAttribute('stroke-width', '2');
+          svg.setAttribute('fill', 'none');
+          svg.setAttribute('stroke-linecap', 'round');
+          svg.setAttribute('stroke-linejoin', 'round');
+          svg.setAttribute('aria-hidden', 'true');
+          children.forEach(([tag, attrs]) => {
+            const el = document.createElementNS(ns, tag);
+            Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+            svg.appendChild(el);
+          });
+          return svg;
+        };
+
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               const id = entry.target.getAttribute('id');
-              if (id) {
+              if (id && /^[a-zA-Z0-9_-]+$/.test(id)) {
                 history.replaceState(null, null, `#${id}`);
                 // Highlight active link in header
                 document.querySelectorAll('.desktop-nav a').forEach((link) => {
@@ -320,14 +344,35 @@ const t = useTranslations(lang);
           if (title) {
             if (title.querySelector('.copy-section-link')) return;
             const linkBtn = document.createElement('button');
+            linkBtn.type = 'button';
             linkBtn.className = 'copy-section-link';
             linkBtn.setAttribute('aria-label', copyLinkText);
             linkBtn.setAttribute('title', copyLinkText);
-            linkBtn.innerHTML =
-              '<svg class="icon-link" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg><svg class="icon-check" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            linkBtn.appendChild(
+              createSvgIcon('icon-link', [
+                [
+                  'path',
+                  {
+                    d: 'M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71',
+                  },
+                ],
+                [
+                  'path',
+                  {
+                    d: 'M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71',
+                  },
+                ],
+              ])
+            );
+            linkBtn.appendChild(
+              createSvgIcon('icon-check', [
+                ['polyline', { points: '20 6 9 17 4 12' }],
+              ])
+            );
 
             linkBtn.addEventListener('click', (e) => {
               e.preventDefault();
+              if (!/^[a-zA-Z0-9_-]+$/.test(section.id)) return;
               const url = new URL(window.location.href);
               url.hash = section.id;
               navigator.clipboard.writeText(url.toString()).then(() => {

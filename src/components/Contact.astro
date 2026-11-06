@@ -506,6 +506,9 @@ const t = useTranslations(lang);
 
 <script>
   const initContact = () => {
+    const isValidEmail = (email: string) =>
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+
     // 1. Decode email on mount
     const emailLinks = document.querySelectorAll('.email-link');
     emailLinks.forEach((link) => {
@@ -513,10 +516,12 @@ const t = useTranslations(lang);
       if (encoded) {
         try {
           const decoded = atob(encoded);
-          link.setAttribute('href', `mailto:${decoded}`);
-          const textSpan = link.querySelector('.email-text');
-          if (textSpan) {
-            textSpan.textContent = decoded;
+          if (isValidEmail(decoded)) {
+            link.setAttribute('href', `mailto:${decoded}`);
+            const textSpan = link.querySelector('.email-text');
+            if (textSpan) {
+              textSpan.textContent = decoded;
+            }
           }
         } catch {
           // Fault tolerance against malformed base64
@@ -545,7 +550,10 @@ const t = useTranslations(lang);
           const encoded = emailLink ? emailLink.getAttribute('data-email') : '';
           if (encoded) {
             try {
-              valueToCopy = atob(encoded);
+              const decoded = atob(encoded);
+              if (isValidEmail(decoded)) {
+                valueToCopy = decoded;
+              }
             } catch {
               // Fault tolerance
             }

@@ -1,11 +1,23 @@
 # Redirigir errores 404 a la página de inicio
 ErrorDocument 404 /
 
-# Desactivar el listado de directorios por seguridad
+# Desactivar el listado de directorios y firma del servidor por seguridad
 Options -Indexes
+ServerSignature Off
 
 # Bloquear acceso a archivos ocultos y sensibles (.git, .env, .htaccess, etc.)
 <FilesMatch "^\.">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Bloquear acceso directo a archivos de configuración, logs, respaldos o documentación si existieran en el servidor
+<FilesMatch "\.(md|lock|ya?ml|log|sh|bak|sql|env)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>
@@ -60,18 +72,23 @@ Options -Indexes
 </IfModule>
 
 <IfModule mod_headers.c>
+  # Eliminar cabeceras que revelan tecnologías del servidor (Fingerprinting Protection)
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+
   # Enhanced Content Security Policy (CSP)
-  Header set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'sha256-31fQF/g9KGmEnutu6M7cTHdK4cN5J5z5NRerO5mFMfQ=' 'sha256-5cLdmBlyDdqM1hLnMaWRqCUKBuIVEyforg9ieylWe8A=' 'sha256-6qE4uvX+SzyAaO9MBZfuaqnejYjwg52teNNjLuMh8zw=' 'sha256-9e87km+FLNSzdjDCcmZ/MpgPuK0AO9dUMGnsFdzhJzM=' 'sha256-AwImk06UCJQldRwlLkmssYoqw/fdVL3Cq2sfp9Hxys4=' 'sha256-FMwFesxTHxXBE/k3tpCwT0/LbC+/4G8P57ohi3pp3/0=' 'sha256-Nxyl0BbYAZ7FftrChNpIq/c/gDqzAhl+bwg0muInjLw=' 'sha256-YRcgsl9mdqkAnRKHXjsgL+9cFKwLShnbVMmQj8eukk4=' 'sha256-Zfz5kU9h9mJXmXYICc7sOPMAI5d7P1Xap99ZCQ9/Uow=' 'sha256-amHRZeB8QQWcU77ymun563dhPiAJijevgl0S0prG/og=' 'sha256-bhfVK4HDtVucNaZirFvMpyM5AnLNj3+bWKtQAj7/3T4=' 'sha256-ghcVQyFCQhQiAqbnqQSvnCRf9s3NyR7G4AQEKvlVvFA=' 'sha256-wYxHlCB64y9ML4rASaVx/f5y9Um7Vgq9ufrJX/SBL4c=' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; upgrade-insecure-requests; frame-ancestors 'none';"
+  Header always set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com https://www.google.com.co; script-src 'self' 'sha256-31fQF/g9KGmEnutu6M7cTHdK4cN5J5z5NRerO5mFMfQ=' 'sha256-6qE4uvX+SzyAaO9MBZfuaqnejYjwg52teNNjLuMh8zw=' 'sha256-9e87km+FLNSzdjDCcmZ/MpgPuK0AO9dUMGnsFdzhJzM=' 'sha256-DjJjXNbWwrzDz80ggPPHhU3Rdn+GqY+XiZ/kT4v+O/c=' 'sha256-InFWGOLhvYR6yAV1D0D5eSiGkw0NRIuS/Qfwqiw+LME=' 'sha256-Nxyl0BbYAZ7FftrChNpIq/c/gDqzAhl+bwg0muInjLw=' 'sha256-amHRZeB8QQWcU77ymun563dhPiAJijevgl0S0prG/og=' 'sha256-eHr+dTCEh8lCHWaqKWAdqETVgEXGJu+LMo4vqQfkoVE=' 'sha256-ghcVQyFCQhQiAqbnqQSvnCRf9s3NyR7G4AQEKvlVvFA=' 'sha256-jLByLZrM39WckRsAjdyWZEzk0yOOHZiIIjoO14b6x5I=' 'sha256-jLP9cqisK65eEZx4ZZY8EpHGzeICrYfngdsa6Pb4v3w=' 'sha256-kLeCMaazVdzfTtbM7rsMF3UvK/8XrLZcvZpzT8RGHuc=' 'sha256-wYxHlCB64y9ML4rASaVx/f5y9Um7Vgq9ufrJX/SBL4c=' https://www.googletagmanager.com https://static.cloudflareinsights.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.google.com https://cloudflareinsights.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; worker-src 'self' blob:; upgrade-insecure-requests; frame-ancestors 'none';"
 
   # Security Headers
-  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-  Header set Cross-Origin-Opener-Policy "same-origin"
-  Header set Cross-Origin-Resource-Policy "same-origin"
-  Header set X-XSS-Protection "1; mode=block"
-  Header set X-Content-Type-Options "nosniff"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set X-Frame-Options "DENY"
-  Header set Permissions-Policy "geolocation=(), camera=(), microphone=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "geolocation=(), camera=(), microphone=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), browsing-topics=()"
 
   # Hashed assets in _astro/ (JS, CSS, Fonts, Images)
   # Cache for 1 year since hashes change when content changes

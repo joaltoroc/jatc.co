@@ -888,7 +888,12 @@ const coursesList = lang === 'en' ? coursesListEn : coursesListEs;
       const item = items[currentIndex];
       if (!item) return;
 
-      modalImg.setAttribute('src', item.diploma);
+      if (
+        item.diploma.startsWith('/diplomas/') &&
+        !item.diploma.includes('..')
+      ) {
+        modalImg.setAttribute('src', item.diploma);
+      }
       modalImg.setAttribute('alt', `Diploma: ${item.title}`);
       if (modalTitle) {
         modalTitle.textContent = item.title;

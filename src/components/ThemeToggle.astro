@@ -122,11 +122,15 @@ const t = useTranslations(lang);
 <script>
   function initTheme() {
     const theme = (() => {
-      if (
-        typeof localStorage !== 'undefined' &&
-        localStorage.getItem('theme')
-      ) {
-        return localStorage.getItem('theme');
+      try {
+        if (typeof localStorage !== 'undefined') {
+          const saved = localStorage.getItem('theme');
+          if (saved === 'dark' || saved === 'light') {
+            return saved;
+          }
+        }
+      } catch {
+        // Fallback if storage is restricted
       }
       return 'light';
     })();
@@ -146,7 +150,11 @@ const t = useTranslations(lang);
         const element = document.documentElement;
         element.classList.toggle('dark');
         const isDarkNow = element.classList.contains('dark');
-        localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+        try {
+          localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+        } catch {
+          // Ignore storage write errors in restricted privacy modes
+        }
         toggle.setAttribute('aria-pressed', isDarkNow ? 'true' : 'false');
         const isEn = document.documentElement.lang === 'en';
         const msg = isDarkNow

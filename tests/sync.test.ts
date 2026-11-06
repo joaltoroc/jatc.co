@@ -126,4 +126,34 @@ describe('Repository Version & Security Synchronization', () => {
 
     expect([...htaccessHashes].sort()).toEqual([...expectedHashes].sort());
   });
+
+  it('should enforce strict security headers, Service Worker origin isolation, and zero innerHTML usage', () => {
+    const htaccess = fs.readFileSync(
+      path.join(rootDir, 'public', '.htaccess'),
+      'utf-8'
+    );
+    expect(htaccess).toContain('ServerSignature Off');
+    expect(htaccess).toContain('Header always unset X-Powered-By');
+    expect(htaccess).toContain('Header always set Content-Security-Policy');
+    expect(htaccess).toContain('Header always set Strict-Transport-Security');
+    expect(htaccess).toContain(
+      'Header always set X-Permitted-Cross-Domain-Policies "none"'
+    );
+    expect(htaccess).toContain("frame-ancestors 'none'");
+    expect(htaccess).toContain("object-src 'none'");
+
+    const swContent = fs.readFileSync(
+      path.join(rootDir, 'public', 'sw.js'),
+      'utf-8'
+    );
+    expect(swContent).toContain('url.origin !== self.location.origin');
+    expect(swContent).toContain("networkResponse.type === 'basic'");
+
+    const layoutContent = fs.readFileSync(
+      path.join(rootDir, 'src', 'layouts', 'Layout.astro'),
+      'utf-8'
+    );
+    expect(layoutContent).not.toContain('.innerHTML');
+    expect(layoutContent).not.toContain('name="generator"');
+  });
 });
